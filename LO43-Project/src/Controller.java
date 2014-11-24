@@ -18,7 +18,7 @@ public class Controller {
 		return 0;}
 	
 	public int releaseCar() {
-		return 0;}
+		return 1;}
 	
 	
 }
