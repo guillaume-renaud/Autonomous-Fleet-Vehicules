@@ -26,25 +26,22 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailBoxUpdated(MailBoxEnvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEnvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onMailReceivedByMan(MailBoxEnvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onMailReceivedByController(MailBoxEnvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
