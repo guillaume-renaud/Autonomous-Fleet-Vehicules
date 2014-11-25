@@ -1,13 +1,12 @@
 
-public class Controller implements PassagerListener, CarListener{
+public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
 	
 	String requestInTraitment;
 	
-	// Il faut dès maintenant chercher comment récupérer un changement dans un des attributs de BAL. (listener, ...)
 	
-	// ---> solution : utiliser le pattern Observable , et la classe controller doit implémenter les interfaces qui écoutent chaque changement
+	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
 	
 	
 	public Controller () {
@@ -24,6 +23,30 @@ public class Controller implements PassagerListener, CarListener{
 	
 	public int releaseCar() {
 		return 0;}
+
+	@Override
+	public void onMailBoxUpdated(MailBoxEnvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByCar(MailBoxEnvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByMan(MailBoxEnvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByController(MailBoxEnvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
