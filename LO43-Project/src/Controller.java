@@ -25,22 +25,22 @@ public class Controller implements MailBoxListener {
 		return 0;}
 
 	@Override
-	public void onMailBoxUpdated(MailBoxEnvent e) {
+	public void onMailBoxUpdated(MailBoxEvent e) {
 		
 	}
 
 	@Override
-	public void onMailReceivedByCar(MailBoxEnvent e) {
+	public void onMailReceivedByCar(MailBoxEvent e) {
 		
 	}
 
 	@Override
-	public void onMailReceivedByMan(MailBoxEnvent e) {
+	public void onMailReceivedByMan(MailBoxEvent e) {
 		
 	}
 
 	@Override
-	public void onMailReceivedByController(MailBoxEnvent e) {
+	public void onMailReceivedByController(MailBoxEvent e) {
 		
 		
 	}

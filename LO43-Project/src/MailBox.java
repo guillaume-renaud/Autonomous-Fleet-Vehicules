@@ -26,5 +26,9 @@ public class MailBox {
 		if (listeners.contains(l))
 			listeners.remove(l);
 	}
+	
+	public void fireMailBoxUpdated (MailBoxEvent e) {
+		
+	}
 
 }
