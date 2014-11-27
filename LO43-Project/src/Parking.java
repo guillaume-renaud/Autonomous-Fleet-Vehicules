@@ -1,4 +1,8 @@
 
-public class Parking {
-
+public class Parking 
+{	
+	public Parking()
+	{
+		
+	}
 }
