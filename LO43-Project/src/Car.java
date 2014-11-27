@@ -1,5 +1,5 @@
 
-public class Car implements MailBoxListener{
+public class Car implements MailBoxListener {
 	
 	String name;
 	private Order order;
