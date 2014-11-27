@@ -1,5 +1,5 @@
 
-public class Car {
+public class Car implements MailBoxListener{
 	
 	String name;
 	private Order order;
@@ -40,5 +40,29 @@ public class Car {
 	
 	public void setOccuped(boolean b) {
 		this.occuped = b;
+	}
+
+	@Override
+	public void onMailBoxUpdated(MailBoxEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByCar(MailBoxEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByMan(MailBoxEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByController(MailBoxEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
