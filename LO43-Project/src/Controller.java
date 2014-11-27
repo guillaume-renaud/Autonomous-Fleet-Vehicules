@@ -9,20 +9,43 @@ public class Controller implements MailBoxListener {
 	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
 	
 	
-	public Controller () {
-		mainBox = new MailBox();
+	public Controller (MailBox m) {
+		mainBox = m;
 	}
 	
-	public void updateListened() {}
+	//This method will be called when we want to enroll a car
+	public void enrollCar(Car c) {
+		Order o = new Order("ENROLL");
+		c.setOrder(o);
+	}
 	
-	public int enrollCar() {
-		return 0;}
+	//This method will be called when we want to give a mission with a destination to a car
+	public void giveMissionCar() {
+	}
+
+	//This method will be called when we want to release a car
+	public void releaseCar() {
+	}
 	
-	public int giveMissionCar() {
-		return 0;}
-	
-	public int releaseCar() {
-		return 0;}
+	//This method will be called when we want to park a car in a specific parking
+	public void parkCar() {
+	}
+		
+		
+	//This method will be called when we want a free car for a client
+	public Car findFreeCar () {
+		
+		for (Car c : mainBox.vehicules)
+		{
+			if (c.isOccuped()==false)
+			{
+				return c;
+			}
+		}
+		
+		return null;
+		
+	}
 
 	@Override
 	public void onMailBoxUpdated(MailBoxEvent e) {
@@ -31,7 +54,12 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
+		Car car = mainBox.vehicules.get(e.indexInMailBoxList);
 		
+		//if (car.getPosition().isAParking())
+		//{
+			
+		//}
 	}
 
 	@Override
