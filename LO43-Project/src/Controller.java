@@ -85,7 +85,16 @@ public class Controller implements MailBoxListener {
 		
 		if (action.equals("POSITION_CHANGED"))
 		{
-			
+			//Case when the car arrived to the starting point of the mission
+			if (car.getPosition()==car.getOrder().enrollPlace)
+			{
+				
+			}
+			// Case when the car as finished its mission (arrived)
+			else if (car.getPosition()==car.getOrder().endingMission)
+			{
+				
+			}
 		}
 		else if (action.equals(""))
 		{
