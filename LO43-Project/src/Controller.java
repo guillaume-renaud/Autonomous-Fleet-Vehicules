@@ -4,7 +4,7 @@ public class Controller implements MailBoxListener {
 	MailBox mainBox;
 	
 	//String requestInTraitment;
-	
+	int nbCarInMission = 0;
 	
 	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
 	
