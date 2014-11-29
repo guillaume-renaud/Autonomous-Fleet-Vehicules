@@ -6,7 +6,6 @@ public class Order {
 	Place enrollPlace;
 	Place beginingMission;
 	Place endingMission;
-	Place parkPlace;
 	
 	
 	public Order(String s) {
@@ -15,7 +14,6 @@ public class Order {
 		this.enrollPlace=null;
 		this.beginingMission =null;
 		this.endingMission=null;
-		this.parkPlace=null;
 	}
 	
 	public Order (String s, Place enroll) {
