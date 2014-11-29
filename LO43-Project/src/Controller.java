@@ -53,7 +53,7 @@ public class Controller implements MailBoxListener {
 		Order o = new Order("PARK", whereParking);
 		c.setOrder(o);
 		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL");
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK");
 		mainBox.fireMailBoxUpdated(event);
 	}
 		

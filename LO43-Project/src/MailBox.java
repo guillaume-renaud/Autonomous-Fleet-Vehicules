@@ -4,15 +4,18 @@ import java.util.ArrayList;
 public class MailBox {
 
 	ArrayList<Car> fleet;
+	
 	ArrayList<Passenger> passengers;
 
 	ArrayList<MailBoxListener> listeners;
 	
+	ArrayList<Place> reservations;
 	
 	public MailBox() {
 		fleet = new ArrayList<Car>();
 		passengers = new ArrayList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
+		reservations = new ArrayList<Place>();
 	}
 	
 	public void addMailBoxListener (MailBoxListener l)
