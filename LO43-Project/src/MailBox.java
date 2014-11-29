@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 public class MailBox {
 
-	ArrayList<Car> vehicules;
+	ArrayList<Car> fleet;
 	ArrayList<Passenger> passengers;
 
 	ArrayList<MailBoxListener> listeners;
 	
 	
 	public MailBox() {
-		vehicules = new ArrayList<Car>();
+		fleet = new ArrayList<Car>();
 		passengers = new ArrayList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 	}
@@ -28,7 +28,29 @@ public class MailBox {
 	}
 	
 	public void fireMailBoxUpdated (MailBoxEvent e) {
-		
+		switch (e.classNameOfUpdater) 
+		{
+			case ("Car") : {
+				for (MailBoxListener l : listeners)
+				{
+					l.onMailReceivedByCar(e);
+				}
+			} break;
+			
+			case ("Controller") : {
+				for (MailBoxListener l : listeners)
+				{
+					l.onMailReceivedByController(e);
+				}
+			} break;
+			
+			case ("Passenger") : {
+				for (MailBoxListener l : listeners)
+				{
+					l.onMailReceivedByMan(e);
+				}
+			} break;
+		}
 	}
 
 }
