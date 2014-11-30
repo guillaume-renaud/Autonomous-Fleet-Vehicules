@@ -1,0 +1,6 @@
+	  1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6 c
+I1 O2 T F F F F F T T F F F F F T F F F F F
+I1 O3 T F F F F F T T T F F F F F T F F F F
+I1 O4 T F F F F F T F F T F F F F F T F F T
+I1 O5 T F F F F F T F F F T T F F F F T F F
+I1 O6 T F F F F F T F F F F T F F F F F T F
