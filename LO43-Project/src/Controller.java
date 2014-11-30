@@ -4,6 +4,7 @@ public class Controller implements MailBoxListener {
 	MailBox mainBox;
 	
 	//String requestInTraitment;
+	
 	int nbCarInMission = 0;
 	
 	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
@@ -53,7 +54,7 @@ public class Controller implements MailBoxListener {
 		Order o = new Order("PARK", whereParking);
 		c.setOrder(o);
 		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL");
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK");
 		mainBox.fireMailBoxUpdated(event);
 	}
 		
@@ -80,11 +81,21 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
-		Car car = mainBox.fleet.get(e.indexInMailBoxList);
+		Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 		String action = e.updateAction;
 		
 		if (action.equals("POSITION_CHANGED"))
 		{
+			//Case when the car arrived to the starting point of the mission
+			if (car.getPosition()==car.getOrder().enrollPlace)
+			{
+				
+			}
+			// Case when the car as finished its mission (arrived)
+			else if (car.getPosition()==car.getOrder().endingMission)
+			{
+				
+			}
 			
 		}
 		else if (action.equals(""))
