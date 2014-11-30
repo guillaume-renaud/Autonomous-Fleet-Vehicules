@@ -124,7 +124,7 @@ public Request(String begin, String end){
 	sc.next();
 	sc.next();
 	for (int i=0; i<19;i++){
-		if (sc.next() == "F")
+		if (sc.next().equals("F"))
 			requestMap[i]=false;
 		else
 			requestMap[i]=true;
