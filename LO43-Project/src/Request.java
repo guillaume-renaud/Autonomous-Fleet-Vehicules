@@ -5,6 +5,12 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 
+public class Request {
+	String start;
+	String destination;
+	boolean[] requestMap;
+	String[] requestMapPlaceName;
+	
 public Request(String begin, String end){
 	int index = 0;
 	String filePath = "requestMap.txt";
