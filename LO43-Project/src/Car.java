@@ -5,6 +5,7 @@ public class Car implements MailBoxListener {
 	private Order order;
 	private Place position;
 	private boolean occuped;
+	private boolean isInParking;
 	 
 	MailBox mainBox = new MailBox();
 	
@@ -27,6 +28,11 @@ public class Car implements MailBoxListener {
 		return this.occuped;
 	}
 	
+	public boolean isInParking() {
+		return isInParking;
+	}
+
+	
 	public void setOrder(Order o) { //It's just an example, it's not finished.
 		this.order = o;
 		
@@ -40,6 +46,11 @@ public class Car implements MailBoxListener {
 		this.occuped = b;
 	}
 
+	public void setInParking(boolean isInParking) {
+		this.isInParking = isInParking;
+	}
+	
+	
 	@Override
 	public void onMailBoxUpdated(MailBoxEvent e) {
 		// TODO Auto-generated method stub
@@ -63,4 +74,5 @@ public class Car implements MailBoxListener {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

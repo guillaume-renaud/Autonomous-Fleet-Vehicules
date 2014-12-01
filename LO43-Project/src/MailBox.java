@@ -36,6 +36,8 @@ public class MailBox {
 			e.printStackTrace();
 		}
 
+		
+	
 	}
 	public void addMailBoxListener (MailBoxListener l)
 	{
@@ -73,6 +75,30 @@ public class MailBox {
 				}
 			} break;
 		}
+	}
+
+	public Car findFreeCar() {
+		
+		for (Car c : this.fleet)
+		{
+			if (c.isInParking() && !c.isOccuped())
+			{
+				return c;
+			}
+		}
+		return null;
+	}
+	
+	public Place findSpecificPlace (String name)
+	{
+		for (Place p : this.reservations)
+		{
+			if (p.placeName.equals(name))
+			{
+				return p;
+			}
+		}
+		return null;
 	}
 
 }
