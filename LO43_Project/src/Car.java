@@ -1,7 +1,7 @@
 
 public class Car implements MailBoxListener {
 	
-	String name;
+	String carName;
 	private Order order;
 	private Place position;
 	private boolean occuped;
@@ -15,7 +15,13 @@ public class Car implements MailBoxListener {
 	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
 	 * updates*/
 	
-
+	public Car(int i,String p){
+		carName	= "car"+i;
+		order = new Order("wait");
+		position = null;
+		occuped = false;
+		parking = p;
+	}
 	public Order getOrder() {
 		return this.order;
 	}
