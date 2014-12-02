@@ -35,7 +35,7 @@ public class Car implements MailBoxListener {
 			if(order.mission.requestMap[j] == true)
 				if (position.adjacencyPlaceList.contains(mainBox.requestMap[j]))
 				{
-					position = mainBox.requestMap[j];
+					position = mainBox.requestMap[j];// add fire "new free place"
 					j = 19;
 				}
 		}
