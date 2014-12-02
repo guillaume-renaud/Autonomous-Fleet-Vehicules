@@ -22,7 +22,7 @@ public class MailBox {
 		passengers = new ArrayList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
-		requestMap = new Place[] {I1,I2,I3,I4,I5,I6,R1,R2,R3,R4,R5,R6,O1,O2,O3,O4,O5,O6,C};
+		requestMap = new Place[] {I1,I2,I3,I4,I5,I6,R1,R2,R3,R4,R5,R6,O1,O2,O3,O4,O5,O6,C}; // Must me changed or to think another time about it
 	}
 	
 	public void FileReader() {
@@ -85,7 +85,7 @@ public class MailBox {
 		
 		for (Car c : this.fleet)
 		{
-			if (c.isInParking() && !c.isOccuped())
+			if (!c.getParking().equals("NONE") && c.getPosition()==null && !c.isOccuped())
 			{
 				return c;
 			}
