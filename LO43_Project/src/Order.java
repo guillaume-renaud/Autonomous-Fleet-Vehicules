@@ -6,6 +6,7 @@ public class Order {
 	Place enrollPlace;
 	Place beginingMission;
 	Place endingMission;
+	Request mission;
 	
 	
 	public Order(String s) {
@@ -14,6 +15,7 @@ public class Order {
 		this.enrollPlace=null;
 		this.beginingMission =null;
 		this.endingMission=null;
+		this.mission = null;
 	}
 	
 	public Order (String s, Place enroll) {
@@ -22,11 +24,12 @@ public class Order {
 		this.enrollPlace = enroll;
 	}
 	
-	public Order (String s, Place begin, Place end) {
+	public Order (String s, Place begin, Place end, Request request) {
 		
 		this(s);
 		this.beginingMission = begin;
 		this.endingMission = end;
+		this.mission = request;
 		
 	}
 

@@ -6,6 +6,7 @@ public class MailBoxEvent {
 	String updateAction;
 	int indexReceiverInMailBoxList;
 	
+	
 	public MailBoxEvent (String className, int indexList, String action) {
 		this.classNameOfUpdater = className;
 		this.indexUpdaterInMailBoxList = indexList;

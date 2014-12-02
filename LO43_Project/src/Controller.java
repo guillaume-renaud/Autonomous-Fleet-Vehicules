@@ -20,17 +20,17 @@ public class Controller implements MailBoxListener {
 		Order o = new Order("ENROLL", start);
 		c.setOrder(o);
 		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL");
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
 	
 	//This method will be called when we want to give a mission with a destination to a car
-	public void giveMissionCar(Car c, Place start, Place end) {
+	public void giveMissionCar(Car c, Place start, Place end, Request request) {
 		
-		Order o = new Order("MISSION", start, end);
+		Order o = new Order("MISSION", start, end, request);
 		c.setOrder(o);
 		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION");
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
 
@@ -40,7 +40,7 @@ public class Controller implements MailBoxListener {
 		Order o = new Order("RELEASE");
 		c.setOrder(o);
 		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "RELEASE");
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "RELEASE", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
 	
@@ -54,7 +54,7 @@ public class Controller implements MailBoxListener {
 		Order o = new Order("PARK", whereParking);
 		c.setOrder(o);
 		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK");
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
 		
@@ -62,16 +62,9 @@ public class Controller implements MailBoxListener {
 	//This method will be called when we want a free car for a client
 	public Car findFreeCar () {
 		
-		for (Car c : mainBox.fleet)
-		{
-			if (c.isOccuped()==false)
-			{
-				return c;
-			}
-		}
+		Car c = mainBox.findFreeCar();
 		
-		return null;
-		
+		return c;
 	}
 
 	@Override
@@ -106,7 +99,15 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByMan(MailBoxEvent e) {
+		String action = e.updateAction;
+		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
 		
+		
+		if (action.equals("NEW_REQUEST"))
+		{
+			Car car = this.findFreeCar();
+			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+		}
 	}
 
 	@Override
