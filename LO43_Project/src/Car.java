@@ -22,6 +22,28 @@ public class Car implements MailBoxListener {
 		occuped = false;
 		parking = p;
 	}
+	public void move(){
+		int i=0;
+		while(mainBox.requestMap[i] == position)
+			i++;
+		if (mainBox.requestMap[i].placeIsFree == false)
+			System.out.println("error in requestMap!");
+		mainBox.requestMap[i].placeIsFree=false;
+		order.mission.requestMap[i]=false;
+		for (int j=0;j<19;j++)
+		{
+			if(order.mission.requestMap[j] == true)
+				if (position.adjacencyPlaceList.contains(mainBox.requestMap[j]))
+				{
+					position = mainBox.requestMap[j];
+					j = 19;
+				}
+		}
+		if (position == order.endingMission)
+		{
+			// fire end mission to listeners
+		}
+	}
 	public Order getOrder() {
 		return this.order;
 	}

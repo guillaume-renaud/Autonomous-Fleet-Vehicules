@@ -124,7 +124,6 @@ public Request(String begin, String end){
 		sc.nextLine();
 	}
 	sc.useDelimiter(Pattern.compile("[\n \\s ]"));
-	requestMapPlaceName = new String[] {"I1","I2","I3","I4","I5","O1","O2","O3","O4","O5","O6","R1","R2","R3","R4","R5","R6","C"};
 	requestMap = new boolean[19];
 	Arrays.fill(requestMap, false);
 	sc.next();
