@@ -22,23 +22,24 @@ public class Car implements MailBoxListener {
 		occuped = false;
 		parking = p;
 	}
+	public boolean checkRoad(){
+		boolean ready = true;
+		for(int i=0;i<19;i++)
+			if(order.mission.requestMap[i])
+				for(Place p : mainBox.reservations)
+					if (order.mission.requestMapPlaceName[i].equals(p))
+						if(!p.placeIsFree)
+							ready = false;
+		return ready;
+	}
 	public void move(){
-		int i=0;
-		while(mainBox.requestMap[i] == position)
-			i++;
-		if (mainBox.requestMap[i].placeIsFree == false)
-			System.out.println("error in requestMap!");
-		mainBox.requestMap[i].placeIsFree=false;
-		order.mission.requestMap[i]=false;
-		for (int j=0;j<19;j++)
-		{
-			if(order.mission.requestMap[j] == true)
-				if (position.adjacencyPlaceList.contains(mainBox.requestMap[j]))
-				{
-					position = mainBox.requestMap[j];// add fire "new free place"
-					j = 19;
-				}
-		}
+		position.placeIsFree=true;
+		for(Place p : position.adjacencyPlaceList)
+			for(int i=0;i<19;i++)
+				if(order.mission.requestMap[i])
+					if(order.mission.requestMapPlaceName[i].equals(p))
+						position = p;
+		//fire move done
 		if (position == order.endingMission)
 		{
 			// fire end mission to listeners
