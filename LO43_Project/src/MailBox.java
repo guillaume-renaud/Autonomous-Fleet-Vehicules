@@ -2,14 +2,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 
 public class MailBox {
 
-	ArrayList<Car> fleet;// change to queue
+	LinkedList<Car> fleet; // I have changed it to LinkedList which is a specific queue.
 	
-	ArrayList<Passenger> passengers;
+	LinkedList<Passenger> passengers;
 
 	ArrayList<MailBoxListener> listeners;
 	
@@ -17,8 +18,8 @@ public class MailBox {
 	
 	
 	public MailBox() {
-		fleet = new ArrayList<Car>();
-		passengers = new ArrayList<Passenger>();
+		fleet = new LinkedList<Car>();
+		passengers = new LinkedList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
 	}
