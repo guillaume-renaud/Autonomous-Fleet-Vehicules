@@ -2,7 +2,7 @@
 public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
-	
+	Passenger actualClient;
 	//String requestInTraitment;
 	
 	int nbCarInMission = 0;
@@ -60,9 +60,9 @@ public class Controller implements MailBoxListener {
 		
 		
 	//This method will be called when we want a free car for a client
-	public Car findFreeCar () {
+	public Car findFreeCar (String p) {
 		
-		Car c = mainBox.findFreeCar(); 
+		Car c = mainBox.findFreeCar(p); 
 		
 		return c;
 	}
