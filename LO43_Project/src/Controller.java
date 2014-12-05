@@ -102,17 +102,29 @@ public class Controller implements MailBoxListener {
 		
 		String action = e.updateAction;
 		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
-		
-		
+		this.actualClient = passenger;
 		if (action.equals("NEW_REQUEST"))
 		{
-			Car car = this.findFreeCar();
-			if (car!=null)
-			{
-				car.setPosition(null);
-				car.setParking(passenger.request.start); /// take the last char
-				this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+			String beginning = actualClient.request.start;
+			Car car;
+			switch (beginning){
+			case "I1" : car = this.findFreeCar("P1");
+				break;
+			case "I2" : car = this.findFreeCar("P2");
+				break;
+			case "I3" : car = this.findFreeCar("P3");
+				break;
+			case "I4" : car = this.findFreeCar("P4");
+				break;
+			case "I5" : car = this.findFreeCar("P5");
+				break;
+			case "I6" : car = this.findFreeCar("P6");
+			default : car = new Car(1000,"NONE");
+				break;
 			}
+			car.setPosition(null);
+			car.setParking("NONE");
+			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 			
 		}
 	}
