@@ -49,7 +49,7 @@ public class Car implements MailBoxListener {
 						position = p;
 						
 						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0); //I put 0 for the index of controller because it's not in a list.
-						mainBox.fireMailBoxUpdated(event);
+						mainBox.fireMailBoxUpdated(event); 
 					}	
 				}	
 			}	
