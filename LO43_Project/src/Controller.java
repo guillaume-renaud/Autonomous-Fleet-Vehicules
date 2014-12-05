@@ -49,10 +49,13 @@ public class Controller implements MailBoxListener {
 	 * 
 	 *ERROR
 	 */
-	public void parkCar(Car c, Place whereParking) {
+	public void parkCar(Car c, String parking) {
 		
-		Order o = new Order("PARK", whereParking);
+		Order o = new Order("PARK");
 		c.setOrder(o);
+		c.setOccuped(false);
+		c.setParking(parking);
+		c.setPosition(null);
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
@@ -87,11 +90,11 @@ public class Controller implements MailBoxListener {
 			// Case when the car as finished its mission (arrived)
 			else if (car.getPosition()==car.getOrder().endingMission)
 			{
-				
+				this.releaseCar(car);
 			}
 			
 		}
-		else if (action.equals(""))
+		else if (action.equals("RELEASED"))
 		{
 			
 		}
@@ -122,10 +125,9 @@ public class Controller implements MailBoxListener {
 			default : car = new Car(1000,"NONE");
 				break;
 			}
-			car.setPosition(null);
-			car.setParking("NONE");
-			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 			
+			car.setPosition(null);
+			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 		}
 	}
 
