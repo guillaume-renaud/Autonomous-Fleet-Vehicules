@@ -19,6 +19,7 @@ public class Controller implements MailBoxListener {
 		
 		Order o = new Order("ENROLL", start);
 		c.setOrder(o);
+		c.setOccuped(true);
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
@@ -74,6 +75,7 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
+		
 		Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 		String action = e.updateAction;
 		
