@@ -3,9 +3,10 @@ public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
 	
-	//String requestInTraitment;
+	Passenger actualClient;
 	
 	int nbCarInMission = 0;
+	
 	
 	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
 	
@@ -82,12 +83,12 @@ public class Controller implements MailBoxListener {
 		if (action.equals("POSITION_CHANGED"))
 		{
 			//Case when the car arrived to the starting point of the mission
-			if (car.getPosition()==car.getOrder().enrollPlace)
+			if (car.getOrder().typeOrder.equals("ENROLL") && car.getPosition()==car.getOrder().enrollPlace)
 			{
-				
+				this.giveMissionCar(car, mainBox.findSpecificPlace(actualClient.request.start), mainBox.findSpecificPlace(actualClient.request.destination), actualClient.request);
 			}
 			// Case when the car as finished its mission (arrived)
-			else if (car.getPosition()==car.getOrder().endingMission)
+			else if (car.getOrder().typeOrder.equals("MISSION") && car.getPosition()==car.getOrder().endingMission)
 			{
 				
 			}
@@ -104,10 +105,11 @@ public class Controller implements MailBoxListener {
 		
 		String action = e.updateAction;
 		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
-		
+		this.actualClient = passenger;
 		
 		if (action.equals("NEW_REQUEST"))
 		{
+			
 			Car car = this.findFreeCar();
 			if (car!=null)
 			{
