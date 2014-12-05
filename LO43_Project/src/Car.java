@@ -23,7 +23,6 @@ public class Car implements MailBoxListener {
 		parking = p;
 	}
 	
-	//does the car check the road itself? ---> YES
 	public boolean checkRoad(){
 		boolean ready = true;
 		for(int i=0;i<19;i++)
