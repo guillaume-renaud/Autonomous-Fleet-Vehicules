@@ -14,7 +14,5 @@ public class Main {
 			String p = "P"+indice;
 			controller.mainBox.fleet.add(new Car(i,p));
 		}
-						
-		// GraphicInterface g = new GraphicInterface();
 	}
 }
