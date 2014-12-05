@@ -1,10 +1,3 @@
-import java.awt.Graphics;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 
 public class Main {
 
@@ -21,9 +14,7 @@ public class Main {
 			String p = "P"+indice;
 			controller.mainBox.fleet.add(new Car(i,p));
 		}
-		
-		
-				
+						
 		// GraphicInterface g = new GraphicInterface();
 	}
 }
