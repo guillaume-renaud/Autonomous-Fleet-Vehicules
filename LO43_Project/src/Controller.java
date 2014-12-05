@@ -60,9 +60,9 @@ public class Controller implements MailBoxListener {
 		
 		
 	//This method will be called when we want a free car for a client
-	public Car findFreeCar () {
+	public Car findFreeCar (String p) {
 		
-		Car c = mainBox.findFreeCar();
+		Car c = mainBox.findFreeCar(p);
 		
 		return c;
 	}
@@ -103,16 +103,33 @@ public class Controller implements MailBoxListener {
 		String action = e.updateAction;
 		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
 		
-		
 		if (action.equals("NEW_REQUEST"))
 		{
-			Car car = this.findFreeCar();
-			if (car!=null)
-			{
-				car.setPosition(null);
-				car.setParking(passenger.request.start); /// take the last char
-				this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+			String beginning = passenger.request.start;
+			Car car;
+			switch (beginning){
+			case "I1" : car = this.findFreeCar("P1");
+				break;
+			case "I2" : car = this.findFreeCar("P2");
+			car.setPosition(null);
+				break;
+			case "I3" : car = this.findFreeCar("P3");
+						car.setPosition(null);
+				break;
+			case "I4" : car = this.findFreeCar("P4");
+						car.setPosition(null);
+				break;
+			case "I5" : car = this.findFreeCar("P5");
+						car.setPosition(null);
+				break;
+			case "I6" : car = this.findFreeCar("P6");
+						car.setPosition(null);
+			default : car = new Car(1000,"NONE");
+				break;
 			}
+			car.setPosition(null);
+			car.setParking("NONE");
+			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 			
 		}
 	}
