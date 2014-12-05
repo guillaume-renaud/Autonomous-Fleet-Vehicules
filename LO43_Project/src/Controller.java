@@ -64,7 +64,7 @@ public class Controller implements MailBoxListener {
 	//This method will be called when we want a free car for a client
 	public Car findFreeCar () {
 		
-		Car c = mainBox.findFreeCar();
+		Car c = mainBox.findFreeCar(); 
 		
 		return c;
 	}
