@@ -1,0 +1,10 @@
+1 start:I1 destination:O2
+2 start:I2 destination:O3
+3 start:I1 destination:O4
+4 start:I3 destination:O1
+5 start:I1 destination:O6
+6 start:I4 destination:O2
+7 start:I6 destination:O3
+8 start:I5 destination:O2
+9 start:I3 destination:O4
+10 start:I1 destination:O3
