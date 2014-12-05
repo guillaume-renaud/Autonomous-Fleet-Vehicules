@@ -2,10 +2,12 @@
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("Hello world");
+		Window window = new Window();
+		
 		MailBox mainBox = new MailBox();
 		mainBox.FileReader();
 		Controller controller = new Controller(mainBox);
+		
 		for(int i=0; i<18;i++)
 		{
 			int indice = (i%6)+1;
@@ -14,6 +16,7 @@ public class Main {
 		}
 		
 		
-		GraphicInterface g = new GraphicInterface();
+				
+		// GraphicInterface g = new GraphicInterface();
 	}
 }
