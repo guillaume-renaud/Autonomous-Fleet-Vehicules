@@ -99,6 +99,7 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByMan(MailBoxEvent e) {
+		
 		String action = e.updateAction;
 		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
 		
@@ -106,7 +107,13 @@ public class Controller implements MailBoxListener {
 		if (action.equals("NEW_REQUEST"))
 		{
 			Car car = this.findFreeCar();
-			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+			if (car!=null)
+			{
+				car.setPosition(null);
+				car.setParking(passenger.request.start); /// take the last char
+				this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+			}
+			
 		}
 	}
 

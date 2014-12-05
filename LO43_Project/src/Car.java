@@ -34,18 +34,28 @@ public class Car implements MailBoxListener {
 		return ready;
 	}
 	
-	public void move(){
+	public void move() {
+		
 		position.placeIsFree=true;
+		
 		for(Place p : position.adjacencyPlaceList)
-			for(int i=0;i<19;i++)
-				if(order.mission.requestMap[i])
-					if(order.mission.requestMapPlaceName[i].equals(p))
-						position = p;
-		//fire move done
-		if (position == order.endingMission)
 		{
-			// fire end mission to listeners
+			for(int i=0;i<19;i++)
+			{
+				if(order.mission.requestMap[i])
+				{
+					if(order.mission.requestMapPlaceName[i].equals(p))
+					{
+						position = p;
+						
+						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0); //I put 0 for the index of controller because it's not in a list.
+						mainBox.fireMailBoxUpdated(event);
+					}	
+				}	
+			}	
 		}
+			
+		
 	}
 	public Order getOrder() {
 		return this.order;

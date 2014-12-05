@@ -15,12 +15,14 @@ public class MailBox {
 	
 	ArrayList<Place> reservations;
 	
+	Controller commandControl;
 	
 	public MailBox() {
 		fleet = new LinkedList<Car>();
 		passengers = new LinkedList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
+		commandControl = new Controller(this);
 	}
 	
 	public void FileReader() {
