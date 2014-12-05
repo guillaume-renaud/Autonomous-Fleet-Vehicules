@@ -13,7 +13,6 @@ public class Window extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	    JPanel panel = new JPanel();
-	    panel.
 	    //panel.setBackground(Color.ORANGE);        
 	    //On prévient notre JFrame que notre JPanel sera son content pane
 	    this.setContentPane(panel);

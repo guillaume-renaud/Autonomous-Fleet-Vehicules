@@ -81,12 +81,20 @@ public class MailBox {
 		}
 	}
 
-	public Car findFreeCar() {
+	public Car findFreeCar(String p) {
 		
+		for (Car c : this.fleet)
+		{
+			if (!c.getParking().equals("NONE") && c.getPosition()==null && !c.isOccuped() && c.getParking().equals(p))
+			{
+				return c;
+			}
+		}
 		for (Car c : this.fleet)
 		{
 			if (!c.getParking().equals("NONE") && c.getPosition()==null && !c.isOccuped())
 			{
+				c.setParking(p);
 				return c;
 			}
 		}
