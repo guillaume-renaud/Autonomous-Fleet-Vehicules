@@ -49,10 +49,13 @@ public class Controller implements MailBoxListener {
 	 * 
 	 *ERROR
 	 */
-	public void parkCar(Car c, Place whereParking) {
+	public void parkCar(Car c, String parking) {
 		
-		Order o = new Order("PARK", whereParking);
+		Order o = new Order("PARK");
 		c.setOrder(o);
+		c.setOccuped(false);
+		c.setParking(parking);
+		c.setPosition(null);
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
@@ -82,18 +85,34 @@ public class Controller implements MailBoxListener {
 			//Case when the car arrived to the starting point of the mission
 			if (car.getPosition()==car.getOrder().enrollPlace)
 			{
-				
+				this.giveMissionCar(car, mainBox.findSpecificPlace(actualClient.request.start), mainBox.findSpecificPlace(actualClient.request.destination), actualClient.request);
 			}
 			// Case when the car as finished its mission (arrived)
 			else if (car.getPosition()==car.getOrder().endingMission)
 			{
-				
+				this.releaseCar(car);
 			}
 			
 		}
-		else if (action.equals(""))
+		else if (action.equals("RELEASED"))
 		{
+			String parking = "NONE";
+			switch (car.getPosition().placeName){
+			case "O1" : parking="P1";
+				break;
+			case "O2" : parking="P2";
+				break;
+			case "O3" : parking="P3";
+				break;
+			case "O4" : parking="P4";
+				break;
+			case "O5" : parking="P5";
+				break;
+			case "O6" : parking="P6";
+				break;
+			}
 			
+			this.parkCar(car, parking);
 		}
 	}
 
@@ -119,13 +138,12 @@ public class Controller implements MailBoxListener {
 			case "I5" : car = this.findFreeCar("P5");
 				break;
 			case "I6" : car = this.findFreeCar("P6");
-			default : car = new Car(1000,"NONE");
 				break;
+			default : car = new Car(1000,"NONE");
 			}
-			car.setPosition(null);
-			car.setParking("NONE");
-			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 			
+			car.setPosition(null);
+			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 		}
 	}
 

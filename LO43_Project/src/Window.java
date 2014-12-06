@@ -6,8 +6,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
-public class Window extends JFrame
+public class Window extends JFrame 
 {
+	private static final long serialVersionUID = 1L;
+
 	public Window()
 	{
 		this.setTitle("Autonomous Fleet Vehicules");
@@ -22,6 +24,9 @@ public class Window extends JFrame
 	}
 	
 	public class Panneau extends JPanel {
+		
+		private static final long serialVersionUID = 1L;
+
 		public void paintComponent(Graphics g){
 			try {
 				Image img = ImageIO.read(new File("image/fenetre.png"));
