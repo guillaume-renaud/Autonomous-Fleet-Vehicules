@@ -20,6 +20,8 @@ public class Controller implements MailBoxListener {
 		Order o = new Order("ENROLL", start);
 		c.setOrder(o);
 		
+		this.nbCarInMission++;
+		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
@@ -56,6 +58,8 @@ public class Controller implements MailBoxListener {
 		c.setOccuped(false);
 		c.setParking(parking);
 		c.setPosition(null);
+		
+		this.nbCarInMission--;
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
