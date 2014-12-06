@@ -96,7 +96,23 @@ public class Controller implements MailBoxListener {
 		}
 		else if (action.equals("RELEASED"))
 		{
+			String parking = "NONE";
+			switch (car.getPosition().placeName){
+			case "O1" : parking="P1";
+				break;
+			case "O2" : parking="P2";
+				break;
+			case "O3" : parking="P3";
+				break;
+			case "O4" : parking="P4";
+				break;
+			case "O5" : parking="P5";
+				break;
+			case "O6" : parking="P6";
+				break;
+			}
 			
+			this.parkCar(car, parking);
 		}
 	}
 
@@ -122,8 +138,8 @@ public class Controller implements MailBoxListener {
 			case "I5" : car = this.findFreeCar("P5");
 				break;
 			case "I6" : car = this.findFreeCar("P6");
-			default : car = new Car(1000,"NONE");
 				break;
+			default : car = new Car(1000,"NONE");
 			}
 			
 			car.setPosition(null);
