@@ -27,6 +27,7 @@ public class Window extends JFrame
 				Image img = ImageIO.read(new File("image/fenetre.png"));
 				//Pour une image de fond sinon g.drawImage(img, 0, 0, this);
 				g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+				g.fillOval(325, 35, 35, 35);
 	    	} catch (IOException e) {
 	    		e.printStackTrace();
 		    }                
