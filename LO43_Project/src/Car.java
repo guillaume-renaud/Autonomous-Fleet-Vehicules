@@ -85,12 +85,6 @@ public class Car implements MailBoxListener {
 		this.occuped = b;
 	}
 
-	
-	@Override
-	public void onMailBoxUpdated(MailBoxEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {

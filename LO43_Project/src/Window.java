@@ -3,12 +3,19 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-	public class Window extends JFrame
-	{
+
+	public class Window extends JFrame implements MailBoxListener {
+		
+		
+		private static final long serialVersionUID = 1L;
+		MailBox mainBox;
+		 
+		
 		public Window()
 		{
 			// Configure the frame
@@ -24,7 +31,7 @@ import javax.swing.JPanel;
 			
 			// Create background image
 			Background bg = new Background();
-			bg.setSize(800,600);
+			bg.setSize(this.getWidth(),this.getHeight());
 			
 			// Create car image
 			Car car = new Car();
@@ -39,6 +46,36 @@ import javax.swing.JPanel;
 			this.setVisible(true);
 		}
 
+		
+		
+		@Override
+		public void onMailReceivedByCar(MailBoxEvent e) {
+			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+			String action = e.updateAction;
+				
+			if (action.equals("POSITION_CHANGED"))
+			{
+				
+			}
+			else if (action.equals("RELEASED"))
+			{
+				
+			}
+			
+		}
+		@Override
+		public void onMailReceivedByMan(MailBoxEvent e) {
+			
+
+			
+		}
+		@Override
+		public void onMailReceivedByController(MailBoxEvent e) {
+			
+			
+		
+		}
+		
 		public class Background extends JPanel
 		{
 			public void paintComponent(Graphics g)

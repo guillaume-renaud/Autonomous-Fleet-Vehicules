@@ -23,11 +23,7 @@ public class Passenger implements MailBoxListener {
 		scanner.close();
 	}
 	
-	@Override
-	public void onMailBoxUpdated(MailBoxEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
 		// TODO Auto-generated method stub

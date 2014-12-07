@@ -74,10 +74,6 @@ public class Controller implements MailBoxListener {
 		return c;
 	}
 
-	@Override
-	public void onMailBoxUpdated(MailBoxEvent e) {
-		
-	}
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
