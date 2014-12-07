@@ -34,7 +34,7 @@ import javax.swing.JPanel;
 			bg.setSize(this.getWidth(),this.getHeight());
 			
 			// Create car image
-			Car car = new Car();
+			Cars car = new Cars();
 			car.setBounds(50, 50, 32, 37);
 			
 			// Add the two images to the JLayeredPane with a different deep level
@@ -92,7 +92,7 @@ import javax.swing.JPanel;
 				}
 			}
 		}
-		public class Car extends JPanel
+		public class Cars extends JPanel
 		{
 			public void paintComponent(Graphics g)
 			{
