@@ -48,9 +48,7 @@ public class Car extends JPanel implements MailBoxListener {
 	public void move() {
 		
 		position.setPlaceIsFree(true);
-		
 		for(Place p : position.getAdjacencyPlaceList())
-		{
 			for(int i=0;i<19;i++)
 			{
 				if(order.mission.requestMap[i])
@@ -64,7 +62,6 @@ public class Car extends JPanel implements MailBoxListener {
 					}	
 				}	
 			}	
-		}
 	}
 	
 	public void paintComponent(Graphics g)
