@@ -10,11 +10,8 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 	public class Window extends JFrame implements MailBoxListener {
-		
-		
-		private static final long serialVersionUID = 1L;
-		MailBox mainBox;
-		 
+
+		MailBox mainBox; 
 		
 		public Window()
 		{
@@ -34,7 +31,7 @@ import javax.swing.JPanel;
 			bg.setSize(this.getWidth(),this.getHeight());
 			
 			// Create car image
-			Cars car = new Cars();
+			Car car = new Car(0, "P0");
 			car.setBounds(50, 50, 32, 37);
 			
 			// Add the two images to the JLayeredPane with a different deep level
@@ -92,21 +89,6 @@ import javax.swing.JPanel;
 				}
 			}
 		}
-		public class Cars extends JPanel
-		{
-			public void paintComponent(Graphics g)
-			{
-				try
-				{
-					Image img = ImageIO.read(new File("image/car.png"));
-					g.drawImage(img, 0, 0, this);
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 //**********************************************************************************************************************
 //JPanel jpBack, jpCars;
@@ -140,7 +122,7 @@ import javax.swing.JPanel;
 // g = imgBackground.getGraphics();
 // g.fillRect(0, 0, dim.width, dim.height); // Dessin du background
 // //Dimension dim2 = jpCars.getSize();
-// //imgCar = jpCars.createImage(dim2.width, dim2.height); // Image qui servira à dessiner les voitures par la suite
+// //imgCar = jpCars.createImage(dim2.width, dim2.height); // Image qui servira ï¿½ dessiner les voitures par la suite
 //}
 //catch (IOException e1)
 //{

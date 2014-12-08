@@ -1,5 +1,13 @@
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
-public class Car implements MailBoxListener {
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
+
+public class Car extends JPanel implements MailBoxListener {
 	
 	String carName;
 	private Order order;
@@ -19,6 +27,14 @@ public class Car implements MailBoxListener {
 		carName	= "car"+i;
 		order = new Order("WAIT");
 		position = null;
+		occuped = false;
+		parking = p;
+	}
+	
+	public Car(int i,String p, Place place){
+		carName	= "car"+i;
+		order = new Order("WAIT");
+		position = place;
 		occuped = false;
 		parking = p;
 	}
@@ -54,9 +70,22 @@ public class Car implements MailBoxListener {
 				}	
 			}	
 		}
-			
-		
 	}
+	
+	public void paintComponent(Graphics g)
+	{
+		try
+		{
+			Image img = ImageIO.read(new File("image/car.png"));
+			g.drawImage(img, 0, 0, this);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public Order getOrder() {
 		return this.order;
 	}
