@@ -17,7 +17,7 @@ public class Car implements MailBoxListener {
 	
 	public Car(int i,String p){
 		carName	= "car"+i;
-		order = new Order("wait");
+		order = new Order("WAIT");
 		position = null;
 		occuped = false;
 		parking = p;
@@ -101,7 +101,29 @@ public class Car implements MailBoxListener {
 	@Override
 	public void onMailReceivedByController(MailBoxEvent e) {
 		// TODO Auto-generated method stub
-		
+		if (this.order.equals("ENROLL"))
+		{
+			this.position = this.order.enrollPlace;
+			this.parking = "NONE";
+			this.occuped = true;
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0);
+			mainBox.fireMailBoxUpdated(event); 
+		}
+		else if(this.order.equals("MISSION")){
+			boolean ready = this.checkRoad();
+			while (!ready)
+			{
+				ready = this.checkRoad();
+			}
+			this.move();
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0);
+			mainBox.fireMailBoxUpdated(event);
+			}
+			else if(this.order.equals("RELEASE"))
+			{
+				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "RELEASED", 0);
+				mainBox.fireMailBoxUpdated(event);
+			}
 	}
 
 	public String getParking() {

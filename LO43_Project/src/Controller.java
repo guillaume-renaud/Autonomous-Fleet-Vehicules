@@ -58,7 +58,7 @@ public class Controller implements MailBoxListener {
 		c.setOccuped(false);
 		c.setParking(parking);
 		c.setPosition(null);
-		
+		c.getPosition().placeIsFree = true;
 		this.nbCarInMission--;
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
