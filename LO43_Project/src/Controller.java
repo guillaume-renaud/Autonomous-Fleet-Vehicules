@@ -55,13 +55,22 @@ public class Controller implements MailBoxListener {
 		
 		Order o = new Order("PARK");
 		c.setOrder(o);
-		c.setOccuped(false);
+		
 		c.setParking(parking);
 		c.setPosition(null);
 		c.getPosition().placeIsFree = true;
 		this.nbCarInMission--;
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
+		mainBox.fireMailBoxUpdated(event);
+	}
+	
+	public void waitCar (Car c) {
+		Order o = new Order("WAIT");
+		c.setOrder(o);
+		c.setOccuped(false);
+		
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "WAIT", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
 		
@@ -73,6 +82,7 @@ public class Controller implements MailBoxListener {
 		
 		return c;
 	}
+	
 
 
 	@Override
@@ -113,6 +123,10 @@ public class Controller implements MailBoxListener {
 			}
 			
 			this.parkCar(car, parking);
+		}
+		else if (action.equals("PARKED"))
+		{
+			this.waitCar(car);
 		}
 	}
 
