@@ -58,7 +58,7 @@ public class Controller implements MailBoxListener {
 		
 		c.setParking(parking);
 		c.setPosition(null);
-		c.getPosition().placeIsFree = true;
+		c.getPosition().setPlaceIsFree(true);
 		this.nbCarInMission--;
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
@@ -107,7 +107,7 @@ public class Controller implements MailBoxListener {
 		else if (action.equals("RELEASED"))
 		{
 			String parking = "NONE";
-			switch (car.getPosition().placeName){
+			switch (car.getPosition().getPlaceName()){
 			case "O1" : parking="P1";
 				break;
 			case "O2" : parking="P2";
