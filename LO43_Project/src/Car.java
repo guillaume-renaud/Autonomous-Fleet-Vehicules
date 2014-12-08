@@ -9,11 +9,12 @@ import javax.swing.JPanel;
 
 public class Car extends JPanel implements MailBoxListener {
 	
-	String carName;
+	private String carName;
 	private Order order;
 	private Place position;
 	private boolean occuped;
 	private String parking;
+	private int coordCarX, coordCarY;
 	 
 	MailBox mainBox = new MailBox();
 	
@@ -24,19 +25,13 @@ public class Car extends JPanel implements MailBoxListener {
 	 * updates*/
 	
 	public Car(int i,String p){
-		carName	= "car"+i;
+		setCarName("car"+i);
 		order = new Order("WAIT");
 		position = null;
 		occuped = false;
 		parking = p;
-	}
-	
-	public Car(int i,String p, Place place){
-		carName	= "car"+i;
-		order = new Order("WAIT");
-		position = place;
-		occuped = false;
-		parking = p;
+		coordCarX = 1000;
+		coordCarY = 1000;
 	}
 	
 	public boolean checkRoad(){
@@ -45,16 +40,16 @@ public class Car extends JPanel implements MailBoxListener {
 			if(order.mission.requestMap[i])
 				for(Place p : mainBox.reservations)
 					if (order.mission.requestMapPlaceName[i].equals(p))
-						if(!p.placeIsFree)
+						if(!p.getPlaceIsFree())
 							ready = false;
 		return ready;
 	}
 	
 	public void move() {
 		
-		position.placeIsFree=true;
+		position.setPlaceIsFree(true);
 		
-		for(Place p : position.adjacencyPlaceList)
+		for(Place p : position.getAdjacencyPlaceList())
 		{
 			for(int i=0;i<19;i++)
 			{
@@ -161,6 +156,30 @@ public class Car extends JPanel implements MailBoxListener {
 
 	public void setParking(String p) {
 		parking = p;
+	}
+
+	public String getCarName() {
+		return carName;
+	}
+
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+
+	public int getCoordCarX() {
+		return coordCarX;
+	}
+
+	public void setCoordCarX(int coordCarX) {
+		this.coordCarX = coordCarX;
+	}
+
+	public int getCoordCarY() {
+		return coordCarY;
+	}
+
+	public void setCoordCarY(int coordCarY) {
+		this.coordCarY = coordCarY;
 	}
 
 }
