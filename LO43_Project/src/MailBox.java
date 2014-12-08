@@ -105,7 +105,7 @@ public class MailBox {
 	{
 		for (Place p : this.reservations)
 		{
-			if (p.placeName.equals(name))
+			if (p.getPlaceName().equals(name))
 			{
 				return p;
 			}
