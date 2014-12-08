@@ -92,7 +92,7 @@ import javax.swing.JPanel;
 				}
 			}
 		}
-		public class Car extends JPanel
+		public class Cars extends JPanel
 		{
 			public void paintComponent(Graphics g)
 			{
