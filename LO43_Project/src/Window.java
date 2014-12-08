@@ -32,9 +32,13 @@ public class Window extends JFrame
 		Car car = new Car();
 		car.setBounds(50, 50, 32, 37);
 		
+		Car car1 = new Car();
+		car1.setBounds(100, 100, 32, 37);
+		
 		// Add the two images to the JLayeredPane with a different deep level
 		jlpTest.add(bg, new Integer(1));
 		jlpTest.add(car, new Integer(2));
+		jlpTest.add(car1, new Integer(2));
 
 		// Add the JLayeredPane to the frame
 		this.add(jlpTest, BorderLayout.CENTER);
