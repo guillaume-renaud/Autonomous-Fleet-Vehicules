@@ -79,7 +79,7 @@ import javax.swing.JPanel;
 			{
 				try
 				{
-					Image img = ImageIO.read(new File("image/fenetre.png"));
+					Image img = ImageIO.read(new File("image/background.png"));
 					// For a background image otherwise g.drawImage(img, 0, 0, this);
 					g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 				}
