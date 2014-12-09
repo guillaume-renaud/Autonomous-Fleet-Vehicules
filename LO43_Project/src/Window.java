@@ -13,9 +13,12 @@ import javax.swing.JPanel;
 
 		MailBox mainBox; 
 		
-		Car car;
-		public Window()
+		
+		
+		public Window(MailBox MB)
 		{
+			mainBox = MB;
+			
 			// Configure the frame
 			this.setTitle("Autonomous Fleet Vehicules");
 			this.setSize(800, 600);
@@ -32,7 +35,7 @@ import javax.swing.JPanel;
 			bg.setSize(this.getWidth(),this.getHeight());
 			
 			// Create car image
-			car = new Car(0, "P0", 557,100);
+			Car car = mainBox.fleet.get(0);
 			car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 32, 37);
 			
 			// Add the two images to the JLayeredPane with a different deep level
@@ -48,7 +51,7 @@ import javax.swing.JPanel;
 		
 		@Override
 		public void onMailReceivedByCar(MailBoxEvent e) {
-			this.car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 			String action = e.updateAction;
 				
 			if (action.equals("POSITION_CHANGED"))
@@ -94,11 +97,11 @@ import javax.swing.JPanel;
 		@Override
 		public void run() {
 			
-			car.setBounds(557, 100, 32, 37);
+			mainBox.fleet.get(0).setBounds(557, 100, 32, 37);
 			try {
 				for (int i=0; i<200; i++)
 				{
-					car.setBounds(533, 185+i, 32, 37);
+					mainBox.fleet.get(0).setBounds(533, 185+i, 32, 37);
 				Thread.sleep(10);
 				}
 				
