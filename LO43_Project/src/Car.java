@@ -67,6 +67,12 @@ public class Car extends JPanel implements MailBoxListener {
 			}	
 	}
 	
+	//This function will move the picture of the car in the View, and it's called when the position of the car changed.
+	public void moveCarView (Place start, Place end, Window w) {
+		
+		 
+	}
+	
 	public void paintComponent(Graphics g)
 	{
 		try
