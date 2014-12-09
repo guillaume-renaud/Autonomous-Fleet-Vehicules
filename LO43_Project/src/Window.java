@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 		MailBox mainBox; 
 		
 		
-		
 		public Window(MailBox MB)
 		{
 			mainBox = MB;
