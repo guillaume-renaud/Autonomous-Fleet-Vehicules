@@ -3,7 +3,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Window window = new Window();
-		
+		window.run();
 		MailBox mainBox = new MailBox();
 		mainBox.FileReader();
 		

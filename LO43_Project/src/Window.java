@@ -9,10 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-	public class Window extends JFrame implements MailBoxListener {
+	public class Window extends JFrame implements MailBoxListener, Runnable{
 
 		MailBox mainBox; 
 		
+		Car car;
 		public Window()
 		{
 			// Configure the frame
@@ -31,8 +32,8 @@ import javax.swing.JPanel;
 			bg.setSize(this.getWidth(),this.getHeight());
 			
 			// Create car image
-			Car car = new Car(0, "P0");
-			car.setBounds(50, 50, 32, 37);
+			car = new Car(0, "P0");
+			car.setBounds(557, 100, 32, 37);
 			
 			// Add the two images to the JLayeredPane with a different deep level
 			jlpTest.add(bg, new Integer(1));
@@ -47,7 +48,7 @@ import javax.swing.JPanel;
 		
 		@Override
 		public void onMailReceivedByCar(MailBoxEvent e) {
-			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+			this.car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 			String action = e.updateAction;
 				
 			if (action.equals("POSITION_CHANGED"))
@@ -79,7 +80,7 @@ import javax.swing.JPanel;
 			{
 				try
 				{
-					Image img = ImageIO.read(new File("image/fenetre.png"));
+					Image img = ImageIO.read(new File("image/background.png"));
 					// For a background image otherwise g.drawImage(img, 0, 0, this);
 					g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
 				}
@@ -87,6 +88,23 @@ import javax.swing.JPanel;
 				{
 					e.printStackTrace();
 				}
+			}
+		}
+
+		@Override
+		public void run() {
+			
+			car.setBounds(557, 100, 32, 37);
+			try {
+				for (int i=0; i<150; i++)
+				{
+					car.setBounds(557-i, 100+i, 32, 37);
+				Thread.sleep(10);
+				}
+				
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
 			}
 		}
 	}
