@@ -34,13 +34,18 @@ import javax.swing.JPanel;
 			bg.setSize(this.getWidth(),this.getHeight());
 			
 			// Create car image
-			Car car = mainBox.fleet.get(0);
-			car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 0, 0);
+			for (Car car : mainBox.fleet)
+			{
+				car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 34, 37);
+			}
 			
-			// Add the two images to the JLayeredPane with a different deep level
+			// Add the images to the JLayeredPane with a different deep level
 			jlpTest.add(bg, new Integer(1));
-			jlpTest.add(car, new Integer(2));
 			
+			for (Car car : mainBox.fleet)
+			{
+				jlpTest.add(car, new Integer(2));
+			}
 			// Add the JLayeredPane to the frame
 			this.add(jlpTest, BorderLayout.CENTER);
 			this.setVisible(true);
@@ -96,13 +101,17 @@ import javax.swing.JPanel;
 		@Override
 		public void run() {
 			
-			mainBox.fleet.get(0).setBounds(557, 100, 32, 37);
+			
 			try {
-				for (int i=0; i<200; i++)
+				for (Car car : mainBox.fleet)
 				{
-					mainBox.fleet.get(0).setBounds(533, 185+i, 32, 37);
-				Thread.sleep(10);
+					for (int i=0; i<200; i++)
+					{
+						car.setBounds(car.getCoordCarX(), car.getCoordCarY()+i, 34, 37);
+						Thread.sleep(10);
+					}
 				}
+				
 				
 			} catch (InterruptedException e) {
 				

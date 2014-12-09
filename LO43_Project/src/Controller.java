@@ -153,7 +153,7 @@ public class Controller implements MailBoxListener {
 				break;
 			case "I6" : car = this.findFreeCar("P6");
 				break;
-			default : car = new Car(1000,"NONE");
+			default : car = null;
 			}
 			
 			car.setPosition(null);
