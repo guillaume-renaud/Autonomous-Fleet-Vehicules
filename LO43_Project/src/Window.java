@@ -96,9 +96,9 @@ import javax.swing.JPanel;
 			
 			car.setBounds(557, 100, 32, 37);
 			try {
-				for (int i=0; i<150; i++)
+				for (int i=0; i<200; i++)
 				{
-					car.setBounds(557-i, 100+i, 32, 37);
+					car.setBounds(533, 185+i, 32, 37);
 				Thread.sleep(10);
 				}
 				
