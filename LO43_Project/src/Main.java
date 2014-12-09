@@ -12,7 +12,7 @@ public class Main {
 		{
 			int indice = (i%6)+1;
 			String p = "P"+indice;
-			mainBox.fleet.add(new Car(i,p));
+			mainBox.fleet.add(new Car(i,p,0,0));
 		}
 	}
 }

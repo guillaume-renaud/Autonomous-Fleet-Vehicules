@@ -11,6 +11,7 @@ public class Car extends JPanel implements MailBoxListener {
 	
 	private String carName;
 	private Order order;
+	private Place lastPosition; // We put the anterior position. It permit us to move the car in the view, knowing from where to where the car moved
 	private Place position;
 	private boolean occuped;
 	private String parking;
@@ -24,14 +25,15 @@ public class Car extends JPanel implements MailBoxListener {
 	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
 	 * updates*/
 	
-	public Car(int i,String p){
+	public Car(int i, String p, int coorX, int coorY){
 		setCarName("car"+i);
 		order = new Order("WAIT");
+		lastPosition = null;
 		position = null;
 		occuped = false;
 		parking = p;
-		coordCarX = 1000;
-		coordCarY = 1000;
+		coordCarX = coorX; // In the function main, when we will instantiate all the car, it's better to put directly in the constructor the right coordinates. 
+		coordCarY = coorY;
 	}
 	
 	public boolean checkRoad(){
@@ -55,6 +57,7 @@ public class Car extends JPanel implements MailBoxListener {
 				{
 					if(order.mission.requestMapPlaceName[i].equals(p))
 					{
+						this.lastPosition = this.position;
 						position = p;
 						
 						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0); //I put 0 for the index of controller because it's not in a list.
@@ -82,6 +85,10 @@ public class Car extends JPanel implements MailBoxListener {
 		return this.order;
 	}
 	
+	public Place getLastPosition() {
+		return this.lastPosition;
+	}
+	
 	public Place getPosition() {
 		return this.position;
 	}
@@ -90,12 +97,13 @@ public class Car extends JPanel implements MailBoxListener {
 		return this.occuped;
 	}
 	
-
-
 	
 	public void setOrder(Order o) { //It's just an example, it's not finished.
 		this.order = o;
-		
+	}
+	
+	public void setLastPosition(Place p) {
+		this.lastPosition = p;
 	}
 	
 	public void setPosition(Place p) {
@@ -124,6 +132,7 @@ public class Car extends JPanel implements MailBoxListener {
 		// TODO Auto-generated method stub
 		if (this.order.equals("ENROLL"))
 		{
+			this.lastPosition = this.position;
 			this.position = this.order.enrollPlace;
 			this.parking = "NONE";
 			this.occuped = true;

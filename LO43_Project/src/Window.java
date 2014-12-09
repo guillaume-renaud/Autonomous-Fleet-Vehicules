@@ -32,8 +32,8 @@ import javax.swing.JPanel;
 			bg.setSize(this.getWidth(),this.getHeight());
 			
 			// Create car image
-			car = new Car(0, "P0");
-			car.setBounds(557, 100, 32, 37);
+			car = new Car(0, "P0", 557,100);
+			car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 32, 37);
 			
 			// Add the two images to the JLayeredPane with a different deep level
 			jlpTest.add(bg, new Integer(1));
