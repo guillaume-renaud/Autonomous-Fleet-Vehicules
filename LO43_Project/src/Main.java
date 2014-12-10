@@ -13,8 +13,10 @@ public class Main {
 		mainBox.fleet.add(new Car(5, "P5", 384 ,471));
 		mainBox.fleet.add(new Car(6, "P6", 534, 385));
 		
-		Window window = new Window(mainBox);
 		
+		
+		Window window = new Window(mainBox);
+		mainBox.addMailBoxListener(window);
 		//for(int i=0; i<18;i++)
 		///{
 		//	int indice = (i%6)+1;
@@ -22,5 +24,7 @@ public class Main {
 		//	mainBox.fleet.add(new Car(i,p,0,0));
 		//}
 		//window.run();
+		
+		mainBox.commandControl.test();
 	}
 }

@@ -9,7 +9,11 @@ public class Controller implements MailBoxListener {
 	
 	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
 	
-	
+	public void test ()
+	{
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", 0);
+		mainBox.fireMailBoxUpdated(event);
+	}
 	public Controller (MailBox m) {
 		mainBox = m;
 	}

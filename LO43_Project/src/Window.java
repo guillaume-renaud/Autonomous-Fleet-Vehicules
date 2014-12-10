@@ -77,7 +77,11 @@ import javax.swing.JPanel;
 		@Override
 		public void onMailReceivedByController(MailBoxEvent e) {
 			
-			
+			System.out.println("Le système dévent marche bien");
+			System.out.println(""+e.classNameOfUpdater);
+			System.out.println(""+e.indexReceiverInMailBoxList);
+			System.out.println(""+e.indexUpdaterInMailBoxList);
+			System.out.println(""+e.updateAction);
 		
 		}
 		
