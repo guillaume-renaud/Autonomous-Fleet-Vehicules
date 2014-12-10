@@ -26,6 +26,7 @@ public class Car extends JPanel implements MailBoxListener {
 	 * updates*/
 	
 	public Car(int i, String p, int coorX, int coorY){
+		super();
 		setCarName("car"+i);
 		order = new Order("WAIT");
 		lastPosition = null;
