@@ -17,14 +17,10 @@ public class Main {
 		
 		Window window = new Window(mainBox);
 		mainBox.addMailBoxListener(window);
-		//for(int i=0; i<18;i++)
-		///{
-		//	int indice = (i%6)+1;
-		//	String p = "P"+indice;
-		//	mainBox.fleet.add(new Car(i,p,0,0));
-		//}
+		
+
 		//window.run();
 		
-		mainBox.commandControl.test();
+		//mainBox.commandControl.test();
 	}
 }
