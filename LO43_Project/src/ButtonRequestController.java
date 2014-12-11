@@ -1,7 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Window.NewRequest;
 
 
 public class ButtonRequestController implements ActionListener {
