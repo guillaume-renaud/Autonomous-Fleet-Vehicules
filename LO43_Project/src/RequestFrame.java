@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -42,7 +41,9 @@ public class RequestFrame extends JFrame {
 				end = new JComboBox<String>(output);
 				
 				ok = new JButton("Ok");
+				ok.addActionListener(new ButtonController(this));
 				cancel = new JButton("Cancel");
+				cancel.addActionListener(new ButtonController(this));
 				
 				
 				intro = new JLabel("Please choose the starting and ending point of your wanted trip");

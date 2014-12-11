@@ -11,7 +11,7 @@ public class NewRequest extends JButton {
 				super("New Request");
 				this.rf = rf;
 				
-				this.addActionListener(new ButtonRequestController(this));
+				this.addActionListener(new ButtonRequestController());
 			}
 			
 		}
