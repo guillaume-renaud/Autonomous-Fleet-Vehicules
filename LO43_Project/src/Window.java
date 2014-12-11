@@ -117,111 +117,13 @@ import javax.swing.JPanel;
 			}
 		}
 		
-		public class Background extends JPanel
-		{
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			public void paintComponent(Graphics g)
-			{
-				try
-				{
-					Image img = ImageIO.read(new File("image/background.png"));
-					// For a background image otherwise g.drawImage(img, 0, 0, this);
-					g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-			}
-		}
 		
-		public class Hub extends JPanel
-		{
-
-			private static final long serialVersionUID = 1L;
-			
-			MailBox mainBox;
-			
-			JButton newRequest;
-			JLabel nbCar;
-			
-			public Hub (MailBox MB) {
-				super();
-				
-				mainBox = MB;
-				
-				RequestFrame rf = new RequestFrame();
-				NewRequest newRequest = new NewRequest(rf);
-				
-				nbCar = new JLabel ("Number of cars in the screen : "+mainBox.fleet.size());
-				
-				this.add(nbCar);
-				
-				this.add(newRequest);
-				
-				
-				this.setSize(800, 100);
-				this.setVisible(true);
-			}
-		}
 		
-		public class NewRequest extends JButton {
-
-			private static final long serialVersionUID = 1L;
-			
-			RequestFrame rf;
-			
-			public NewRequest (RequestFrame rf) {
-				super("New Request");
-				this.rf = rf;
-				
-				this.addActionListener(new ButtonRequestController(this));
-			}
-			
-		}
 		
-		public class ButtonRequestController implements ActionListener {
-
-			NewRequest button;
-			
-			public ButtonRequestController (NewRequest nw) {
-				super();
-				button = nw;
-			}
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				if(button.rf.isVisible())
-					this.button.rf.setVisible(false);
-				else
-					this.button.rf.setVisible(true);
-				
-			}
-			
-			
-		}
 		
-		public class RequestFrame extends JFrame {
-
-			private static final long serialVersionUID = 1L;
-			
-			public RequestFrame () {
-				super();
-				
-				this.setTitle("New Request");
-				this.setSize(350, 350);
-				this.setResizable(false);
-				this.setAlwaysOnTop(true);
-				this.setLocationRelativeTo(null); // JFrame in the center of the window
-				this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			}
-			
-		}
+		
+		
+		
 
 		
 	}
