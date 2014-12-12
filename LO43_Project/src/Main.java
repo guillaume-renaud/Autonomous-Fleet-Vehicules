@@ -26,5 +26,10 @@ public class Main {
 		//window.run();
 		
 		mainBox.commandControl.test();
+		
+
+		//window.run();
+		
+		//mainBox.commandControl.test();
 	}
 }

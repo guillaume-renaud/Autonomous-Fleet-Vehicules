@@ -1,18 +1,25 @@
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 	public class Window extends JFrame implements MailBoxListener, Runnable{
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		MailBox mainBox; 
-		
 		
 		public Window(MailBox MB)
 		{
@@ -33,6 +40,9 @@ import javax.swing.JPanel;
 			Background bg = new Background();
 			bg.setSize(this.getWidth(),this.getHeight());
 			
+			// Create the HUB
+			Hub displayer = new Hub(mainBox);
+			
 			// Create car image
 			for (Car car : mainBox.fleet)
 			{
@@ -48,6 +58,7 @@ import javax.swing.JPanel;
 			}
 			// Add the JLayeredPane to the frame
 			this.add(jlpTest, BorderLayout.CENTER);
+			this.add(displayer, BorderLayout.SOUTH);
 			this.setVisible(true);
 		}
 
@@ -85,27 +96,8 @@ import javax.swing.JPanel;
 		
 		}
 		
-		public class Background extends JPanel
-		{
-			public void paintComponent(Graphics g)
-			{
-				try
-				{
-					Image img = ImageIO.read(new File("image/background.png"));
-					// For a background image otherwise g.drawImage(img, 0, 0, this);
-					g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-			}
-		}
-
 		@Override
 		public void run() {
-			
-			
 			try {
 				for (Car car : mainBox.fleet)
 				{
@@ -117,11 +109,22 @@ import javax.swing.JPanel;
 				}
 				
 				
+				
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
 			}
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
 	}
 //**********************************************************************************************************************
 //JPanel jpBack, jpCars;
