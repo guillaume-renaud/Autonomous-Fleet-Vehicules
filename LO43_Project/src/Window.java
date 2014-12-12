@@ -733,6 +733,9 @@ import javax.swing.JLayeredPane;
 			for (Car car : mainBox.fleet)
 			{
 				this.moveCarView(new Place("I1",false,null,0,0), null, car);
+				
+				
+				
 			}
 		}
 		
