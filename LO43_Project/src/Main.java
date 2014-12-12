@@ -18,7 +18,10 @@ public class Main {
 		Window window = new Window(mainBox);
 		mainBox.addMailBoxListener(window);
 		
-
+		
+		window.run();
+		
+		
 		window.run();
 		
 		//mainBox.commandControl.test();

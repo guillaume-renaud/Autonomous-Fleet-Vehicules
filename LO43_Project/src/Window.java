@@ -15,16 +15,15 @@ import javax.swing.JPanel;
 
 	public class Window extends JFrame implements MailBoxListener, Runnable{
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 		MailBox mainBox; 
 		
+		Thread thread;
 		
 		public Window(MailBox MB)
 		{
 			mainBox = MB;
+			
 			
 			// Configure the frame
 			this.setTitle("Autonomous Fleet Vehicules");
@@ -66,21 +65,27 @@ import javax.swing.JPanel;
 		public void moveCarView(Place start,Place end,Car c){
 		if(start.getPlaceName().contains("I"))
 		{
+			//calcul.interrupt(); // /!\ to be verified !
 			switch (start.getPlaceName())
 			{
-			case "I1" :
-				for(int i=0;i<24;i++)
-				{
-					c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(3.5*i)), 34, 37);
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				case "I1" :
+					for(int i=0;i<24;i++)
+					{
+						c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(3.5*i)), 34, 37);
+						try {
+							Thread.sleep(100);
+							thread.sleep(50);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
-				}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 				break;
 			}
+			//calcul.start(); // /!\ to be verified !
 		}
 		
 		}		
