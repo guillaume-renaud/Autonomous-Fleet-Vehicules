@@ -19,10 +19,10 @@ public class Main {
 		mainBox.addMailBoxListener(window);
 		
 		
-		window.run();
+		//window.run();
 		
 		
-		window.run();
+		//window.run();
 		
 		//mainBox.commandControl.test();
 	}

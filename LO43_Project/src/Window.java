@@ -24,24 +24,20 @@ import javax.swing.JPanel;
 		{
 			mainBox = MB;
 			
-			
-			// Configure the frame
-			this.setTitle("Autonomous Fleet Vehicules");
-			this.setSize(800, 600);
-			this.setResizable(false);
-			this.setLocationRelativeTo(null); // JFrame in the center of the window
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
+				
 			// Creation of the JLayeredPane
 			JLayeredPane jlpTest = new JLayeredPane();
 			jlpTest.setOpaque(false);
+						
+			// Create the HUB
+			Hub displayer = new Hub(mainBox);
+			
 			
 			// Create background image
 			Background bg = new Background();
-			bg.setSize(this.getWidth(),this.getHeight());
+			bg.setSize(800,600);
 			
-			// Create the HUB
-			Hub displayer = new Hub(mainBox);
+			
 			
 			// Create car image
 			for (Car car : mainBox.fleet)
@@ -56,6 +52,14 @@ import javax.swing.JPanel;
 			{
 				jlpTest.add(car, new Integer(2));
 			}
+			
+			// Configure the frame
+			this.setTitle("Autonomous Fleet Vehicules");
+			this.setSize(displayer.getWidth(),bg.getHeight()+displayer.getHeight());
+			this.setResizable(false);
+			this.setLocationRelativeTo(null); // JFrame in the center of the window
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
 			// Add the JLayeredPane to the frame
 			this.add(jlpTest, BorderLayout.CENTER);
 			this.add(displayer, BorderLayout.SOUTH);
@@ -179,7 +183,7 @@ import javax.swing.JPanel;
 //jpCars = new JPanel();
 //jpCars.setBounds(0, 0, 800, 400);
 //jlpGame = new JLayeredPane();
-//jlpGame.setPreferredSize(new Dimension(800, 400));
+//jlpGame.setPreferred(new Dimension(800, 400));
 //
 //JLabel toto = new JLabel();
 //toto.setBackground(Color.green);
@@ -198,11 +202,11 @@ import javax.swing.JPanel;
 // imgBackground = ImageIO.read(new File("image/fenetre.png"));
 // imgCar = ImageIO.read(new File("image/car.png"));
 //
-// Dimension dim = jpBack.getSize();
+// Dimension dim = jpBack.get();
 // imgBackground = jpBack.createImage(dim.width, dim.height);
 // g = imgBackground.getGraphics();
 // g.fillRect(0, 0, dim.width, dim.height); // Dessin du background
-// //Dimension dim2 = jpCars.getSize();
+// //Dimension dim2 = jpCars.get();
 // //imgCar = jpCars.createImage(dim2.width, dim2.height); // Image qui servira � dessiner les voitures par la suite
 //}
 //catch (IOException e1)
