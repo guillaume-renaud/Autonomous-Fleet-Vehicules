@@ -61,18 +61,6 @@ public class Main {
 				mainBox.findSpecificPlace("R"+i).getAdjacencyPlaceList().add(mainBox.findSpecificPlace("R"+j));
 			}
 		}
-
-		for( Place p : mainBox.reservations)
-		{
-			System.out.println(p.getPlaceName() + " :");
-			
-			for (Place pl : p.getAdjacencyPlaceList()) 
-				System.out.print(pl.getPlaceName() + " ");
-
-			System.out.println();
-		}
-		
-		
 		
 		//test instantiation multiple cars
 		//mainBox.fleet.add(new Car(1, "P1", 563 ,180));
