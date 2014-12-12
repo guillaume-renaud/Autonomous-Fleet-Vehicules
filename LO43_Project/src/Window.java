@@ -1,16 +1,6 @@
 import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
 	public class Window extends JFrame implements MailBoxListener, Runnable{
 
@@ -72,11 +62,11 @@ import javax.swing.JPanel;
 			switch (start.getPlaceName())
 			{
 				case "I1" :
-					for(int i=0;i<25;i++)
+					for(int i=0;i<38;i++)
 					{
-						c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(3.5*i)), 32, 37);
+						c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(2.4*i)), 32, 37);
 						try {
-							Thread.sleep(100);
+							
 							thread.sleep(50);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
@@ -88,12 +78,12 @@ import javax.swing.JPanel;
 					c.setCoordCarY(end.getCoordY());
 				break;
 				case "I2" :
-					for(int i=0;i<55;i++)
+					for(int i=0;i<68;i++)
 					{
-						c.setBounds(c.getCoordCarX()+i, (int) ((int) c.getCoordCarY()+(1.2*i)), 32, 37);
+						c.setBounds(c.getCoordCarX()+i, (int) ((int) c.getCoordCarY()+(1.09*i)), 32, 37);
 						try {
-							Thread.sleep(100);
-							thread.sleep(10);
+							
+							thread.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -102,13 +92,14 @@ import javax.swing.JPanel;
 					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
 					c.setCoordCarX(end.getCoordX());
 					c.setCoordCarY(end.getCoordY());
+					break;
 				case "I3" : 
-					for(int i = 0;i<9;i++)
+					for(int i = 0;i<90;i++)
 					{
-						c.setBounds((int) (c.getCoordCarX()+10.5*i), (int) ((int) c.getCoordCarY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (c.getCoordCarY()), 32, 37);
 						try {
-							Thread.sleep(100);
-							thread.sleep(30);
+							//Thread.sleep(100);
+							thread.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -117,9 +108,590 @@ import javax.swing.JPanel;
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
 					c.setCoordCarX(end.getCoordX());
 					c.setCoordCarY(end.getCoordY());
+					break;
+				case "I4" : 
+					for(int i = 0;i<45;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (int) ((int) c.getCoordCarY()-(2.04*i)), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "I5" : 
+					for(int i = 0;i<60;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-i), (int) ((int) c.getCoordCarY()-(1.13*i)), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "I6" : 
+					for(int i = 0;i<98;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-i),( c.getCoordCarY()), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					
+			}
+		}
+		else if(start.getPlaceName().contains("R1"))
+			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (end.getPlaceName())
+				{
+				case "O1" :
+					for(int i = 0;i<90;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (c.getCoordCarY()), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R2" :
+					for(int i = 0;i<91;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()-2.06*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "C" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R6" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				}
+			}
+			else if(start.getPlaceName().contains("R2"))
+			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (end.getPlaceName())
+				{
+				case "O2" :
+					for(int i = 0;i<61;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()-1.22*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R1" :
+					for(int i = 0;i<91;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.06*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R3" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "C" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				}
+				
+			}
+			else if(start.getPlaceName().contains("R3"))
+			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (end.getPlaceName())
+				{
+				case "O3" :
+					for(int i = 0;i<31;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()-2.6*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R2" :
+					for(int i = 0;i<91;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.06*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "C" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R4" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				}
+			}
+			else if(start.getPlaceName().contains("R4"))
+			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (end.getPlaceName())
+				{
+				case "O4" :
+					for(int i = 0;i<90;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-i), (c.getCoordCarY()), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R5" :
+					for(int i = 0;i<91;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.06*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "C" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R3" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				}
+			}
+			else if(start.getPlaceName().contains("R5"))
+			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (end.getPlaceName())
+				{
+				case "O5" :
+					for(int i = 0;i<61;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()+1.22*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R6" :
+					for(int i = 0;i<91;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()-2.06*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R4" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "C" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				}
+				
+			}
+			else if(start.getPlaceName().contains("R6"))
+			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (end.getPlaceName())
+				{
+				case "O6" :
+					for(int i = 0;i<31;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.6*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R5" :
+					for(int i = 0;i<91;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()-2.06*i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "C" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R1" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				}
+			}
+			else if(start.getPlaceName().contains("C"))
+			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (end.getPlaceName())
+				{
+				case "R6" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R3" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R5" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R2" :
+					for(int i = 0;i<211;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R1" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()-i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+				case "R4" :
+					for(int i = 0;i<108;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
+						try {
+							//Thread.sleep(100);
+							thread.sleep(25);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+					break;
+					
+				}
 			}
 			//calcul.start(); // /!\ to be verified !
-		}
 		
 		}		
 		
@@ -165,58 +737,4 @@ import javax.swing.JPanel;
 		}
 		
 		
-		
-		
-		
-		
-		
-		
-
-		
-	}
-//**********************************************************************************************************************
-//JPanel jpBack, jpCars;
-//JLayeredPane jlpGame;
-//jpBack = new JPanel();
-//jpBack.setBounds(0, 0, 800, 400);
-//jpCars = new JPanel();
-//jpCars.setBounds(0, 0, 800, 400);
-//jlpGame = new JLayeredPane();
-//jlpGame.setPreferred(new Dimension(800, 400));
-//
-//JLabel toto = new JLabel();
-//toto.setBackground(Color.green);
-//jpBack.add(toto);
-//
-//jlpGame.add(jpCars, new Integer(1));
-//jlpGame.add(jpBack, new Integer(2));
-//
-//
-//
-//this.getContentPane().add(jlpGame);
-//pack();
-// **********************************************************************************************************************
-//try
-//{
-// imgBackground = ImageIO.read(new File("image/fenetre.png"));
-// imgCar = ImageIO.read(new File("image/car.png"));
-//
-// Dimension dim = jpBack.get();
-// imgBackground = jpBack.createImage(dim.width, dim.height);
-// g = imgBackground.getGraphics();
-// g.fillRect(0, 0, dim.width, dim.height); // Dessin du background
-// //Dimension dim2 = jpCars.get();
-// //imgCar = jpCars.createImage(dim2.width, dim2.height); // Image qui servira � dessiner les voitures par la suite
-//}
-//catch (IOException e1)
-//{
-// e1.printStackTrace();
-//}
-//try {
-// Image img = ImageIO.read(new File("image/fenetre.png"));
-// //Pour une image de fond sinon g.drawImage(img, 0, 0, this);
-// g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-// //g.fillOval(325, 35, 35, 35);
-//} catch (IOException e) {
-// e.printStackTrace();
-//} 
+}
