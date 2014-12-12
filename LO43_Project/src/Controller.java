@@ -23,7 +23,8 @@ public class Controller implements MailBoxListener {
 		
 		Order o = new Order("ENROLL", start);
 		c.setOrder(o);
-		
+		c.setCoordCarX(start.getCoordX());
+		c.setCoordCarY(start.getCoordY());
 		this.nbCarInMission++;
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));

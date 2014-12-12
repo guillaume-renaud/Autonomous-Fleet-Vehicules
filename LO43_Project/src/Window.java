@@ -63,7 +63,27 @@ import javax.swing.JPanel;
 			this.setVisible(true);
 		}
 
+		public void moveCarView(Place start,Place end,Car c){
+		if(start.getPlaceName().contains("I"))
+		{
+			switch (start.getPlaceName())
+			{
+			case "I1" :
+				for(int i=0;i<24;i++)
+				{
+					c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(3.5*i)), 34, 37);
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				break;
+			}
+		}
 		
+		}		
 		
 		@Override
 		public void onMailReceivedByCar(MailBoxEvent e) {
@@ -100,20 +120,9 @@ import javax.swing.JPanel;
 		@Override
 		public void run() {
 			
-			try {
-				for (Car car : mainBox.fleet)
-				{
-					for (int i=0; i<200; i++)
-					{
-						car.setBounds(car.getCoordCarX(), car.getCoordCarY()+i, 34, 37);
-						Thread.sleep(10);
-					}
-				}
-				
-				
-			} catch (InterruptedException e) {
-				
-				e.printStackTrace();
+			for (Car car : mainBox.fleet)
+			{
+				this.moveCarView(new Place("I1",false,null,0,0), null, car);
 			}
 		}
 		
