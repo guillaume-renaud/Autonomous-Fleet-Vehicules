@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,7 +41,7 @@ import javax.swing.JPanel;
 			// Create car image
 			for (Car car : mainBox.fleet)
 			{
-				car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 34, 37);
+				car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 32, 37);
 			}
 			
 			// Add the images to the JLayeredPane with a different deep level
@@ -75,7 +74,7 @@ import javax.swing.JPanel;
 				case "I1" :
 					for(int i=0;i<25;i++)
 					{
-						c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(3.5*i)), 34, 37);
+						c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(3.5*i)), 32, 37);
 						try {
 							Thread.sleep(100);
 							thread.sleep(50);
@@ -91,7 +90,7 @@ import javax.swing.JPanel;
 				case "I2" :
 					for(int i=0;i<55;i++)
 					{
-						c.setBounds(c.getCoordCarX()+i, (int) ((int) c.getCoordCarY()+(1.2*i)), 34, 37);
+						c.setBounds(c.getCoordCarX()+i, (int) ((int) c.getCoordCarY()+(1.2*i)), 32, 37);
 						try {
 							Thread.sleep(100);
 							thread.sleep(10);
@@ -106,7 +105,7 @@ import javax.swing.JPanel;
 				case "I3" : 
 					for(int i = 0;i<9;i++)
 					{
-						c.setBounds((int) (c.getCoordCarX()+10.5*i), (int) ((int) c.getCoordCarY()-i), 34, 37);
+						c.setBounds((int) (c.getCoordCarX()+10.5*i), (int) ((int) c.getCoordCarY()-i), 32, 37);
 						try {
 							Thread.sleep(100);
 							thread.sleep(30);
@@ -115,7 +114,7 @@ import javax.swing.JPanel;
 							e.printStackTrace();
 						}
 					}
-					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
+					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
 					c.setCoordCarX(end.getCoordX());
 					c.setCoordCarY(end.getCoordY());
 			}
@@ -161,7 +160,7 @@ import javax.swing.JPanel;
 			
 			for (Car car : mainBox.fleet)
 			{
-				this.moveCarView(new Place("I3",false,null,0,0), null, car);
+				this.moveCarView(new Place("I1",false,null,0,0), null, car);
 			}
 		}
 		
