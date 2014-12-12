@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
+		
 		int i, j;
 		MailBox mainBox = new MailBox();
 		mainBox.FileReader();
@@ -62,22 +63,19 @@ public class Main {
 			}
 		}
 		
-		//test instantiation multiple cars
-		//mainBox.fleet.add(new Car(1, "P1", 563 ,180));
-		//mainBox.fleet.add(new Car(2, "P2", 377 ,90));
-		mainBox.fleet.add(new Car(3, "P3", 600 , 90));
-		//mainBox.fleet.add(new Car(4, "P4", 246 ,375));
-		//mainBox.fleet.add(new Car(5, "P5", 384 ,471));
-		//mainBox.fleet.add(new Car(6, "P6", 534, 385));
+		//Car declarations and add them to mainBox.fleet
+		for (int k=1; k<13; k++)
+		{
+			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000));
+		}
+		
 		
 		Window window = new Window(mainBox);
 		mainBox.addMailBoxListener(window);
 		
 		
-		window.run();
-		
-		
 		//window.run();
+		
 		
 		//mainBox.commandControl.test();
 	}

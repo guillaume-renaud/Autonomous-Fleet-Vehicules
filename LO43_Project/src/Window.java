@@ -27,7 +27,6 @@ import javax.swing.JLayeredPane;
 			bg.setSize(800,600);
 			
 			
-			
 			// Create car image
 			for (Car car : mainBox.fleet)
 			{
@@ -673,7 +672,7 @@ import javax.swing.JLayeredPane;
 					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R4" :
-					for(int i = 0;i<108;i++)
+					for(int i = 0;i<105;i++)
 					{
 						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
@@ -732,9 +731,10 @@ import javax.swing.JLayeredPane;
 			
 			for (Car car : mainBox.fleet)
 			{
-				this.moveCarView(new Place("I1",false,null,0,0), null, car);
-				
-				
+				this.moveCarView(mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"),car);
+				this.moveCarView(mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("C"),car);
+				this.moveCarView(mainBox.findSpecificPlace("C"), mainBox.findSpecificPlace("R4"),car);
+				this.moveCarView(mainBox.findSpecificPlace("R4"), mainBox.findSpecificPlace("O4"),car);
 				
 			}
 		}
