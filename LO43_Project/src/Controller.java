@@ -159,6 +159,7 @@ public class Controller implements MailBoxListener {
 				break;
 			default : car = null;
 			}
+			
 			car.setPosition(null);
 			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 		}

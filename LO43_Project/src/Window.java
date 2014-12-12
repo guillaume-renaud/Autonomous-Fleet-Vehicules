@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 		private static final long serialVersionUID = 1L;
 		MailBox mainBox; 
 		
+		
 		public Window(MailBox MB)
 		{
 			mainBox = MB;
@@ -98,6 +99,7 @@ import javax.swing.JPanel;
 		
 		@Override
 		public void run() {
+			
 			try {
 				for (Car car : mainBox.fleet)
 				{
@@ -107,7 +109,6 @@ import javax.swing.JPanel;
 						Thread.sleep(10);
 					}
 				}
-				
 				
 				
 			} catch (InterruptedException e) {
