@@ -6,7 +6,7 @@ public class Main {
 		mainBox.FileReader();
 		
 		//test instantiation multiple cars
-		mainBox.fleet.add(new Car(1, "P1", 557 ,100));
+		mainBox.fleet.add(new Car(1, "P1", 150 ,183));
 		//mainBox.fleet.add(new Car(2, "P2", 384 ,100));
 		//mainBox.fleet.add(new Car(3, "P3", 234 ,175));
 		//mainBox.fleet.add(new Car(4, "P4", 246 ,375));

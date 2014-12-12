@@ -69,7 +69,7 @@ import javax.swing.JPanel;
 			switch (start.getPlaceName())
 			{
 				case "I1" :
-					for(int i=0;i<24;i++)
+					for(int i=0;i<25;i++)
 					{
 						c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(3.5*i)), 34, 37);
 						try {
@@ -84,6 +84,36 @@ import javax.swing.JPanel;
 					c.setCoordCarX(end.getCoordX());
 					c.setCoordCarY(end.getCoordY());
 				break;
+				case "I2" :
+					for(int i=0;i<55;i++)
+					{
+						c.setBounds(c.getCoordCarX()+i, (int) ((int) c.getCoordCarY()+(1.2*i)), 34, 37);
+						try {
+							Thread.sleep(100);
+							thread.sleep(10);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
+				case "I3" : 
+					for(int i = 0;i<9;i++)
+					{
+						c.setBounds((int) (c.getCoordCarX()+10.5*i), (int) ((int) c.getCoordCarY()-i), 34, 37);
+						try {
+							Thread.sleep(100);
+							thread.sleep(30);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 			}
 			//calcul.start(); // /!\ to be verified !
 		}
@@ -127,7 +157,7 @@ import javax.swing.JPanel;
 			
 			for (Car car : mainBox.fleet)
 			{
-				this.moveCarView(new Place("I1",false,null,0,0), null, car);
+				this.moveCarView(new Place("I3",false,null,0,0), null, car);
 			}
 		}
 		
