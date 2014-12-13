@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
@@ -21,10 +23,13 @@ import javax.swing.JLayeredPane;
 			// Create the HUB
 			Hub displayer = new Hub(mainBox);
 			
+			// Create the event log
+			EventLog log = new EventLog(mainBox);
+			
 			
 			// Create background image
 			Background bg = new Background();
-			bg.setSize(800,600);
+			bg.setSize(new Dimension(800,600));
 			
 			
 			// Create car image
@@ -43,14 +48,15 @@ import javax.swing.JLayeredPane;
 			
 			// Configure the frame
 			this.setTitle("Autonomous Fleet Vehicules");
-			this.setSize(displayer.getWidth(),bg.getHeight()+displayer.getHeight());
+			this.setSize(bg.getWidth()+displayer.getWidth(),bg.getHeight()+log.getHeight());
 			this.setResizable(false);
 			this.setLocationRelativeTo(null); // JFrame in the center of the window
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			// Add the JLayeredPane to the frame
 			this.add(jlpTest, BorderLayout.CENTER);
-			this.add(displayer, BorderLayout.SOUTH);
+			this.add(displayer, BorderLayout.EAST);
+			this.add(log, BorderLayout.SOUTH);
 			this.setVisible(true);
 		}
 

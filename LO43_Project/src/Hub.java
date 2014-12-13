@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -27,14 +29,17 @@ public class Hub extends JPanel
 				nbCar = new JLabel ("Number of cars reserved : "+this.nbCarOccuped());
 				nbPark = new JLabel ("Number of cars parked : "+this.nbCarParked());
 				
+				nbCar.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
+				nbPark.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
+				
 				this.add(nbCar);
 				this.add(nbPark);
-				
 				this.add(newRequest);
 				
-				this.setBackground(Color.getHSBColor(10, 0, 50));
+				this.setLayout(new GridLayout(3,1));
+				this.setBackground(Color.LIGHT_GRAY);
 				this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-				this.setSize(800, 100);
+				this.setSize(new Dimension(100,600));
 				this.setVisible(true);
 			}
 			
