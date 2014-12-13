@@ -25,6 +25,7 @@ import javax.swing.JLayeredPane;
 			
 			// Create the event log
 			EventLog log = new EventLog(mainBox);
+			log.updateLog("OMGG");
 			
 			
 			// Create background image
