@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -44,10 +43,10 @@ public class Hub extends JPanel
 				container.add(newRequest);
 				this.add(container);
 				
-				this.setLayout(new GridLayout(3,1));
+				this.setLayout(new GridLayout(6,1));
 				this.setBackground(Color.LIGHT_GRAY);
 				this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-				this.setSize(new Dimension(100,600));
+				this.setSize(new Dimension(150,600));
 				this.setVisible(true);
 			}
 			

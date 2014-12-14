@@ -22,10 +22,10 @@ public class EventLog extends JPanel {
 		
 		mainBox = MB;
 		
-		jl1 = new JLabel("log1\n");
-		jl2 = new JLabel("log2\n");
-		jl3 = new JLabel("log3\n");
-		jl4 = new JLabel("log4\n");
+		jl1 = new JLabel("La voiture 1 est pas mal");
+		jl2 = new JLabel("Le controlleur se tape une barre avec la mailbox");
+		jl3 = new JLabel("La mailbox remballe le controlleur avec une balgue pourrie");
+		jl4 = new JLabel("Le passager s'enfuis en courant, après une tentative de car-jacking");
 		
 		jl4.setForeground(Color.RED);
 		

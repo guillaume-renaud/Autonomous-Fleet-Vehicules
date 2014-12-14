@@ -25,7 +25,7 @@ import javax.swing.JLayeredPane;
 			
 			// Create the event log
 			EventLog log = new EventLog(mainBox);
-			log.updateLog("OMGG");
+			log.updateLog("La police lance une requette et attend que les voleurs de voiture soient RELEASE : les poulets arriveront toujors en retard ");
 			
 			
 			// Create background image
