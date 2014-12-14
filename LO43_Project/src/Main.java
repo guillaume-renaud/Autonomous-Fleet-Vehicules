@@ -7,7 +7,6 @@ public class Main {
 		
 		int i, j;
 		MailBox mainBox = new MailBox();
-		mainBox.listeners.add(mainBox.commandControl);
 		mainBox.FileReader();
 		
 		//Places declaration and add them into mainBox.reservations

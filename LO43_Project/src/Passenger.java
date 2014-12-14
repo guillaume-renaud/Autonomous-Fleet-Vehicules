@@ -39,7 +39,7 @@ public class Passenger implements MailBoxListener {
 	public void onMailReceivedByController(MailBoxEvent e) {
 		// TODO Auto-generated method stub
 		String action = e.updateAction;
-		if (action.equals("Start") && this.passengerNumber == 0 )
+		if (action.equals("Start") && this.passengerNumber == 1 )
 		{
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 1, "NEW_REQUEST", mainBox.passengers.indexOf(this));
 			mainBox.fireMailBoxUpdated(event);

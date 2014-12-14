@@ -141,7 +141,6 @@ public class Controller implements MailBoxListener {
 		Car car = null;
 		if (action.equals("NEW_REQUEST"))
 		{
-			System.out.println("YOLO");
 			String beginning = actualClient.request.start;
 			
 			switch (beginning){
