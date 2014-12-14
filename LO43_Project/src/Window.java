@@ -704,12 +704,15 @@ import javax.swing.JLayeredPane;
 		@Override
 		public void onMailReceivedByCar(MailBoxEvent e) {
 			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+			
+			if (!(car.getLastPosition()==null))
 			System.out.println(car.getLastPosition().getPlaceName() + " " + car.getPosition().getPlaceName());
 			String action = e.updateAction;
 				
 			if (action.equals("POSITION_CHANGED"))
 			{
 				System.out.println("YOLO");
+				if (!(car.getLastPosition()==null))
 				this.moveCarView(mainBox.findSpecificPlace(car.getLastPosition().getPlaceName()), mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
 				System.out.println("YOLO");
 			}
