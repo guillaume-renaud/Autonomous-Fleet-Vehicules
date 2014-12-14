@@ -3,11 +3,23 @@ public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
 	Passenger actualClient;
+	
 	//String requestInTraitment;
 	
 	int nbCarInMission = 0;
 	
-	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
+	/* Cheikh35 : Si le controller à un nbCarInMission inférieur strict à 2, alors il peut aller chercher
+	 * une nouvelle requette dans la liste passengers. 
+	 * --> On vérifie cela à chaque évent, et si le controlleur peut prendre une nouvelle requette, et
+	 * --> il y a en effet encore des clients non servis, et bien on dis au passenger d'envoyer un event new_trip,
+	 * --> paske on sait que le controller pourra traiter cela. 
+	 * 
+	 * Ou sinon on ne gère qu'un client par client. Si on peut gérer 2 clients en même temps, alors
+	 * fodra faire une liste de Passenger actualClient dans controller je pense.
+	 * 
+	 * 
+	 */
+	
 	
 	public void start ()
 	{
