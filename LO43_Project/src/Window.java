@@ -61,6 +61,11 @@ import javax.swing.JLayeredPane;
 			this.setVisible(true);
 		}
 
+		public void moveToStartingPoint(Place start, Car c){
+			c.setBounds(start.getCoordX(),start.getCoordY(), 34,37);
+			c.setCoordCarX(start.getCoordX());
+			c.setCoordCarY(start.getCoordY());
+		}
 		public void moveCarView(Place start,Place end,Car c){
 		if(start.getPlaceName().contains("I"))
 		{
@@ -711,10 +716,16 @@ import javax.swing.JLayeredPane;
 				
 			if (action.equals("POSITION_CHANGED"))
 			{
-				System.out.println("YOLO");
-				if (!(car.getLastPosition()==null))
-				this.moveCarView(mainBox.findSpecificPlace(car.getLastPosition().getPlaceName()), mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
-				System.out.println("YOLO");
+				System.out.println("YOLO SWAG");
+				if (car.getLastPosition()==null)
+				{
+					moveToStartingPoint(mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
+				}
+				else
+				{
+					this.moveCarView(mainBox.findSpecificPlace(car.getLastPosition().getPlaceName()), mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
+				}
+				
 			}
 			else if (action.equals("RELEASED"))
 			{
