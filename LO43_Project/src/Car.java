@@ -62,7 +62,7 @@ public class Car extends JPanel implements MailBoxListener {
 					{
 						this.lastPosition = this.position;
 						position = p;
-						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0); //I put 0 for the index of controller because it's not in a list.
+						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
 						mainBox.fireMailBoxUpdated(event); 
 					}	
 				}	
@@ -139,7 +139,7 @@ public class Car extends JPanel implements MailBoxListener {
 			this.position = this.order.enrollPlace;
 			this.parking = "NONE";
 			this.occuped = true;
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0);
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
 			mainBox.fireMailBoxUpdated(event); 
 		}
 		else if(this.order.equals("MISSION") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this)){
@@ -149,12 +149,12 @@ public class Car extends JPanel implements MailBoxListener {
 				ready = this.checkRoad();
 			}
 			this.move();
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0);
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
 			mainBox.fireMailBoxUpdated(event);
 			}
 			else if(this.order.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 			{
-				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "RELEASED", 0);
+				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "RELEASED");
 				mainBox.fireMailBoxUpdated(event);
 			}
 	}

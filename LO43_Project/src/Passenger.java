@@ -41,7 +41,7 @@ public class Passenger implements MailBoxListener {
 		String action = e.updateAction;
 		if (action.equals("Start") && this.passengerNumber == 1 )
 		{
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST", 0);
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			mainBox.fireMailBoxUpdated(event);
 		}
 		
