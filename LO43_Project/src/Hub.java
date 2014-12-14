@@ -1,5 +1,7 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -17,6 +19,7 @@ public class Hub extends JPanel
 			JButton newRequest;
 			JLabel nbCar;
 			JLabel nbPark;
+			JPanel container;
 			
 			public Hub (MailBox MB) {
 				super();
@@ -28,13 +31,18 @@ public class Hub extends JPanel
 				
 				nbCar = new JLabel ("Number of cars reserved : "+this.nbCarOccuped());
 				nbPark = new JLabel ("Number of cars parked : "+this.nbCarParked());
+				container = new JPanel();
 				
 				nbCar.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 				nbPark.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
+				container.setBackground(Color.LIGHT_GRAY);
+				container.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
+				container.setLayout(new FlowLayout());
 				
 				this.add(nbCar);
 				this.add(nbPark);
-				this.add(newRequest);
+				container.add(newRequest);
+				this.add(container);
 				
 				this.setLayout(new GridLayout(3,1));
 				this.setBackground(Color.LIGHT_GRAY);

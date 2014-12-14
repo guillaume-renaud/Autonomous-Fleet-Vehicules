@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -26,16 +27,19 @@ public class EventLog extends JPanel {
 		jl3 = new JLabel("log3\n");
 		jl4 = new JLabel("log4\n");
 		
+		jl4.setForeground(Color.RED);
 		
 		this.add(jl1);
 		this.add(jl2);
 		this.add(jl3);
 		this.add(jl4);
 		
+		this.setLayout(new GridLayout(4,1));
 		
-		this.setBackground(Color.WHITE);
+		
+		this.setBackground(Color.getHSBColor(60, 50, 50));
 		this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-		this.setSize(new Dimension(800,100));
+		this.setSize(new Dimension(800,95));
 		this.setVisible(true);
 		
 	}
