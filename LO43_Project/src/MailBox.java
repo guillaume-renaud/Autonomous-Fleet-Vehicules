@@ -23,7 +23,6 @@ public class MailBox {
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
 		commandControl = new Controller(this);
-		this.addMailBoxListener(commandControl);
 	}
 	
 	public void FileReader() {

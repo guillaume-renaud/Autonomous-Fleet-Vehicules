@@ -92,7 +92,7 @@ public class Controller implements MailBoxListener {
 	public void onMailReceivedByCar(MailBoxEvent e) {
 		Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 		String action = e.updateAction;
-		
+		System.out.println("TROLL");
 		if (action.equals("POSITION_CHANGED"))
 		{
 			//Case when the car arrived to the starting point of the mission
