@@ -708,7 +708,8 @@ import javax.swing.JLayeredPane;
 				
 			if (action.equals("POSITION_CHANGED"))
 			{
-				
+				System.out.println("YOLO");
+				this.moveCarView(mainBox.findSpecificPlace(car.getLastPosition().getPlaceName()), mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
 			}
 			else if (action.equals("RELEASED"))
 			{
@@ -725,11 +726,10 @@ import javax.swing.JLayeredPane;
 		@Override
 		public void onMailReceivedByController(MailBoxEvent e) {
 			
-			System.out.println("Le système dévent marche bien");
-			System.out.println(""+e.classNameOfUpdater);
-			System.out.println(""+e.indexReceiverInMailBoxList);
-			System.out.println(""+e.indexUpdaterInMailBoxList);
-			System.out.println(""+e.updateAction);
+			if (e.updateAction.equals("Start"))
+			{
+				System.out.println("OK");
+			}
 		
 		}
 		
