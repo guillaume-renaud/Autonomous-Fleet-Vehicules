@@ -139,11 +139,12 @@ public class Controller implements MailBoxListener {
 		String action = e.updateAction;
 		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
 		this.actualClient = passenger;
+		Car car = null;
 		if (action.equals("NEW_REQUEST"))
 		{
 			System.out.println("YOLO");
 			String beginning = actualClient.request.start;
-			Car car;
+			
 			switch (beginning){
 			case "I1" : car = this.findFreeCar("P1");
 				break;
@@ -157,7 +158,6 @@ public class Controller implements MailBoxListener {
 				break;
 			case "I6" : car = this.findFreeCar("P6");
 				break;
-			default : car = null;
 			}
 			car.setPosition(null);
 			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
