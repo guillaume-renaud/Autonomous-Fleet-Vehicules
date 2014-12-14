@@ -9,9 +9,9 @@ public class Controller implements MailBoxListener {
 	
 	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
 	
-	public void test ()
+	public void start ()
 	{
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", 0);
+		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "Start", 0);
 		mainBox.fireMailBoxUpdated(event);
 	}
 	public Controller (MailBox m) {
@@ -137,11 +137,15 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByMan(MailBoxEvent e) {
+	}
 		
+
+	@Override
+	public void onMailReceivedByController(MailBoxEvent e) {
 		String action = e.updateAction;
-		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
+		Passenger passenger = mainBox.passengers.pop();
 		this.actualClient = passenger;
-		if (action.equals("NEW_REQUEST"))
+		if (action.equals("Start"))
 		{
 			String beginning = actualClient.request.start;
 			Car car;
@@ -164,11 +168,6 @@ public class Controller implements MailBoxListener {
 			car.setPosition(null);
 			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
 		}
-	}
-
-	@Override
-	public void onMailReceivedByController(MailBoxEvent e) {
-		
 		
 	}
 	

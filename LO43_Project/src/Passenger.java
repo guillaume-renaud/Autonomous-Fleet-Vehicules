@@ -7,10 +7,11 @@ public class Passenger implements MailBoxListener {
 	int passengerNumber;
 	Request request;
 	boolean occuped;
+	MailBox mainBox;
 	
 	
-	
-	public Passenger(String s){
+	public Passenger(String s,MailBox m){
+		mainBox = m;
 		Scanner scanner;
 		scanner = new Scanner(s);
 		scanner.useDelimiter(Pattern.compile("[ : \n]")); // define the delimiter for parsing the line

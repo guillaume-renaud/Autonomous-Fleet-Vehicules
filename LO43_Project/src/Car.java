@@ -18,7 +18,7 @@ public class Car extends JPanel implements MailBoxListener {
 	private String parking;
 	private int coordCarX, coordCarY;
 	 
-	MailBox mainBox = new MailBox();
+	MailBox mainBox;
 	
 	
 	/* Cheikh35 : We have to put attributes to private and to add methods getter and setters to modify theses attributes.
@@ -26,7 +26,7 @@ public class Car extends JPanel implements MailBoxListener {
 	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
 	 * updates*/
 	
-	public Car(int i, String p, int coorX, int coorY){
+	public Car(int i, String p, int coorX, int coorY,MailBox m){
 		super();
 		setCarName("car"+i);
 		order = new Order("WAIT");
@@ -36,6 +36,7 @@ public class Car extends JPanel implements MailBoxListener {
 		parking = p;
 		coordCarX = coorX; // In the function main, when we will instantiate all the car, it's better to put directly in the constructor the right coordinates. 
 		coordCarY = coorY;
+		mainBox=m;
 	}
 	
 	public boolean checkRoad(){

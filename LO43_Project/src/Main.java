@@ -66,15 +66,19 @@ public class Main {
 		//Car declarations and add them to mainBox.fleet
 		for (int k=1; k<13; k++)
 		{
-			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000));
+			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000,mainBox));
 		}
 		
 		
 		Window window = new Window(mainBox);
 		mainBox.addMailBoxListener(window);
+		window.run();
+		while (mainBox.commandControl.nbCarInMission < 1)
+		{
+			mainBox.commandControl.start();
+		}
 		
 		
-		//window.run();
 		
 		
 		//mainBox.commandControl.test();

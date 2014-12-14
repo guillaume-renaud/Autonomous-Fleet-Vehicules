@@ -31,7 +31,7 @@ public class MailBox {
 		try {
 			scanner = new Scanner(new File(filePath));
 			while (scanner.hasNextLine()) {
-			    this.passengers.add(new Passenger(scanner.nextLine()));
+			    this.passengers.add(new Passenger(scanner.nextLine(),this));
 			 }
 			scanner.close();
 		} catch (FileNotFoundException e) {
@@ -76,6 +76,12 @@ public class MailBox {
 				for (MailBoxListener l : listeners)
 				{
 					l.onMailReceivedByMan(e);
+				}
+			} break;
+			case ("Start") : {
+				for (MailBoxListener l : listeners)
+				{
+					l.onMailReceivedByController(e);
 				}
 			} break;
 		}
