@@ -716,7 +716,7 @@ import javax.swing.JLayeredPane;
 				
 			if (action.equals("POSITION_CHANGED"))
 			{
-				System.out.println("YOLO SWAG");
+				System.out.println("Window a détecté un changement de position pour "+car.getCarName());
 				if (car.getLastPosition()==null)
 				{
 					moveToStartingPoint(mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
@@ -744,7 +744,7 @@ import javax.swing.JLayeredPane;
 			
 			if (e.updateAction.equals("Start"))
 			{
-				System.out.println("OK");
+				System.out.println("Window à bien reçu Start");
 			}
 		
 		}

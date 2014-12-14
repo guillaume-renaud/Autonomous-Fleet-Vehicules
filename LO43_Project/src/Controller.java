@@ -12,6 +12,7 @@ public class Controller implements MailBoxListener {
 	public void start ()
 	{
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "Start");
+		System.out.println("On start ! ");
 		mainBox.fireMailBoxUpdated(event);
 	}
 	
@@ -142,6 +143,8 @@ public class Controller implements MailBoxListener {
 		Car car = null;
 		if (action.equals("NEW_REQUEST"))
 		{
+			System.out.println("Requette bien reçue par le controller");
+			
 			String beginning = actualClient.request.start;
 			
 			switch (beginning){
