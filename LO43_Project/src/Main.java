@@ -68,16 +68,20 @@ public class Main {
 		{
 			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000,mainBox));
 		}
-		
-		
+		for (Car c : mainBox.fleet)
+		{
+			mainBox.addMailBoxListener(c);
+		}
+		for (Passenger p : mainBox.passengers)
+		{
+			mainBox.addMailBoxListener(p);
+		}
 		Window window = new Window(mainBox);
 		mainBox.addMailBoxListener(window);
 		
+		
 		window.run();
-		while (mainBox.commandControl.nbCarInMission < 1)
-		{
-			mainBox.commandControl.start();
-		}
+		mainBox.commandControl.start();
 		
 		
 		

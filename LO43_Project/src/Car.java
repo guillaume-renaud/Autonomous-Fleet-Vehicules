@@ -133,7 +133,7 @@ public class Car extends JPanel implements MailBoxListener {
 	@Override
 	public void onMailReceivedByController(MailBoxEvent e) {
 		// TODO Auto-generated method stub
-		if (this.order.equals("ENROLL"))
+		if (this.order.equals("ENROLL") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 		{
 			this.lastPosition = this.position;
 			this.position = this.order.enrollPlace;
@@ -142,7 +142,7 @@ public class Car extends JPanel implements MailBoxListener {
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0);
 			mainBox.fireMailBoxUpdated(event); 
 		}
-		else if(this.order.equals("MISSION")){
+		else if(this.order.equals("MISSION") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this)){
 			boolean ready = this.checkRoad();
 			while (!ready)
 			{
@@ -152,7 +152,7 @@ public class Car extends JPanel implements MailBoxListener {
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", 0);
 			mainBox.fireMailBoxUpdated(event);
 			}
-			else if(this.order.equals("RELEASE"))
+			else if(this.order.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 			{
 				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "RELEASED", 0);
 				mainBox.fireMailBoxUpdated(event);

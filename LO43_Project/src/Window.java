@@ -735,15 +735,7 @@ import javax.swing.JLayeredPane;
 		
 		@Override
 		public void run() {
-			
-			for (Car car : mainBox.fleet)
-			{
-				this.moveCarView(mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"),car);
-				this.moveCarView(mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("C"),car);
-				this.moveCarView(mainBox.findSpecificPlace("C"), mainBox.findSpecificPlace("R4"),car);
-				this.moveCarView(mainBox.findSpecificPlace("R4"), mainBox.findSpecificPlace("O4"),car);
-				
-			}
+		
 		}
 		
 		
