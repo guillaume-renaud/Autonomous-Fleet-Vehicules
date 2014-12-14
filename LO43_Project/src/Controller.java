@@ -14,6 +14,7 @@ public class Controller implements MailBoxListener {
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "Start", 0);
 		mainBox.fireMailBoxUpdated(event);
 	}
+	
 	public Controller (MailBox m) {
 		mainBox = m;
 	}
