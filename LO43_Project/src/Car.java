@@ -147,7 +147,7 @@ public class Car extends JPanel implements MailBoxListener {
 			System.out.println("La voiture "+this.getCarName()+" c'est bien ENROLL comme il faut !");
 			mainBox.fireMailBoxUpdated(event); 
 		}
-		else if(this.order.equals("MISSION") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this)) 
+		else if(this.order.equals("MISSION")) 
 		{
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu sa MISSION");
 			
