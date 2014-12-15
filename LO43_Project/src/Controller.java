@@ -38,6 +38,7 @@ public class Controller implements MailBoxListener {
 		c.setOrder(o);
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
+		System.out.println("Le controlleur a bien donné une mission à la voiture "+c.getCarName());
 		mainBox.fireMailBoxUpdated(event);
 	}
 
@@ -100,7 +101,6 @@ public class Controller implements MailBoxListener {
 			if (car.getPosition()==car.getOrder().enrollPlace)
 			{
 				this.giveMissionCar(car, mainBox.findSpecificPlace(actualClient.request.start), mainBox.findSpecificPlace(actualClient.request.destination), actualClient.request);
-				System.out.println("Le controlleur a bien donné une mission à la voiture "+car.getCarName());
 			}
 			// Case when the car as finished its mission (arrived)
 			else if (car.getPosition()==car.getOrder().endingMission)
