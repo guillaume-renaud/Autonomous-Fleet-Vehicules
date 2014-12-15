@@ -44,9 +44,13 @@ public class Car extends JPanel implements MailBoxListener {
 		for(int i=0;i<19;i++)
 			if(order.mission.requestMap[i])
 				for(Place p : mainBox.reservations)
+				{
 					if (order.mission.requestMapPlaceName[i].equals(p))
+					{
 						if(!p.getPlaceIsFree())
 							ready = false;
+					}
+				}
 		return ready;
 	}
 	

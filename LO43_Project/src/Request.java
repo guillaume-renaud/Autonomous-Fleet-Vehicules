@@ -13,6 +13,7 @@ public class Request {
 	
 public Request(String begin, String end){
 	int index = 0;
+	requestMapPlaceName = new String[] {"I1","I2","I3","I4","I5","O1","O2","O3","O4","O5","O6","R1","R2","R3","R4","R5","R6","C"};
 	String filePath = "requestMap.txt";
 	Scanner sc;
 	try {
