@@ -147,7 +147,7 @@ public class Car extends JPanel implements MailBoxListener {
 			System.out.println("La voiture "+this.getCarName()+" c'est bien ENROLL comme il faut !");
 			mainBox.fireMailBoxUpdated(event); 
 		}
-		else if(this.order.equals("MISSION") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this)) 
+		else if(this.order.typeOrder.equals("MISSION") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this)) 
 		{
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu sa MISSION");
 			
@@ -161,7 +161,7 @@ public class Car extends JPanel implements MailBoxListener {
 			System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
 			mainBox.fireMailBoxUpdated(event);
 		}
-		else if(this.order.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
+		else if(this.order.typeOrder.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 		{
 			
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu RELEASE");
@@ -169,7 +169,7 @@ public class Car extends JPanel implements MailBoxListener {
 			System.out.println("La voiture "+this.getCarName()+" c'est bien RELEASED");
 			mainBox.fireMailBoxUpdated(event);
 		}
-		else if(this.order.equals("PARK")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
+		else if(this.order.typeOrder.equals("PARK")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 		{
 			
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu PARK");
