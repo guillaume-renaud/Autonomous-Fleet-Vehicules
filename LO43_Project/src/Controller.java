@@ -49,6 +49,7 @@ public class Controller implements MailBoxListener {
 		c.setOrder(o);
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "RELEASE", mainBox.fleet.indexOf(c));
+		System.out.println("Le controlleur a bien envoyé un RELEASE à la voiture "+c.getCarName());
 		mainBox.fireMailBoxUpdated(event);
 	}
 	
