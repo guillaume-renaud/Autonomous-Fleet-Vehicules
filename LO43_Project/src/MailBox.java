@@ -17,6 +17,8 @@ public class MailBox {
 	
 	Controller commandControl;
 	
+	Window window;
+	
 	public MailBox() {
 		fleet = new LinkedList<Car>();
 		passengers = new LinkedList<Passenger>();
@@ -24,6 +26,8 @@ public class MailBox {
 		reservations = new ArrayList<Place>();
 		commandControl = new Controller(this);
 		this.addMailBoxListener(commandControl);
+		window = new Window(this);
+		this.addMailBoxListener(window);
 	}
 	
 	public void FileReader() {

@@ -76,11 +76,10 @@ public class Main {
 		{
 			mainBox.addMailBoxListener(p);
 		}
-		Window window = new Window(mainBox);
-		mainBox.addMailBoxListener(window);
 		
 		
-		window.run();
+		
+		mainBox.window.run();
 		mainBox.commandControl.start();
 		
 		
