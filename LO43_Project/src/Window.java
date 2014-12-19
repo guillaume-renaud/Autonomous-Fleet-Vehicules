@@ -25,6 +25,8 @@ import javax.swing.JLayeredPane;
 			
 			// Create the event log
 			EventLog log = new EventLog(mainBox);
+			//this.getContentPane().add(log.scrollPane, BorderLayout.CENTER);
+			log.scrollPane.setViewportView(log);
 			log.updateLog("La police lance une requette et attend que les voleurs de voiture soient RELEASE : les poulets arriveront toujors en retard ");
 			
 			

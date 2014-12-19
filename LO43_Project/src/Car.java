@@ -141,7 +141,6 @@ public class Car extends JPanel implements MailBoxListener {
 		if (this.order.typeOrder.equals("ENROLL") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this) )
 		{
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu ENROLL");
-			
 			this.lastPosition = this.position;
 			this.position = this.order.enrollPlace;
 			this.parking = "NONE";
