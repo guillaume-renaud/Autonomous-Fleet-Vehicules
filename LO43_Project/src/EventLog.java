@@ -1,11 +1,11 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneLayout;
 
 
 public class EventLog extends JPanel {
@@ -30,16 +30,22 @@ public class EventLog extends JPanel {
 		
 		jl4.setForeground(Color.RED);
 		
-		//this.setLayout(new GridLayout(4,1));
+		
 		scrollPane = new JScrollPane(this);
 		//scrollPane.setViewportView(this);
-		scrollPane.add(jl1);
-		scrollPane.add(jl2);
-		scrollPane.add(jl3);
-		scrollPane.add(jl4);
+		scrollPane.setLayout(new ScrollPaneLayout());
+		scrollPane.getViewport().add(jl1);
+		scrollPane.getViewport().add(jl2);
+		scrollPane.getViewport().add(jl3);
+		scrollPane.getViewport().add(jl4);
+		
+		scrollPane.setSize(new Dimension(800,95));
 		scrollPane.setVisible(true);
+		
 		//this.setBackground(Color.getHSBColor(60, 50, 50));
 		//this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+		
+		this.add(scrollPane, BorderLayout.CENTER);
 		this.setSize(new Dimension(800,95));
 		this.setVisible(true);
 		
