@@ -20,14 +20,18 @@ public class MailBox {
 	Window window;
 	
 	public MailBox() {
-		fleet = new LinkedList<Car>();
+		fleet = new LinkedList<Car>();		
 		passengers = new LinkedList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
 		commandControl = new Controller(this);
 		this.addMailBoxListener(commandControl);
-		window = new Window(this);
-		this.addMailBoxListener(window);
+	}
+	
+	public void setWindow(Window w)
+	{
+		window = w;
+		//this.addMailBoxListener(window);
 	}
 	
 	public void FileReader() {

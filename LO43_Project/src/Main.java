@@ -6,7 +6,11 @@ public class Main {
 	public static void main(String[] args) {
 		
 		int i, j;
+		
 		MailBox mainBox = new MailBox();
+		Window window = new Window(mainBox);
+		mainBox.setWindow(window);
+		
 		mainBox.FileReader();
 		
 		//Places declaration and add them into mainBox.reservations
@@ -72,14 +76,14 @@ public class Main {
 		{
 			mainBox.addMailBoxListener(c);
 		}
+		
+		
 		for (Passenger p : mainBox.passengers)
 		{
 			mainBox.addMailBoxListener(p);
 		}
 		
 		
-		
-		mainBox.window.run();
 		mainBox.commandControl.start();
 		
 		

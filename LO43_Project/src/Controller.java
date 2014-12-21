@@ -38,7 +38,8 @@ public class Controller implements MailBoxListener {
 		c.setOrder(o);
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
-		System.out.println("Le controlleur a bien donné une mission à la voiture "+c.getCarName());
+		System.out.println("Le controlleur a bien donné une mission à la voiture "+c.getCarName()+" : la voiture doit aller de "+start.getPlaceName()+" à "+end.getPlaceName());
+		
 		mainBox.fireMailBoxUpdated(event);
 	}
 
