@@ -12,11 +12,15 @@ import javax.swing.JLayeredPane;
 		MailBox mainBox; 
 		
 		LinkedList<MailBoxEvent> tasks;
+
+		int nbFreeThread=2;
 		
 		public Window(MailBox MB)
 		{
 			
 			mainBox = MB;	
+			tasks = new LinkedList<MailBoxEvent>();
+			
 			
 			// Creation of the JLayeredPane
 			JLayeredPane jlpTest = new JLayeredPane();
@@ -70,6 +74,7 @@ import javax.swing.JLayeredPane;
 			c.setCoordCarX(start.getCoordX());
 			c.setCoordCarY(start.getCoordY());
 		}
+		
 		public void moveCarView(Place start,Place end,Car c){
 		if(start.getPlaceName().contains("I"))
 		{
@@ -710,6 +715,12 @@ import javax.swing.JLayeredPane;
 		
 		}		
 		
+		
+		public void manageEvent(MailBoxEvent e)
+		{
+			
+		}
+		
 		//@Override
 		/*public void onMailReceivedByCar(MailBoxEvent e) {
 			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
@@ -757,7 +768,14 @@ import javax.swing.JLayeredPane;
 		
 		@Override
 		public void run() {
-		
+			
+			while(true)
+			{
+				if(!this.tasks.isEmpty() && nbFreeThread!=0)
+				{
+					this.manageEvent(this.tasks.pop());
+				}
+			}
 		}
 		
 		
