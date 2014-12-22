@@ -86,7 +86,10 @@ public class Main {
 		
 		Thread affichage = new Thread(window);
 		
+		
 		affichage.start();
+		
+		
 		mainBox.commandControl.start();
 		
 		

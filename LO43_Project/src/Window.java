@@ -15,6 +15,8 @@ import javax.swing.JLayeredPane;
 
 		int nbFreeThread=2;
 		
+		Thread thread;
+		
 		public Window(MailBox MB)
 		{
 			
@@ -716,11 +718,6 @@ import javax.swing.JLayeredPane;
 		}		
 		
 		
-		public void manageEvent(MailBoxEvent e)
-		{
-			
-		}
-		
 		//@Override
 		/*public void onMailReceivedByCar(MailBoxEvent e) {
 			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
@@ -765,18 +762,52 @@ import javax.swing.JLayeredPane;
 		}
 		*/
 		
-		
 		@Override
 		public void run() {
 			
 			while(true)
 			{
+				System.out.println("HAMZA BOxx1");
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
-					this.manageEvent(this.tasks.pop());
+					
+					
 				}
 			}
 		}
 		
+		public class EventManager extends Thread {
+			
+			Car actualManagedCar;
+			MailBoxEvent actualManagedEvent;
+			
+			
+			public void setManageredObjects (MailBoxEvent e)
+			{
+				actualManagedEvent = e;
+				actualManagedCar = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+			}
+			
+			public void run() {
+				while(true)
+				{
+					System.out.println("HAMZA BOXX2");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+					
+			}
+			
+		}
 		
 }
