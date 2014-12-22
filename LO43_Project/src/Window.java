@@ -767,13 +767,7 @@ import javax.swing.JLayeredPane;
 			
 			while(true)
 			{
-				System.out.println("HAMZA BOxx1");
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
 					
@@ -786,26 +780,23 @@ import javax.swing.JLayeredPane;
 			
 			Car actualManagedCar;
 			MailBoxEvent actualManagedEvent;
+			Window window;
 			
 			
-			public void setManageredObjects (MailBoxEvent e)
+			public void setManageredObjects (MailBoxEvent e, Window w)
 			{
 				actualManagedEvent = e;
 				actualManagedCar = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+				window = w;
 			}
 			
 			public void run() {
-				while(true)
+				
+				window.nbFreeThread--;
+				if (actualManagedEvent.lastPlace==null)
 				{
-					System.out.println("HAMZA BOXX2");
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
 					
+				}
 			}
 			
 		}
