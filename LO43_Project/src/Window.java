@@ -17,12 +17,17 @@ import javax.swing.JLayeredPane;
 		
 		Thread thread;
 		
+		MovingManager internalThread;
+		
+		MovingManager internalThread2;
+		
 		public Window(MailBox MB)
 		{
 			
 			mainBox = MB;	
 			tasks = new LinkedList<MailBoxEvent>();
-			
+			internalThread = new MovingManager();
+			internalThread2 = new MovingManager();
 			
 			// Creation of the JLayeredPane
 			JLayeredPane jlpTest = new JLayeredPane();
@@ -770,35 +775,14 @@ import javax.swing.JLayeredPane;
 				
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
-					
+					if(tasks.getFirst().indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
+					{
+							System.out.println();
+					}
 					
 				}
 			}
 		}
 		
-		public class EventManager extends Thread {
-			
-			Car actualManagedCar;
-			MailBoxEvent actualManagedEvent;
-			Window window;
-			
-			
-			public void setManageredObjects (MailBoxEvent e, Window w)
-			{
-				actualManagedEvent = e;
-				actualManagedCar = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
-				window = w;
-			}
-			
-			public void run() {
-				
-				window.nbFreeThread--;
-				if (actualManagedEvent.lastPlace==null)
-				{
-					
-				}
-			}
-			
-		}
 		
 }
