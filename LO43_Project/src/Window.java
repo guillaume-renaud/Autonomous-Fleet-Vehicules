@@ -769,15 +769,42 @@ import javax.swing.JLayeredPane;
 		
 		@Override
 		public void run() {
+			boolean eventGiven;
+			MailBoxEvent eventToDisplay;
 			
+			//Boucle infine du thread affichage
 			while(true)
 			{
+				eventGiven = false;
 				
+				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
-					if(tasks.getFirst().indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
+					eventToDisplay = tasks.peekFirst();
+					
+					//Cas où le thread1 est libre et le thread2 est libre
+					if((!internalThread.isAlive()) && (!internalThread2.isAlive()))
 					{
-							System.out.println();
+						while(!eventGiven)
+						{
+							
+						}
+					}
+					//Cas où le thread1 est libre et le thread2 est occupé
+					else if((!internalThread.isAlive()) && (internalThread2.isAlive()))
+					{
+						while(!eventGiven)
+						{
+							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
+							{
+								
+							}
+						}
+					}
+					//Cas où le thread1 est occupé et le thread2 est libre
+					else if((internalThread.isAlive()) && (!internalThread2.isAlive()))
+					{
+						
 					}
 					
 				}
