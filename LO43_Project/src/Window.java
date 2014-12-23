@@ -837,13 +837,64 @@ import javax.swing.JLayeredPane;
 										}
 									}
 								}
+								//Si le thread libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
+								else
+								{
+									internalThread.setManageredObjects(eventToDisplay, this);
+									eventGiven = true;
+									internalThread.start();
+								}
 							}
 						}
 					}
 					//Cas où le thread1 est occupé et le thread2 est libre
 					else if((internalThread.isAlive()) && (!internalThread2.isAlive()))
 					{
-						
+						while(!eventGiven && !noEventRemain)
+						{
+							//Si la voiture de l'évent est déjà traitée par le thread occupé on passe à un autre event
+							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
+							{
+								eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
+								//S'il n'y plus d'autres events on sort de la boucle
+								if (eventToDisplay == null)
+								{
+									noEventRemain = true;
+								}
+							}
+							//Si la voiture n'est pas traitée par le thread occupé 
+							else
+							{
+								//Si le thread libre n'a pas fini de gérer la voiture en cours
+								if (internalThread2.actualManagedCar!=null)
+								{
+									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
+									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
+									{
+										internalThread2.setManageredObjects(eventToDisplay, this);
+										eventGiven = true;
+										internalThread2.start();
+									}
+									//Sinon on passe à un autre event
+									else
+									{
+										eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
+										//S'il n'y plus d'autres events on sort de la boucle
+										if (eventToDisplay == null)
+										{
+											noEventRemain = true;
+										}
+									}
+								}
+								//Si le thread libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
+								else
+								{
+									internalThread2.setManageredObjects(eventToDisplay, this);
+									eventGiven = true;
+									internalThread2.start();
+								}
+							}
+						}
 					}
 					
 				}
