@@ -15,13 +15,24 @@ public class MovingManager extends Thread {
 			public void run() {
 				
 				window.nbFreeThread--;
-				if (actualManagedEvent.lastPlace==null)
+				
+				if (actualManagedEvent.updateAction.equals("POSITION_CHANGED"))
 				{
-					window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedCar.getPosition().getPlaceName()),actualManagedCar);
+					if (actualManagedEvent.lastPlace==null)
+					{
+						window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedCar.getPosition().getPlaceName()),actualManagedCar);
+					}
+					else
+					{
+						window.moveCarView(window.mainBox.findSpecificPlace(actualManagedCar.getLastPosition().getPlaceName()), window.mainBox.findSpecificPlace(actualManagedCar.getPosition().getPlaceName()),actualManagedCar);
+					}
+					
 				}
-				else
+				else if (actualManagedEvent.updateAction.equals("PARKED"))
 				{
-					window.moveCarView(window.mainBox.findSpecificPlace(actualManagedCar.getLastPosition().getPlaceName()), window.mainBox.findSpecificPlace(actualManagedCar.getPosition().getPlaceName()),actualManagedCar);
+					window.moveToParking(actualManagedCar);
+					actualManagedCar = null;
+					
 				}
 				window.nbFreeThread++;
 			}

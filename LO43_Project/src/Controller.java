@@ -65,8 +65,9 @@ public class Controller implements MailBoxListener {
 		c.setOrder(o);
 		
 		c.setParking(parking);
-		c.setPosition(null);
 		c.getPosition().setPlaceIsFree(true);
+		c.setPosition(null);
+		
 		this.nbCarInMission--;
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
@@ -95,6 +96,7 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
+		
 		Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 		String action = e.updateAction;
 		if (action.equals("POSITION_CHANGED"))

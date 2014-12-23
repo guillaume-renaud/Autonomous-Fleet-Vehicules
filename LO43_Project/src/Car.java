@@ -162,9 +162,9 @@ public class Car extends JPanel implements MailBoxListener {
 				ready = this.checkRoad();
 			}
 			this.move();
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
+			//MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
 			System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
-			mainBox.fireMailBoxUpdated(event);
+			//mainBox.fireMailBoxUpdated(event);
 		}
 		else if(this.order.typeOrder.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 		{

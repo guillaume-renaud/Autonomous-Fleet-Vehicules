@@ -82,6 +82,12 @@ import javax.swing.JLayeredPane;
 			c.setCoordCarY(start.getCoordY());
 		}
 		
+		public void moveToParking(Car c) {
+			c.setBounds(1000,1000, 34,37);
+			c.setCoordCarX(1000);
+			c.setCoordCarY(1000);
+		}
+		
 		public void moveCarView(Place start,Place end,Car c){
 		if(start.getPlaceName().contains("I"))
 		{
@@ -770,12 +776,14 @@ import javax.swing.JLayeredPane;
 		@Override
 		public void run() {
 			boolean eventGiven;
+			boolean noEventRemain;
 			MailBoxEvent eventToDisplay;
 			
 			//Boucle infine du thread affichage
 			while(true)
 			{
 				eventGiven = false;
+				noEventRemain = false;
 				
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
@@ -785,7 +793,7 @@ import javax.swing.JLayeredPane;
 					//Cas où le thread1 est libre et le thread2 est libre
 					if((!internalThread.isAlive()) && (!internalThread2.isAlive()))
 					{
-						while(!eventGiven)
+						while(!eventGiven && !noEventRemain)
 						{
 							
 						}
@@ -793,11 +801,42 @@ import javax.swing.JLayeredPane;
 					//Cas où le thread1 est libre et le thread2 est occupé
 					else if((!internalThread.isAlive()) && (internalThread2.isAlive()))
 					{
-						while(!eventGiven)
+						while(!eventGiven && !noEventRemain)
 						{
+							//Si la voiture de l'évent est déjà traitée par le thread occupé on passe à un autre event
 							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 							{
-								
+								eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
+								//S'il n'y plus d'autres events on sort de la boucle
+								if (eventToDisplay == null)
+								{
+									noEventRemain = true;
+								}
+							}
+							//Si la voiture n'est pas traitée par le thread occupé 
+							else
+							{
+								//Si le thread libre n'a pas fini de gérer la voiture en cours
+								if (internalThread.actualManagedCar!=null)
+								{
+									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
+									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
+									{
+										internalThread.setManageredObjects(eventToDisplay, this);
+										eventGiven = true;
+										internalThread.start();
+									}
+									//Sinon on passe à un autre event
+									else
+									{
+										eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
+										//S'il n'y plus d'autres events on sort de la boucle
+										if (eventToDisplay == null)
+										{
+											noEventRemain = true;
+										}
+									}
+								}
 							}
 						}
 					}
