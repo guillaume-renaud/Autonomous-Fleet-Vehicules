@@ -52,6 +52,7 @@ import javax.swing.JLayeredPane;
 			for (Car car : mainBox.fleet)
 			{
 				car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 32, 37);
+				car.setVisible(true);
 			}
 			
 			// Add the images to the JLayeredPane with a different deep level

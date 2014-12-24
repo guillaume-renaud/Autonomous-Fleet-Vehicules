@@ -37,7 +37,7 @@ public class Car extends JPanel implements MailBoxListener {
 		coordCarX = coorX; // In the function main, when we will instantiate all the car, it's better to put directly in the constructor the right coordinates. 
 		coordCarY = coorY;
 		mainBox=m;
-		this.setVisible(true);
+		//this.setVisible(true);
 	}
 	
 	public boolean checkRoad(){
@@ -68,6 +68,7 @@ public class Car extends JPanel implements MailBoxListener {
 						this.lastPosition = this.position;
 						position = p;
 						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
+						mainBox.window.tasks.addLast(event);
 						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition()+" à "+this.getPosition());
 						mainBox.fireMailBoxUpdated(event); 
 					}	
@@ -149,6 +150,7 @@ public class Car extends JPanel implements MailBoxListener {
 			this.occuped = true;
 			
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
+			mainBox.window.tasks.addLast(event);
 			System.out.println("La voiture "+this.getCarName()+" c'est bien ENROLL comme il faut !");
 			mainBox.fireMailBoxUpdated(event); 
 		}
@@ -179,6 +181,7 @@ public class Car extends JPanel implements MailBoxListener {
 			
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu PARK");
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "PARKED");
+			mainBox.window.tasks.addLast(event);
 			System.out.println("La voiture "+this.getCarName()+" s'est bien PARKED");
 			mainBox.fireMailBoxUpdated(event);
 		}
