@@ -70,7 +70,7 @@ public class Main {
 		//Car declarations and add them to mainBox.fleet
 		for (int k=1; k<13; k++)
 		{
-			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 100, 50,mainBox));
+			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 100, 50, mainBox));
 		}
 		for (Car c : mainBox.fleet)
 		{
@@ -95,7 +95,7 @@ public class Main {
 		System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
 		System.out.println();
 		for (Car c : mainBox.fleet)
-		System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getCoordCarX()+";"+c.getCoordCarY()+") et il est visible ? : "+c.isVisible());
+			System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getCoordCarX()+";"+c.getCoordCarY()+") et il est visible ? : "+c.isVisible());
 		
 		
 		//mainBox.commandControl.test();

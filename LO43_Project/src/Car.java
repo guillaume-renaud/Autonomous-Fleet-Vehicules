@@ -26,7 +26,7 @@ public class Car extends JPanel implements MailBoxListener {
 	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
 	 * updates*/
 	
-	public Car(int i, String p, int coorX, int coorY,MailBox m){
+	public Car(int i, String p, int coorX, int coorY, MailBox m){
 		super();
 		setCarName("car"+i);
 		order = new Order("WAIT");
@@ -36,9 +36,23 @@ public class Car extends JPanel implements MailBoxListener {
 		parking = p;
 		coordCarX = coorX; // In the function main, when we will instantiate all the car, it's better to put directly in the constructor the right coordinates. 
 		coordCarY = coorY;
-		mainBox=m;
-		//this.setVisible(true);
+		mainBox = m;
 	}
+	
+	
+	public void paintComponent(Graphics g)
+	{
+		try
+		{
+			Image img = ImageIO.read(new File("image/car.png"));
+			g.drawImage(img, 100, 50, this);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public boolean checkRoad(){
 		boolean ready = true;
@@ -74,56 +88,7 @@ public class Car extends JPanel implements MailBoxListener {
 					}	
 				}	
 			}	
-	}
-	
-	
-	public void paintComponent(Graphics g)
-	{
-		try
-		{
-			Image img = ImageIO.read(new File("image/car.png"));
-			g.drawImage(img, 0, 0, this);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	
-	public Order getOrder() {
-		return this.order;
-	}
-	
-	public Place getLastPosition() {
-		return this.lastPosition;
-	}
-	
-	public Place getPosition() {
-		return this.position;
-	}
-	
-	public boolean isOccuped() {
-		return this.occuped;
-	}
-	
-	
-	public void setOrder(Order o) { //It's just an example, it's not finished.
-		this.order = o;
-	}
-	
-	public void setLastPosition(Place p) {
-		this.lastPosition = p;
-	}
-	
-	public void setPosition(Place p) {
-		this.position = p;
-	}
-	
-	public void setOccuped(boolean b) {
-		this.occuped = b;
-	}
-
+	}	
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
@@ -187,6 +152,39 @@ public class Car extends JPanel implements MailBoxListener {
 		}
 	}
 
+	public Order getOrder() {
+		return this.order;
+	}
+	
+	public Place getLastPosition() {
+		return this.lastPosition;
+	}
+	
+	public Place getPosition() {
+		return this.position;
+	}
+	
+	public boolean isOccuped() {
+		return this.occuped;
+	}
+	
+	
+	public void setOrder(Order o) { //It's just an example, it's not finished.
+		this.order = o;
+	}
+	
+	public void setLastPosition(Place p) {
+		this.lastPosition = p;
+	}
+	
+	public void setPosition(Place p) {
+		this.position = p;
+	}
+	
+	public void setOccuped(boolean b) {
+		this.occuped = b;
+	}
+	
 	public String getParking() {
 		return parking;
 	}

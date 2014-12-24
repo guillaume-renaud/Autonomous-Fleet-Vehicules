@@ -4,21 +4,18 @@ import java.util.LinkedList;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 
 	public class Window extends JFrame implements  Runnable{
 
 		private static final long serialVersionUID = 1L;
 		
 		MailBox mainBox; 
-		
 		LinkedList<MailBoxEvent> tasks;
-
 		int nbFreeThread=2;
-		
 		Thread thread;
 		
 		MovingManager internalThread;
-		
 		MovingManager internalThread2;
 		
 		public Window(MailBox MB)
@@ -29,10 +26,10 @@ import javax.swing.JLayeredPane;
 			internalThread = new MovingManager();
 			internalThread2 = new MovingManager();
 			
-			// Creation of the JLayeredPane
-			JLayeredPane jlpTest = new JLayeredPane();
-			jlpTest.setOpaque(false);
-						
+			// Creation of the JPanel and his JLayeredPane
+			JLayeredPane jlp = new JLayeredPane();
+			jlp.setOpaque(false);
+			
 			// Create the HUB
 			Hub displayer = new Hub(mainBox);
 			
@@ -56,11 +53,11 @@ import javax.swing.JLayeredPane;
 			}
 			
 			// Add the images to the JLayeredPane with a different deep level
-			jlpTest.add(bg, new Integer(1));
+			jlp.add(bg, new Integer(1));
 			
 			for (Car car : mainBox.fleet)
 			{
-				jlpTest.add(car, new Integer(2));
+				jlp.add(car, new Integer(2));
 			}
 			
 			// Configure the frame
@@ -71,14 +68,14 @@ import javax.swing.JLayeredPane;
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			// Add the JLayeredPane to the frame
-			this.add(jlpTest, BorderLayout.CENTER);
+			this.add(jlp,BorderLayout.CENTER);
 			this.add(displayer, BorderLayout.EAST);
 			this.add(log, BorderLayout.SOUTH);
 			this.setVisible(true);
 		}
 
 		public void moveToStartingPoint(Place start, Car c){
-			c.setBounds(start.getCoordX(),start.getCoordY(), 34,37);
+			c.setBounds(start.getCoordX(),start.getCoordY(), 32,37);
 			c.setCoordCarX(start.getCoordX());
 			c.setCoordCarY(start.getCoordY());
 		}
