@@ -81,7 +81,7 @@ public class Car extends JPanel implements MailBoxListener {
 					{
 						this.lastPosition = this.position;
 						position = p;
-						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
+						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
 						mainBox.window.tasks.addLast(event);
 						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition()+" à "+this.getPosition());
 						mainBox.fireMailBoxUpdated(event); 
@@ -114,7 +114,7 @@ public class Car extends JPanel implements MailBoxListener {
 			this.parking = "NONE";
 			this.occuped = true;
 			
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
 			mainBox.window.tasks.addLast(event);
 			System.out.println("La voiture "+this.getCarName()+" c'est bien ENROLL comme il faut !");
 			mainBox.fireMailBoxUpdated(event); 

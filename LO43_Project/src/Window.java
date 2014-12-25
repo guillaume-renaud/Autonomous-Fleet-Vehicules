@@ -1,12 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.LinkedList;
-
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 
-	public class Window extends JFrame implements  Runnable{
+	public class Window extends JFrame implements  Runnable {
 
 		private static final long serialVersionUID = 1L;
 		

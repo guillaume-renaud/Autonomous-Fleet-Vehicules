@@ -83,6 +83,16 @@ public class Main {
 			mainBox.addMailBoxListener(p);
 		}
 		
+		//Manual creation of tasks
+		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
+		MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"));
+		MailBoxEvent e3 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("R2"));
+		MailBoxEvent e4 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R2"), mainBox.findSpecificPlace("O2"));
+		
+		window.tasks.addLast(e1);
+		window.tasks.addLast(e2);
+		window.tasks.addLast(e3);
+		window.tasks.addLast(e4);
 		
 		Thread affichage = new Thread(window);
 		
@@ -91,6 +101,9 @@ public class Main {
 		
 		
 		//mainBox.commandControl.start();
+		
+		
+		
 		
 		System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
 		System.out.println();
