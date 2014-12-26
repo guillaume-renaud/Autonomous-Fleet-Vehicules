@@ -70,7 +70,7 @@ public class Main {
 		//Car declarations and add them to mainBox.fleet
 		for (int k=1; k<13; k++)
 		{
-			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 100, 50, mainBox));
+			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000, mainBox));
 		}
 		for (Car c : mainBox.fleet)
 		{
@@ -89,21 +89,22 @@ public class Main {
 		MailBoxEvent e3 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("R2"));
 		MailBoxEvent e4 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R2"), mainBox.findSpecificPlace("O2"));
 		
-		window.tasks.addLast(e1);
-		window.tasks.addLast(e2);
-		window.tasks.addLast(e3);
-		window.tasks.addLast(e4);
+		
 		
 		Thread affichage = new Thread(window);
 		
-		
+		affichage.setPriority(Thread.MAX_PRIORITY);
 		affichage.start();
+		
 		
 		
 		//mainBox.commandControl.start();
 		
 		
-		
+		window.tasks.addLast(e1);
+		window.tasks.addLast(e2);
+		window.tasks.addLast(e3);
+		window.tasks.addLast(e4);
 		
 		System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
 		System.out.println();
