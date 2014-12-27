@@ -21,6 +21,9 @@ public Request(String begin, String end){
 
 	requestMapPlaceName = new String[] {"I1","I2","I3","I4","I5","I6","R1","R2","R3","R4","R5","R6","O1","O2","O3","O4","O5","O6","C"};
 
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/guillaume-renaud/Autonomous-Fleet-Vehicules.git
+=======
 >>>>>>> branch 'master' of https://github.com/guillaume-renaud/Autonomous-Fleet-Vehicules.git
 	String filePath = "requestMap.txt";
 	Scanner sc;
