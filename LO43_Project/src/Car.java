@@ -116,6 +116,7 @@ public class Car extends JPanel implements MailBoxListener {
 				}	
 			}
 		}
+		if(order.typeOrder.equals("MISSION"))
 		for(Place p : position.getAdjacencyPlaceList())
 		{
 			for(int i=0;i<19;i++)
