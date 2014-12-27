@@ -67,7 +67,7 @@ public class Main {
 		//Car declarations and add them to mainBox.fleet
 		for (int k=1; k<13; k++)
 		{
-			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 100, 50, mainBox));
+			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000, mainBox));
 		}
 		for (Car c : mainBox.fleet)
 		{
@@ -81,10 +81,6 @@ public class Main {
 		
 		Window window = new Window(mainBox);
 		mainBox.setWindow(window);
-		
-
-		
-		mainBox.fleet.get(0).setBounds(235, 235, 32, 37);
 	
 		//Manual creation of tasks
 		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
@@ -99,11 +95,11 @@ public class Main {
 		
 		Thread affichage = new Thread(window);
 		
-		//affichage.setPriority(Thread.MAX_PRIORITY);
-		//affichage.start();
+		affichage.setPriority(Thread.MAX_PRIORITY);
+		affichage.start();
 		
 		
-		//mainBox.commandControl.start();
+		mainBox.commandControl.start();
 		
 	
 		window.tasks.addLast(e1);
