@@ -34,6 +34,8 @@ public class Car extends JPanel implements MailBoxListener {
 		position = null;
 		occuped = false;
 		parking = p;
+		coordCarX = coorX; // In the function main, when we will instantiate all the car, it's better to put directly in the constructor the right coordinates. 
+		coordCarY = coorY;
 		mainBox = m;
 	}
 	
@@ -197,6 +199,22 @@ public class Car extends JPanel implements MailBoxListener {
 
 	public void setCarName(String carName) {
 		this.carName = carName;
+	}
+
+	public int getCoordCarX() {
+		return coordCarX;
+	}
+
+	public void setCoordCarX(int coordCarX) {
+		this.coordCarX = coordCarX;
+	}
+
+	public int getCoordCarY() {
+		return coordCarY;
+	}
+
+	public void setCoordCarY(int coordCarY) {
+		this.coordCarY = coordCarY;
 	}
 
 }

@@ -74,10 +74,14 @@ import javax.swing.JLayeredPane;
 
 		public void moveToStartingPoint(Place start, Car c){
 			c.setBounds(start.getCoordX(),start.getCoordY(), 32,37);
+			c.setCoordCarX(start.getCoordX());
+			c.setCoordCarY(start.getCoordY());
 		}
 		
 		public void moveToParking(Car c) {
 			c.setBounds(1000,1000, 34,37);
+			c.setCoordCarX(1000);
+			c.setCoordCarY(1000);
 		}
 		
 		public void moveCarView(Place start,Place end,Car c){
@@ -99,6 +103,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 				break;
 				case "I2" :
 					for(int i=0;i<68;i++)
@@ -113,6 +119,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "I3" : 
 					for(int i = 0;i<90;i++)
@@ -127,11 +135,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "I4" : 
 					for(int i = 0;i<45;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (int) ((int) c.getY()-(2.04*i)), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (int) ((int) c.getCoordCarY()-(2.04*i)), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -141,11 +151,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "I5" : 
 					for(int i = 0;i<60;i++)
 					{
-						c.setBounds((int) (c.getX()-i), (int) ((int) c.getY()-(1.13*i)), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i), (int) ((int) c.getCoordCarY()-(1.13*i)), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -155,11 +167,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "I6" : 
 					for(int i = 0;i<98;i++)
 					{
-						c.setBounds((int) (c.getX()-i),( c.getY()), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i),( c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -169,6 +183,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					
 			}
 		}
@@ -180,7 +196,7 @@ import javax.swing.JLayeredPane;
 				case "O1" :
 					for(int i = 0;i<90;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (c.getY()), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -190,11 +206,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R2" :
 					for(int i = 0;i<91;i++)
 					{
-						c.setBounds((int) (c.getX()-i), (int) (c.getY()-2.06*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()-2.06*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -204,11 +222,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "C" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()-1.73*i), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -218,11 +238,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R6" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -232,6 +254,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				}
 			}
@@ -243,7 +267,7 @@ import javax.swing.JLayeredPane;
 				case "O2" :
 					for(int i = 0;i<61;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (int) (c.getY()-1.22*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()-1.22*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -253,11 +277,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R1" :
 					for(int i = 0;i<91;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (int) (c.getY()+2.06*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.06*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -267,11 +293,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R3" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()-1.73*i), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -281,11 +309,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "C" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -295,6 +325,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				}
 				
@@ -307,7 +339,7 @@ import javax.swing.JLayeredPane;
 				case "O3" :
 					for(int i = 0;i<31;i++)
 					{
-						c.setBounds((int) (c.getX()-i), (int) (c.getY()-2.6*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()-2.6*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -317,11 +349,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R2" :
 					for(int i = 0;i<91;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (int) (c.getY()+2.06*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.06*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -331,11 +365,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "C" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()+1.73*i), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -345,11 +381,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R4" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -359,6 +397,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				}
 			}
@@ -370,7 +410,7 @@ import javax.swing.JLayeredPane;
 				case "O4" :
 					for(int i = 0;i<90;i++)
 					{
-						c.setBounds((int) (c.getX()-i), (c.getY()), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i), (c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -380,11 +420,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R5" :
 					for(int i = 0;i<91;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (int) (c.getY()+2.06*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.06*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -394,11 +436,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "C" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()+1.73*i), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -408,11 +452,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R3" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -422,6 +468,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				}
 			}
@@ -433,7 +481,7 @@ import javax.swing.JLayeredPane;
 				case "O5" :
 					for(int i = 0;i<61;i++)
 					{
-						c.setBounds((int) (c.getX()-i), (int) (c.getY()+1.22*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()+1.22*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -443,11 +491,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R6" :
 					for(int i = 0;i<91;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (int) (c.getY()-2.06*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()-2.06*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -457,11 +507,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R4" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()-1.73*i), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -471,11 +523,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "C" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -485,6 +539,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				}
 				
@@ -497,7 +553,7 @@ import javax.swing.JLayeredPane;
 				case "O6" :
 					for(int i = 0;i<31;i++)
 					{
-						c.setBounds((int) (c.getX()+i), (int) (c.getY()+2.6*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.6*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -507,11 +563,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R5" :
 					for(int i = 0;i<91;i++)
 					{
-						c.setBounds((int) (c.getX()-i), (int) (c.getY()-2.06*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()-2.06*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -521,11 +579,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "C" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()-1.73*i), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -535,11 +595,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R1" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -549,6 +611,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				}
 			}
@@ -560,7 +624,7 @@ import javax.swing.JLayeredPane;
 				case "R6" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()+1.73*i), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -570,11 +634,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R3" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()-1.73*i), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -584,11 +650,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R5" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -598,11 +666,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R2" :
 					for(int i = 0;i<211;i++)
 					{
-						c.setBounds((int) (c.getX()), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -612,11 +682,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R1" :
 					for(int i = 0;i<108;i++)
 					{
-						c.setBounds((int) (c.getX()+1.73*i), (c.getY()-i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -626,11 +698,13 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 				case "R4" :
 					for(int i = 0;i<105;i++)
 					{
-						c.setBounds((int) (c.getX()-1.73*i), (c.getY()+i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -640,6 +714,8 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
+					c.setCoordCarX(end.getCoordX());
+					c.setCoordCarY(end.getCoordY());
 					break;
 					
 				}

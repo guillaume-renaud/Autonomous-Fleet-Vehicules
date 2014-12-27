@@ -24,7 +24,8 @@ public class Controller implements MailBoxListener {
 	public void enrollCar(Car c, Place start) {
 		Order o = new Order("ENROLL", start);
 		c.setOrder(o);
-		c.setBounds(start.getCoordX(),start.getCoordY(),32,37);
+		c.setCoordCarX(start.getCoordX());
+		c.setCoordCarY(start.getCoordY());
 		this.nbCarInMission++;
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
