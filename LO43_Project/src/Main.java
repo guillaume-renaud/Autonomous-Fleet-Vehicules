@@ -82,7 +82,7 @@ public class Main {
 		Window window = new Window(mainBox);
 		mainBox.setWindow(window);
 		
-		mainBox.fleet.get(1).setBounds(235, 235, 32, 37);
+		mainBox.fleet.get(1).setBounds(30, 30, 32, 37);
 		
 		//Manual creation of tasks
 		//MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));

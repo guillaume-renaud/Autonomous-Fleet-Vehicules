@@ -46,7 +46,7 @@ import javax.swing.JLayeredPane;
 			// Create car image
 			for (Car car : mainBox.fleet)
 			{
-				car.setBounds(car.getX(), car.getY(), 32, 37);
+				car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 32, 37);
 				car.setVisible(true);
 			}
 			
