@@ -2,8 +2,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 
-public class Passenger implements MailBoxListener 
-{
+public class Passenger implements MailBoxListener {
 	
 	int passengerNumber;
 	Request request;

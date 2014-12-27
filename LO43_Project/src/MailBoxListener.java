@@ -1,7 +1,7 @@
 
-public interface MailBoxListener 
-{
+public interface MailBoxListener {
 
+	
 	public void onMailReceivedByCar (MailBoxEvent e);
 	
 	public void onMailReceivedByMan (MailBoxEvent e);
