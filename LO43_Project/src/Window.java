@@ -93,7 +93,7 @@ import javax.swing.JLayeredPane;
 				case "I1" :
 					for(int i=0;i<38;i++)
 					{
-						c.setBounds(c.getCoordCarX()-i, (int) ((int) c.getCoordCarY()+(2.4*i)), 32, 37);
+						c.setBounds(c.getX()-i, (int) ((int) c.getY()+(2.4*i)), 32, 37);
 						try {
 							
 							Thread.sleep(50);
@@ -109,7 +109,7 @@ import javax.swing.JLayeredPane;
 				case "I2" :
 					for(int i=0;i<68;i++)
 					{
-						c.setBounds(c.getCoordCarX()+i, (int) ((int) c.getCoordCarY()+(1.09*i)), 32, 37);
+						c.setBounds(c.getX()+i, (int) ((int) c.getY()+(1.09*i)), 32, 37);
 						try {
 							
 							Thread.sleep(25);
@@ -125,7 +125,7 @@ import javax.swing.JLayeredPane;
 				case "I3" : 
 					for(int i = 0;i<90;i++)
 					{
-						c.setBounds((int) (c.getCoordCarX()+i), (c.getCoordCarY()), 32, 37);
+						c.setBounds((int) (c.getX()+i), (c.getY()), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
