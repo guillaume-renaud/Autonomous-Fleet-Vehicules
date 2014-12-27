@@ -103,9 +103,9 @@ public class Main {
 
 		
 		//System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
-		System.out.println();
-		for (Car c : mainBox.fleet)
-			System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());
+		//System.out.println();
+		//for (Car c : mainBox.fleet)
+		//	System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());
 		
 		
 		//mainBox.commandControl.test();
