@@ -63,13 +63,65 @@ public class Car extends JPanel implements MailBoxListener {
 			{
 				if(order.mission.requestMap[i])
 				{
-					if(order.mission.requestMapPlaceName[i].equals(p))
+					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 					{
 						this.lastPosition = this.position;
 						position = p;
+						order.mission.requestMap[i]=false;
 						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
 						mainBox.window.tasks.addLast(event);
-						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition()+" à "+this.getPosition());
+						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
+						mainBox.fireMailBoxUpdated(event); 
+					}	
+				}	
+			}
+		for(Place p : position.getAdjacencyPlaceList())
+			for(int i=0;i<19;i++)
+			{
+				if(order.mission.requestMap[i])
+				{
+					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
+					{
+						this.lastPosition = this.position;
+						position = p;
+						order.mission.requestMap[i]=false;
+						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
+						mainBox.window.tasks.addLast(event);
+						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
+						mainBox.fireMailBoxUpdated(event); 
+					}	
+				}	
+			}	
+		for(Place p : position.getAdjacencyPlaceList())
+			for(int i=0;i<19;i++)
+			{
+				if(order.mission.requestMap[i])
+				{
+					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
+					{
+						this.lastPosition = this.position;
+						position = p;
+						order.mission.requestMap[i]=false;
+						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
+						mainBox.window.tasks.addLast(event);
+						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
+						mainBox.fireMailBoxUpdated(event); 
+					}	
+				}	
+			}	
+		for(Place p : position.getAdjacencyPlaceList())
+			for(int i=0;i<19;i++)
+			{
+				if(order.mission.requestMap[i])
+				{
+					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
+					{
+						this.lastPosition = this.position;
+						position = p;
+						order.mission.requestMap[i]=false;
+						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
+						mainBox.window.tasks.addLast(event);
+						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
 						mainBox.fireMailBoxUpdated(event); 
 					}	
 				}	
