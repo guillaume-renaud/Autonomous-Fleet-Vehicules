@@ -1,6 +1,6 @@
 // test test test
-public class Order {
-
+public class Order 
+{
 	String typeOrder;
 	
 	Place enrollPlace;

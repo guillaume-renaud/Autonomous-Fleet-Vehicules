@@ -3,12 +3,14 @@ import java.awt.event.ActionListener;
 
 
 
-public class ButtonRequestController implements ActionListener {
+public class ButtonRequestController implements ActionListener 
+{
 
 			NewRequest button;
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) 
+			{
 				Object o = arg0.getSource();
 
 				button = (NewRequest) o;

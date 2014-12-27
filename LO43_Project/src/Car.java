@@ -26,7 +26,7 @@ public class Car extends JPanel implements MailBoxListener {
 	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
 	 * updates*/
 	
-	public Car(int i, String p, int coorX, int coorY, MailBox m){
+	public Car(int i, String p, int coorX, int coorY,MailBox m){
 		super();
 		setCarName("car"+i);
 		order = new Order("WAIT");
@@ -36,23 +36,8 @@ public class Car extends JPanel implements MailBoxListener {
 		parking = p;
 		coordCarX = coorX; // In the function main, when we will instantiate all the car, it's better to put directly in the constructor the right coordinates. 
 		coordCarY = coorY;
-		mainBox = m;
+		mainBox=m;
 	}
-	
-	
-	public void paintComponent(Graphics g)
-	{
-		try
-		{
-			Image img = ImageIO.read(new File("image/car.png"));
-			g.drawImage(img, 100, 50, this);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
 	
 	public boolean checkRoad(){
 		boolean ready = true;
@@ -81,77 +66,28 @@ public class Car extends JPanel implements MailBoxListener {
 					{
 						this.lastPosition = this.position;
 						position = p;
-						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
-						mainBox.window.tasks.addLast(event);
-						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition()+" à "+this.getPosition());
+						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED",mainBox.fleet.indexOf(this));
 						mainBox.fireMailBoxUpdated(event); 
 					}	
 				}	
 			}	
-	}	
-
-	@Override
-	public void onMailReceivedByCar(MailBoxEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
-
-	@Override
-	public void onMailReceivedByMan(MailBoxEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onMailReceivedByController(MailBoxEvent e) {
-		// TODO Auto-generated method stub
-		
-		if (this.order.typeOrder.equals("ENROLL") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this) )
+	
+	
+	public void paintComponent(Graphics g)
+	{
+		try
 		{
-			System.out.println("La voiture "+this.getCarName()+" a bien reçu ENROLL");
-			this.lastPosition = this.position;
-			this.position = this.order.enrollPlace;
-			this.parking = "NONE";
-			this.occuped = true;
-			
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
-			mainBox.window.tasks.addLast(event);
-			System.out.println("La voiture "+this.getCarName()+" c'est bien ENROLL comme il faut !");
-			mainBox.fireMailBoxUpdated(event); 
+			Image img = ImageIO.read(new File("image/car.png"));
+			g.drawImage(img, 0, 0, this);
 		}
-		else if(this.order.typeOrder.equals("MISSION") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
+		catch (IOException e)
 		{
-			System.out.println("La voiture "+this.getCarName()+" a bien reçu sa MISSION");
-			
-			boolean ready = this.checkRoad();
-			while (!ready)
-			{
-				ready = this.checkRoad();
-			}
-			this.move();
-			//MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
-			System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
-			//mainBox.fireMailBoxUpdated(event);
-		}
-		else if(this.order.typeOrder.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
-		{
-			
-			System.out.println("La voiture "+this.getCarName()+" a bien reçu RELEASE");
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "RELEASED");
-			System.out.println("La voiture "+this.getCarName()+" c'est bien RELEASED");
-			mainBox.fireMailBoxUpdated(event);
-		}
-		else if(this.order.typeOrder.equals("PARK")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
-		{
-			
-			System.out.println("La voiture "+this.getCarName()+" a bien reçu PARK");
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "PARKED");
-			mainBox.window.tasks.addLast(event);
-			System.out.println("La voiture "+this.getCarName()+" s'est bien PARKED");
-			mainBox.fireMailBoxUpdated(event);
+			e.printStackTrace();
 		}
 	}
-
+	
+	
 	public Order getOrder() {
 		return this.order;
 	}
@@ -184,7 +120,69 @@ public class Car extends JPanel implements MailBoxListener {
 	public void setOccuped(boolean b) {
 		this.occuped = b;
 	}
-	
+
+
+	@Override
+	public void onMailReceivedByCar(MailBoxEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByMan(MailBoxEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMailReceivedByController(MailBoxEvent e) {
+		// TODO Auto-generated method stub
+		
+		if (this.order.typeOrder.equals("ENROLL") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this) )
+		{
+			System.out.println("La voiture "+this.getCarName()+" a bien reçu ENROLL");
+			
+			this.lastPosition = this.position;
+			this.position = this.order.enrollPlace;
+			this.parking = "NONE";
+			this.occuped = true;
+			
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
+			System.out.println("La voiture "+this.getCarName()+" c'est bien ENROLL comme il faut !");
+			mainBox.fireMailBoxUpdated(event); 
+		}
+		else if(this.order.typeOrder.equals("MISSION") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
+		{
+			System.out.println("La voiture "+this.getCarName()+" a bien reçu sa MISSION");
+			
+			boolean ready = this.checkRoad();
+			while (!ready)
+			{
+				ready = this.checkRoad();
+			}
+			this.move();
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
+			System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
+			mainBox.fireMailBoxUpdated(event);
+		}
+		else if(this.order.typeOrder.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
+		{
+			
+			System.out.println("La voiture "+this.getCarName()+" a bien reçu RELEASE");
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "RELEASED");
+			System.out.println("La voiture "+this.getCarName()+" c'est bien RELEASED");
+			mainBox.fireMailBoxUpdated(event);
+		}
+		else if(this.order.typeOrder.equals("PARK")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
+		{
+			
+			System.out.println("La voiture "+this.getCarName()+" a bien reçu PARK");
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "PARKED");
+			System.out.println("La voiture "+this.getCarName()+" s'est bien PARKED");
+			mainBox.fireMailBoxUpdated(event);
+		}
+	}
+
 	public String getParking() {
 		return parking;
 	}

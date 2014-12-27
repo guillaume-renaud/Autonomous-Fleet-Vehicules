@@ -17,7 +17,8 @@ public class Place
 		setCoordY(y);
 	}
 
-	public String getPlaceName() {
+	public String getPlaceName() 
+	{
 		return placeName;
 	}
 
