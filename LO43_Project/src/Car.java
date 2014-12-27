@@ -40,20 +40,6 @@ public class Car extends JPanel implements MailBoxListener {
 	}
 	
 	
-	public void paintComponent(Graphics g)
-	{
-		try
-		{
-			Image img = ImageIO.read(new File("image/car.png"));
-			g.drawImage(img, 100, 50, this);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	
 	public boolean checkRoad(){
 		boolean ready = true;
 		for(int i=0;i<19;i++)
@@ -89,6 +75,19 @@ public class Car extends JPanel implements MailBoxListener {
 				}	
 			}	
 	}	
+	
+	public void paintComponent(Graphics g)
+	{
+		try
+		{
+			Image img = ImageIO.read(new File("image/car.png"));
+			g.drawImage(img, 0, 0, this);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {

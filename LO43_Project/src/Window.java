@@ -33,7 +33,7 @@ import javax.swing.JLayeredPane;
 			
 			// Create the event log
 			EventLog log = new EventLog(mainBox);
-			this.getContentPane().add(log.scrollPane, BorderLayout.CENTER);
+			//this.getContentPane().add(log.scrollPane, BorderLayout.CENTER);
 			//log.scrollPane.setViewportView(log);
 			//log.updateLog("La police lance une requette et attend que les voleurs de voiture soient RELEASE : les poulets arriveront toujors en retard ");
 			
@@ -42,12 +42,11 @@ import javax.swing.JLayeredPane;
 			Background bg = new Background();
 			bg.setSize(new Dimension(800,600));
 			
-			
 			// Create car image
 			for (Car car : mainBox.fleet)
 			{
 				car.setBounds(car.getCoordCarX(), car.getCoordCarY(), 32, 37);
-				car.setVisible(true);
+				//car.setVisible(true);
 			}
 			
 			// Add the images to the JLayeredPane with a different deep level
@@ -57,6 +56,7 @@ import javax.swing.JLayeredPane;
 			{
 				jlp.add(car, new Integer(2));
 			}
+						
 			
 			// Configure the frame
 			this.setTitle("Autonomous Fleet Vehicules");
@@ -64,9 +64,9 @@ import javax.swing.JLayeredPane;
 			this.setResizable(false);
 			this.setLocationRelativeTo(null); // JFrame in the center of the window
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
+						
 			// Add the JLayeredPane to the frame
-			this.add(jlp,BorderLayout.CENTER);
+			this.add(jlp, BorderLayout.CENTER);
 			this.add(displayer, BorderLayout.EAST);
 			this.add(log, BorderLayout.SOUTH);
 			this.setVisible(true);
@@ -774,6 +774,8 @@ import javax.swing.JLayeredPane;
 			boolean eventGiven;
 			boolean noEventRemain;
 			MailBoxEvent eventToDisplay;
+			
+			
 			
 			//Boucle infine du thread affichage
 			while(true)
