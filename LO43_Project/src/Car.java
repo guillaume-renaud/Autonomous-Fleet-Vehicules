@@ -157,7 +157,19 @@ public class Car extends JPanel implements MailBoxListener {
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
 		// TODO Auto-generated method stub
-		
+		if (e.updateAction.equals("WAIT") && this.order.typeOrder.equals("ENROLL") && e.indexUpdaterInMailBoxList == mainBox.fleet.indexOf(this) )
+		{
+			boolean ready = this.checkRoad();
+			if(!ready)
+			{
+				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "WAIT");
+				mainBox.fireMailBoxUpdated(event);
+			}else
+			{
+				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "READY");
+				mainBox.fireMailBoxUpdated(event);
+			}
+		}
 	}
 
 	@Override
@@ -188,14 +200,16 @@ public class Car extends JPanel implements MailBoxListener {
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu sa MISSION");
 			
 			boolean ready = this.checkRoad();
-			while (!ready)
+			if(!ready)
 			{
-				ready = this.checkRoad();
+				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "WAIT");
+				mainBox.fireMailBoxUpdated(event);
+			}else
+			{
+				this.move();
+				System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
 			}
-			this.move();
-			//MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED");
-			System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
-			//mainBox.fireMailBoxUpdated(event);
+			
 		}
 		else if(this.order.typeOrder.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 		{
