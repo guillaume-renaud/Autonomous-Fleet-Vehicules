@@ -833,7 +833,7 @@ import javax.swing.JLayeredPane;
 											
 											internalThread2.setManageredObjects(eventToDisplay, this);
 											eventGiven = true;
-											internalThread2.start();
+											internalThread2.run();
 										}
 										//Si les 2 thread sont partiellement libres avec une autre voiture, on prend l'event suivant. 
 										else
@@ -856,7 +856,7 @@ import javax.swing.JLayeredPane;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
-										internalThread2.start();
+										internalThread2.run();
 									}
 										
 								}
@@ -877,7 +877,7 @@ import javax.swing.JLayeredPane;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
-										internalThread2.start();
+										internalThread2.run();
 									}
 								}
 								//Sinon on l'attribue au thread1 totalement libre
@@ -886,7 +886,7 @@ import javax.swing.JLayeredPane;
 									tasks.remove(eventToDisplay);	
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
-									internalThread.start();
+									internalThread.run();
 									System.out.println("eventGiven ?: "+eventGiven);
 									try {
 										Thread.sleep(5000);
@@ -931,7 +931,7 @@ import javax.swing.JLayeredPane;
 										
 										internalThread.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
-										internalThread.start();
+										internalThread.run();
 									}
 									//Sinon on passe à un autre event
 									else
@@ -954,7 +954,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
-									internalThread.start();
+									internalThread.run();
 								}
 							}
 						}
@@ -990,7 +990,7 @@ import javax.swing.JLayeredPane;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
-										internalThread2.start();
+										internalThread2.run();
 									}
 									//Sinon on passe à un autre event
 									else
@@ -1014,7 +1014,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread2.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
-									internalThread2.start();
+									internalThread2.run();
 								}
 							}
 						}
