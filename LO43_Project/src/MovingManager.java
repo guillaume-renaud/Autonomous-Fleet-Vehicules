@@ -10,7 +10,7 @@ public class MovingManager implements Runnable {
 			{
 				actualManagedEvent = e;
 				window = w;
-				actualManagedCar = window.mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+				actualManagedCar = new Car(window.mainBox.fleet.get(e.indexUpdaterInMailBoxList));
 				isRunning = false;
 			}
 			
