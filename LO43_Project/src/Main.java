@@ -84,31 +84,32 @@ public class Main {
 		
 		
 		//Manual creation of tasks
-		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
-		MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"));
-		MailBoxEvent e3 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("R2"));
-		MailBoxEvent e4 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R2"), mainBox.findSpecificPlace("O2"));
+		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("R3"));
+		MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R3"), mainBox.findSpecificPlace("R4"));
 		
-		MailBoxEvent e5 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I3"));
-		MailBoxEvent e6 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("I3"), mainBox.findSpecificPlace("R3"));
-		MailBoxEvent e7 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R3"), mainBox.findSpecificPlace("R4"));
-		MailBoxEvent e8 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R4"), mainBox.findSpecificPlace("O4"));
+		MailBoxEvent e3 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", null, mainBox.findSpecificPlace("R6"));
+		MailBoxEvent e4 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R6"), mainBox.findSpecificPlace("R1"));
+		//MailBoxEvent e3 = new MailBoxEvent("Car", 2, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I3"));
+		//MailBoxEvent e4 = new MailBoxEvent("Car", 3, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I4"));
+		//MailBoxEvent e5 = new MailBoxEvent("Car", 4, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I5"));
+		//MailBoxEvent e6 = new MailBoxEvent("Car", 5, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I6"));
+		
 		
 		window.tasks.addLast(e1);
-		
-		window.tasks.addLast(e5);
 		
 		window.tasks.addLast(e2);
 		
 		window.tasks.addLast(e3);
 		
-		window.tasks.addLast(e6);
-		
 		window.tasks.addLast(e4);
 		
-		window.tasks.addLast(e7);
+		///window.tasks.addLast(e4);
 		
-		window.tasks.addLast(e8);
+		//window.tasks.addLast(e5);
+		
+		//window.tasks.addLast(e6);
+		
+		//window.tasks.addLast(e7);
 		
 		Thread affichage = new Thread(window);
 		
