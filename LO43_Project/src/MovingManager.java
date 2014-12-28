@@ -8,8 +8,9 @@ public class MovingManager extends Thread {
 			public void setManageredObjects (MailBoxEvent e, Window w)
 			{
 				actualManagedEvent = e;
-				actualManagedCar = window.mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 				window = w;
+				actualManagedCar = window.mainBox.fleet.get(e.indexUpdaterInMailBoxList);
+				
 			}
 			
 			public void run() {
@@ -20,6 +21,7 @@ public class MovingManager extends Thread {
 				{
 					if (actualManagedEvent.lastPlace==null)
 					{
+						System.out.println(actualManagedCar.getPosition().getPlaceName());
 						window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedCar.getPosition().getPlaceName()),actualManagedCar);
 					}
 					else

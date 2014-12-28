@@ -802,7 +802,6 @@ import javax.swing.JLayeredPane;
 						
 						while(!eventGiven && !noEventRemain)
 						{
-							System.out.println("hABI");
 							//Si le thread1 est partiellement libre, cad n'a pas encore fini avec sa voiture
 							if(internalThread.actualManagedCar!=null)
 							{
@@ -884,14 +883,17 @@ import javax.swing.JLayeredPane;
 								//Sinon on l'attribue au thread1 totalement libre
 								else
 								{
-									tasks.remove(eventToDisplay);
-									
-											System.out.println("eventGiven ?: "+eventGiven);
-							System.out.println("noEventRemain ?:"+noEventRemain);	
-							
+									tasks.remove(eventToDisplay);	
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread.start();
+									System.out.println("eventGiven ?: "+eventGiven);
+									try {
+										Thread.sleep(5000);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
 								}
 							}
 							if (tasks.isEmpty())
