@@ -81,31 +81,16 @@ public class Main {
 		
 		Window window = new Window(mainBox);
 		mainBox.setWindow(window);
-	
-		
-		mainBox.fleet.get(0).setCoordCarX(600);
-		mainBox.fleet.get(0).setCoordCarY(90);
-		mainBox.fleet.get(0).setBounds(600, 200, 32, 37);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		mainBox.fleet.get(0).setLastPosition(null);
-		mainBox.fleet.get(0).setOccuped(true);
-		mainBox.fleet.get(0).setParking("NONE");
-		mainBox.fleet.get(0).setPosition(mainBox.findSpecificPlace("I1"));
 		
 		
 		//Manual creation of tasks
-		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
-		MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"));
+		//MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
+		//MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"));
 		//MailBoxEvent e3 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("R2"));
 		//MailBoxEvent e4 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R2"), mainBox.findSpecificPlace("O2"));
 		
-		window.tasks.addLast(e1);
-		window.tasks.addLast(e2);
+		//window.tasks.addLast(e1);
+		//window.tasks.addLast(e2);
 		//window.tasks.addLast(e3);
 		//window.tasks.addLast(e4);
 		
@@ -123,7 +108,7 @@ public class Main {
 		
 		//window.moveToStartingPoint(window.mainBox.findSpecificPlace("I1"), mainBox.fleet.get(0));
 		//window.moveCarView(window.mainBox.findSpecificPlace("I1"), window.mainBox.findSpecificPlace("R1"),mainBox.fleet.get(0));
-		//mainBox.commandControl.start();
+		mainBox.commandControl.start();
 
 		
 		//System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());

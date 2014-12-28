@@ -29,7 +29,6 @@ public class MovingManager implements Runnable {
 				{
 					if (actualManagedEvent.lastPlace==null)
 					{
-						System.out.println(actualManagedCar.getPosition().getPlaceName());
 						window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
 					}
 					else

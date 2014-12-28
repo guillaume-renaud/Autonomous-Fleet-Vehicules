@@ -784,21 +784,14 @@ import javax.swing.JLayeredPane;
 				eventGiven = false;
 				noEventRemain = false;
 				
-				System.out.println("La liste des tâches est vide ?"+tasks.isEmpty());
-				System.out.println("Le nombre de thread libres est de : "+nbFreeThread);
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
 					eventToDisplay = tasks.getFirst();
 					
-					
-					System.out.println("Le thread1 est en vie ?"+internalThread.isAlive());
-					System.out.println("Le thread2 est en vie ?"+internalThread2.isAlive());
 					//Cas où le thread1 est libre et le thread2 est libre
 					if((!internalThread.isAlive()) && (!internalThread2.isAlive()))
 					{
-						System.out.println("eventGiven ?: "+eventGiven);
-						System.out.println("noEventRemain ?:"+noEventRemain);
 						
 						while(!eventGiven && !noEventRemain)
 						{
@@ -887,9 +880,8 @@ import javax.swing.JLayeredPane;
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread.run();
-									System.out.println("eventGiven ?: "+eventGiven);
 									try {
-										Thread.sleep(5000);
+										Thread.sleep(2000);
 									} catch (InterruptedException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
