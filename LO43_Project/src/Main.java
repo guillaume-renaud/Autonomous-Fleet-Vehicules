@@ -95,13 +95,19 @@ public class Main {
 		MailBoxEvent e8 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R4"), mainBox.findSpecificPlace("O4"));
 		
 		window.tasks.addLast(e1);
-		window.tasks.addLast(e2);
-		window.tasks.addLast(e3);
-		window.tasks.addLast(e4);
 		
 		window.tasks.addLast(e5);
+		
+		window.tasks.addLast(e2);
+		
+		window.tasks.addLast(e3);
+		
 		window.tasks.addLast(e6);
+		
+		window.tasks.addLast(e4);
+		
 		window.tasks.addLast(e7);
+		
 		window.tasks.addLast(e8);
 		
 		Thread affichage = new Thread(window);

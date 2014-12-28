@@ -876,16 +876,14 @@ import javax.swing.JLayeredPane;
 								//Sinon on l'attribue au thread1 totalement libre
 								else
 								{
-									tasks.remove(eventToDisplay);	
+									tasks.remove(eventToDisplay);
+									
+									if (tasks.isEmpty())
+										noEventRemain = true;
+									
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread.run();
-									try {
-										Thread.sleep(2000);
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
 								}
 							}
 							if (tasks.isEmpty())
