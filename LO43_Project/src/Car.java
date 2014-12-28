@@ -39,6 +39,19 @@ public class Car extends JPanel implements MailBoxListener {
 		mainBox = m;
 	}
 	
+	public Car (Car copie) {
+		this.carName = copie.carName;
+		this.order = copie.order;
+		this.lastPosition = copie.lastPosition;
+		this.position = copie.position;
+		this.occuped = copie.occuped;
+		this.parking = copie.parking;
+		this.coordCarX = copie.coordCarX;
+		this.coordCarY = copie.coordCarY;
+		this.mainBox = copie.mainBox;
+		
+	}
+	
 	
 	public boolean checkRoad(){
 		boolean ready = true;
