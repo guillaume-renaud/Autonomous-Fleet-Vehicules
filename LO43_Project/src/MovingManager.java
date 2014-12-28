@@ -1,8 +1,9 @@
-public class MovingManager extends Thread {
+public class MovingManager implements Runnable {
 			
 			Car actualManagedCar;
 			MailBoxEvent actualManagedEvent;
 			Window window;
+			boolean isRunning = false;
 			
 			
 			public void setManageredObjects (MailBoxEvent e, Window w)
@@ -10,10 +11,17 @@ public class MovingManager extends Thread {
 				actualManagedEvent = e;
 				window = w;
 				actualManagedCar = window.mainBox.fleet.get(e.indexUpdaterInMailBoxList);
-				
+				isRunning = false;
+			}
+			
+			public boolean isAlive()
+			{
+				return isRunning;
 			}
 			
 			public void run() {
+				
+				isRunning = true;
 				
 				window.nbFreeThread--;
 				
@@ -37,6 +45,7 @@ public class MovingManager extends Thread {
 					
 				}
 				window.nbFreeThread++;
+				isRunning = false;
 			}
 			
 		}
