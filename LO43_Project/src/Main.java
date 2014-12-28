@@ -106,7 +106,7 @@ public class Main {
 		System.out.println("Le thread2 est en vie ?"+window.internalThread2.isAlive());
 		System.out.println("eventGiven ?: "+window.eventGiven);
 		System.out.println("noEventRemain ?:"+window.noEventRemain);
-		
+		System.out.println("Event à afficher : "+window.eventToDisplay.updateAction);
 		
 		//window.moveToStartingPoint(window.mainBox.findSpecificPlace("I1"), mainBox.fleet.get(0));
 		//window.moveCarView(window.mainBox.findSpecificPlace("I1"), window.mainBox.findSpecificPlace("R1"),mainBox.fleet.get(0));
