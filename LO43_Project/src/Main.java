@@ -100,20 +100,17 @@ public class Main {
 		//affichage.setPriority(Thread.MAX_PRIORITY);
 		affichage.start();
 		
-		System.out.println("La liste des tâches est vide ?"+window.tasks.isEmpty());
-		System.out.println("Le nombre de thread libres est de : "+window.nbFreeThread);
-		System.out.println("Le thread1 est en vie ?"+window.internalThread.isAlive());
-		System.out.println("Le thread2 est en vie ?"+window.internalThread2.isAlive());
-		System.out.println("eventGiven ?: "+window.eventGiven);
-		System.out.println("noEventRemain ?:"+window.noEventRemain);
-		System.out.println("Event à afficher : "+window.eventToDisplay.updateAction);
+		
+		
+		
+		//System.out.println("Event à afficher : "+window.eventToDisplay.updateAction);
 		
 		//window.moveToStartingPoint(window.mainBox.findSpecificPlace("I1"), mainBox.fleet.get(0));
 		//window.moveCarView(window.mainBox.findSpecificPlace("I1"), window.mainBox.findSpecificPlace("R1"),mainBox.fleet.get(0));
 		//mainBox.commandControl.start();
 
 		
-		System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
+		//System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
 		//System.out.println();
 		//for (Car c : mainBox.fleet)
 		//	System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());

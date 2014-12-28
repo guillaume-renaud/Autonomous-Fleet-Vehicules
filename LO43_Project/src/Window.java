@@ -784,17 +784,25 @@ import javax.swing.JLayeredPane;
 				eventGiven = false;
 				noEventRemain = false;
 				
+				System.out.println("La liste des tâches est vide ?"+tasks.isEmpty());
+				System.out.println("Le nombre de thread libres est de : "+nbFreeThread);
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
 					eventToDisplay = tasks.getFirst();
-					System.out.println("Event à afficher : "+eventToDisplay.updateAction);
 					
+					
+					System.out.println("Le thread1 est en vie ?"+internalThread.isAlive());
+					System.out.println("Le thread2 est en vie ?"+internalThread2.isAlive());
 					//Cas où le thread1 est libre et le thread2 est libre
 					if((!internalThread.isAlive()) && (!internalThread2.isAlive()))
 					{
+						System.out.println("eventGiven ?: "+eventGiven);
+						System.out.println("noEventRemain ?:"+noEventRemain);
+						
 						while(!eventGiven && !noEventRemain)
 						{
+							System.out.println("hABI");
 							//Si le thread1 est partiellement libre, cad n'a pas encore fini avec sa voiture
 							if(internalThread.actualManagedCar!=null)
 							{
@@ -802,6 +810,10 @@ import javax.swing.JLayeredPane;
 								if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 								{
 									tasks.remove(eventToDisplay);
+									
+									if (tasks.isEmpty())
+										noEventRemain = true;
+									
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread.start();
@@ -816,6 +828,10 @@ import javax.swing.JLayeredPane;
 										if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 										{
 											tasks.remove(eventToDisplay);
+											
+											if (tasks.isEmpty())
+												noEventRemain = true;
+											
 											internalThread2.setManageredObjects(eventToDisplay, this);
 											eventGiven = true;
 											internalThread2.start();
@@ -835,6 +851,10 @@ import javax.swing.JLayeredPane;
 									else
 									{
 										tasks.remove(eventToDisplay);
+										
+										if (tasks.isEmpty())
+											noEventRemain = true;
+										
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread2.start();
@@ -852,20 +872,30 @@ import javax.swing.JLayeredPane;
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 									{
 										tasks.remove(eventToDisplay);
-										internalThread.setManageredObjects(eventToDisplay, this);
-										eventGiven = true;
-										internalThread.start();
-									}
-									//Sinon on l'attribue au thread1 totalement libre
-									else
-									{
-										tasks.remove(eventToDisplay);
+										
+										if (tasks.isEmpty())
+											noEventRemain = true;
+										
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread2.start();
 									}
 								}
+								//Sinon on l'attribue au thread1 totalement libre
+								else
+								{
+									tasks.remove(eventToDisplay);
+									
+											System.out.println("eventGiven ?: "+eventGiven);
+							System.out.println("noEventRemain ?:"+noEventRemain);	
+							
+									internalThread.setManageredObjects(eventToDisplay, this);
+									eventGiven = true;
+									internalThread.start();
+								}
 							}
+							if (tasks.isEmpty())
+								noEventRemain = true;
 						}
 					}
 					//Cas où le thread1 est libre et le thread2 est occupé
@@ -873,7 +903,7 @@ import javax.swing.JLayeredPane;
 					{
 						while(!eventGiven && !noEventRemain)
 						{
-							//Si la voiture de l'évent est déjà traitée par le thread occupé on passe à un autre event
+							//Si la voiture de l'évent est déjà traitée par le thread2 occupé on passe à un autre event
 							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 							{
 								eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
@@ -883,16 +913,20 @@ import javax.swing.JLayeredPane;
 									noEventRemain = true;
 								}
 							}
-							//Si la voiture n'est pas traitée par le thread occupé 
+							//Si la voiture n'est pas traitée par le thread2 occupé 
 							else
 							{
-								//Si le thread libre n'a pas fini de gérer la voiture en cours
+								//Si le thread1 libre n'a pas fini de gérer la voiture en cours
 								if (internalThread.actualManagedCar!=null)
 								{
 									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 									{
 										tasks.remove(eventToDisplay);
+										
+										if (tasks.isEmpty())
+											noEventRemain = true;
+										
 										internalThread.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread.start();
@@ -908,10 +942,14 @@ import javax.swing.JLayeredPane;
 										}
 									}
 								}
-								//Si le thread libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
+								//Si le thread1 libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
 								else
 								{
 									tasks.remove(eventToDisplay);
+									
+									if (tasks.isEmpty())
+										noEventRemain = true;
+									
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread.start();
@@ -924,7 +962,7 @@ import javax.swing.JLayeredPane;
 					{
 						while(!eventGiven && !noEventRemain)
 						{
-							//Si la voiture de l'évent est déjà traitée par le thread occupé on passe à un autre event
+							//Si la voiture de l'évent est déjà traitée par le thread1 occupé on passe à un autre event
 							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 							{
 								eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
@@ -934,16 +972,20 @@ import javax.swing.JLayeredPane;
 									noEventRemain = true;
 								}
 							}
-							//Si la voiture n'est pas traitée par le thread occupé 
+							//Si la voiture n'est pas traitée par le thread1 occupé 
 							else
 							{
-								//Si le thread libre n'a pas fini de gérer la voiture en cours
+								//Si le thread2 libre n'a pas fini de gérer la voiture en cours
 								if (internalThread2.actualManagedCar!=null)
 								{
 									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 									{
 										tasks.remove(eventToDisplay);
+										
+										if (tasks.isEmpty())
+											noEventRemain = true;
+										
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread2.start();
@@ -959,10 +1001,15 @@ import javax.swing.JLayeredPane;
 										}
 									}
 								}
-								//Si le thread libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
+								//Si le thread2 libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
 								else
 								{
 									tasks.remove(eventToDisplay);
+									
+									if (tasks.isEmpty())
+										noEventRemain = true;
+									
+									
 									internalThread2.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread2.start();
