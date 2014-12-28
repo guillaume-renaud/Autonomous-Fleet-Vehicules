@@ -799,6 +799,7 @@ import javax.swing.JLayeredPane;
 								//Si la voiture de l'évent a déjà été traitée par le thread1 on la lui attribue
 								if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 								{
+									tasks.remove(eventToDisplay);
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread.start();
@@ -812,6 +813,7 @@ import javax.swing.JLayeredPane;
 										//Si la voiture de l'évent a déjà été traitée par le thread2 on la lui attribue
 										if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 										{
+											tasks.remove(eventToDisplay);
 											internalThread2.setManageredObjects(eventToDisplay, this);
 											eventGiven = true;
 											internalThread2.start();
@@ -830,6 +832,7 @@ import javax.swing.JLayeredPane;
 									//Si le thread2 est totalement libre on lui attribue l'évent
 									else
 									{
+										tasks.remove(eventToDisplay);
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread2.start();
@@ -846,6 +849,7 @@ import javax.swing.JLayeredPane;
 									//Si la voiture de l'évent a déjà été traitée par le thread2 on la lui attribue
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 									{
+										tasks.remove(eventToDisplay);
 										internalThread.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread.start();
@@ -853,6 +857,7 @@ import javax.swing.JLayeredPane;
 									//Sinon on l'attribue au thread1 totalement libre
 									else
 									{
+										tasks.remove(eventToDisplay);
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread2.start();
@@ -885,6 +890,7 @@ import javax.swing.JLayeredPane;
 									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 									{
+										tasks.remove(eventToDisplay);
 										internalThread.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread.start();
@@ -903,6 +909,7 @@ import javax.swing.JLayeredPane;
 								//Si le thread libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
 								else
 								{
+									tasks.remove(eventToDisplay);
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread.start();
@@ -934,6 +941,7 @@ import javax.swing.JLayeredPane;
 									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 									{
+										tasks.remove(eventToDisplay);
 										internalThread2.setManageredObjects(eventToDisplay, this);
 										eventGiven = true;
 										internalThread2.start();
@@ -952,6 +960,7 @@ import javax.swing.JLayeredPane;
 								//Si le thread libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
 								else
 								{
+									tasks.remove(eventToDisplay);
 									internalThread2.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
 									internalThread2.start();

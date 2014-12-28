@@ -83,12 +83,12 @@ public class Main {
 		mainBox.setWindow(window);
 	
 		//Manual creation of tasks
-		//MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
+		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
 		//MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"));
 		//MailBoxEvent e3 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("R2"));
 		//MailBoxEvent e4 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R2"), mainBox.findSpecificPlace("O2"));
 		
-		//window.tasks.addLast(e1);
+		window.tasks.addLast(e1);
 		//window.tasks.addLast(e2);
 		//window.tasks.addLast(e3);
 		//window.tasks.addLast(e4);
@@ -98,11 +98,10 @@ public class Main {
 		//affichage.setPriority(Thread.MAX_PRIORITY);
 		//affichage.start();
 		
-		
-		mainBox.commandControl.start();
+		//mainBox.commandControl.start();
 
 		
-		//System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
+		System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
 		//System.out.println();
 		//for (Car c : mainBox.fleet)
 		//	System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());
