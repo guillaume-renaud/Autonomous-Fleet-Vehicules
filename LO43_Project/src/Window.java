@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.LinkedList;
+
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
@@ -15,6 +16,10 @@ import javax.swing.JLayeredPane;
 		
 		MovingManager internalThread;
 		MovingManager internalThread2;
+		
+		boolean eventGiven;
+		boolean noEventRemain;
+		MailBoxEvent eventToDisplay;
 		
 		public Window(MailBox MB)
 		{
@@ -771,11 +776,7 @@ import javax.swing.JLayeredPane;
 		
 		@Override
 		public void run() {
-			boolean eventGiven;
-			boolean noEventRemain;
-			MailBoxEvent eventToDisplay;
-			
-			
+						
 			
 			//Boucle infine du thread affichage
 			while(true)
@@ -786,7 +787,8 @@ import javax.swing.JLayeredPane;
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
-					eventToDisplay = tasks.peekFirst();
+					eventToDisplay = tasks.getFirst();
+					System.out.println("Event à afficher : "+eventToDisplay.updateAction);
 					
 					//Cas où le thread1 est libre et le thread2 est libre
 					if((!internalThread.isAlive()) && (!internalThread2.isAlive()))

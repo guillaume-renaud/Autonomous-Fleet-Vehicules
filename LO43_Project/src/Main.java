@@ -65,7 +65,7 @@ public class Main {
 		}
 		
 		//Car declarations and add them to mainBox.fleet
-		for (int k=1; k<13; k++)
+		for (int k=1; k<2; k++)
 		{
 			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000, mainBox));
 		}
@@ -93,11 +93,23 @@ public class Main {
 		//window.tasks.addLast(e3);
 		//window.tasks.addLast(e4);
 		
-		//Thread affichage = new Thread(window);
+		Thread affichage = new Thread(window);
+		
+		
 		
 		//affichage.setPriority(Thread.MAX_PRIORITY);
-		//affichage.start();
+		affichage.start();
 		
+		System.out.println("La liste des tâches est vide ?"+window.tasks.isEmpty());
+		System.out.println("Le nombre de thread libres est de : "+window.nbFreeThread);
+		System.out.println("Le thread1 est en vie ?"+window.internalThread.isAlive());
+		System.out.println("Le thread2 est en vie ?"+window.internalThread2.isAlive());
+		System.out.println("eventGiven ?: "+window.eventGiven);
+		System.out.println("noEventRemain ?:"+window.noEventRemain);
+		
+		
+		//window.moveToStartingPoint(window.mainBox.findSpecificPlace("I1"), mainBox.fleet.get(0));
+		//window.moveCarView(window.mainBox.findSpecificPlace("I1"), window.mainBox.findSpecificPlace("R1"),mainBox.fleet.get(0));
 		//mainBox.commandControl.start();
 
 		
