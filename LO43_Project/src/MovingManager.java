@@ -26,6 +26,7 @@ public class MovingManager extends Thread {
 					}
 					else
 					{
+						
 						window.moveCarView(window.mainBox.findSpecificPlace(actualManagedCar.getLastPosition().getPlaceName()), window.mainBox.findSpecificPlace(actualManagedCar.getPosition().getPlaceName()),actualManagedCar);
 					}
 					
