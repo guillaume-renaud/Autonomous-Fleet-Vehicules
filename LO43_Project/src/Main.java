@@ -82,6 +82,16 @@ public class Main {
 		Window window = new Window(mainBox);
 		mainBox.setWindow(window);
 	
+		
+		mainBox.fleet.get(0).setCoordCarX(600);
+		mainBox.fleet.get(0).setCoordCarY(90);
+		mainBox.fleet.get(0).setBounds(600, 90, 32, 37);
+		mainBox.fleet.get(0).setLastPosition(null);
+		mainBox.fleet.get(0).setOccuped(true);
+		mainBox.fleet.get(0).setParking("NONE");
+		mainBox.fleet.get(0).setPosition(mainBox.findSpecificPlace("I1"));
+		
+		
 		//Manual creation of tasks
 		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
 		//MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"));
