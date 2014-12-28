@@ -815,7 +815,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread.setManageredObjects(eventToDisplay, this);
 									eventGiven = true;
-									internalThread.start();
+									internalThread.run();
 								}
 								//Si la voiture n'a pas été traitée par thread1 déjà
 								else
