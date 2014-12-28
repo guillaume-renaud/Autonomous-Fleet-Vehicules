@@ -85,7 +85,13 @@ public class Main {
 		
 		mainBox.fleet.get(0).setCoordCarX(600);
 		mainBox.fleet.get(0).setCoordCarY(90);
-		mainBox.fleet.get(0).setBounds(600, 90, 32, 37);
+		mainBox.fleet.get(0).setBounds(600, 200, 32, 37);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mainBox.fleet.get(0).setLastPosition(null);
 		mainBox.fleet.get(0).setOccuped(true);
 		mainBox.fleet.get(0).setParking("NONE");
