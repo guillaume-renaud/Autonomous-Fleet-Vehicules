@@ -808,7 +808,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
-									internalThread.interrupt();
+										internalThread.interrupt();
 									try {
 										Thread.sleep(120);
 									} catch (InterruptedException e) {
@@ -832,6 +832,7 @@ import javax.swing.JLayeredPane;
 												noEventRemain = true;
 											
 											internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+											
 											internalThread2.interrupt();
 											try {
 												Thread.sleep(120);
@@ -864,6 +865,7 @@ import javax.swing.JLayeredPane;
 											noEventRemain = true;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+										
 										internalThread2.interrupt();
 										try {
 											Thread.sleep(120);
@@ -889,7 +891,7 @@ import javax.swing.JLayeredPane;
 										
 										if (tasks.isEmpty())
 											noEventRemain = true;
-										
+										System.out.println("YOLO SWAGG");
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										internalThread2.interrupt();
 										try {
@@ -910,6 +912,7 @@ import javax.swing.JLayeredPane;
 										noEventRemain = true;
 									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+									
 									internalThread.interrupt();
 									try {
 										Thread.sleep(120);
@@ -957,6 +960,7 @@ import javax.swing.JLayeredPane;
 											noEventRemain = true;
 										
 										internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+										
 										internalThread.interrupt();
 										try {
 											Thread.sleep(120);
@@ -989,7 +993,8 @@ import javax.swing.JLayeredPane;
 										noEventRemain = true;
 									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-									internalThread.interrupt();
+									
+										internalThread.interrupt();
 									try {
 										Thread.sleep(120);
 									} catch (InterruptedException e) {
@@ -1035,6 +1040,7 @@ import javax.swing.JLayeredPane;
 											noEventRemain = true;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+										
 										internalThread2.interrupt();
 										try {
 											Thread.sleep(120);
@@ -1068,6 +1074,7 @@ import javax.swing.JLayeredPane;
 									
 									
 									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+									
 									internalThread2.interrupt();
 									try {
 										Thread.sleep(120);
