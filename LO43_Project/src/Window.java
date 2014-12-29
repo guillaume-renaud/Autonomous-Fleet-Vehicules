@@ -17,6 +17,9 @@ import javax.swing.JLayeredPane;
 		MovingManager internalThread;
 		MovingManager internalThread2;
 		
+		boolean isRunningThread1 = false;
+		boolean isRunningThread2 = false;
+		
 		boolean eventGiven;
 		boolean noEventRemain;
 		MailBoxEvent eventToDisplay;
@@ -26,8 +29,8 @@ import javax.swing.JLayeredPane;
 			
 			mainBox = MB;	
 			tasks = new LinkedList<MailBoxEvent>();
-			internalThread = new MovingManager();
-			internalThread2 = new MovingManager();
+			internalThread = new MovingManager("internalThread", this);
+			internalThread2 = new MovingManager("internalThread2", this);
 			
 			// Creation of the JPanel and his JLayeredPane
 			JLayeredPane jlp = new JLayeredPane();
@@ -806,9 +809,10 @@ import javax.swing.JLayeredPane;
 									if (tasks.isEmpty())
 										noEventRemain = true;
 									
-									internalThread.setManageredObjects(eventToDisplay, this);
+									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+									
+									(new Thread(internalThread)).start();
 									eventGiven = true;
-									internalThread.run();
 								}
 								//Si la voiture n'a pas été traitée par thread1 déjà
 								else
@@ -824,18 +828,21 @@ import javax.swing.JLayeredPane;
 											if (tasks.isEmpty())
 												noEventRemain = true;
 											
-											internalThread2.setManageredObjects(eventToDisplay, this);
+											internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+											(new Thread(internalThread2)).start();
 											eventGiven = true;
-											internalThread2.run();
 										}
 										//Si les 2 thread sont partiellement libres avec une autre voiture, on prend l'event suivant. 
 										else
 										{
-											eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
-											//S'il n'y plus d'autres events on sort de la boucle
-											if (eventToDisplay == null)
+											//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
+											if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
 											{
 												noEventRemain = true;
+											}
+											else
+											{
+												eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
 											}
 										}
 									}
@@ -847,9 +854,9 @@ import javax.swing.JLayeredPane;
 										if (tasks.isEmpty())
 											noEventRemain = true;
 										
-										internalThread2.setManageredObjects(eventToDisplay, this);
+										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+										(new Thread(internalThread2)).start();
 										eventGiven = true;
-										internalThread2.run();
 									}
 										
 								}
@@ -868,9 +875,9 @@ import javax.swing.JLayeredPane;
 										if (tasks.isEmpty())
 											noEventRemain = true;
 										
-										internalThread2.setManageredObjects(eventToDisplay, this);
+										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+										(new Thread(internalThread2)).start();
 										eventGiven = true;
-										internalThread2.run();
 									}
 								}
 								//Sinon on l'attribue au thread1 totalement libre
@@ -881,9 +888,9 @@ import javax.swing.JLayeredPane;
 									if (tasks.isEmpty())
 										noEventRemain = true;
 									
-									internalThread.setManageredObjects(eventToDisplay, this);
+									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+									(new Thread(internalThread)).start();
 									eventGiven = true;
-									internalThread.run();
 								}
 							}
 							if (tasks.isEmpty())
@@ -898,11 +905,14 @@ import javax.swing.JLayeredPane;
 							//Si la voiture de l'évent est déjà traitée par le thread2 occupé on passe à un autre event
 							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 							{
-								eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
-								//S'il n'y plus d'autres events on sort de la boucle
-								if (eventToDisplay == null)
+								//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
+								if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
 								{
 									noEventRemain = true;
+								}
+								else
+								{
+									eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
 								}
 							}
 							//Si la voiture n'est pas traitée par le thread2 occupé 
@@ -919,18 +929,21 @@ import javax.swing.JLayeredPane;
 										if (tasks.isEmpty())
 											noEventRemain = true;
 										
-										internalThread.setManageredObjects(eventToDisplay, this);
+										internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+										(new Thread(internalThread)).start();
 										eventGiven = true;
-										internalThread.run();
 									}
 									//Sinon on passe à un autre event
 									else
 									{
-										eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
-										//S'il n'y plus d'autres events on sort de la boucle
-										if (eventToDisplay == null)
+										//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
+										if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
 										{
 											noEventRemain = true;
+										}
+										else
+										{
+											eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
 										}
 									}
 								}
@@ -942,9 +955,9 @@ import javax.swing.JLayeredPane;
 									if (tasks.isEmpty())
 										noEventRemain = true;
 									
-									internalThread.setManageredObjects(eventToDisplay, this);
+									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+									(new Thread(internalThread)).start();
 									eventGiven = true;
-									internalThread.run();
 								}
 							}
 						}
@@ -957,11 +970,15 @@ import javax.swing.JLayeredPane;
 							//Si la voiture de l'évent est déjà traitée par le thread1 occupé on passe à un autre event
 							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 							{
-								eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
-								//S'il n'y plus d'autres events on sort de la boucle
-								if (eventToDisplay == null)
+								
+								//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
+								if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
 								{
 									noEventRemain = true;
+								}
+								else
+								{
+									eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
 								}
 							}
 							//Si la voiture n'est pas traitée par le thread1 occupé 
@@ -978,18 +995,21 @@ import javax.swing.JLayeredPane;
 										if (tasks.isEmpty())
 											noEventRemain = true;
 										
-										internalThread2.setManageredObjects(eventToDisplay, this);
+										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+										(new Thread(internalThread2)).start();
 										eventGiven = true;
-										internalThread2.run();
 									}
 									//Sinon on passe à un autre event
 									else
 									{
-										eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
-										//S'il n'y plus d'autres events on sort de la boucle
-										if (eventToDisplay == null)
+										//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
+										if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
 										{
 											noEventRemain = true;
+										}
+										else
+										{
+											eventToDisplay = tasks.get(tasks.indexOf(eventToDisplay)+1);
 										}
 									}
 								}
@@ -1002,9 +1022,9 @@ import javax.swing.JLayeredPane;
 										noEventRemain = true;
 									
 									
-									internalThread2.setManageredObjects(eventToDisplay, this);
+									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+									(new Thread(internalThread2)).start();
 									eventGiven = true;
-									internalThread2.run();
 								}
 							}
 						}

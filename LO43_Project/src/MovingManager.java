@@ -3,25 +3,46 @@ public class MovingManager implements Runnable {
 			Car actualManagedCar;
 			MailBoxEvent actualManagedEvent;
 			Window window;
-			boolean isRunning = false;
+			String name;
 			
+			public MovingManager(String name, Window w)
+			{
+				this.name = name;
+				this.window = w;
+			}
 			
-			public void setManageredObjects (MailBoxEvent e, Window w)
+			public void setManageredObjects (MailBoxEvent e, Window w, String name)
 			{
 				actualManagedEvent = e;
 				window = w;
 				actualManagedCar = window.mainBox.fleet.get(e.indexUpdaterInMailBoxList);
-				isRunning = false;
+				this.name = name;
 			}
 			
 			public boolean isAlive()
 			{
-				return isRunning;
+				if (name.equals("internalThread"))
+				{
+					return window.isRunningThread1;
+				}
+				else
+				{
+					return window.isRunningThread2;
+				}
+				
+					
 			}
 			
 			public void run() {
 				
-				isRunning = true;
+				if (name.equals("internalThread"))
+				{
+					window.isRunningThread1 = true;
+				}
+				else if (name.equals("internalThread2"))
+				{
+					window.isRunningThread2 = true;
+				}
 				
 				window.nbFreeThread--;
 				
@@ -45,7 +66,14 @@ public class MovingManager implements Runnable {
 					
 				}
 				window.nbFreeThread++;
-				isRunning = false;
+				if (name.equals("internalThread"))
+				{
+					window.isRunningThread1 = false;
+				}
+				else if (name.equals("internalThread2"))
+				{
+					window.isRunningThread2 = false;
+				}
 			}
 			
 		}
