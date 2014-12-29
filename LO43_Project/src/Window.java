@@ -199,9 +199,9 @@ import javax.swing.JLayeredPane;
 				switch (end.getPlaceName())
 				{
 				case "O1" :
-					for(int i = 0;i<90;i++)
+					for(int i = 0;i<47;i++)
 					{
-						c.setBounds((int) (c.getCoordCarX()+i), (c.getCoordCarY()), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()+2*i), (c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -413,9 +413,9 @@ import javax.swing.JLayeredPane;
 				switch (end.getPlaceName())
 				{
 				case "O4" :
-					for(int i = 0;i<90;i++)
+					for(int i = 0;i<50;i++)
 					{
-						c.setBounds((int) (c.getCoordCarX()-i), (c.getCoordCarY()), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-2*i), (c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -484,9 +484,9 @@ import javax.swing.JLayeredPane;
 				switch (end.getPlaceName())
 				{
 				case "O5" :
-					for(int i = 0;i<61;i++)
+					for(int i = 0;i<64;i++)
 					{
-						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()+1.22*i), 32, 37);
+						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()+1.05*i), 32, 37);
 						try {
 							//Thread.sleep(100);
 							Thread.sleep(25);
@@ -556,7 +556,7 @@ import javax.swing.JLayeredPane;
 				switch (end.getPlaceName())
 				{
 				case "O6" :
-					for(int i = 0;i<31;i++)
+					for(int i = 0;i<35;i++)
 					{
 						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.6*i), 32, 37);
 						try {

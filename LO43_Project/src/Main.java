@@ -84,11 +84,11 @@ public class Main {
 		
 		
 		//Manual creation of tasks
-		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("C"));
-		MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("C"), mainBox.findSpecificPlace("R5"));
+		MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("R5"));
+		MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R5"), mainBox.findSpecificPlace("O5"));
 		
-		MailBoxEvent e3 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", null, mainBox.findSpecificPlace("C"));
-		MailBoxEvent e4 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("C"), mainBox.findSpecificPlace("R6"));
+		MailBoxEvent e3 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", null, mainBox.findSpecificPlace("R6"));
+		MailBoxEvent e4 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R6"), mainBox.findSpecificPlace("O6"));
 		//MailBoxEvent e3 = new MailBoxEvent("Car", 2, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I3"));
 		//MailBoxEvent e4 = new MailBoxEvent("Car", 3, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I4"));
 		//MailBoxEvent e5 = new MailBoxEvent("Car", 4, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I5"));
