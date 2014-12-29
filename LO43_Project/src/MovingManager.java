@@ -37,8 +37,13 @@ public class MovingManager extends Thread {
 			
 			public void run() {
 				
-				if(actualManagedEvent!=null)
-				{
+				try {
+					this.sleep(999999);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 					while(true)
 					{
 
@@ -84,22 +89,7 @@ public class MovingManager extends Thread {
 						}
 
 
-						try {
-							this.sleep(999999);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-
-				}
-				
-				try {
-					this.sleep(999999);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					}	
 				
 			}
 			
