@@ -895,7 +895,6 @@ import javax.swing.JLayeredPane;
 										
 										if (tasks.isEmpty())
 											noEventRemain = true;
-										System.out.println("YOLO SWAGG");
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										internalThread2.interrupt();
 										try {
