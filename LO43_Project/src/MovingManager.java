@@ -21,7 +21,7 @@ public class MovingManager extends Thread {
 				this.name = name;
 			}
 			
-			/*public boolean isAlive()
+			public boolean isAliveOther()
 			{
 				if (name.equals("internalThread"))
 				{
@@ -33,7 +33,7 @@ public class MovingManager extends Thread {
 				}
 				
 					
-			}*/
+			}
 			
 			public void run() {
 				
