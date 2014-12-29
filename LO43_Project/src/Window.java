@@ -785,7 +785,7 @@ import javax.swing.JLayeredPane;
 			//Boucle infine du thread affichage
 			while(true)
 			{
-				System.out.println(passage+"-ième passage dans la boucle infinie de run() de Window ! ");
+				//System.out.println(passage+"-ième passage dans la boucle infinie de run() de Window ! ");
 				
 				eventGiven = false;
 				noEventRemain = false;

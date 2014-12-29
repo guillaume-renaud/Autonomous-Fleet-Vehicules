@@ -97,8 +97,8 @@ public class Main {
 		MailBoxEvent e8 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R4"), mainBox.findSpecificPlace("O4"));
 
 		
-		window.tasks.addLast(e1);window.tasks.addLast(e2);window.tasks.addLast(e3);window.tasks.addLast(e4);
-		window.tasks.addLast(e5);window.tasks.addLast(e6);window.tasks.addLast(e7);window.tasks.addLast(e8);
+		//window.tasks.addLast(e1);window.tasks.addLast(e2);window.tasks.addLast(e3);window.tasks.addLast(e4);
+		//window.tasks.addLast(e5);window.tasks.addLast(e6);window.tasks.addLast(e7);window.tasks.addLast(e8);
 		
 		
 		
@@ -120,7 +120,7 @@ public class Main {
 		
 		//window.moveToStartingPoint(window.mainBox.findSpecificPlace("I1"), mainBox.fleet.get(0));
 		//window.moveCarView(window.mainBox.findSpecificPlace("I1"), window.mainBox.findSpecificPlace("R1"),mainBox.fleet.get(0));
-		//mainBox.commandControl.start();
+		mainBox.commandControl.start();
 
 		
 		//System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
