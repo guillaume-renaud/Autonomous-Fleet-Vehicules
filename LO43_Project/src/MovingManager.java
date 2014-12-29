@@ -1,4 +1,4 @@
-public class MovingManager implements Runnable {
+public class MovingManager extends Thread {
 			
 			Car actualManagedCar;
 			MailBoxEvent actualManagedEvent;
@@ -19,7 +19,7 @@ public class MovingManager implements Runnable {
 				this.name = name;
 			}
 			
-			public boolean isAlive()
+			/*public boolean isAlive()
 			{
 				if (name.equals("internalThread"))
 				{
@@ -31,7 +31,7 @@ public class MovingManager implements Runnable {
 				}
 				
 					
-			}
+			}*/
 			
 			public void run() {
 				
@@ -66,6 +66,7 @@ public class MovingManager implements Runnable {
 					
 				}
 				window.nbFreeThread++;
+				
 				if (name.equals("internalThread"))
 				{
 					window.isRunningThread1 = false;
@@ -74,6 +75,9 @@ public class MovingManager implements Runnable {
 				{
 					window.isRunningThread2 = false;
 				}
+				
+				this.destroy();
+				
 			}
 			
 		}
