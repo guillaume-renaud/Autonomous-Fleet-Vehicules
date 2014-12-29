@@ -780,11 +780,13 @@ import javax.swing.JLayeredPane;
 		
 		@Override
 		public void run() {
-						
+			int passage = 0;			
 			
 			//Boucle infine du thread affichage
 			while(true)
 			{
+				System.out.println(passage+"-ième passage dans la boucle infinie de run() de Window ! ");
+				
 				eventGiven = false;
 				noEventRemain = false;
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
@@ -1091,6 +1093,7 @@ import javax.swing.JLayeredPane;
 					}
 					
 				}
+				passage++;
 			}
 		}
 		
