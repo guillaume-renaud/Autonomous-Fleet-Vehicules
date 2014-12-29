@@ -794,7 +794,7 @@ import javax.swing.JLayeredPane;
 					eventToDisplay = tasks.getFirst();
 					
 					//Cas où le thread1 est libre et le thread2 est libre
-					if((!internalThread.isAlive()) && (!internalThread2.isAlive()))
+					if((!internalThread.isAliveOther()) && (!internalThread2.isAliveOther()))
 					{
 						while(!eventGiven && !noEventRemain)
 						{
@@ -898,7 +898,7 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					//Cas où le thread1 est libre et le thread2 est occupé
-					else if((!internalThread.isAlive()) && (internalThread2.isAlive()))
+					else if((!internalThread.isAliveOther()) && (internalThread2.isAliveOther()))
 					{
 						while(!eventGiven && !noEventRemain)
 						{
@@ -963,7 +963,7 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					//Cas où le thread1 est occupé et le thread2 est libre
-					else if((internalThread.isAlive()) && (!internalThread2.isAlive()))
+					else if((internalThread.isAliveOther()) && (!internalThread2.isAliveOther()))
 					{
 						while(!eventGiven && !noEventRemain)
 						{
