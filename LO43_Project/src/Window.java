@@ -788,7 +788,6 @@ import javax.swing.JLayeredPane;
 			{
 				eventGiven = false;
 				noEventRemain = false;
-				
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
@@ -797,7 +796,6 @@ import javax.swing.JLayeredPane;
 					//Cas où le thread1 est libre et le thread2 est libre
 					if((!internalThread.isAlive()) && (!internalThread2.isAlive()))
 					{
-						
 						while(!eventGiven && !noEventRemain)
 						{
 							//Si le thread1 est partiellement libre, cad n'a pas encore fini avec sa voiture
