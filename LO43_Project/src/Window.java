@@ -30,7 +30,9 @@ import javax.swing.JLayeredPane;
 			mainBox = MB;	
 			tasks = new LinkedList<MailBoxEvent>();
 			internalThread = new MovingManager("internalThread", this);
+			internalThread.start();
 			internalThread2 = new MovingManager("internalThread2", this);
+			internalThread2.start();
 			
 			// Creation of the JPanel and his JLayeredPane
 			JLayeredPane jlp = new JLayeredPane();
@@ -811,7 +813,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
-									internalThread.start();
+									internalThread.resume();
 									eventGiven = true;
 								}
 								//Si la voiture n'a pas été traitée par thread1 déjà
@@ -829,7 +831,7 @@ import javax.swing.JLayeredPane;
 												noEventRemain = true;
 											
 											internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-											(new Thread(internalThread2)).start();
+											internalThread2.resume();
 											eventGiven = true;
 										}
 										//Si les 2 thread sont partiellement libres avec une autre voiture, on prend l'event suivant. 
@@ -855,7 +857,7 @@ import javax.swing.JLayeredPane;
 											noEventRemain = true;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-										internalThread2.start();
+										internalThread2.resume();
 										eventGiven = true;
 									}
 										
@@ -876,7 +878,7 @@ import javax.swing.JLayeredPane;
 											noEventRemain = true;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-										internalThread2.start();
+										internalThread2.resume();
 										eventGiven = true;
 									}
 								}
@@ -889,7 +891,7 @@ import javax.swing.JLayeredPane;
 										noEventRemain = true;
 									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-									internalThread.start();
+									internalThread.resume();
 									eventGiven = true;
 								}
 							}
@@ -930,7 +932,7 @@ import javax.swing.JLayeredPane;
 											noEventRemain = true;
 										
 										internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-										internalThread.start();
+										internalThread.resume();
 										eventGiven = true;
 									}
 									//Sinon on passe à un autre event
@@ -956,7 +958,7 @@ import javax.swing.JLayeredPane;
 										noEventRemain = true;
 									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-									internalThread.start();
+									internalThread.resume();
 									eventGiven = true;
 								}
 							}
@@ -996,7 +998,7 @@ import javax.swing.JLayeredPane;
 											noEventRemain = true;
 										
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-										internalThread2.start();
+										internalThread2.resume();
 										eventGiven = true;
 									}
 									//Sinon on passe à un autre event
@@ -1023,7 +1025,7 @@ import javax.swing.JLayeredPane;
 									
 									
 									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-									internalThread2.start();
+									internalThread2.resume();
 									eventGiven = true;
 								}
 							}

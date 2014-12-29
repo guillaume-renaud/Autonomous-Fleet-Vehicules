@@ -35,49 +35,57 @@ public class MovingManager extends Thread {
 			
 			public void run() {
 				
-				if (name.equals("internalThread"))
+				while(true)
 				{
-					window.isRunningThread1 = true;
-				}
-				else if (name.equals("internalThread2"))
-				{
-					window.isRunningThread2 = true;
-				}
-				
-				window.nbFreeThread--;
-				
-				if (actualManagedEvent.updateAction.equals("POSITION_CHANGED"))
-				{
-					if (actualManagedEvent.lastPlace==null)
+					if (actualManagedEvent!=null)
 					{
-						window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
+						if (name.equals("internalThread"))
+						{
+							window.isRunningThread1 = true;
+						}
+						else if (name.equals("internalThread2"))
+						{
+							window.isRunningThread2 = true;
+						}
+
+						window.nbFreeThread--;
+
+						if (actualManagedEvent.updateAction.equals("POSITION_CHANGED"))
+						{
+							if (actualManagedEvent.lastPlace==null)
+							{
+								window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
+							}
+							else
+							{
+
+								window.moveCarView(window.mainBox.findSpecificPlace(actualManagedEvent.lastPlace.getPlaceName()), window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
+							}
+
+						}
+						else if (actualManagedEvent.updateAction.equals("PARKED"))
+						{
+							window.moveToParking(actualManagedCar);
+							actualManagedCar = null;
+
+						}
+						window.nbFreeThread++;
+
+						if (name.equals("internalThread"))
+						{
+							window.isRunningThread1 = false;
+						}
+						else if (name.equals("internalThread2"))
+						{
+							window.isRunningThread2 = false;
+						}
+
 					}
-					else
-					{
-						
-						window.moveCarView(window.mainBox.findSpecificPlace(actualManagedEvent.lastPlace.getPlaceName()), window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
-					}
-					
+					this.suspend();
+
 				}
-				else if (actualManagedEvent.updateAction.equals("PARKED"))
-				{
-					window.moveToParking(actualManagedCar);
-					actualManagedCar = null;
-					
-				}
-				window.nbFreeThread++;
-				
-				if (name.equals("internalThread"))
-				{
-					window.isRunningThread1 = false;
-				}
-				else if (name.equals("internalThread2"))
-				{
-					window.isRunningThread2 = false;
-				}
-				
-				this.destroy();
-				
+
+
 			}
 			
 		}
