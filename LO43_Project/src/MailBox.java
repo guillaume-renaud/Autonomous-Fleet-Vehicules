@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 
-public class MailBox {
+public class MailBox implements  Runnable{
 
 	LinkedList<Car> fleet; // I have changed it to LinkedList which is a specific queue.
 	
@@ -17,6 +17,8 @@ public class MailBox {
 	
 	Controller commandControl;
 	
+	LinkedList<MailBoxEvent> eventFire;
+	
 	Window window;
 	
 	public MailBox() {
@@ -24,6 +26,7 @@ public class MailBox {
 		passengers = new LinkedList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
+		eventFire = new LinkedList<MailBoxEvent>();
 		commandControl = new Controller(this);
 		this.addMailBoxListener(commandControl);
 	}
@@ -65,35 +68,9 @@ public class MailBox {
 	}
 	
 	public void fireMailBoxUpdated (MailBoxEvent e) {
-		switch (e.classNameOfUpdater) 
-		{
-			case ("Car") : {
-				for (MailBoxListener l : listeners)
-				{
-					l.onMailReceivedByCar(e);
-				}
-			} break;
-			
-			case ("Controller") : {
-				for (MailBoxListener l : listeners)
-				{
-					l.onMailReceivedByController(e);
-				}
-			} break;
-			
-			case ("Passenger") : {
-				for (MailBoxListener l : listeners)
-				{
-					l.onMailReceivedByMan(e);
-				}
-			} break;
-			case ("Start") : {
-				for (MailBoxListener l : listeners)
-				{
-					l.onMailReceivedByController(e);
-				}
-			} break;
-		}
+		this.eventFire.addLast(e);
+		System.out.println("nombre d'event" + eventFire.size());
+		
 	}
 
 	public Car findFreeCar(String p) {
@@ -126,6 +103,50 @@ public class MailBox {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		MailBoxEvent e;
+		while(true)
+		{
+			if(!eventFire.isEmpty())
+			{
+				e = eventFire.getFirst();
+				eventFire.remove(e);
+				switch (e.classNameOfUpdater) 
+				{
+					case ("Car") : {
+						for (MailBoxListener l : listeners)
+						{
+							l.onMailReceivedByCar(e);
+						}
+					} break;
+					
+					case ("Controller") : {
+						for (MailBoxListener l : listeners)
+						{
+							l.onMailReceivedByController(e);
+						}
+					} break;
+					
+					case ("Passenger") : {
+						for (MailBoxListener l : listeners)
+						{
+							l.onMailReceivedByMan(e);
+						}
+					} break;
+					case ("Start") : {
+						for (MailBoxListener l : listeners)
+						{
+							l.onMailReceivedByController(e);
+						}
+					} break;
+				}
+			}
+		
+		}
 	}
 	
 	

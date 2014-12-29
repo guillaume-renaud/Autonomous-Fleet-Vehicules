@@ -39,10 +39,7 @@ public class Controller implements MailBoxListener {
 		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
 		System.out.println("Le controlleur a bien donné une mission à la voiture "+c.getCarName()+" : la voiture doit aller de "+start.getPlaceName()+" à "+end.getPlaceName());
-		
 		mainBox.fireMailBoxUpdated(event);
-		MailBoxEvent event2 = new MailBoxEvent (this.getClass().getName(), 0, "READY");
-		mainBox.fireMailBoxUpdated(event2);
 	}
 
 	//This method will be called when we want to release a car

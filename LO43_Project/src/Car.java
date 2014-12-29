@@ -74,6 +74,7 @@ public class Car extends JPanel implements MailBoxListener {
 		for(Place p : position.getAdjacencyPlaceList())
 			for(int i=0;i<19;i++)
 			{
+				if(order.typeOrder.equals("MISSION"))
 				if(order.mission.requestMap[i])
 				{
 					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
@@ -88,7 +89,7 @@ public class Car extends JPanel implements MailBoxListener {
 					}	
 				}	
 			}
-		for(Place p : position.getAdjacencyPlaceList())
+		/*for(Place p : position.getAdjacencyPlaceList())
 		{
 			for(int i=0;i<19;i++)
 			{
@@ -151,7 +152,7 @@ public class Car extends JPanel implements MailBoxListener {
 				}	
 			}
 
-		}
+		}*/
 	}	
 	
 	public void paintComponent(Graphics g)
@@ -182,6 +183,10 @@ public class Car extends JPanel implements MailBoxListener {
 				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "READY");
 				mainBox.fireMailBoxUpdated(event);
 			}
+		}
+		if(e.updateAction.equals("POSITION_CHANGED") && e.indexUpdaterInMailBoxList == mainBox.fleet.indexOf(this) && this.order.typeOrder.equals("MISSION"))
+		{
+			this.move();
 		}
 	}
 
@@ -220,13 +225,13 @@ public class Car extends JPanel implements MailBoxListener {
 			}else
 			{
 				this.move();
-				System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
+				//System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
 			}
 			
 		}
 		else if(this.order.typeOrder.equals("RELEASE")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 		{
-			
+			System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu RELEASE");
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "RELEASED");
 			System.out.println("La voiture "+this.getCarName()+" c'est bien RELEASED");
