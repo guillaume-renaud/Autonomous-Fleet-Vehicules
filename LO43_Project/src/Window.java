@@ -12,7 +12,8 @@ import javax.swing.JLayeredPane;
 		MailBox mainBox; 
 		LinkedList<MailBoxEvent> tasks;
 		int nbFreeThread=2;
-		Thread thread;
+		
+		Thread tempo;
 		
 		MovingManager internalThread;
 		MovingManager internalThread2;
@@ -91,6 +92,7 @@ import javax.swing.JLayeredPane;
 			c.setCoordCarY(1000);
 		}
 		
+		@SuppressWarnings("static-access")
 		public void moveCarView(Place start,Place end,Car c){
 		if(start.getPlaceName().contains("I"))
 		{
@@ -103,7 +105,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) c.getX()-i, (int) ((int) c.getY()+(2.4*i)), 32, 37);
 						try {
 							
-							Thread.sleep(75);
+							tempo.sleep(75);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -119,7 +121,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) c.getX()+i, (int) ((int) c.getY()+(1.09*i)), 32, 37);
 						try {
 							
-							Thread.sleep(75);
+							tempo.sleep(75);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -135,7 +137,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getX()+i/3.), (int) (c.getY()), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(40);
+							tempo.sleep(40);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -151,7 +153,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+i), (int) ((int) c.getCoordCarY()-(2.04*i)), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -167,7 +169,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-i), (int) ((int) c.getCoordCarY()-(1.13*i)), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(15);
+							tempo.sleep(15);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -183,7 +185,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-i),( c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(8);
+							tempo.sleep(8);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -206,7 +208,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+2*i), (c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -222,7 +224,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-2.06*i), (int) (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -238,7 +240,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(15);
+							tempo.sleep(15);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -254,7 +256,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+2*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(10);
+							tempo.sleep(10);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -277,7 +279,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()-1.22*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -293,7 +295,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+2.06*i), (int) (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -309,7 +311,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-2.3*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -325,7 +327,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+2*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(5);
+							tempo.sleep(5);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -349,7 +351,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()-2.6*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -365,7 +367,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+2.06*i), (int) (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -381,7 +383,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(20);
+							tempo.sleep(20);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -397,7 +399,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+i/3), (int) (c.getCoordCarY()+5.24*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(50);
+							tempo.sleep(50);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -420,7 +422,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-2*i), (c.getCoordCarY()), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -436,7 +438,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+1.85*i), (int) (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -452,7 +454,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -468,7 +470,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-i/3), (int) (c.getCoordCarY()-5.24*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(50);
+							tempo.sleep(50);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -491,7 +493,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-i), (int) (c.getCoordCarY()+1.05*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -507,7 +509,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+2.04*i), (int) (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -523,7 +525,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-1.85*i), (int) (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -539,7 +541,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-2*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -563,7 +565,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+i), (int) (c.getCoordCarY()+2.6*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -579,7 +581,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-2.06*i), (int) (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -595,7 +597,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -611,7 +613,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-2*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(10);
+							tempo.sleep(10);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -634,7 +636,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -650,7 +652,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(20);
+							tempo.sleep(20);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -666,7 +668,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()+2*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -682,7 +684,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()), (c.getCoordCarY()-2*i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -698,7 +700,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()+1.73*i), (c.getCoordCarY()-i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -714,7 +716,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							Thread.sleep(25);
+							tempo.sleep(25);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
