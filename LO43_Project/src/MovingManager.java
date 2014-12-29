@@ -29,13 +29,7 @@ public class MovingManager extends Thread {
 			
 			public void run() {
 				
-				try {
-					this.sleep(999999);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					Thread.currentThread().interrupt();
-				}
+				this.sleep(999999);
 				
 					while(true)
 					{
@@ -67,17 +61,21 @@ public class MovingManager extends Thread {
 
 						isRunning = false;
 						
-						try {
+						
 							this.sleep(999999);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-							Thread.currentThread().interrupt();
-						}
+						
 
 					}	
-				
+					
 			}
 			
-			
+			private void sleep(int second)
+			{
+			try {
+			Thread.sleep(second*1000);
+			} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			}
+			}
 		}
