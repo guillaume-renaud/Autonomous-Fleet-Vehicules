@@ -30,7 +30,7 @@ public class MovingManager extends Thread {
 			public void run() {
 				
 				try {
-					this.sleep(999999);
+					MovingManager.sleep(999999);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -67,7 +67,7 @@ public class MovingManager extends Thread {
 						isRunning = false;
 						
 						try {
-							this.sleep(999999);
+							MovingManager.sleep(999999);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

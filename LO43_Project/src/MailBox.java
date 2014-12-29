@@ -69,7 +69,6 @@ public class MailBox implements  Runnable{
 	
 	public void fireMailBoxUpdated (MailBoxEvent e) {
 		this.eventFire.addLast(e);
-		System.out.println("nombre d'event" + eventFire.size());
 		
 	}
 
