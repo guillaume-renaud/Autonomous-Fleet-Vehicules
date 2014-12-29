@@ -87,7 +87,13 @@ public class MovingManager extends Thread {
 						{
 							window.isRunningThread2 = false;
 						}
-
+						
+						try {
+							this.sleep(999999);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 
 					}	
 				
