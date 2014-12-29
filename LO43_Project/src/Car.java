@@ -184,7 +184,7 @@ public class Car extends JPanel implements MailBoxListener {
 				mainBox.fireMailBoxUpdated(event);
 			}
 		}
-		if(e.updateAction.equals("POSITION_CHANGED") && e.indexUpdaterInMailBoxList == mainBox.fleet.indexOf(this) && this.order.typeOrder.equals("MISSION"))
+		if(e.updateAction.equals("POSITION_CHANGED") && e.indexUpdaterInMailBoxList == mainBox.fleet.indexOf(this) && this.order.typeOrder.equals("MISSION") && e.lastPlace!=null)
 		{
 			this.move();
 		}
