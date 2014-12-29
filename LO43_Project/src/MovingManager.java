@@ -4,7 +4,7 @@ public class MovingManager extends Thread {
 			MailBoxEvent actualManagedEvent;
 			Window window;
 			String name;
-			boolean stopThread = false;
+			boolean isRunning = false;
 			
 			
 			public MovingManager(String name, Window w)
@@ -21,17 +21,9 @@ public class MovingManager extends Thread {
 				this.name = name;
 			}
 			
-			public boolean isAliveOther()
+			public boolean isRunning()
 			{
-				if (name.equals("internalThread"))
-				{
-					return window.isRunningThread1;
-				}
-				else
-				{
-					return window.isRunningThread2;
-				}
-				
+				return isRunning;
 					
 			}
 			
@@ -47,14 +39,7 @@ public class MovingManager extends Thread {
 					while(true)
 					{
 
-						if (name.equals("internalThread"))
-						{
-							window.isRunningThread1 = true;
-						}
-						else if (name.equals("internalThread2"))
-						{
-							window.isRunningThread2 = true;
-						}
+						isRunning = true;
 
 						window.nbFreeThread--;
 
@@ -79,14 +64,7 @@ public class MovingManager extends Thread {
 						}
 						window.nbFreeThread++;
 
-						if (name.equals("internalThread"))
-						{
-							window.isRunningThread1 = false;
-						}
-						else if (name.equals("internalThread2"))
-						{
-							window.isRunningThread2 = false;
-						}
+						isRunning = false;
 						
 						try {
 							this.sleep(999999);
