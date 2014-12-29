@@ -17,9 +17,6 @@ import javax.swing.JLayeredPane;
 		MovingManager internalThread;
 		MovingManager internalThread2;
 		
-		boolean isRunningThread1 = false;
-		boolean isRunningThread2 = false;
-		
 		boolean eventGiven;
 		boolean noEventRemain;
 		MailBoxEvent eventToDisplay;
@@ -794,7 +791,7 @@ import javax.swing.JLayeredPane;
 					eventToDisplay = tasks.getFirst();
 					
 					//Cas où le thread1 est libre et le thread2 est libre
-					if((!internalThread.isAliveOther()) && (!internalThread2.isAliveOther()))
+					if((!internalThread.isRunning()) && (!internalThread2.isRunning()))
 					{
 						while(!eventGiven && !noEventRemain)
 						{
@@ -898,7 +895,7 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					//Cas où le thread1 est libre et le thread2 est occupé
-					else if((!internalThread.isAliveOther()) && (internalThread2.isAliveOther()))
+					else if((!internalThread.isRunning()) && (internalThread2.isRunning()))
 					{
 						while(!eventGiven && !noEventRemain)
 						{
@@ -963,7 +960,7 @@ import javax.swing.JLayeredPane;
 						}
 					}
 					//Cas où le thread1 est occupé et le thread2 est libre
-					else if((internalThread.isAliveOther()) && (!internalThread2.isAliveOther()))
+					else if((internalThread.isRunning()) && (!internalThread2.isRunning()))
 					{
 						while(!eventGiven && !noEventRemain)
 						{
