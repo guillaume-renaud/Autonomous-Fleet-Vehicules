@@ -11,6 +11,7 @@ public class Passenger implements MailBoxListener {
 	
 	
 	public Passenger(String s,MailBox m){
+		System.out.println(s);
 		mainBox = m;
 		Scanner scanner;
 		scanner = new Scanner(s);
@@ -46,6 +47,7 @@ public class Passenger implements MailBoxListener {
 		}else if(action.equals("MISSION") && this.passengerNumber == mainBox.commandControl.actualClient.passengerNumber+1){
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Requette envoyée");
+			
 			mainBox.fireMailBoxUpdated(event);
 		}
 		

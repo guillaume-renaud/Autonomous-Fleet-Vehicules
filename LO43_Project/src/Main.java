@@ -128,6 +128,14 @@ public class Main {
 		//for (Car c : mainBox.fleet)
 		//	System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());
 		
+		Thread thread1 = null;
+		try {
+			thread1.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Nombre de passagers dans la liste dans BAL : "+mainBox.passengers.size());
 		
 		//mainBox.commandControl.test();
 	}

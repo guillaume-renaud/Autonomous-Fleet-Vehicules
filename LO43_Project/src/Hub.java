@@ -25,7 +25,7 @@ public class Hub extends JPanel
 				
 				mainBox = MB;
 				
-				RequestFrame rf = new RequestFrame();
+				RequestFrame rf = new RequestFrame(mainBox);
 				NewRequest newRequest = new NewRequest(rf);
 				
 				nbCar = new JLabel ("Number of cars reserved : "+this.nbCarOccuped());
@@ -68,5 +68,10 @@ public class Hub extends JPanel
 						nb++;
 				}
 				return nb;
+			}
+			
+			public void updateLabels() {
+				nbCar.setText("Number of cars reserved : "+this.nbCarOccuped());
+				nbPark.setText("Number of cars parked : "+this.nbCarParked());
 			}
 		}

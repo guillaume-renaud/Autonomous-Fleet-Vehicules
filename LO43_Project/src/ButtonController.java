@@ -9,10 +9,12 @@ public class ButtonController implements ActionListener{
 
 	
 	JButton button;
-	JFrame jf;
+	RequestFrame jf;
+	MailBox mainBox;
 	
-	public ButtonController (JFrame jff) {
+	public ButtonController (RequestFrame jff, MailBox MB) {
 		jf = jff;
+		mainBox = MB;
 	}
 	
 	@Override
@@ -23,6 +25,19 @@ public class ButtonController implements ActionListener{
 		
 		if(button.getText().equals("Ok"))
 		{
+			String depart = (String)jf.start.getSelectedItem();
+			String arrivee = (String)jf.end.getSelectedItem();
+			
+			Passenger p = new Passenger((mainBox.passengers.size()+1)+" start:"+depart+" destination:"+arrivee, mainBox);
+			
+			mainBox.passengers.addLast(p);
+			mainBox.addMailBoxListener(p);
+		
+			MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), mainBox.passengers.indexOf(p), "NEW_REQUEST");
+			
+			System.out.println("Requette envoyée");
+			
+			mainBox.fireMailBoxUpdated(event);
 			
 		}
 		else if(button.getText().equals("Cancel"))
