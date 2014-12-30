@@ -7,8 +7,8 @@ public class NewRequest extends JButton {
 			
 			RequestFrame rf;
 			
-			public NewRequest (RequestFrame rf) {
-				super("New Request");
+			public NewRequest (RequestFrame rf, String text) {
+				super(text);
 				this.rf = rf;
 				
 				this.addActionListener(new ButtonRequestController());

@@ -12,10 +12,19 @@ public class ButtonRequestController implements ActionListener {
 				Object o = arg0.getSource();
 
 				button = (NewRequest) o;
-				if(button.rf.isVisible())
-					this.button.rf.setVisible(false);
-				else
-					this.button.rf.setVisible(true);
+				
+				if (button.getText().equals("New Request"))
+				{
+					if(button.rf.isVisible())
+						this.button.rf.setVisible(false);
+					else
+						this.button.rf.setVisible(true);
+				}
+				else if (button.getText().equals("Random Request"))
+				{
+					
+				}
+				
 				
 				
 				

@@ -19,6 +19,7 @@ public class Hub extends JPanel
 			JLabel nbCar;
 			JLabel nbPark;
 			JPanel container;
+			JPanel container2;
 			
 			public Hub (MailBox MB) {
 				super();
@@ -26,22 +27,29 @@ public class Hub extends JPanel
 				mainBox = MB;
 				
 				RequestFrame rf = new RequestFrame(mainBox);
-				NewRequest newRequest = new NewRequest(rf);
+				NewRequest newRequest = new NewRequest(rf, "New Request");
+				NewRequest randomRequest = new NewRequest(rf, "Random Request");
 				
 				nbCar = new JLabel ("Number of cars reserved : "+this.nbCarOccuped());
 				nbPark = new JLabel ("Number of cars parked : "+this.nbCarParked());
 				container = new JPanel();
+				container2 = new JPanel();
 				
 				nbCar.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 				nbPark.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 				container.setBackground(Color.LIGHT_GRAY);
 				container.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 				container.setLayout(new FlowLayout());
+				container2.setBackground(Color.LIGHT_GRAY);
+				container2.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
+				container2.setLayout(new FlowLayout());
 				
 				this.add(nbCar);
 				this.add(nbPark);
 				container.add(newRequest);
+				container2.add(randomRequest);
 				this.add(container);
+				this.add(container2);
 				
 				this.setLayout(new GridLayout(6,1));
 				this.setBackground(Color.LIGHT_GRAY);
