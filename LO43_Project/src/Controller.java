@@ -3,6 +3,7 @@ public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
 	Passenger actualClient;
+	int nbNewRequest = 0;
 	//String requestInTraitment;
 	
 	int nbCarInMission = 0;
@@ -29,6 +30,7 @@ public class Controller implements MailBoxListener {
 		this.nbCarInMission++;
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
+		nbNewRequest--;
 	}
 	
 	//This method will be called when we want to give a mission with a destination to a car
@@ -149,8 +151,9 @@ public class Controller implements MailBoxListener {
 		String action = e.updateAction;
 		if (action.equals("NEW_REQUEST"))
 		{
+			nbNewRequest++;
 			Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
-			if(nbCarInMission < 3)
+			if(nbNewRequest < 3)
 			{
 				this.actualClient = passenger;
 				Car car = null;
