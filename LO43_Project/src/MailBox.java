@@ -3,6 +3,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 
 public class MailBox implements  Runnable{
@@ -17,7 +19,7 @@ public class MailBox implements  Runnable{
 	
 	Controller commandControl;
 	
-	LinkedList<MailBoxEvent> eventFire;
+	LinkedBlockingDeque<MailBoxEvent> eventFire;
 	
 	Window window;
 	
@@ -26,7 +28,7 @@ public class MailBox implements  Runnable{
 		passengers = new LinkedList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
-		eventFire = new LinkedList<MailBoxEvent>();
+		eventFire = new LinkedBlockingDeque<MailBoxEvent>();
 		commandControl = new Controller(this);
 		this.addMailBoxListener(commandControl);
 	}
