@@ -130,12 +130,13 @@ public class Main {
 		
 		Thread thread1 = null;
 		try {
-			thread1.sleep(5000);
+			thread1.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("Nombre de passagers dans la liste dans BAL : "+mainBox.passengers.size());
+		System.out.println("Le thread calcul est toujours vivant ?: "+calcul.isAlive());
 		
 		//mainBox.commandControl.test();
 	}
