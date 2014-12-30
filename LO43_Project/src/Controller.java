@@ -147,31 +147,38 @@ public class Controller implements MailBoxListener {
 	public void onMailReceivedByMan(MailBoxEvent e) {
 		
 		String action = e.updateAction;
-		Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
-		this.actualClient = passenger;
-		Car car = null;
 		if (action.equals("NEW_REQUEST"))
 		{
-			System.out.println("Requette bien reçue par le controller");
-			
-			String beginning = actualClient.request.start;
-			
-			switch (beginning){
-			case "I1" : car = this.findFreeCar("P1");
-				break;
-			case "I2" : car = this.findFreeCar("P2");
-				break;
-			case "I3" : car = this.findFreeCar("P3");
-				break;
-			case "I4" : car = this.findFreeCar("P4");
-				break;
-			case "I5" : car = this.findFreeCar("P5");
-				break;
-			case "I6" : car = this.findFreeCar("P6");
-				break;
+			Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
+			if(nbCarInMission < 3)
+			{
+				this.actualClient = passenger;
+				Car car = null;
+				System.out.println("Requette bien reçue par le controller");
+				
+				String beginning = actualClient.request.start;
+				
+				switch (beginning){
+				case "I1" : car = this.findFreeCar("P1");
+					break;
+				case "I2" : car = this.findFreeCar("P2");
+					break;
+				case "I3" : car = this.findFreeCar("P3");
+					break;
+				case "I4" : car = this.findFreeCar("P4");
+					break;
+				case "I5" : car = this.findFreeCar("P5");
+					break;
+				case "I6" : car = this.findFreeCar("P6");
+					break;
+				}
+				car.setPosition(null);
+				this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+			}else{
+				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "WAIT", mainBox.passengers.indexOf(passenger));
+				mainBox.fireMailBoxUpdated(event);
 			}
-			car.setPosition(null);
-			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+			
 		}
 	}
 
