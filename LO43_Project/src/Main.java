@@ -128,15 +128,6 @@ public class Main {
 		//for (Car c : mainBox.fleet)
 		//	System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());
 		
-		Thread thread1 = null;
-		try {
-			thread1.sleep(10000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Nombre de passagers dans la liste dans BAL : "+mainBox.passengers.size());
-		System.out.println("Le thread calcul est toujours vivant ?: "+calcul.isAlive());
 		
 		//mainBox.commandControl.test();
 	}

@@ -71,6 +71,7 @@ public class MailBox implements  Runnable{
 		this.eventFire.addLast(e);
 		if(!eventFire.isEmpty())
 		System.out.println("event :"+eventFire.getLast().updateAction);
+		System.out.println("size :"+eventFire.size());
 	}
 
 	public Car findFreeCar(String p) {
