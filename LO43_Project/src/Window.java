@@ -20,7 +20,11 @@ import javax.swing.JLayeredPane;
 		
 		boolean eventGiven;
 		boolean noEventRemain;
+		
 		MailBoxEvent eventToDisplay;
+		Hub displayer;
+		EventLog log;
+		Background bg;
 		
 		public Window(MailBox MB)
 		{
@@ -37,17 +41,17 @@ import javax.swing.JLayeredPane;
 			jlp.setOpaque(false);
 			
 			// Create the HUB
-			Hub displayer = new Hub(mainBox);
+			displayer = new Hub(mainBox);
 			
 			// Create the event log
-			EventLog log = new EventLog(mainBox);
+			log = new EventLog(mainBox);
 			//this.getContentPane().add(log.scrollPane, BorderLayout.CENTER);
 			//log.scrollPane.setViewportView(log);
 			//log.updateLog("La police lance une requette et attend que les voleurs de voiture soient RELEASE : les poulets arriveront toujors en retard ");
 			
 			
 			// Create background image
-			Background bg = new Background();
+			bg = new Background();
 			bg.setSize(new Dimension(800,600));
 			
 			// Create car image
@@ -94,17 +98,17 @@ import javax.swing.JLayeredPane;
 		
 		@SuppressWarnings("static-access")
 		public void moveCarView(Place start,Place end,Car c){
-		if(start.getPlaceName().contains("I"))
-		{
-			//calcul.interrupt(); // /!\ to be verified !
-			switch (start.getPlaceName())
+			if(start.getPlaceName().contains("I"))
 			{
+				//calcul.interrupt(); // /!\ to be verified !
+				switch (start.getPlaceName())
+				{
 				case "I1" :
 					for(int i=0;i<8;i++)
 					{
 						c.setBounds((int) c.getX()-i, (int) ((int) c.getY()+(2.4*i)), 32, 37);
 						try {
-							
+
 							tempo.sleep(75);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
@@ -114,13 +118,13 @@ import javax.swing.JLayeredPane;
 					c.setBounds(end.getCoordX(),end.getCoordY(), 34,37);
 					c.setCoordCarX(end.getCoordX());
 					c.setCoordCarY(end.getCoordY());
-				break;
+					break;
 				case "I2" :
 					for(int i=0;i<10;i++)
 					{
 						c.setBounds((int) c.getX()+i, (int) ((int) c.getY()+(1.09*i)), 32, 37);
 						try {
-							
+
 							tempo.sleep(75);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
@@ -194,10 +198,10 @@ import javax.swing.JLayeredPane;
 					c.setBounds(end.getCoordX(),end.getCoordY(), 32,37);
 					c.setCoordCarX(end.getCoordX());
 					c.setCoordCarY(end.getCoordY());
-					
+
+				}
 			}
-		}
-		else if(start.getPlaceName().contains("R1"))
+			else if(start.getPlaceName().contains("R1"))
 			{
 				//calcul.interrupt(); // /!\ to be verified !
 				switch (end.getPlaceName())
@@ -338,7 +342,7 @@ import javax.swing.JLayeredPane;
 					c.setCoordCarY(end.getCoordY());
 					break;
 				}
-				
+
 			}
 			else if(start.getPlaceName().contains("R3"))
 			{
@@ -552,7 +556,7 @@ import javax.swing.JLayeredPane;
 					c.setCoordCarY(end.getCoordY());
 					break;
 				}
-				
+
 			}
 			else if(start.getPlaceName().contains("R6"))
 			{
@@ -726,11 +730,11 @@ import javax.swing.JLayeredPane;
 					c.setCoordCarX(end.getCoordX());
 					c.setCoordCarY(end.getCoordY());
 					break;
-					
+
 				}
 			}
 			//calcul.start(); // /!\ to be verified !
-		
+
 		}		
 		
 		
@@ -785,6 +789,7 @@ import javax.swing.JLayeredPane;
 			//Boucle infine du thread affichage
 			while(true)
 			{
+				displayer.updateLabels();
 				//System.out.println(passage+"-ième passage dans la boucle infinie de run() de Window ! ");
 				
 				eventGiven = false;
