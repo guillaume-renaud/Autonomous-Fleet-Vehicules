@@ -47,7 +47,7 @@ import javax.swing.JLayeredPane;
 			log = new EventLog(mainBox);
 			//this.getContentPane().add(log.scrollPane, BorderLayout.CENTER);
 			//log.scrollPane.setViewportView(log);
-			//log.updateLog("La police lance une requette et attend que les voleurs de voiture soient RELEASE : les poulets arriveront toujors en retard ");
+			log.updateLog("\nLa police lance une requette et attend que les voleurs de voiture soient RELEASE : les poulets arriveront toujors en retard ");
 			
 			
 			// Create background image
@@ -72,7 +72,7 @@ import javax.swing.JLayeredPane;
 			
 			// Configure the frame
 			this.setTitle("Autonomous Fleet Vehicules");
-			this.setSize(bg.getWidth()+displayer.getWidth(),bg.getHeight()+log.getHeight());
+			this.setSize(new Dimension(bg.getWidth()+displayer.getWidth(),bg.getHeight()+log.getHeight()));
 			this.setResizable(false);
 			this.setLocationRelativeTo(null); // JFrame in the center of the window
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
