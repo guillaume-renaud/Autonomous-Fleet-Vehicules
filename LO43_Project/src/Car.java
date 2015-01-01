@@ -16,6 +16,7 @@ public class Car extends JPanel implements MailBoxListener {
 	private Place lastPosition; // We put the anterior position. It permit us to move the car in the view, knowing from where to where the car moved
 	private Place position;
 	private boolean occuped;
+	private boolean displayed;
 	private String parking;
 	private int coordCarX, coordCarY;
 	 
@@ -312,6 +313,14 @@ public class Car extends JPanel implements MailBoxListener {
 
 	public void setCoordCarY(int coordCarY) {
 		this.coordCarY = coordCarY;
+	}
+
+	public boolean isDisplayed() {
+		return displayed;
+	}
+
+	public void setDisplayed(boolean displayed) {
+		this.displayed = displayed;
 	}
 
 }

@@ -11,7 +11,6 @@ public class Passenger implements MailBoxListener {
 	
 	
 	public Passenger(String s,MailBox m){
-		System.out.println(s);
 		mainBox = m;
 		Scanner scanner;
 		scanner = new Scanner(s);
