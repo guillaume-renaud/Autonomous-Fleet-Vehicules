@@ -114,7 +114,7 @@ public class MailBox implements  Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		affichage.start();
+		//affichage.start();
 		MailBoxEvent e;
 		while(true)
 		{
@@ -128,7 +128,7 @@ public class MailBox implements  Runnable{
 						if(e.updateAction.equals("POSITION_CHANGED"))
 						{
 							event = e;
-							affichage.interrupt();
+							window.run();
 						}
 						for (MailBoxListener l : listeners)
 						{
