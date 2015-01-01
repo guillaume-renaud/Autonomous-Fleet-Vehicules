@@ -42,12 +42,11 @@ public class MovingManager extends Thread {
 						{
 							if (actualManagedEvent.lastPlace==null)
 							{
-								actualManagedCar.setDisplayed(true);
 								window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
 							}
 							else
 							{
-								
+
 								window.moveCarView(window.mainBox.findSpecificPlace(actualManagedEvent.lastPlace.getPlaceName()), window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
 							}
 
@@ -55,7 +54,6 @@ public class MovingManager extends Thread {
 						else if (actualManagedEvent.updateAction.equals("PARKED"))
 						{
 							window.moveToParking(actualManagedCar);
-							actualManagedCar.setDisplayed(false);
 							actualManagedCar = null;
 
 						}
@@ -63,7 +61,9 @@ public class MovingManager extends Thread {
 
 						isRunning = false;
 						
+						
 							this.sleep(999999);
+						
 
 					}	
 					

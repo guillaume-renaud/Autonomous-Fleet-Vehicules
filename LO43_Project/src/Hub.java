@@ -30,8 +30,8 @@ public class Hub extends JPanel
 				NewRequest newRequest = new NewRequest(rf, "New Request");
 				NewRequest randomRequest = new NewRequest(rf, "Random Request");
 				
-				nbCar = new JLabel ("Number of cars reserved : 0");
-				nbPark = new JLabel ("Number of cars parked : "+mainBox.fleet.size());
+				nbCar = new JLabel ("Number of cars reserved : "+this.nbCarOccuped());
+				nbPark = new JLabel ("Number of cars parked : "+this.nbCarParked());
 				container = new JPanel();
 				container2 = new JPanel();
 				
@@ -62,7 +62,7 @@ public class Hub extends JPanel
 				int nb=0;
 				for (Car c : mainBox.fleet)
 				{
-					if (c.isDisplayed())
+					if (c.isOccuped())
 						nb++;
 				}
 				return nb;
@@ -72,7 +72,7 @@ public class Hub extends JPanel
 				int nb=0;
 				for (Car c : mainBox.fleet)
 				{
-					if (!c.isDisplayed())
+					if (!c.isOccuped())
 						nb++;
 				}
 				return nb;

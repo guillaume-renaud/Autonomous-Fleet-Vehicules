@@ -28,21 +28,16 @@ public class ButtonController implements ActionListener{
 			String depart = (String)jf.start.getSelectedItem();
 			String arrivee = (String)jf.end.getSelectedItem();
 			
-			if(depart.getBytes()[1]!=arrivee.getBytes()[1])
-			{
-				Passenger p = new Passenger((mainBox.passengers.size()+1)+" start:"+depart+" destination:"+arrivee, mainBox);
-				mainBox.passengers.addLast(p);
-				mainBox.addMailBoxListener(p);
+			Passenger p = new Passenger((mainBox.passengers.size()+1)+" start:"+depart+" destination:"+arrivee, mainBox);
+			
+			mainBox.passengers.addLast(p);
+			mainBox.addMailBoxListener(p);
 		
-				MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), mainBox.passengers.indexOf(p), "NEW_REQUEST");
+			MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), mainBox.passengers.indexOf(p), "NEW_REQUEST");
 			
-				System.out.println("Requette envoyée");
+			System.out.println("Requette envoyée");
 			
-				mainBox.fireMailBoxUpdated(event);
-				jf.dispose();
-			}
-			
-			
+			mainBox.fireMailBoxUpdated(event);
 			
 		}
 		else if(button.getText().equals("Cancel"))
