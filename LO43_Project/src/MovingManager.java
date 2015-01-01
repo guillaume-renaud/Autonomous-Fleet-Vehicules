@@ -44,11 +44,9 @@ public class MovingManager extends Thread {
 							{
 								actualManagedCar.setDisplayed(true);
 								window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
-								window.mainBox.calcul.interrupt();
 							}
 							else
 							{
-								
 								window.moveCarView(window.mainBox.findSpecificPlace(actualManagedEvent.lastPlace.getPlaceName()), window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
 								window.mainBox.calcul.interrupt();
 							}
