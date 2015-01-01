@@ -782,113 +782,131 @@ import javax.swing.JLayeredPane;
 		
 		@Override
 		public void run() {
+
+			this.sleep(999999);
+
+			while(true)
+			{
 				displayer.updateLabels();
-					eventToDisplay = mainBox.event;
-					
-					//Cas où le thread1 est libre et le thread2 est libre
-					if((internalThread.isRunning()) && (internalThread2.isRunning()))
+				eventToDisplay = mainBox.event;
+
+				//Cas où le thread1 est libre et le thread2 est libre
+				if((internalThread.isRunning()) && (internalThread2.isRunning()))
+				{
+					//Si le thread1 est partiellement libre, cad n'a pas encore fini avec sa voiture
+					if(internalThread.actualManagedCar!=null)
 					{
-							//Si le thread1 est partiellement libre, cad n'a pas encore fini avec sa voiture
-							if(internalThread.actualManagedCar!=null)
+						//Si la voiture de l'évent a déjà été traitée par le thread1 on la lui attribue
+						if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
+						{
+							internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+							internalThread.interrupt();
+						}
+						//Si la voiture n'a pas été traitée par thread1 déjà
+						else
+						{
+							//Si le thread2 est partiellement libre, cad n'a pas encore fini avec sa voiture
+							if(internalThread2.actualManagedCar!=null)
 							{
-								//Si la voiture de l'évent a déjà été traitée par le thread1 on la lui attribue
-								if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
+								//Si la voiture de l'évent a déjà été traitée par le thread2 on la lui attribue
+								if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 								{
-									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-									internalThread.run();
+
+									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+
+									internalThread2.interrupt();
 								}
-								//Si la voiture n'a pas été traitée par thread1 déjà
-								else
-								{
-									//Si le thread2 est partiellement libre, cad n'a pas encore fini avec sa voiture
-									if(internalThread2.actualManagedCar!=null)
-									{
-										//Si la voiture de l'évent a déjà été traitée par le thread2 on la lui attribue
-										if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
-										{
-											
-											internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-											
-											internalThread2.run();
-										}
-								
-									}
-									//Si le thread2 est totalement libre on lui attribue l'évent
-									else
-									{
-										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-										
-										internalThread2.run();
-									}
-										
-								}
+
 							}
-							//Si le thread1 est totalement libre
+							//Si le thread2 est totalement libre on lui attribue l'évent
 							else
 							{
-								//Si le thread2 est partiellement libre, cad n'a pas encore fini avec sa voiture
-								if(internalThread2.actualManagedCar!=null)
-								{
-									//Si la voiture de l'évent a déjà été traitée par le thread2 on la lui attribue
-									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
-									{
-										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-										internalThread2.run();
-									}
-								}
-								//Sinon on l'attribue au thread1 totalement libre
-								else
-								{
-									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-									internalThread.run();
-								}
+								internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+
+								internalThread2.interrupt();
 							}
+
+						}
 					}
-					//Cas où le thread1 est libre et le thread2 est occupé
-					else if((internalThread.isRunning()) && (internalThread2.isRunning()))
+					//Si le thread1 est totalement libre
+					else
 					{
-								//Si le thread1 libre n'a pas fini de gérer la voiture en cours
-								if (internalThread.actualManagedCar!=null)
-								{
-									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
-									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
-									{
-										internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-										
-										internalThread.run();
-									}
-								}
-								//Si le thread1 libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
-								else
-								{
-									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
-									
-									internalThread.run();
+						//Si le thread2 est partiellement libre, cad n'a pas encore fini avec sa voiture
+						if(internalThread2.actualManagedCar!=null)
+						{
+							//Si la voiture de l'évent a déjà été traitée par le thread2 on la lui attribue
+							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
+							{
+								internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+								internalThread2.interrupt();
 							}
+						}
+						//Sinon on l'attribue au thread1 totalement libre
+						else
+						{
+							internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+							internalThread.interrupt();
+						}
 					}
-					//Cas où le thread1 est occupé et le thread2 est libre
-					else if((internalThread.isRunning()) && (internalThread2.isRunning()))
+				}
+				//Cas où le thread1 est libre et le thread2 est occupé
+				else if((internalThread.isRunning()) && (internalThread2.isRunning()))
+				{
+					//Si le thread1 libre n'a pas fini de gérer la voiture en cours
+					if (internalThread.actualManagedCar!=null)
 					{
-								//Si le thread2 libre n'a pas fini de gérer la voiture en cours
-								if (internalThread2.actualManagedCar!=null)
-								{
-									//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
-									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
-									{
-										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-										
-										internalThread2.run();
-									}
-								}
-								//Si le thread2 libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
-								else
-								{
-									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-									
-									internalThread2.run();
-								}
+						//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
+						if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
+						{
+							internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+
+							internalThread.interrupt();
+						}
 					}
+					//Si le thread1 libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
+					else
+					{
+						internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+
+						internalThread.interrupt();
+					}
+				}
+				//Cas où le thread1 est occupé et le thread2 est libre
+				else if((internalThread.isRunning()) && (internalThread2.isRunning()))
+				{
+					//Si le thread2 libre n'a pas fini de gérer la voiture en cours
+					if (internalThread2.actualManagedCar!=null)
+					{
+						//Si la voiture de l'évent est justement la voiture qu'il avait commencé à gérer et on le lui attribue
+						if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
+						{
+							internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+
+							internalThread2.interrupt();
+						}
+					}
+					//Si le thread2 libre est totalement libre (ayant fini de transférer sa dernière voiture au parking) on lui attribue l'évent
+					else
+					{
+						internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
+
+						internalThread2.interrupt();
+					}
+				}
+				this.sleep(999999);
+			}
+
+
 		}
 		
+		private void sleep(int second)
+		{
+			try {
+				Thread.sleep(second*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
+		}
 		
 }
