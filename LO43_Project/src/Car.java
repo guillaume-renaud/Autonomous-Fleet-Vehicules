@@ -87,6 +87,12 @@ public class Car extends JPanel implements MailBoxListener {
 						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
 						mainBox.window.tasks.addLast(event);
 						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
+						try {
+							mainBox.calcul.sleep(9999999);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						mainBox.fireMailBoxUpdated(event); 
 					}	
 				}	
