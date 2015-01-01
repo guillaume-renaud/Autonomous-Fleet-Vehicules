@@ -106,12 +106,12 @@ public class Main {
 		
 		
 		
-		Thread affichage = new Thread(window);
+		//Thread affichage = new Thread(window);
 		
 		
 		
 		//affichage.setPriority(Thread.MAX_PRIORITY);
-		affichage.start();
+		//affichage.start();
 		
 		
 		

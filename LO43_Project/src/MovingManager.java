@@ -28,16 +28,10 @@ public class MovingManager extends Thread {
 			}
 			
 			public void run() {
-				
-				this.sleep(999999);
-				
-					while(true)
-					{
-
-						isRunning = true;
-
-						window.nbFreeThread--;
-
+				if(!isRunning)
+				{
+					isRunning = true;
+				}else{
 						if (actualManagedEvent.updateAction.equals("POSITION_CHANGED"))
 						{
 							if (actualManagedEvent.lastPlace==null)
@@ -47,7 +41,6 @@ public class MovingManager extends Thread {
 							}
 							else
 							{
-								
 								window.moveCarView(window.mainBox.findSpecificPlace(actualManagedEvent.lastPlace.getPlaceName()), window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
 							}
 
@@ -59,23 +52,6 @@ public class MovingManager extends Thread {
 							actualManagedCar = null;
 
 						}
-						window.nbFreeThread++;
-
-						isRunning = false;
-						
-							this.sleep(999999);
-
-					}	
-					
-			}
-			
-			private void sleep(int second)
-			{
-			try {
-			Thread.sleep(second*1000);
-			} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			}
-			}
+					}
+				}
 		}
