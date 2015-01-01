@@ -29,10 +29,10 @@ public class MovingManager extends Thread {
 			
 			public void run() {
 				
-				this.sleep(999999);
+				//this.sleep(999999);
 				
-				while(true)
-				{
+				//while(true)
+				//{
 					if(!isRunning)
 					{
 						isRunning = true;
@@ -58,9 +58,9 @@ public class MovingManager extends Thread {
 							actualManagedCar.setDisplayed(false);
 							actualManagedCar = null;
 						}
-						this.sleep(999999);
+						//this.sleep(999999);
 					}
-				}
+				//}
 				
 			}
 			
