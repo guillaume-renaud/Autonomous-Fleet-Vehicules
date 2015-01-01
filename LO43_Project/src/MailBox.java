@@ -23,17 +23,12 @@ public class MailBox implements  Runnable{
 	
 	Window window;
 	
-	Thread affichage;
-	
-	MailBoxEvent event;
-	
 	public MailBox() {
 		fleet = new LinkedList<Car>();		
 		passengers = new LinkedList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
 		eventFire = new LinkedBlockingDeque<MailBoxEvent>();
-		event = null;
 		commandControl = new Controller(this);
 		this.addMailBoxListener(commandControl);
 	}
@@ -41,7 +36,6 @@ public class MailBox implements  Runnable{
 	public void setWindow(Window w)
 	{
 		window = w;
-		affichage = new Thread(window);
 		//this.addMailBoxListener(window);
 	}
 	
@@ -114,7 +108,6 @@ public class MailBox implements  Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		//affichage.start();
 		MailBoxEvent e;
 		while(true)
 		{
@@ -125,11 +118,6 @@ public class MailBox implements  Runnable{
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
-						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
-						{
-							event = e;
-							window.run();
-						}
 						for (MailBoxListener l : listeners)
 						{
 							l.onMailReceivedByCar(e);

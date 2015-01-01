@@ -29,25 +29,24 @@ public class MovingManager extends Thread {
 			
 			public void run() {
 				
-				//this.sleep(999999);
+				this.sleep(999999);
 				
-				//while(true)
-				//{
-					if(!isRunning)
+					while(true)
 					{
+
 						isRunning = true;
-					}
-					else
-					{
+
+						window.nbFreeThread--;
+
 						if (actualManagedEvent.updateAction.equals("POSITION_CHANGED"))
 						{
 							if (actualManagedEvent.lastPlace==null)
 							{
-								actualManagedCar.setDisplayed(true);
 								window.moveToStartingPoint(window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
 							}
 							else
 							{
+
 								window.moveCarView(window.mainBox.findSpecificPlace(actualManagedEvent.lastPlace.getPlaceName()), window.mainBox.findSpecificPlace(actualManagedEvent.newPlace.getPlaceName()),actualManagedCar);
 							}
 
@@ -55,23 +54,28 @@ public class MovingManager extends Thread {
 						else if (actualManagedEvent.updateAction.equals("PARKED"))
 						{
 							window.moveToParking(actualManagedCar);
-							actualManagedCar.setDisplayed(false);
 							actualManagedCar = null;
+
 						}
-						//this.sleep(999999);
-					}
-				//}
-				
+						window.nbFreeThread++;
+
+						isRunning = false;
+						
+						
+							this.sleep(999999);
+						
+
+					}	
+					
 			}
 			
 			private void sleep(int second)
 			{
-				try {
-					Thread.sleep(second*1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
-				}
+			try {
+			Thread.sleep(second*1000);
+			} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
 			}
-			
+			}
 		}
