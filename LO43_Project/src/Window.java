@@ -819,7 +819,7 @@ import javax.swing.JLayeredPane;
 									
 										internalThread.interrupt();
 									try {
-										Thread.sleep(60);
+										Thread.sleep(120);
 									} catch (InterruptedException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
@@ -844,7 +844,7 @@ import javax.swing.JLayeredPane;
 											
 											internalThread2.interrupt();
 											try {
-												Thread.sleep(60);
+												Thread.sleep(120);
 											} catch (InterruptedException e) {
 												// TODO Auto-generated catch block
 												e.printStackTrace();
@@ -877,7 +877,7 @@ import javax.swing.JLayeredPane;
 										
 										internalThread2.interrupt();
 										try {
-											Thread.sleep(60);
+											Thread.sleep(120);
 										} catch (InterruptedException e) {
 											// TODO Auto-generated catch block
 											e.printStackTrace();
@@ -903,7 +903,7 @@ import javax.swing.JLayeredPane;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										internalThread2.interrupt();
 										try {
-											Thread.sleep(60);
+											Thread.sleep(120);
 										} catch (InterruptedException e) {
 											// TODO Auto-generated catch block
 											e.printStackTrace();
@@ -923,7 +923,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread.interrupt();
 									try {
-										Thread.sleep(60);
+										Thread.sleep(120);
 									} catch (InterruptedException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
@@ -971,7 +971,7 @@ import javax.swing.JLayeredPane;
 										
 										internalThread.interrupt();
 										try {
-											Thread.sleep(60);
+											Thread.sleep(120);
 										} catch (InterruptedException e) {
 											// TODO Auto-generated catch block
 											e.printStackTrace();
@@ -1004,7 +1004,7 @@ import javax.swing.JLayeredPane;
 									
 										internalThread.interrupt();
 									try {
-										Thread.sleep(60);
+										Thread.sleep(120);
 									} catch (InterruptedException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
@@ -1051,7 +1051,7 @@ import javax.swing.JLayeredPane;
 										
 										internalThread2.interrupt();
 										try {
-											Thread.sleep(60);
+											Thread.sleep(120);
 										} catch (InterruptedException e) {
 											// TODO Auto-generated catch block
 											e.printStackTrace();
@@ -1085,7 +1085,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread2.interrupt();
 									try {
-										Thread.sleep(60);
+										Thread.sleep(120);
 									} catch (InterruptedException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();

@@ -28,6 +28,13 @@ public class Passenger implements MailBoxListener {
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
 		// TODO Auto-generated method stub
+		String action = e.updateAction;
+		if (action.equals("PARKED") && this.passengerNumber == mainBox.commandControl.treatedRequest+1 )
+		{
+			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
+			System.out.println("Requette envoyée");
+			mainBox.fireMailBoxUpdated(event);
+		}
 	}
 	@Override
 	public void onMailReceivedByMan(MailBoxEvent e) {
@@ -43,10 +50,9 @@ public class Passenger implements MailBoxListener {
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Requette envoyée");
 			mainBox.fireMailBoxUpdated(event);
-		}else if(action.equals("MISSION") && this.passengerNumber == mainBox.commandControl.actualClient.passengerNumber+1){
+		}else if(action.equals("Start") && this.passengerNumber == 2){
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Requette envoyée");
-			
 			mainBox.fireMailBoxUpdated(event);
 		}
 		

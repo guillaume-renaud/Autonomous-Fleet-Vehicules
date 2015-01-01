@@ -2,10 +2,10 @@
 public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
-	Passenger actualClient;
 	//String requestInTraitment;
 	
 	int nbCarInMission = 0;
+	int treatedRequest = 0;
 	
 	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
 	
@@ -27,6 +27,7 @@ public class Controller implements MailBoxListener {
 		c.setCoordCarX(start.getCoordX());
 		c.setCoordCarY(start.getCoordY());
 		this.nbCarInMission++;
+		this.treatedRequest++;
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
@@ -103,7 +104,7 @@ public class Controller implements MailBoxListener {
 			//Case when the car arrived to the starting point of the mission
 			if (car.getPosition()==car.getOrder().enrollPlace)
 			{
-				this.giveMissionCar(car, mainBox.findSpecificPlace(actualClient.request.start), mainBox.findSpecificPlace(actualClient.request.destination), actualClient.request);
+				this.giveMissionCar(car, mainBox.findSpecificPlace(mainBox.passengers.get(e.indexUpdaterInMailBoxList).request.start), mainBox.findSpecificPlace(mainBox.passengers.get(e.indexUpdaterInMailBoxList).request.destination), mainBox.passengers.get(e.indexUpdaterInMailBoxList).request);
 			}
 			// Case when the car as finished its mission (arrived)
 			else if (car.getPosition()==car.getOrder().endingMission)
@@ -150,11 +151,10 @@ public class Controller implements MailBoxListener {
 		if (action.equals("NEW_REQUEST"))
 		{
 			Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
-			this.actualClient = passenger;
 			Car car = null;
 			System.out.println("Requette bien reçue par le controller");
 			
-			String beginning = actualClient.request.start;
+			String beginning = mainBox.passengers.get(e.indexUpdaterInMailBoxList).request.start;
 			
 			switch (beginning){
 			case "I1" : car = this.findFreeCar("P1");
