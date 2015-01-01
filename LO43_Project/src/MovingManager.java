@@ -28,10 +28,17 @@ public class MovingManager extends Thread {
 			}
 			
 			public void run() {
-				if(!isRunning)
+				
+				this.sleep(999999);
+				
+				while(true)
 				{
-					isRunning = true;
-				}else{
+					if(!isRunning)
+					{
+						isRunning = true;
+					}
+					else
+					{
 						if (actualManagedEvent.updateAction.equals("POSITION_CHANGED"))
 						{
 							if (actualManagedEvent.lastPlace==null)
@@ -50,8 +57,21 @@ public class MovingManager extends Thread {
 							window.moveToParking(actualManagedCar);
 							actualManagedCar.setDisplayed(false);
 							actualManagedCar = null;
-
 						}
+						this.sleep(999999);
 					}
 				}
+				
+			}
+			
+			private void sleep(int second)
+			{
+				try {
+					Thread.sleep(second*1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+				}
+			}
+			
 		}

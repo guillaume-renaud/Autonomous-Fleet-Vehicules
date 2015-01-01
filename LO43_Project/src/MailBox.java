@@ -23,6 +23,8 @@ public class MailBox implements  Runnable{
 	
 	Window window;
 	
+	Thread affichage;
+	
 	MailBoxEvent event;
 	
 	public MailBox() {
@@ -39,6 +41,7 @@ public class MailBox implements  Runnable{
 	public void setWindow(Window w)
 	{
 		window = w;
+		affichage = new Thread(window);
 		//this.addMailBoxListener(window);
 	}
 	
@@ -111,6 +114,7 @@ public class MailBox implements  Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		affichage.start();
 		MailBoxEvent e;
 		while(true)
 		{
@@ -124,7 +128,7 @@ public class MailBox implements  Runnable{
 						if(e.updateAction.equals("POSITION_CHANGED"))
 						{
 							event = e;
-							window.run();
+							affichage.interrupt();
 						}
 						for (MailBoxListener l : listeners)
 						{
