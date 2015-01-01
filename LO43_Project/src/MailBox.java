@@ -121,7 +121,7 @@ public class MailBox implements  Runnable{
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
-						if(e.updateAction.equals("POSITION_CHANGED"))
+						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
 							event = e;
 							window.run();
