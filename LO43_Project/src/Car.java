@@ -91,6 +91,7 @@ public class Car extends JPanel implements MailBoxListener {
 				{
 					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 					{
+						this.lastPosition.setPlaceIsFree(true);
 						this.lastPosition = this.position;
 						position = p;
 						order.mission.requestMap[i]=false;
