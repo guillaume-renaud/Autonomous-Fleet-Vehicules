@@ -51,7 +51,7 @@ public class EventLog extends JPanel {
 	}
 
 	public void updateLog (String lastLog) {
-		text.append(lastLog);
+		text.append("\n"+lastLog);
 		
 		
 	}
