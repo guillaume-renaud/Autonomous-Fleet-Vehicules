@@ -54,7 +54,17 @@ public class Car extends JPanel implements MailBoxListener {
 		
 	}
 	
-	
+	public void reserveRoad(){
+		for(int i=0;i<19;i++)
+			if(order.mission.requestMap[i])
+				for(Place p : mainBox.reservations)
+				{
+					if (order.mission.requestMapPlaceName[i].equals(p))
+					{
+						p.setPlaceIsFree(false);
+					}
+				}
+	}
 	public boolean checkRoad(){
 		boolean ready = true;
 		for(int i=0;i<19;i++)
@@ -227,8 +237,8 @@ public class Car extends JPanel implements MailBoxListener {
 				mainBox.fireMailBoxUpdated(event);
 			}else
 			{
+				this.reserveRoad();
 				this.move();
-				//System.out.println("La voiture "+this.getCarName()+" a bien fini sa MISSION");
 			}
 			
 		}
