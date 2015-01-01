@@ -23,12 +23,15 @@ public class MailBox implements  Runnable{
 	
 	Window window;
 	
+	MailBoxEvent event;
+	
 	public MailBox() {
 		fleet = new LinkedList<Car>();		
 		passengers = new LinkedList<Passenger>();
 		listeners = new ArrayList<MailBoxListener>();
 		reservations = new ArrayList<Place>();
 		eventFire = new LinkedBlockingDeque<MailBoxEvent>();
+		event = null;
 		commandControl = new Controller(this);
 		this.addMailBoxListener(commandControl);
 	}
@@ -118,6 +121,11 @@ public class MailBox implements  Runnable{
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
+						if(e.updateAction.equals("POSITION_CHANGED"))
+						{
+							event = e;
+							window.run();
+						}
 						for (MailBoxListener l : listeners)
 						{
 							l.onMailReceivedByCar(e);
