@@ -14,6 +14,7 @@ import javax.swing.JLayeredPane;
 		int nbFreeThread=2;
 		
 		Thread tempo;
+		Thread calcul;
 		
 		MovingManager internalThread;
 		MovingManager internalThread2;
@@ -82,6 +83,11 @@ import javax.swing.JLayeredPane;
 			this.add(displayer, BorderLayout.EAST);
 			this.add(log, BorderLayout.SOUTH);
 			this.setVisible(true);
+		}
+		
+		public void setThreadCalcul (Thread calc)
+		{
+			this.calcul = calc;
 		}
 
 		public void moveToStartingPoint(Place start, Car c){
@@ -1096,7 +1102,25 @@ import javax.swing.JLayeredPane;
 					}
 					
 				}
-				passage++;
+				
+				if(!tasks.isEmpty() && (!internalThread.isRunning()) && (!internalThread2.isRunning()))
+				{
+					calcul.interrupt();
+					this.sleep(999999);
+				}
+				
+				
+				//passage++;
+			}
+		}
+		
+		private void sleep(int second)
+		{
+			try {
+				Thread.sleep(second*1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
 			}
 		}
 		

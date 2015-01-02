@@ -79,9 +79,11 @@ public class Main {
 			mainBox.addMailBoxListener(p);
 		}
 		Window window = new Window(mainBox);
-		mainBox.setWindow(window);
+		Thread affichage = new Thread(window);
+		
+		mainBox.setWindow(window, affichage);
 		Thread calcul = new Thread(mainBox);
-		calcul.start();
+			
 		
 		
 		//Manual creation of tasks
@@ -101,12 +103,8 @@ public class Main {
 		//window.tasks.addLast(e5);window.tasks.addLast(e6);window.tasks.addLast(e7);window.tasks.addLast(e8);
 		
 		
+		calcul.start();
 		
-		
-		
-		
-		
-		Thread affichage = new Thread(window);
 		
 		
 		

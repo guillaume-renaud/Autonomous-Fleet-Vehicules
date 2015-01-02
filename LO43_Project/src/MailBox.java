@@ -23,6 +23,8 @@ public class MailBox implements  Runnable{
 	
 	Window window;
 	
+	Thread affichage;
+	
 	public MailBox() {
 		fleet = new LinkedList<Car>();		
 		passengers = new LinkedList<Passenger>();
@@ -34,10 +36,10 @@ public class MailBox implements  Runnable{
 		
 	}
 	
-	public void setWindow(Window w)
+	public void setWindow(Window w, Thread aff)
 	{
 		window = w;
-		//this.addMailBoxListener(window);
+		affichage = aff;
 	}
 	
 	public void FileReader() {
