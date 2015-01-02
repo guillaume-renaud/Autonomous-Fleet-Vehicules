@@ -79,10 +79,12 @@ public class Main {
 			mainBox.addMailBoxListener(p);
 		}
 		Window window = new Window(mainBox);
-		mainBox.setWindow(window);
-		Thread calcul = new Thread(mainBox);
-		calcul.start();
+		Thread affichage = new Thread(window);
 		
+		mainBox.setWindow(window, affichage);
+		Thread calcul = new Thread(mainBox);
+			
+		window.setThreadCalcul(calcul);
 		
 		//Manual creation of tasks
 		//MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));
@@ -101,12 +103,8 @@ public class Main {
 		//window.tasks.addLast(e5);window.tasks.addLast(e6);window.tasks.addLast(e7);window.tasks.addLast(e8);
 		
 		
+		calcul.start();
 		
-		
-		
-		
-		
-		Thread affichage = new Thread(window);
 		
 		
 		
