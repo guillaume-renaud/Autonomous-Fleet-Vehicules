@@ -1082,7 +1082,6 @@ import javax.swing.JLayeredPane;
 									
 									
 									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
-									
 									internalThread2.interrupt();
 									try {
 										Thread.sleep(120);

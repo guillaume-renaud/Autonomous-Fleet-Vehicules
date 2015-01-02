@@ -82,7 +82,7 @@ public class Car extends JPanel implements MailBoxListener {
 	
 	public void move() {
 		
-		position.setPlaceIsFree(true);
+		//position.setPlaceIsFree(true);
 		for(Place p : position.getAdjacencyPlaceList())
 			for(int i=0;i<19;i++)
 			{
@@ -91,11 +91,12 @@ public class Car extends JPanel implements MailBoxListener {
 				{
 					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 					{
+						
+						this.lastPosition = this.position;
 						if(lastPosition!=null)
 						{
 							this.lastPosition.setPlaceIsFree(true);
 						}
-						this.lastPosition = this.position;
 						position = p;
 						order.mission.requestMap[i]=false;
 						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
