@@ -125,6 +125,8 @@ public class MailBox implements  Runnable{
 						//Si c'est un event relatif à un changement de position
 						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
+							
+							
 							//Si la voiture n'est pas déjà déplacée ni pas le thread1 ni le thread2
 							if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 							{
@@ -143,6 +145,12 @@ public class MailBox implements  Runnable{
 									while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
 									{
 										e = iterator.next();
+									}
+									if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+									{
+										window.tasks.addLast(e);
+										affichage.interrupt();
+										this.sleep(999999);
 									}
 								}
 							}
