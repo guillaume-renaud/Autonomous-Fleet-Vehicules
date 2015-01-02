@@ -133,7 +133,6 @@ public class MailBox implements  Runnable{
 
 								if (window.tasks.size()==2)
 								{
-									System.out.println("yolo réciproque");
 									affichage.interrupt();
 									this.sleep(999999);
 								}
