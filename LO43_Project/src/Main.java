@@ -102,14 +102,14 @@ public class Main {
 		//window.tasks.addLast(e1);window.tasks.addLast(e2);window.tasks.addLast(e3);window.tasks.addLast(e4);
 		//window.tasks.addLast(e5);window.tasks.addLast(e6);window.tasks.addLast(e7);window.tasks.addLast(e8);
 		
-		
+		affichage.start();
 		calcul.start();
 		
 		
 		
 		
 		//affichage.setPriority(Thread.MAX_PRIORITY);
-		affichage.start();
+		
 		
 		
 		

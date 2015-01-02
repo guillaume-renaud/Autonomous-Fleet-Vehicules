@@ -112,6 +112,7 @@ public class MailBox implements  Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
+		
 		MailBoxEvent e;
 		while(true)
 		{
@@ -128,9 +129,10 @@ public class MailBox implements  Runnable{
 							//Cas où les deux threads sont totalement libres
 							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
 							{
-								window.tasks.add(e);
+								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
+									System.out.println("yolo réciproque");
 									affichage.interrupt();
 									this.sleep(999999);
 								}
@@ -163,7 +165,7 @@ public class MailBox implements  Runnable{
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
-									window.tasks.add(e);
+									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
@@ -200,7 +202,7 @@ public class MailBox implements  Runnable{
 								if(e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
-									window.tasks.add(e);
+									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
@@ -235,7 +237,7 @@ public class MailBox implements  Runnable{
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
-									window.tasks.add(e);
+									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
