@@ -84,7 +84,7 @@ public class Main {
 		mainBox.setWindow(window, affichage);
 		Thread calcul = new Thread(mainBox);
 			
-		
+		window.setThreadCalcul(calcul);
 		
 		//Manual creation of tasks
 		//MailBoxEvent e1 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I1"));

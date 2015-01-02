@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -117,10 +118,36 @@ public class MailBox implements  Runnable{
 			if(!eventFire.isEmpty())
 			{
 				e = eventFire.getFirst();
-				eventFire.remove(e);
+				eventFire.removeFirstOccurrence(e);
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
+						//Si c'est un event relatif à un changement de position
+						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
+						{
+							//Si la voiture n'est pas déjà déplacée ni pas le thread1 ni le thread2
+							if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+							{
+								//On ajoute cet event à la liste des tasks
+								window.tasks.addLast(e);
+								if (window.tasks.size()==2)
+								{
+									affichage.interrupt();
+									this.sleep(999999);
+								}
+								else
+								{
+									//On cherche l'event changement de position suivant dans liste 
+									Iterator<MailBoxEvent> iterator = eventFire.iterator();
+									e = iterator.next();
+									while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
+									{
+										e = iterator.next();
+									}
+								}
+							}
+						}
+						
 						for (MailBoxListener l : listeners)
 						{
 							l.onMailReceivedByCar(e);
@@ -152,5 +179,14 @@ public class MailBox implements  Runnable{
 		}
 	}
 	
-
+	private void sleep(int second)
+	{
+		try {
+			Thread.sleep(second*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+	}
+	
 }
