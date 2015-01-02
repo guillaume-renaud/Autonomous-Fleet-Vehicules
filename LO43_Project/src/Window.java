@@ -817,7 +817,6 @@ import javax.swing.JLayeredPane;
 								if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 								{
 									tasks.remove(eventToDisplay);
-									
 									if (tasks.isEmpty())
 										noEventRemain = true;
 									
@@ -845,7 +844,6 @@ import javax.swing.JLayeredPane;
 											
 											if (tasks.isEmpty())
 												noEventRemain = true;
-											
 											internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 											
 											internalThread2.interrupt();

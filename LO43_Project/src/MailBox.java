@@ -129,6 +129,8 @@ public class MailBox implements  Runnable{
 							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
 							{
 								window.tasks.addLast(e);
+								System.out.println(window.tasks.size());
+
 								if (window.tasks.size()==2)
 								{
 									affichage.interrupt();
