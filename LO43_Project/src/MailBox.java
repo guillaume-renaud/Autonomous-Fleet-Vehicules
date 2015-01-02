@@ -128,9 +128,7 @@ public class MailBox implements  Runnable{
 							//Cas où les deux threads sont totalement libres
 							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
 							{
-								window.tasks.addLast(e);
-								System.out.println(window.tasks.size());
-
+								window.tasks.add(e);
 								if (window.tasks.size()==2)
 								{
 									affichage.interrupt();
@@ -165,7 +163,7 @@ public class MailBox implements  Runnable{
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
-									window.tasks.addLast(e);
+									window.tasks.add(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
@@ -202,7 +200,7 @@ public class MailBox implements  Runnable{
 								if(e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
-									window.tasks.addLast(e);
+									window.tasks.add(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
@@ -237,7 +235,7 @@ public class MailBox implements  Runnable{
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
-									window.tasks.addLast(e);
+									window.tasks.add(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");

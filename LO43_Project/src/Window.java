@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.swing.JFrame;
@@ -10,7 +11,7 @@ import javax.swing.JLayeredPane;
 		private static final long serialVersionUID = 1L;
 		
 		MailBox mainBox; 
-		LinkedList<MailBoxEvent> tasks;
+		ArrayList<MailBoxEvent> tasks;
 		int nbFreeThread=2;
 		
 		Thread tempo;
@@ -31,7 +32,7 @@ import javax.swing.JLayeredPane;
 		{
 			
 			mainBox = MB;	
-			tasks = new LinkedList<MailBoxEvent>();
+			tasks = new ArrayList<MailBoxEvent>();
 			internalThread = new MovingManager("internalThread", this);
 			internalThread.start();
 			internalThread2 = new MovingManager("internalThread2", this);
@@ -803,7 +804,7 @@ import javax.swing.JLayeredPane;
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
 				if(!this.tasks.isEmpty() && nbFreeThread!=0)
 				{
-					eventToDisplay = tasks.getFirst();
+					eventToDisplay = tasks.get(0);
 					
 					//Cas où le thread1 est libre et le thread2 est libre
 					if((!internalThread.isRunning()) && (!internalThread2.isRunning()))
@@ -859,7 +860,7 @@ import javax.swing.JLayeredPane;
 										else
 										{
 											//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
-											if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
+											if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.get(tasks.size()-1)))
 											{
 												noEventRemain = true;
 											}
@@ -948,7 +949,7 @@ import javax.swing.JLayeredPane;
 							if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 							{
 								//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
-								if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
+								if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.get(tasks.size()-1)))
 								{
 									noEventRemain = true;
 								}
@@ -986,7 +987,7 @@ import javax.swing.JLayeredPane;
 									else
 									{
 										//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
-										if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
+										if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.get(tasks.size()-1)))
 										{
 											noEventRemain = true;
 										}
@@ -1028,7 +1029,7 @@ import javax.swing.JLayeredPane;
 							{
 								
 								//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
-								if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
+								if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.get(tasks.size()-1)))
 								{
 									noEventRemain = true;
 								}
@@ -1066,7 +1067,7 @@ import javax.swing.JLayeredPane;
 									else
 									{
 										//S'il n'y plus d'autres events on sort de la boucle sinon on prend l'event suivant
-										if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.getLast()))
+										if (tasks.indexOf(eventToDisplay)+1>tasks.indexOf(tasks.get(tasks.size()-1)))
 										{
 											noEventRemain = true;
 										}
@@ -1101,7 +1102,7 @@ import javax.swing.JLayeredPane;
 					
 				}
 				
-				if(!tasks.isEmpty() && (!internalThread.isRunning()) && (!internalThread2.isRunning()))
+				if(tasks.isEmpty() && (!internalThread.isRunning()) && (!internalThread2.isRunning()))
 				{
 					System.out.println("yolo");
 					calcul.interrupt();
