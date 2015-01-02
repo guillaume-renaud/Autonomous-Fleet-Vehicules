@@ -59,7 +59,7 @@ public class Car extends JPanel implements MailBoxListener {
 			if(order.mission.requestMap[i])
 				for(Place p : mainBox.reservations)
 				{
-					if (order.mission.requestMapPlaceName[i].equals(p))
+					if (order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 					{
 						p.setPlaceIsFree(false);
 					}
@@ -69,14 +69,17 @@ public class Car extends JPanel implements MailBoxListener {
 		boolean ready = true;
 		for(int i=0;i<19;i++)
 			if(order.mission.requestMap[i])
+			{
 				for(Place p : mainBox.reservations)
 				{
-					if (order.mission.requestMapPlaceName[i].equals(p))
+					if (order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 					{
+						System.out.println(p.getPlaceIsFree());
 						if(!p.getPlaceIsFree())
 							ready = false;
 					}
 				}
+			}
 		return ready;
 	}
 	
@@ -87,23 +90,22 @@ public class Car extends JPanel implements MailBoxListener {
 			for(int i=0;i<19;i++)
 			{
 				if(order.typeOrder.equals("MISSION"))
-				if(order.mission.requestMap[i])
 				{
-					if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
+					if(order.mission.requestMap[i])
 					{
-						if(lastPosition!=null)
+						if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 						{
-							this.lastPosition.setPlaceIsFree(true);
-						}
-						this.lastPosition = this.position;
-						position = p;
-						order.mission.requestMap[i]=false;
-						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
-						mainBox.window.tasks.addLast(event);
-						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
-						mainBox.fireMailBoxUpdated(event);
+							this.lastPosition = this.position;
+							position = p;
+							order.mission.requestMap[i]=false;
+							MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
+							mainBox.window.tasks.addLast(event);
+							System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
+							mainBox.fireMailBoxUpdated(event);
+						}	
 					}	
-				}	
+				}
+				
 			}
 		/*for(Place p : position.getAdjacencyPlaceList())
 		{
@@ -190,6 +192,7 @@ public class Car extends JPanel implements MailBoxListener {
 		if (e.updateAction.equals("WAIT") && this.order.typeOrder.equals("ENROLL") && e.indexUpdaterInMailBoxList == mainBox.fleet.indexOf(this) )
 		{
 			boolean ready = this.checkRoad();
+			System.out.println(ready);
 			if(!ready)
 			{
 				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "WAIT");
