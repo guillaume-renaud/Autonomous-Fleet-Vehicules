@@ -23,8 +23,6 @@ public class MailBox implements  Runnable{
 	
 	Window window;
 	
-	Thread calcul;
-	
 	public MailBox() {
 		fleet = new LinkedList<Car>();		
 		passengers = new LinkedList<Passenger>();
@@ -33,8 +31,7 @@ public class MailBox implements  Runnable{
 		eventFire = new LinkedBlockingDeque<MailBoxEvent>();
 		commandControl = new Controller(this);
 		this.addMailBoxListener(commandControl);
-		calcul = new Thread(this);
-		calcul.start();
+		
 	}
 	
 	public void setWindow(Window w)
