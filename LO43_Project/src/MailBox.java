@@ -125,12 +125,9 @@ public class MailBox implements  Runnable{
 						//Si c'est un event relatif à un changement de position
 						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
-							
-							
-							//Si la voiture n'est pas déjà déplacée ni pas le thread1 ni le thread2
-							if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+							//Cas où les deux threads sont totalement libres
+							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
 							{
-								//On ajoute cet event à la liste des tasks
 								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
@@ -141,16 +138,121 @@ public class MailBox implements  Runnable{
 								{
 									//On cherche l'event changement de position suivant dans liste 
 									Iterator<MailBoxEvent> iterator = eventFire.iterator();
-									e = iterator.next();
-									while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
+									if(iterator.hasNext())
 									{
 										e = iterator.next();
-									}
-									if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
-									{
+										while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
+										{
+											e = iterator.next();
+										}
+
 										window.tasks.addLast(e);
 										affichage.interrupt();
 										this.sleep(999999);
+									}
+								
+								}
+							}
+							//Cas où le thread2 est totalement libre et le thread1 partiellement libre
+							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent==null)
+							{
+								//Si la voiture n'est pas déjà déplacée par le thread1
+								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
+								{
+									//On ajoute cet event à la liste des tasks
+									window.tasks.addLast(e);
+									if (window.tasks.size()==2)
+									{
+										affichage.interrupt();
+										this.sleep(999999);
+									}
+									else
+									{
+										//On cherche l'event changement de position suivant dans liste 
+										Iterator<MailBoxEvent> iterator = eventFire.iterator();
+										if(iterator.hasNext())
+										{
+											e = iterator.next();
+											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
+											{
+												e = iterator.next();
+											}
+											if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+											{
+												window.tasks.addLast(e);
+												affichage.interrupt();
+												this.sleep(999999);
+											}
+										}
+									}
+								}
+							}
+							//Cas où le thread1 est totalement libre et le thread2 partiellement libre
+							else if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent!=null)
+							{
+								//Si la voiture n'est pas déjà déplacée par le thread2
+								if(e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								{
+									//On ajoute cet event à la liste des tasks
+									window.tasks.addLast(e);
+									if (window.tasks.size()==2)
+									{
+										affichage.interrupt();
+										this.sleep(999999);
+									}
+									else
+									{
+										//On cherche l'event changement de position suivant dans liste 
+										Iterator<MailBoxEvent> iterator = eventFire.iterator();
+										if(iterator.hasNext())
+										{
+											e = iterator.next();
+											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
+											{
+												e = iterator.next();
+											}
+											if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+											{
+												window.tasks.addLast(e);
+												affichage.interrupt();
+												this.sleep(999999);
+											}
+										}
+									}
+								}
+							}
+							//Cas où le thread1 est partiellement libre et le thread2 partiellement libre
+							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent!=null)
+							{
+								//Si la voiture n'est pas déjà déplacée ni par le thread1 ni le thread2
+								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								{
+									//On ajoute cet event à la liste des tasks
+									window.tasks.addLast(e);
+									if (window.tasks.size()==2)
+									{
+										affichage.interrupt();
+										this.sleep(999999);
+									}
+									else
+									{
+										//On cherche l'event changement de position suivant dans liste 
+										Iterator<MailBoxEvent> iterator = eventFire.iterator();
+										if(iterator.hasNext())
+										{
+											e = iterator.next();
+											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
+											{
+												e = iterator.next();
+											}
+											if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+											{
+												window.tasks.addLast(e);
+												affichage.interrupt();
+												this.sleep(999999);
+											}
+										}
+										
 									}
 								}
 							}
