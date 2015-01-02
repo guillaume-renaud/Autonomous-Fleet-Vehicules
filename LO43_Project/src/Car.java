@@ -68,18 +68,19 @@ public class Car extends JPanel implements MailBoxListener {
 	public boolean checkRoad(){
 		boolean ready = true;
 		for(int i=0;i<19;i++)
+		{
 			if(order.mission.requestMap[i])
 			{
 				for(Place p : mainBox.reservations)
 				{
 					if (order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 					{
-						System.out.println(p.getPlaceIsFree());
 						if(!p.getPlaceIsFree())
 							ready = false;
 					}
 				}
 			}
+		}
 		return ready;
 	}
 	
