@@ -93,25 +93,14 @@ public class Car extends JPanel implements MailBoxListener {
 				{
 					if(order.mission.requestMap[i])
 					{
-<<<<<<< HEAD
-						
-						this.lastPosition = this.position;
-						if(lastPosition!=null)
-=======
 						if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
->>>>>>> branch 'master' of https://github.com/guillaume-renaud/Autonomous-Fleet-Vehicules.git
 						{
-<<<<<<< HEAD
-							this.lastPosition.setPlaceIsFree(true);
-						}
-						position = p;
-						order.mission.requestMap[i]=false;
-						MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
-						mainBox.window.tasks.addLast(event);
-						System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
-						mainBox.fireMailBoxUpdated(event);
-=======
 							this.lastPosition = this.position;
+							if(lastPosition!=null)				
+							{
+
+								this.lastPosition.setPlaceIsFree(true);
+							}
 							position = p;
 							order.mission.requestMap[i]=false;
 							MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
@@ -119,7 +108,8 @@ public class Car extends JPanel implements MailBoxListener {
 							System.out.println("La voiture "+this.getCarName()+" a bougé de "+this.getLastPosition().getPlaceName()+" à "+this.getPosition().getPlaceName());
 							mainBox.fireMailBoxUpdated(event);
 						}	
->>>>>>> branch 'master' of https://github.com/guillaume-renaud/Autonomous-Fleet-Vehicules.git
+
+						
 					}	
 				}
 				
