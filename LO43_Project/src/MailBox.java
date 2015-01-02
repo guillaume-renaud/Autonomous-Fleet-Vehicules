@@ -131,6 +131,7 @@ public class MailBox implements  Runnable{
 								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
+									System.out.println("yolo réciproque");
 									affichage.interrupt();
 									this.sleep(999999);
 								}
@@ -145,10 +146,13 @@ public class MailBox implements  Runnable{
 										{
 											e = iterator.next();
 										}
-
-										window.tasks.addLast(e);
-										affichage.interrupt();
-										this.sleep(999999);
+										if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+										{
+											System.out.println("yolo réciproque");
+											affichage.interrupt();
+											this.sleep(999999);
+										}
+										
 									}
 								
 								}
@@ -163,6 +167,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -177,12 +182,14 @@ public class MailBox implements  Runnable{
 											{
 												e = iterator.next();
 											}
-											if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												window.tasks.addLast(e);
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
+
+											
 										}
 									}
 								}
@@ -197,6 +204,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -211,9 +219,9 @@ public class MailBox implements  Runnable{
 											{
 												e = iterator.next();
 											}
-											if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												window.tasks.addLast(e);
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
@@ -231,6 +239,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -245,9 +254,9 @@ public class MailBox implements  Runnable{
 											{
 												e = iterator.next();
 											}
-											if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												window.tasks.addLast(e);
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
