@@ -104,7 +104,7 @@ public class Controller implements MailBoxListener {
 			//Case when the car arrived to the starting point of the mission
 			if (car.getPosition()==car.getOrder().enrollPlace)
 			{
-				this.giveMissionCar(car, mainBox.findSpecificPlace(car.getOrder().mission.start), mainBox.findSpecificPlace(car.getOrder().mission.destination), car.getOrder().mission);
+				this.giveMissionCar(car, mainBox.findSpecificPlace(e.lastPlace.getPlaceName()), mainBox.findSpecificPlace(e.newPlace.getPlaceName()), car.getOrder().mission);
 			}
 			// Case when the car as finished its mission (arrived)
 			else if (car.getPosition()==car.getOrder().endingMission)
