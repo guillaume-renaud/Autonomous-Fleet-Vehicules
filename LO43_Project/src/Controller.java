@@ -21,9 +21,10 @@ public class Controller implements MailBoxListener {
 	}
 	
 	//This method will be called when we want to enroll a car
-	public void enrollCar(Car c, Place start) {
+	public void enrollCar(Car c, Place start, Request request) {
 		Order o = new Order("ENROLL", start);
 		c.setOrder(o);
+		c.getOrder().mission = request;
 		c.setCoordCarX(start.getCoordX());
 		c.setCoordCarY(start.getCoordY());
 		this.nbCarInMission++;
@@ -166,7 +167,7 @@ public class Controller implements MailBoxListener {
 				break;
 			}
 			car.setPosition(null);
-			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start));
+			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start), passenger.request);
 		}
 	}
 
