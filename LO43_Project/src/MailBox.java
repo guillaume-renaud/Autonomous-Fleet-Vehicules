@@ -136,27 +136,35 @@ public class MailBox implements  Runnable{
 								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
+									System.out.println("--> La liste tasks est de taille maximale 2");
 									System.out.println("-->> On lance affichage");
 									affichage.interrupt();
 									this.sleep(999999);
 								}
 								else
 								{
-									
+									System.out.println("--> La liste tasks est de taille 1");
 									//On cherche l'event changement de position suivant dans liste.
 									if(!eventFire.isEmpty())
 									{
+										System.out.println("--> Il a au moins un autre event dans eventFire");
 										e = eventFire.getFirst();
 										if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 										{
+											System.out.println("--> Mais cet event n'est pas position ou parking");
 											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
+										}
+										else
+										{
+											System.out.println("--> Et cet event est un changement de position ou parking");
 										}
 										
 									}
 									else
 									{
+										System.out.println("--> Il n'y a pas d'autres events dans eventFire");
 										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
