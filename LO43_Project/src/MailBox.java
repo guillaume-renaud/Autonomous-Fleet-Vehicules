@@ -124,12 +124,15 @@ public class MailBox implements  Runnable{
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
+						System.out.println("YOLO1");
 						//Si c'est un event relatif à un changement de position
 						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
+							
 							//Cas où les deux threads sont totalement libres
 							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
 							{
+								System.out.println("YOLO2");
 								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
@@ -168,6 +171,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread2 est totalement libre et le thread1 partiellement libre
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent==null)
 							{
+								System.out.println("YOLO2");
 								//Si la voiture n'est pas déjà déplacée par le thread1
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
@@ -211,6 +215,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread1 est totalement libre et le thread2 partiellement libre
 							else if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent!=null)
 							{
+								System.out.println("YOLO2");
 								//Si la voiture n'est pas déjà déplacée par le thread2
 								if(e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
@@ -252,11 +257,12 @@ public class MailBox implements  Runnable{
 							//Cas où le thread1 est partiellement libre et le thread2 partiellement libre
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent!=null)
 							{
+								System.out.println("YOLO2");
+								window.tasks.addLast(e);
 								//Si la voiture n'est pas déjà déplacée ni par le thread1 ni le thread2
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
-									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
@@ -292,7 +298,7 @@ public class MailBox implements  Runnable{
 								}
 							}
 						}
-						
+						System.out.println("YOLO3");
 						for (MailBoxListener l : listeners)
 						{
 							l.onMailReceivedByCar(e);
