@@ -81,8 +81,6 @@ public class Controller implements MailBoxListener {
 		c.setOrder(o);
 		c.setOccuped(false);
 		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "WAIT", mainBox.fleet.indexOf(c));
-		mainBox.fireMailBoxUpdated(event);
 	}
 		
 		
