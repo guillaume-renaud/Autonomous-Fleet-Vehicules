@@ -55,6 +55,5 @@ public class Passenger implements MailBoxListener {
 			System.out.println("Requette envoyée");
 			//mainBox.fireMailBoxUpdated(event);
 		}*/
-		
 	}
 }
