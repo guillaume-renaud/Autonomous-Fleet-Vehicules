@@ -124,12 +124,7 @@ public class MailBox implements  Runnable{
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
-<<<<<<< HEAD
-						System.out.println("YOLO1");
-						System.out.println(e.updateAction);
-=======
 						System.out.println("--> On rentre dans le case");
->>>>>>> branch 'master' of https://github.com/guillaume-renaud/Autonomous-Fleet-Vehicules.git
 						//Si c'est un event relatif à un changement de position
 						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
