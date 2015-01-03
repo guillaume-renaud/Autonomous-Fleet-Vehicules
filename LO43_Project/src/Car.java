@@ -19,6 +19,7 @@ public class Car extends JPanel implements MailBoxListener {
 	private boolean displayed;
 	private String parking;
 	private int coordCarX, coordCarY;
+	private int numCar;
 	 
 	MailBox mainBox;
 	
@@ -30,6 +31,7 @@ public class Car extends JPanel implements MailBoxListener {
 	
 	public Car(int i, String p, int coorX, int coorY, MailBox m){
 		super();
+		numCar = i;
 		setCarName("car"+i);
 		order = new Order("WAIT");
 		lastPosition = null;
@@ -51,7 +53,7 @@ public class Car extends JPanel implements MailBoxListener {
 		this.coordCarX = copie.coordCarX;
 		this.coordCarY = copie.coordCarY;
 		this.mainBox = copie.mainBox;
-		
+		this.numCar = copie.numCar;
 	}
 	
 	public void reserveRoad(){
@@ -185,7 +187,8 @@ public class Car extends JPanel implements MailBoxListener {
 	{
 		try
 		{
-			Image img = ImageIO.read(new File("image/car.png"));
+			int nb = (numCar%6)+1;
+			Image img = ImageIO.read(new File("image/car"+nb+".png"));
 			g.drawImage(img, 0, 0, this);
 		}
 		catch (IOException e)
