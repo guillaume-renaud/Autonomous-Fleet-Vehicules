@@ -155,6 +155,12 @@ public class MailBox implements  Runnable{
 										}
 										
 									}
+									else
+									{
+										System.out.println("yolo réciproque");
+										affichage.interrupt();
+										this.sleep(999999);
+									}
 								
 								}
 							}
@@ -192,6 +198,12 @@ public class MailBox implements  Runnable{
 
 											
 										}
+										else
+										{
+											System.out.println("yolo réciproque");
+											affichage.interrupt();
+											this.sleep(999999);
+										}
 									}
 								}
 							}
@@ -227,6 +239,12 @@ public class MailBox implements  Runnable{
 												this.sleep(999999);
 											}
 										}
+										else
+										{
+											System.out.println("yolo réciproque");
+											affichage.interrupt();
+											this.sleep(999999);
+										}
 									}
 								}
 							}
@@ -261,6 +279,12 @@ public class MailBox implements  Runnable{
 												affichage.interrupt();
 												this.sleep(999999);
 											}
+										}
+										else
+										{
+											System.out.println("yolo réciproque");
+											affichage.interrupt();
+											this.sleep(999999);
 										}
 										
 									}
