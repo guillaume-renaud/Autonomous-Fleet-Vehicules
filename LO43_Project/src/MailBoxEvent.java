@@ -7,7 +7,6 @@ public class MailBoxEvent {
 	int indexReceiverInMailBoxList;
 	Place lastPlace;
 	Place newPlace;
-	Request mission;
 	
 	
 	public MailBoxEvent (String className, int indexList, String action) {
@@ -19,9 +18,8 @@ public class MailBoxEvent {
 		newPlace = null;
 	}
 	
-	public MailBoxEvent (String className, int indexList, String action, Place begin, Place end,Request r) {
+	public MailBoxEvent (String className, int indexList, String action, Place begin, Place end) {
 		this.classNameOfUpdater = className;
-		this.mission=r;
 		this.indexUpdaterInMailBoxList = indexList;
 		this.updateAction = action;
 		this.indexReceiverInMailBoxList = -1;
