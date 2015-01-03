@@ -278,76 +278,76 @@ public class Car extends JPanel implements MailBoxListener {
 		}
 	}
 
-	public Order getOrder() {
+	protected Order getOrder() {
 		return this.order;
 	}
 	
-	public Place getLastPosition() {
+	protected Place getLastPosition() {
 		return this.lastPosition;
 	}
 	
-	public Place getPosition() {
+	protected Place getPosition() {
 		return this.position;
 	}
 	
-	public boolean isOccuped() {
+	protected boolean isOccuped() {
 		return this.occuped;
 	}
 	
 	
-	public void setOrder(Order o) { //It's just an example, it's not finished.
+	protected void setOrder(Order o) { //It's just an example, it's not finished.
 		this.order = o;
 	}
 	
-	public void setLastPosition(Place p) {
+	protected void setLastPosition(Place p) {
 		this.lastPosition = p;
 	}
 	
-	public void setPosition(Place p) {
+	protected void setPosition(Place p) {
 		this.position = p;
 	}
 	
-	public void setOccuped(boolean b) {
+	protected void setOccuped(boolean b) {
 		this.occuped = b;
 	}
 	
-	public String getParking() {
+	protected String getParking() {
 		return parking;
 	}
 
-	public void setParking(String p) {
+	protected void setParking(String p) {
 		parking = p;
 	}
 
-	public String getCarName() {
+	protected String getCarName() {
 		return carName;
 	}
 
-	public void setCarName(String carName) {
+	protected void setCarName(String carName) {
 		this.carName = carName;
 	}
 
-	public int getCoordCarX() {
+	protected int getCoordCarX() {
 		return coordCarX;
 	}
 
-	public void setCoordCarX(int coordCarX) {
+	protected void setCoordCarX(int coordCarX) {
 		this.coordCarX = coordCarX;
 	}
 
-	public int getCoordCarY() {
+	protected int getCoordCarY() {
 		return coordCarY;
 	}
 
-	public void setCoordCarY(int coordCarY) {
+	protected void setCoordCarY(int coordCarY) {
 		this.coordCarY = coordCarY;
 	}
 
-	public boolean isDisplayed() {
+	protected boolean isDisplayed() {
 		return displayed;
 	}
 
-	public void setDisplayed(boolean displayed) {
+	protected void setDisplayed(boolean displayed) {
 		this.displayed = displayed;
 	}
 

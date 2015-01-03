@@ -17,43 +17,43 @@ public class Place
 		setCoordY(y);
 	}
 
-	public String getPlaceName() {
+	protected String getPlaceName() {
 		return placeName;
 	}
 
-	public void setPlaceName(String placeName) {
+	protected void setPlaceName(String placeName) {
 		this.placeName = placeName;
 	}
 
-	public boolean getPlaceIsFree() {
+	protected boolean getPlaceIsFree() {
 		return placeIsFree;
 	}
 
-	void setPlaceIsFree(boolean placeIsFree) {
+	protected void setPlaceIsFree(boolean placeIsFree) {
 		this.placeIsFree = placeIsFree;
 	}
 
-	public ArrayList<Place> getAdjacencyPlaceList() {
+	protected ArrayList<Place> getAdjacencyPlaceList() {
 		return adjacencyPlaceList;
 	}
 
-	public void setAdjacencyPlaceList(ArrayList<Place> adjacencyPlaceList) {
+	protected void setAdjacencyPlaceList(ArrayList<Place> adjacencyPlaceList) {
 		this.adjacencyPlaceList = adjacencyPlaceList;
 	}
 
-	public int getCoordX() {
+	protected int getCoordX() {
 		return coordX;
 	}
 
-	public void setCoordX(int coordX) {
+	protected void setCoordX(int coordX) {
 		this.coordX = coordX;
 	}
 
-	public int getCoordY() {
+	protected int getCoordY() {
 		return coordY;
 	}
 
-	public void setCoordY(int coordY) {
+	protected void setCoordY(int coordY) {
 		this.coordY = coordY;
 	}	
 
