@@ -199,7 +199,8 @@ public class MailBox implements  Runnable{
 											this.sleep(999999);
 										}
 									}
-								}else if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
+								}
+								if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
@@ -267,7 +268,8 @@ public class MailBox implements  Runnable{
 											this.sleep(999999);
 										}
 									}
-								}else if(e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								}
+								if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
@@ -308,7 +310,6 @@ public class MailBox implements  Runnable{
 								{
 									//On ajoute cet event à la liste des tasks
 									window.tasks.addLast(e);
-									System.out.println("YOLO241");
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
@@ -328,17 +329,13 @@ public class MailBox implements  Runnable{
 												this.sleep(999999);
 											}
 											
-										}else{
-											System.out.println("yolo réciproque");
-											affichage.interrupt();
-											this.sleep(999999);
 										}
 										
 									}
-								}else if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								}
+								if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									window.tasks.addLast(e);
-									System.out.println("YOLO242");
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
