@@ -136,12 +136,6 @@ public class Controller implements MailBoxListener {
 		else if (action.equals("PARKED"))
 		{
 			this.waitCar(car);
-		}else if (action.equals("WAIT"))
-		{
-			Car c = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
-			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
-			System.out.println("Le controlleur a bien donné une mission à la voiture "+c.getCarName());
-			mainBox.fireMailBoxUpdated(event);
 		}
 	}
 
