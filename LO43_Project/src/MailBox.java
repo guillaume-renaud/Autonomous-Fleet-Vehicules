@@ -124,32 +124,31 @@ public class MailBox implements  Runnable{
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
+						System.out.println("YOLO1");
 						//Si c'est un event relatif à un changement de position
 						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
-							
+							System.out.println("YOLO1.5");
 							//Cas où les deux threads sont totalement libres
 							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
 							{
+								System.out.println("YOLO2");
 								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
+									System.out.println("yolo reciproque");
 									affichage.interrupt();
 									this.sleep(999999);
 								}
 								else
 								{
-									//On cherche l'event changement de position suivant dans liste 
-									Iterator<MailBoxEvent> iterator = eventFire.iterator();
-									if(iterator.hasNext())
+									//On cherche l'event changement de position suivant dans liste.
+									if(!eventFire.isEmpty())
 									{
-										e = iterator.next();
-										while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
-										{
-											e = iterator.next();
-										}
+										e = eventFire.getFirst();
 										if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 										{
+											System.out.println("yolo réciproque");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -157,6 +156,7 @@ public class MailBox implements  Runnable{
 									}
 									else
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -166,6 +166,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread2 est totalement libre et le thread1 partiellement libre
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent==null)
 							{
+								System.out.println("YOLO21");
 								//Si la voiture n'est pas déjà déplacée par le thread1
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
@@ -173,62 +174,57 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
 									else
 									{
 										//On cherche l'event changement de position suivant dans liste 
-										Iterator<MailBoxEvent> iterator = eventFire.iterator();
-										if(iterator.hasNext())
+										if(!eventFire.isEmpty())
 										{
-											e = iterator.next();
-											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
-											{
-												e = iterator.next();
-											}
+											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
-
 											
 										}
 										else
 										{
+											System.out.println("yolo réciproque");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
 									}
-								}
-								if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								}else if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
 									else
 									{
 										//On cherche l'event changement de position suivant dans liste 
-										Iterator<MailBoxEvent> iterator = eventFire.iterator();
-										if(iterator.hasNext())
+										if(!eventFire.isEmpty())
 										{
-											e = iterator.next();
-											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
-											{
-												e = iterator.next();
-											}
+											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
+											
 										}
 										else
 										{
+											System.out.println("yolo réciproque");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -238,6 +234,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread1 est totalement libre et le thread2 partiellement libre
 							else if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent!=null)
 							{
+								System.out.println("YOLO23");
 								//Si la voiture n'est pas déjà déplacée par le thread2
 								if(e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
@@ -245,60 +242,57 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
 									else
 									{
 										//On cherche l'event changement de position suivant dans liste 
-										Iterator<MailBoxEvent> iterator = eventFire.iterator();
-										if(iterator.hasNext())
+										if(!eventFire.isEmpty())
 										{
-											e = iterator.next();
-											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
-											{
-												e = iterator.next();
-											}
+											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
+											
 										}
 										else
 										{
+											System.out.println("yolo réciproque");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
 									}
-								}
-								if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								}else if(e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
 									else
 									{
 										//On cherche l'event changement de position suivant dans liste 
-										Iterator<MailBoxEvent> iterator = eventFire.iterator();
-										if(iterator.hasNext())
+										if(!eventFire.isEmpty())
 										{
-											e = iterator.next();
-											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
-											{
-												e = iterator.next();
-											}
+											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
+											
 										}
 										else
 										{
+											System.out.println("yolo réciproque");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -308,68 +302,66 @@ public class MailBox implements  Runnable{
 							//Cas où le thread1 est partiellement libre et le thread2 partiellement libre
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent!=null)
 							{
+								System.out.println("YOLO24");
 								//Si la voiture n'est pas déjà déplacée ni par le thread1 ni le thread2
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
 									window.tasks.addLast(e);
+									System.out.println("YOLO241");
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
 									else
 									{
 										//On cherche l'event changement de position suivant dans liste 
-										Iterator<MailBoxEvent> iterator = eventFire.iterator();
-										if(iterator.hasNext())
+										if(!eventFire.isEmpty())
 										{
-											e = iterator.next();
-											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
-											{
-												e = iterator.next();
-											}
+											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
-										}
-										else
-										{
+											
+										}else{
+											System.out.println("yolo réciproque");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
 										
 									}
-								}
-								if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								}else if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									window.tasks.addLast(e);
+									System.out.println("YOLO242");
 									if (window.tasks.size()==2)
 									{
+										System.out.println("yolo réciproque");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
 									else
 									{
 										//On cherche l'event changement de position suivant dans liste 
-										Iterator<MailBoxEvent> iterator = eventFire.iterator();
-										if(iterator.hasNext())
+										if(!eventFire.isEmpty())
 										{
-											e = iterator.next();
-											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
-											{
-												e = iterator.next();
-											}
+											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
+												System.out.println("yolo réciproque");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
+											
 										}
 										else
 										{
+											System.out.println("yolo réciproque");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -377,6 +369,7 @@ public class MailBox implements  Runnable{
 								}
 							}
 						}
+						System.out.println("YOLO3");
 						for (MailBoxListener l : listeners)
 						{
 							l.onMailReceivedByCar(e);

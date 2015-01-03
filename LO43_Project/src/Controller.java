@@ -28,7 +28,6 @@ public class Controller implements MailBoxListener {
 		c.setCoordCarX(start.getCoordX());
 		c.setCoordCarY(start.getCoordY());
 		this.nbCarInMission++;
-		this.treatedRequest++;
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
@@ -36,9 +35,9 @@ public class Controller implements MailBoxListener {
 	//This method will be called when we want to give a mission with a destination to a car
 	public void giveMissionCar(Car c, Place start, Place end, Request request) {
 		
+		this.treatedRequest++;
 		Order o = new Order("MISSION", start, end, request);
 		c.setOrder(o);
-		System.out.println(c.getCarName());
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
 		System.out.println("Le controlleur a bien donné une mission à la voiture "+c.getCarName()+" : la voiture doit aller de "+start.getPlaceName()+" à "+end.getPlaceName());
 		mainBox.fireMailBoxUpdated(event);
@@ -97,11 +96,16 @@ public class Controller implements MailBoxListener {
 
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
-		
 		Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 		String action = e.updateAction;
 		if (action.equals("POSITION_CHANGED"))
 		{
+			/*if(e.indexUpdaterInMailBoxList == 1 && treatedRequest == 0)
+			{
+				car = mainBox.fleet.get(e.indexUpdaterInMailBoxList-1);
+				System.out.println("YOLO SWAGG");
+			}*/
+				
 			//Case when the car arrived to the starting point of the mission
 			if (car.getPosition()==car.getOrder().enrollPlace)
 			{
