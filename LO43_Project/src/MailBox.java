@@ -124,31 +124,32 @@ public class MailBox implements  Runnable{
 				switch (e.classNameOfUpdater) 
 				{
 					case ("Car") : {
-						System.out.println("YOLO1");
+						System.out.println("--> On rentre dans le case");
 						//Si c'est un event relatif à un changement de position
 						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
-							System.out.println("YOLO1.5");
+							System.out.println("--> C'est un event position ou parking");
 							//Cas où les deux threads sont totalement libres
 							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
 							{
-								System.out.println("YOLO2");
+								System.out.println("--> Les deux threads sont totalement libres : on ajoute la voiture d'index "+e.indexUpdaterInMailBoxList);
 								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
-									System.out.println("yolo reciproque");
+									System.out.println("-->> On lance affichage");
 									affichage.interrupt();
 									this.sleep(999999);
 								}
 								else
 								{
+									
 									//On cherche l'event changement de position suivant dans liste.
 									if(!eventFire.isEmpty())
 									{
 										e = eventFire.getFirst();
 										if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 										{
-											System.out.println("yolo réciproque");
+											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -156,7 +157,7 @@ public class MailBox implements  Runnable{
 									}
 									else
 									{
-										System.out.println("yolo réciproque");
+										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -174,7 +175,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
-										System.out.println("yolo réciproque");
+										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -186,7 +187,7 @@ public class MailBox implements  Runnable{
 											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												System.out.println("yolo réciproque");
+												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
@@ -194,7 +195,7 @@ public class MailBox implements  Runnable{
 										}
 										else
 										{
-											System.out.println("yolo réciproque");
+											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -205,7 +206,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
-										System.out.println("yolo réciproque");
+										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -217,7 +218,7 @@ public class MailBox implements  Runnable{
 											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												System.out.println("yolo réciproque");
+												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
@@ -225,7 +226,7 @@ public class MailBox implements  Runnable{
 										}
 										else
 										{
-											System.out.println("yolo réciproque");
+											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -243,7 +244,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
-										System.out.println("yolo réciproque");
+										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -255,7 +256,7 @@ public class MailBox implements  Runnable{
 											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												System.out.println("yolo réciproque");
+												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
@@ -263,7 +264,7 @@ public class MailBox implements  Runnable{
 										}
 										else
 										{
-											System.out.println("yolo réciproque");
+											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -274,7 +275,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
-										System.out.println("yolo réciproque");
+										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -286,7 +287,7 @@ public class MailBox implements  Runnable{
 											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												System.out.println("yolo réciproque");
+												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
@@ -294,7 +295,7 @@ public class MailBox implements  Runnable{
 										}
 										else
 										{
-											System.out.println("yolo réciproque");
+											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -312,7 +313,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
-										System.out.println("yolo réciproque");
+										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -324,13 +325,13 @@ public class MailBox implements  Runnable{
 											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												System.out.println("yolo réciproque");
+												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
 											
 										}else{
-											System.out.println("yolo réciproque");
+											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -341,7 +342,7 @@ public class MailBox implements  Runnable{
 									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
-										System.out.println("yolo réciproque");
+										System.out.println("-->> On lance affichage");
 										affichage.interrupt();
 										this.sleep(999999);
 									}
@@ -353,7 +354,7 @@ public class MailBox implements  Runnable{
 											e = eventFire.getFirst();
 											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
 											{
-												System.out.println("yolo réciproque");
+												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
@@ -361,7 +362,7 @@ public class MailBox implements  Runnable{
 										}
 										else
 										{
-											System.out.println("yolo réciproque");
+											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
@@ -369,7 +370,7 @@ public class MailBox implements  Runnable{
 								}
 							}
 						}
-						System.out.println("YOLO3");
+						System.out.println("--> On fire maintenant l'event");
 						for (MailBoxListener l : listeners)
 						{
 							l.onMailReceivedByCar(e);
