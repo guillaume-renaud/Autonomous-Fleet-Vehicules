@@ -50,11 +50,11 @@ public class Passenger implements MailBoxListener {
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Requette envoyée");
 			mainBox.fireMailBoxUpdated(event);
-		}else if(action.equals("Start") && this.passengerNumber == 2){
+		}/*else if(action.equals("Start") && this.passengerNumber == 2){
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Requette envoyée");
-			mainBox.fireMailBoxUpdated(event);
-		}
+			//mainBox.fireMailBoxUpdated(event);
+		}*/
 		
 	}
 }
