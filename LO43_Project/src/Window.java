@@ -1108,7 +1108,6 @@ import javax.swing.JLayeredPane;
 				
 				if(tasks.isEmpty() && (!internalThread.isRunning()) && (!internalThread2.isRunning()))
 				{
-					System.out.println("yolo");
 					calcul.interrupt();
 					this.sleep(999999);
 				}

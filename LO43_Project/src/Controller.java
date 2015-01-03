@@ -102,7 +102,6 @@ public class Controller implements MailBoxListener {
 		String action = e.updateAction;
 		if (action.equals("POSITION_CHANGED"))
 		{
-			System.out.println(e.indexUpdaterInMailBoxList);
 			//Case when the car arrived to the starting point of the mission
 			if (car.getPosition()==car.getOrder().enrollPlace)
 			{
