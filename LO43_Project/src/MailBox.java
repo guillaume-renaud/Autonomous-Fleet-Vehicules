@@ -175,7 +175,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread2 est totalement libre et le thread1 partiellement libre
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent==null)
 							{
-								System.out.println("Le thread2 est totalement libre et le thread1 partiellement libre");
+								System.out.println("--> Le thread2 est totalement libre et le thread1 partiellement libre");
 								//Si la voiture n'est pas déjà déplacée par le thread1
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
@@ -264,7 +264,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread1 est totalement libre et le thread2 partiellement libre
 							else if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent!=null)
 							{
-								System.out.println("Le thread1 est totalement libre et le thread2 partiellement libre");
+								System.out.println("--> Le thread1 est totalement libre et le thread2 partiellement libre");
 								//Si la voiture n'est pas déjà déplacée par le thread2
 								if(e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
@@ -352,7 +352,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread1 est partiellement libre et le thread2 partiellement libre
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent!=null)
 							{
-								System.out.println("Le thread1 est partiellement libre et le thread2 partiellement libre");
+								System.out.println("--> Le thread1 est partiellement libre et le thread2 partiellement libre");
 								//Si la voiture n'est pas déjà déplacée ni par le thread1 ni le thread2
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
