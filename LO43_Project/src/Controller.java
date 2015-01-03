@@ -143,6 +143,8 @@ public class Controller implements MailBoxListener {
 		else if (action.equals("PARKED"))
 		{
 			this.waitCar(car);
+		}else if (action.equals("WAIT")){
+			this.giveMissionCar(car, mainBox.findSpecificPlace(car.getOrder().mission.start), mainBox.findSpecificPlace(car.getOrder().mission.destination), car.getOrder().mission);
 		}
 	}
 
