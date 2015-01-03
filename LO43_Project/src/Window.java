@@ -1108,6 +1108,7 @@ import javax.swing.JLayeredPane;
 				
 				if(tasks.isEmpty() && (!internalThread.isRunning()) && (!internalThread2.isRunning()))
 				{
+					System.out.println("-->> On lance calcul");
 					calcul.interrupt();
 					this.sleep(999999);
 				}

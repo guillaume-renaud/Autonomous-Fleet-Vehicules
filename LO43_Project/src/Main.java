@@ -3,11 +3,19 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public static void main(String[] args) {
+	Window window;
+	
+	Thread affichage;
+	
+	Thread calcul;
+	
+	MailBox mainBox;
+	
+	public Main() {
 		
 		int i, j;
 		
-		MailBox mainBox = new MailBox();
+		mainBox = new MailBox();
 		
 		mainBox.FileReader();
 		//Places declaration and add them into mainBox.reservations
@@ -78,11 +86,11 @@ public class Main {
 		{
 			mainBox.addMailBoxListener(p);
 		}
-		Window window = new Window(mainBox);
-		Thread affichage = new Thread(window);
+		 window = new Window(mainBox);
+		 affichage = new Thread(window);
 		
 		mainBox.setWindow(window, affichage);
-		Thread calcul = new Thread(mainBox);
+		 calcul = new Thread(mainBox);
 			
 		window.setThreadCalcul(calcul);
 		
@@ -109,16 +117,14 @@ public class Main {
 		//window.tasks.addLast(e1);window.tasks.addLast(e2);window.tasks.addLast(e3);window.tasks.addLast(e4);window.tasks.addLast(e5);window.tasks.addLast(e6);
 		//window.tasks.addLast(e7);window.tasks.addLast(e8);window.tasks.addLast(e9);window.tasks.addLast(e10);window.tasks.addLast(e11);window.tasks.addLast(e12);
 		//window.tasks.addLast(e13);window.tasks.addLast(e14);window.tasks.addLast(e15);window.tasks.addLast(e16);
+	}
+	
+	public static void main(String[] args) {
 		
-		affichage.setPriority(Thread.MAX_PRIORITY);
-		affichage.start();
-		calcul.start();
-		
-		
-		
-		
-		
-		
+		Main main = new Main();
+		//affichage.setPriority(Thread.MAX_PRIORITY);
+		main.affichage.start();
+		main.calcul.start();
 		
 		
 		
@@ -127,7 +133,7 @@ public class Main {
 		
 		//window.moveToStartingPoint(window.mainBox.findSpecificPlace("I1"), mainBox.fleet.get(0));
 		//window.moveCarView(window.mainBox.findSpecificPlace("I1"), window.mainBox.findSpecificPlace("R1"),mainBox.fleet.get(0));
-		mainBox.commandControl.start();
+		main.mainBox.commandControl.start();
 
 		
 		//System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());

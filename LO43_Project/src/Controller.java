@@ -23,6 +23,7 @@ public class Controller implements MailBoxListener {
 	
 	//This method will be called when we want to enroll a car
 	public void enrollCar(Car c, Place start, Request request) {
+		this.treatedRequest++;
 		Order o = new Order("ENROLL", start);
 		c.setOrder(o);
 		c.getOrder().mission = request;
@@ -36,7 +37,7 @@ public class Controller implements MailBoxListener {
 	
 	//This method will be called when we want to give a mission with a destination to a car
 	public void giveMissionCar(Car c, Place start, Place end, Request request) {
-		
+
 		Order o = new Order("MISSION", start, end, request);
 		c.setOrder(o);
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
