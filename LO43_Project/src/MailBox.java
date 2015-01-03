@@ -118,6 +118,7 @@ public class MailBox implements  Runnable{
 		{
 			if(!eventFire.isEmpty())
 			{
+				
 				e = eventFire.getFirst();
 				eventFire.removeFirstOccurrence(e);
 				switch (e.classNameOfUpdater) 
@@ -132,7 +133,7 @@ public class MailBox implements  Runnable{
 								window.tasks.addLast(e);
 								if (window.tasks.size()==2)
 								{
-									System.out.println("yolo réciproque");
+									System.out.println("yolo reciproque");
 									affichage.interrupt();
 									this.sleep(999999);
 								}
