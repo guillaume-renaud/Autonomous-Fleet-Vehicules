@@ -125,6 +125,7 @@ public class MailBox implements  Runnable{
 				{
 					case ("Car") : {
 						System.out.println("YOLO1");
+						System.out.println(e.updateAction);
 						//Si c'est un event relatif à un changement de position
 						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{

@@ -36,11 +36,11 @@ public class ButtonRequestController implements ActionListener {
 					Passenger p = new Passenger((button.rf.mainBox.passengers.size()+1)+" start:I"+depart+" destination:O"+arrivee, button.rf.mainBox);
 					button.rf.mainBox.passengers.addLast(p);
 					button.rf.mainBox.addMailBoxListener(p);
-					MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), button.rf.mainBox.passengers.indexOf(p), "NEW_REQUEST");
+					//MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), button.rf.mainBox.passengers.indexOf(p), "NEW_REQUEST");
 					
-					System.out.println("Requette envoyée");
+					//System.out.println("Requette envoyée");
 					
-					button.rf.mainBox.fireMailBoxUpdated(event);
+					//button.rf.mainBox.fireMailBoxUpdated(event);
 				}
 				
 				
