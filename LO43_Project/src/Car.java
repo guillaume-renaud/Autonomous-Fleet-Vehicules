@@ -187,7 +187,7 @@ public class Car extends JPanel implements MailBoxListener {
 	{
 		try
 		{
-			int nb = (numCar%6)+1;
+			int nb = (numCar%6);
 			Image img = ImageIO.read(new File("image/car"+nb+".png"));
 			g.drawImage(img, 0, 0, this);
 		}
