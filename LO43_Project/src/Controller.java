@@ -45,16 +45,7 @@ public class Controller implements MailBoxListener {
 		mainBox.fireMailBoxUpdated(event);
 	}
 
-	//This method will be called when we want to release a car
-	public void releaseCar(Car c) {
-		
-		Order o = new Order("RELEASE");
-		c.setOrder(o);
-		
-		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "RELEASE", mainBox.fleet.indexOf(c));
-		System.out.println("Le controlleur a bien envoyé un RELEASE à la voiture "+c.getCarName());
-		mainBox.fireMailBoxUpdated(event);
-	}
+
 	
 	//This method will be called when we want to park a car in a specific parking
 	/* We have to rewrite this function when a Parking will exactly be defined
@@ -71,16 +62,8 @@ public class Controller implements MailBoxListener {
 		c.setPosition(null);
 		
 		this.nbCarInMission--;
-		
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
-	}
-	
-	public void waitCar (Car c) {
-		Order o = new Order("WAIT");
-		c.setOrder(o);
-		c.setOccuped(false);
-		
 	}
 		
 		
@@ -109,33 +92,24 @@ public class Controller implements MailBoxListener {
 			// Case when the car as finished its mission (arrived)
 			else if (car.getPosition()==car.getOrder().endingMission)
 			{
-				this.releaseCar(car);
+				String parking = "NONE";
+				switch (car.getPosition().getPlaceName()){
+				case "O1" : parking="P1";
+					break;
+				case "O2" : parking="P2";
+					break;
+				case "O3" : parking="P3";
+					break;
+				case "O4" : parking="P4";
+					break;
+				case "O5" : parking="P5";
+					break;
+				case "O6" : parking="P6";
+					break;
+				}
+				
+				this.parkCar(car, parking);
 			}
-			
-		}
-		else if (action.equals("RELEASED"))
-		{
-			String parking = "NONE";
-			switch (car.getPosition().getPlaceName()){
-			case "O1" : parking="P1";
-				break;
-			case "O2" : parking="P2";
-				break;
-			case "O3" : parking="P3";
-				break;
-			case "O4" : parking="P4";
-				break;
-			case "O5" : parking="P5";
-				break;
-			case "O6" : parking="P6";
-				break;
-			}
-			
-			this.parkCar(car, parking);
-		}
-		else if (action.equals("PARKED"))
-		{
-			this.waitCar(car);
 		}else if (action.equals("WAIT")){
 			this.giveMissionCar(car, mainBox.findSpecificPlace(car.getOrder().mission.start), mainBox.findSpecificPlace(car.getOrder().mission.destination), car.getOrder().mission);
 		}
