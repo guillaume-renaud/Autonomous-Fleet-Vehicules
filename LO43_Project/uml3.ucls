@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="Main" project="LO43_Project" file="/LO43_Project/src/Main.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="595" y="182"/>    
+    <position height="171" width="113" x="62" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="MailBox" project="LO43_Project" file="/LO43_Project/src/MailBox.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="216" y="250"/>    
+    <position height="351" width="245" x="62" y="639"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <interface id="3" language="java" name="java.lang.Runnable" project="LO43_Project" 
     file="C:/Program Files/Java/jre1.8.0_20/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="81" width="103" x="539" y="17"/>    
+    <position height="81" width="103" x="41" y="1030"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </interface>  
   <class id="4" language="java" name="Window" project="LO43_Project" file="/LO43_Project/src/Window.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="955" y="267"/>    
+    <position height="351" width="201" x="347" y="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="MovingManager" project="LO43_Project" file="/LO43_Project/src/MovingManager.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="647" y="457"/>    
+    <position height="207" width="300" x="347" y="639"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="MailBoxEvent" project="LO43_Project" file="/LO43_Project/src/MailBoxEvent.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="254" y="597"/>    
+    <position height="225" width="229" x="668" y="1030"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -100,6 +100,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="23">    
+    <bendpoint x="698" y="639"/>    
     <end type="SOURCE" refId="4" navigable="false">      
       <attribute id="24" name="tasks"/>      
       <multiplicity id="25" minimum="0" maximum="2147483647"/>    
@@ -120,10 +121,12 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <dependency id="30">    
+    <bendpoint x="71" y="248"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
   <association id="31">    
+    <bendpoint x="677" y="639"/>    
     <end type="SOURCE" refId="4" navigable="false">      
       <attribute id="32" name="eventToDisplay"/>      
       <multiplicity id="33" minimum="0" maximum="1"/>    
@@ -140,6 +143,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <realization id="37">    
+    <bendpoint x="31" y="639"/>    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
