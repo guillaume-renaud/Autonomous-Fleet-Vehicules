@@ -91,24 +91,33 @@ public class Main {
 		//MailBoxEvent e2 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("I1"), mainBox.findSpecificPlace("R1"));
 		//MailBoxEvent e3 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R1"), mainBox.findSpecificPlace("R2"));
 		//MailBoxEvent e4 = new MailBoxEvent("Car", 0, "POSITION_CHANGED", mainBox.findSpecificPlace("R2"), mainBox.findSpecificPlace("O2"));
+		//MailBoxEvent e5 = new MailBoxEvent("Car", 0, "PARKED");
 		
+		//MailBoxEvent e6 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I3"));
+		//MailBoxEvent e7 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("I3"), mainBox.findSpecificPlace("R3"));
+		//MailBoxEvent e8 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R3"), mainBox.findSpecificPlace("R4"));
+		//MailBoxEvent e9 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R4"), mainBox.findSpecificPlace("O4"));
+		//MailBoxEvent e10 = new MailBoxEvent("Car", 1, "PARKED");
 		
-		//MailBoxEvent e5 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I3"));
-		//MailBoxEvent e6 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("I3"), mainBox.findSpecificPlace("R3"));
-		//MailBoxEvent e7 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R3"), mainBox.findSpecificPlace("R4"));
-		//MailBoxEvent e8 = new MailBoxEvent("Car", 1, "POSITION_CHANGED", mainBox.findSpecificPlace("R4"), mainBox.findSpecificPlace("O4"));
-
+		//MailBoxEvent e11 = new MailBoxEvent("Car", 2, "POSITION_CHANGED", null, mainBox.findSpecificPlace("I6"));
+		//MailBoxEvent e12 = new MailBoxEvent("Car", 2, "POSITION_CHANGED", mainBox.findSpecificPlace("I6"), mainBox.findSpecificPlace("R6"));
+		//MailBoxEvent e13 = new MailBoxEvent("Car", 2, "POSITION_CHANGED", mainBox.findSpecificPlace("R6"), mainBox.findSpecificPlace("C"));
+		//MailBoxEvent e14 = new MailBoxEvent("Car", 2, "POSITION_CHANGED", mainBox.findSpecificPlace("C"), mainBox.findSpecificPlace("R3"));
+		//MailBoxEvent e15 = new MailBoxEvent("Car", 2, "POSITION_CHANGED", mainBox.findSpecificPlace("R3"), mainBox.findSpecificPlace("O3"));
+		//MailBoxEvent e16 = new MailBoxEvent("Car", 2, "PARKED");
 		
-		//window.tasks.addLast(e1);window.tasks.addLast(e2);window.tasks.addLast(e3);window.tasks.addLast(e4);
-		//window.tasks.addLast(e5);window.tasks.addLast(e6);window.tasks.addLast(e7);window.tasks.addLast(e8);
+		//window.tasks.addLast(e1);window.tasks.addLast(e2);window.tasks.addLast(e3);window.tasks.addLast(e4);window.tasks.addLast(e5);window.tasks.addLast(e6);
+		//window.tasks.addLast(e7);window.tasks.addLast(e8);window.tasks.addLast(e9);window.tasks.addLast(e10);window.tasks.addLast(e11);window.tasks.addLast(e12);
+		//window.tasks.addLast(e13);window.tasks.addLast(e14);window.tasks.addLast(e15);window.tasks.addLast(e16);
 		
+		affichage.setPriority(Thread.MAX_PRIORITY);
 		affichage.start();
 		calcul.start();
 		
 		
 		
 		
-		//affichage.setPriority(Thread.MAX_PRIORITY);
+		
 		
 		
 		
