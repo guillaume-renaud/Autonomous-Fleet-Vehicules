@@ -388,7 +388,7 @@ public class MailBox implements  Runnable{
 								}
 							}
 						}
-						System.out.println("--> On fire maintenant l'event");
+						System.out.println("--> On fire maintenant l'event lié a la voiture d'index "+e.indexUpdaterInMailBoxList);
 						for (MailBoxListener l : listeners)
 						{
 							l.onMailReceivedByCar(e);
