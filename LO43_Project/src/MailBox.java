@@ -148,8 +148,8 @@ public class MailBox implements  Runnable{
 									if(!eventFire.isEmpty())
 									{
 										System.out.println("--> Il a au moins un autre event dans eventFire");
-										e = eventFire.getFirst();
-										if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+										MailBoxEvent event = eventFire.getFirst();
+										if (!event.updateAction.equals("POSITION_CHANGED") && !event.updateAction.equals("PARKED"))
 										{
 											System.out.println("--> Mais cet event n'est pas position ou parking");
 											System.out.println("-->> On lance affichage");
@@ -196,8 +196,8 @@ public class MailBox implements  Runnable{
 										if(!eventFire.isEmpty())
 										{
 											System.out.println("--> Il a au moins un autre event dans eventFire");
-											e = eventFire.getFirst();
-											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+											MailBoxEvent event = eventFire.getFirst();
+											if (!event.updateAction.equals("POSITION_CHANGED") && !event.updateAction.equals("PARKED"))
 											{
 												System.out.println("--> Mais cet event n'est pas position ou parking");
 												System.out.println("-->> On lance affichage");
@@ -233,8 +233,8 @@ public class MailBox implements  Runnable{
 										//On cherche l'event changement de position suivant dans liste 
 										if(!eventFire.isEmpty())
 										{
-											e = eventFire.getFirst();
-											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+											MailBoxEvent event = eventFire.getFirst();
+											if (!event.updateAction.equals("POSITION_CHANGED") && !event.updateAction.equals("PARKED"))
 											{
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
@@ -271,8 +271,8 @@ public class MailBox implements  Runnable{
 										//On cherche l'event changement de position suivant dans liste 
 										if(!eventFire.isEmpty())
 										{
-											e = eventFire.getFirst();
-											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+											MailBoxEvent event = eventFire.getFirst();
+											if (!event.updateAction.equals("POSITION_CHANGED") && !event.updateAction.equals("PARKED"))
 											{
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
@@ -302,8 +302,8 @@ public class MailBox implements  Runnable{
 										//On cherche l'event changement de position suivant dans liste 
 										if(!eventFire.isEmpty())
 										{
-											e = eventFire.getFirst();
-											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+											MailBoxEvent event = eventFire.getFirst();
+											if (!event.updateAction.equals("POSITION_CHANGED") && !event.updateAction.equals("PARKED"))
 											{
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
@@ -340,8 +340,8 @@ public class MailBox implements  Runnable{
 										//On cherche l'event changement de position suivant dans liste 
 										if(!eventFire.isEmpty())
 										{
-											e = eventFire.getFirst();
-											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+											MailBoxEvent event = eventFire.getFirst();
+											if (!event.updateAction.equals("POSITION_CHANGED") && !event.updateAction.equals("PARKED"))
 											{
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
@@ -369,8 +369,8 @@ public class MailBox implements  Runnable{
 										//On cherche l'event changement de position suivant dans liste 
 										if(!eventFire.isEmpty())
 										{
-											e = eventFire.getFirst();
-											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+											MailBoxEvent event = eventFire.getFirst();
+											if (!event.updateAction.equals("POSITION_CHANGED") && !event.updateAction.equals("PARKED"))
 											{
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
