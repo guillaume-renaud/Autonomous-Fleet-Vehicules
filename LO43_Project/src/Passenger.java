@@ -31,6 +31,8 @@ public class Passenger implements MailBoxListener {
 		String action = e.updateAction;
 		if (action.equals("PARKED") && this.passengerNumber == mainBox.commandControl.treatedRequest+1 )
 		{
+			System.out.println("");
+			System.out.println(this.passengerNumber);
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Requette envoyée");
 			mainBox.fireMailBoxUpdated(event);
