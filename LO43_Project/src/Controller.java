@@ -27,7 +27,6 @@ public class Controller implements MailBoxListener {
 		c.setCoordCarX(start.getCoordX());
 		c.setCoordCarY(start.getCoordY());
 		this.nbCarInMission++;
-		this.treatedRequest++;
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "ENROLL", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
@@ -104,7 +103,8 @@ public class Controller implements MailBoxListener {
 			//Case when the car arrived to the starting point of the mission
 			if (car.getPosition()==car.getOrder().enrollPlace)
 			{
-				this.giveMissionCar(car, mainBox.findSpecificPlace(mainBox.passengers.get(e.indexUpdaterInMailBoxList).request.start), mainBox.findSpecificPlace(mainBox.passengers.get(e.indexUpdaterInMailBoxList).request.destination), mainBox.passengers.get(e.indexUpdaterInMailBoxList).request);
+				this.giveMissionCar(car, mainBox.findSpecificPlace(mainBox.passengers.get(treatedRequest).request.start), mainBox.findSpecificPlace(mainBox.passengers.get(treatedRequest).request.destination), mainBox.passengers.get(treatedRequest).request);
+				this.treatedRequest++;
 			}
 			// Case when the car as finished its mission (arrived)
 			else if (car.getPosition()==car.getOrder().endingMission)
