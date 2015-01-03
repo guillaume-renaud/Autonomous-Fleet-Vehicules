@@ -171,7 +171,7 @@ public class MailBox implements  Runnable{
 							//Cas où le thread2 est totalement libre et le thread1 partiellement libre
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent==null)
 							{
-								System.out.println("YOLO2");
+								System.out.println("YOLO21");
 								//Si la voiture n'est pas déjà déplacée par le thread1
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
@@ -252,6 +252,11 @@ public class MailBox implements  Runnable{
 											this.sleep(999999);
 										}
 									}
+								}else
+								{
+									System.out.println("yolo réciproque");
+									affichage.interrupt();
+									this.sleep(999999);
 								}
 							}
 							//Cas où le thread1 est partiellement libre et le thread2 partiellement libre

@@ -797,7 +797,6 @@ import javax.swing.JLayeredPane;
 			
 			this.sleep(999999);
 			
-			
 			//Boucle infine du thread affichage
 			while(true)
 			{
