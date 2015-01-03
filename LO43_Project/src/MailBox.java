@@ -258,11 +258,11 @@ public class MailBox implements  Runnable{
 							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent!=null)
 							{
 								System.out.println("YOLO2");
-								window.tasks.addLast(e);
 								//Si la voiture n'est pas déjà déplacée ni par le thread1 ni le thread2
 								if(e.indexUpdaterInMailBoxList!=window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList && e.indexUpdaterInMailBoxList!=window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
 								{
 									//On ajoute cet event à la liste des tasks
+									window.tasks.addLast(e);
 									if (window.tasks.size()==2)
 									{
 										System.out.println("yolo réciproque");
@@ -294,6 +294,41 @@ public class MailBox implements  Runnable{
 											this.sleep(999999);
 										}
 										
+									}
+								}
+								if(e.indexUpdaterInMailBoxList==window.internalThread.actualManagedEvent.indexUpdaterInMailBoxList || e.indexUpdaterInMailBoxList==window.internalThread2.actualManagedEvent.indexUpdaterInMailBoxList)
+								{
+									window.tasks.addLast(e);
+									if (window.tasks.size()==2)
+									{
+										System.out.println("yolo réciproque");
+										affichage.interrupt();
+										this.sleep(999999);
+									}
+									else
+									{
+										//On cherche l'event changement de position suivant dans liste 
+										Iterator<MailBoxEvent> iterator = eventFire.iterator();
+										if(iterator.hasNext())
+										{
+											e = iterator.next();
+											while (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED") && iterator.hasNext())
+											{
+												e = iterator.next();
+											}
+											if (!e.updateAction.equals("POSITION_CHANGED") && !e.updateAction.equals("PARKED"))
+											{
+												System.out.println("yolo réciproque");
+												affichage.interrupt();
+												this.sleep(999999);
+											}
+										}
+										else
+										{
+											System.out.println("yolo réciproque");
+											affichage.interrupt();
+											this.sleep(999999);
+										}
 									}
 								}
 							}
