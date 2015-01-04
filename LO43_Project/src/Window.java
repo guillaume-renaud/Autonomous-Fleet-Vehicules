@@ -747,6 +747,8 @@ import javax.swing.JLayeredPane;
 		}		
 		
 		
+		
+		
 		//@Override
 		/*public void onMailReceivedByCar(MailBoxEvent e) {
 			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
@@ -810,7 +812,6 @@ import javax.swing.JLayeredPane;
 				{
 					Iterator<MailBoxEvent> iterator = tasks.iterator();
 					eventToDisplay = iterator.next();
-					
 					//Cas où le thread1 est libre et le thread2 est libre
 					if((!internalThread.isRunning()) && (!internalThread2.isRunning()))
 					{
@@ -819,6 +820,7 @@ import javax.swing.JLayeredPane;
 							//Si le thread1 est partiellement libre, cad n'a pas encore fini avec sa voiture
 							if(internalThread.actualManagedCar!=null)
 							{
+
 								//Si la voiture de l'évent a déjà été traitée par le thread1 on la lui attribue
 								if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread.actualManagedCar))
 								{
@@ -899,6 +901,8 @@ import javax.swing.JLayeredPane;
 							//Si le thread1 est totalement libre
 							else
 							{
+
+								
 								//Si le thread2 est partiellement libre, cad n'a pas encore fini avec sa voiture
 								if(internalThread2.actualManagedCar!=null)
 								{
@@ -906,11 +910,29 @@ import javax.swing.JLayeredPane;
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 									{
 										tasks.remove(eventToDisplay);
-										
 										if (tasks.isEmpty())
 											noEventRemain = true;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										internalThread2.interrupt();
+										try {
+											Thread.sleep(30);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+										eventGiven = true;
+									}else
+									{
+										System.out.println("YOLO");
+										if(internalThread.actualManagedCar!=null)
+										System.out.println(internalThread.actualManagedCar.getCarName());
+										tasks.remove(eventToDisplay);
+										if (tasks.isEmpty())
+											noEventRemain = true;
+										
+										internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
+										
+										internalThread.interrupt();
 										try {
 											Thread.sleep(30);
 										} catch (InterruptedException e) {
@@ -923,8 +945,10 @@ import javax.swing.JLayeredPane;
 								//Sinon on l'attribue au thread1 totalement libre
 								else
 								{
+									System.out.println("YOLO");
+									if(internalThread.actualManagedCar!=null)
+									System.out.println(internalThread.actualManagedCar.getCarName());
 									tasks.remove(eventToDisplay);
-									
 									if (tasks.isEmpty())
 										noEventRemain = true;
 									

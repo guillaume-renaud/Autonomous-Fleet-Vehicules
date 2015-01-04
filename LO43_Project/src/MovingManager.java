@@ -27,6 +27,8 @@ public class MovingManager extends Thread {
 					
 			}
 			
+			
+			
 			public void run() {
 				
 				this.sleep(999999);
@@ -59,7 +61,6 @@ public class MovingManager extends Thread {
 
 						}
 						window.nbFreeThread++;
-
 						isRunning = false;
 						
 							this.sleep(999999);
