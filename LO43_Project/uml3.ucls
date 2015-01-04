@@ -1,152 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="Main" project="LO43_Project" file="/LO43_Project/src/Main.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="171" width="113" x="62" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="MailBox" project="LO43_Project" file="/LO43_Project/src/MailBox.java" 
+  <class id="1" language="java" name="MailBox" project="LO43_Project" file="/LO43_Project/src/MailBox.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="245" x="62" y="639"/>    
+    <position height="-1" width="-1" x="570" y="605"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="3" language="java" name="java.lang.Runnable" project="LO43_Project" 
+  <interface id="2" language="java" name="java.lang.Runnable" project="LO43_Project" 
     file="C:/Program Files/Java/jre1.8.0_20/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="81" width="103" x="41" y="1030"/>    
+    <position height="-1" width="-1" x="857" y="432"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="Window" project="LO43_Project" file="/LO43_Project/src/Window.java" binary="false" 
+  <class id="3" language="java" name="Window" project="LO43_Project" file="/LO43_Project/src/Window.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="351" width="201" x="347" y="248"/>    
+    <position height="-1" width="-1" x="645" y="151"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="MovingManager" project="LO43_Project" file="/LO43_Project/src/MovingManager.java" 
+  <class id="4" language="java" name="MovingManager" project="LO43_Project" file="/LO43_Project/src/MovingManager.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="300" x="347" y="639"/>    
+    <position height="-1" width="-1" x="189" y="127"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="MailBoxEvent" project="LO43_Project" file="/LO43_Project/src/MailBoxEvent.java" 
+  <class id="5" language="java" name="MailBoxEvent" project="LO43_Project" file="/LO43_Project/src/MailBoxEvent.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="229" x="668" y="1030"/>    
+    <position height="-1" width="-1" x="119" y="491"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="7">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="8" name="mainBox"/>      
-      <multiplicity id="9" minimum="0" maximum="1"/>    
+  <association id="6">    
+    <bendpoint x="371" y="428"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="7" name="tasks">        
+        <position height="18" width="36" x="243" y="422"/>      
+      </attribute>      
+      <multiplicity id="8" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="10">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="11" name="window"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
+  <association id="9">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="10" name="actualManagedEvent"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="13" name="eventFire"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="15">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="16" name="window"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="19" name="internalThread">        
+        <position height="18" width="79" x="360" y="169"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="13">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="14" name="eventFire"/>      
-      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="16">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="17" name="internalThread2"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+  <association id="21">    
+    <bendpoint x="392" y="428"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="22" name="eventToDisplay">        
+        <position height="18" width="83" x="269" y="455"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="1">        
+        <position height="16" width="23" x="207" y="380"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="19">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="20">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="21" name="internalThread"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+  <association id="24">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="25" name="internalThread2">        
+        <position height="18" width="85" x="364" y="137"/>      
+      </attribute>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
-    <bendpoint x="698" y="639"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="24" name="tasks"/>      
-      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="26">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <association id="27">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="28" name="actualManagedEvent"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="30">    
-    <bendpoint x="71" y="248"/>    
+  <realization id="27">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <association id="31">    
-    <bendpoint x="677" y="639"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="32" name="eventToDisplay"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="34">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="35" name="window"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="37">    
-    <bendpoint x="31" y="639"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
   </realization>  
+  <realization id="28">    
+    <bendpoint x="698" y="428"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="29">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="30" name="window"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="33" name="mainBox"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
