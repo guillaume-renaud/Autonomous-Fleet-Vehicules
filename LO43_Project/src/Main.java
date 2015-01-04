@@ -73,8 +73,8 @@ public class Main {
 		}
 		
 		//Car declarations and additions to mainBox.fleet
-		for(i=0; i<5 ;i++) // 5*2 = 10 cars in each parking
-			for (int k=1; k<13; k++)
+		for(i=0; i<3 ;i++) // 5*2 = 10 cars in each parking
+			for (int k=1; k<7; k++)
 				mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000, mainBox));
 	
 		for (Car c : mainBox.fleet)

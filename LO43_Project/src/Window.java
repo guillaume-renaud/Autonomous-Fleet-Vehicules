@@ -919,8 +919,6 @@ import javax.swing.JLayeredPane;
 										eventGiven = true;
 									}else
 									{
-										if(internalThread.actualManagedCar!=null)
-										System.out.println(internalThread.actualManagedCar.getCarName());
 										tasks.remove(eventToDisplay);
 										if (tasks.isEmpty())
 											noEventRemain = true;
@@ -940,8 +938,6 @@ import javax.swing.JLayeredPane;
 								//Sinon on l'attribue au thread1 totalement libre
 								else
 								{
-									if(internalThread.actualManagedCar!=null)
-									System.out.println(internalThread.actualManagedCar.getCarName());
 									tasks.remove(eventToDisplay);
 									if (tasks.isEmpty())
 										noEventRemain = true;

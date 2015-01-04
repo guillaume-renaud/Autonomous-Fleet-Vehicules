@@ -33,7 +33,7 @@ public class Hub extends JPanel
 				
 				nbCar = new JLabel ("Number of cars reserved : 0");
 				nbPark = new JLabel ("Number of cars parked : "+mainBox.fleet.size());
-				nbRequest = new JLabel("Number of request on standby : ");
+				nbRequest = new JLabel("Number of request on standby : "+mainBox.passengers.size());
 				container = new JPanel();
 				container2 = new JPanel();
 				
@@ -81,9 +81,15 @@ public class Hub extends JPanel
 				}
 				return nb;
 			}
+			public int nbRequestLeft (){
+				int nb = 0;
+				nb = mainBox.passengers.size()-mainBox.commandControl.treatedRequest;
+				return nb;
+			}
 			
 			public void updateLabels() {
 				nbCar.setText("Number of cars reserved : "+this.nbCarOccuped());
 				nbPark.setText("Number of cars parked : "+this.nbCarParked());
+				nbRequest.setText("Number of request on standby : " + this.nbRequestLeft());
 			}
 		}
