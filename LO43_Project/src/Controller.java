@@ -1,10 +1,12 @@
-
+/*this is one of the most important class of our program. As his name let think it's the manager of
+ * the requests of all the passengers. it gives tempo of the execution process.*/
 public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
 	int nbCarInMission = 0;
 	int treatedRequest = 0;
 	int debug=0;
+	// this method is called at the beginning of the program and starts the request treatment.
 	public void start ()
 	{
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "Start");
@@ -44,10 +46,6 @@ public class Controller implements MailBoxListener {
 
 	
 	//This method will be called when we want to park a car in a specific parking
-	/* We have to rewrite this function when a Parking will exactly be defined
-	 * 
-	 *ERROR
-	 */
 	public void parkCar(Car c, String parking) {
 		
 		Order o = new Order("PARK");
@@ -70,11 +68,13 @@ public class Controller implements MailBoxListener {
 	}
 	
 
-
+	/*for messages from Car we look the type of update and answer the corresponding
+	 * instruction in each cases. */
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
 		Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 		String action = e.updateAction;
+		//if this car changed its position
 		if (action.equals("POSITION_CHANGED"))
 		{
 				
@@ -103,22 +103,24 @@ public class Controller implements MailBoxListener {
 				}
 				this.parkCar(car, parking);
 			}
+		//if we received WAIT it means the path is occuped so controller gives the mission again
 		}else if (action.equals("WAIT")){
 			this.giveMissionCar(car, mainBox.findSpecificPlace(car.getOrder().mission.start), mainBox.findSpecificPlace(car.getOrder().mission.destination), car.getOrder().mission);
 		}
 	}
-
+	/*in case of update from Passenger Controller answer as follow*/
 	@Override
 	public void onMailReceivedByMan(MailBoxEvent e) {
 		
 		String action = e.updateAction;
+		//if passenger sent a new request
 		if (action.equals("NEW_REQUEST"))
 		{
 			Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
 			Car car = null;
 			System.out.println("Request properly received by the controller");
 			mainBox.window.log.updateLog("Request properly received by the controller");
-			
+			//We search an available car at the starting point
 			String beginning = mainBox.passengers.get(e.indexUpdaterInMailBoxList).request.start;
 			switch (beginning){
 			case "I1" : car = this.findFreeCar("P1");
