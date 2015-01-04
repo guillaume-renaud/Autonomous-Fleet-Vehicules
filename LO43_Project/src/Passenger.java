@@ -9,7 +9,8 @@ public class Passenger implements MailBoxListener {
 	boolean occuped;
 	MailBox mainBox;
 	
-	
+	/* initialize Passenger by reading the input line from the file request.txt
+	 * and creating corresponding request.*/
 	public Passenger(String s,MailBox m){
 		mainBox = m;
 		Scanner scanner;
@@ -24,11 +25,12 @@ public class Passenger implements MailBoxListener {
 		scanner.close();
 	}
 	
-	
+	/*on update received from Car Passenger react as follow : */
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
 		// TODO Auto-generated method stub
 		String action = e.updateAction;
+		// if action is PARKED then Passenger can send a new request if it's the next one in the list.
 		if (action.equals("PARKED") && this.passengerNumber == mainBox.commandControl.treatedRequest+1 )
 		{
 			System.out.println("");
@@ -45,16 +47,20 @@ public class Passenger implements MailBoxListener {
 		// TODO Auto-generated method stub
 		
 	}
+	//on update coming from Controller Passenger answer as follow : "
 	@Override
 	public void onMailReceivedByController(MailBoxEvent e) {
 		// TODO Auto-generated method stub
 		String action = e.updateAction;
+		//if action is Start then the first passenger send his request.
 		if (action.equals("Start") && this.passengerNumber == 1 )
 		{
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Request sended");
 			mainBox.window.log.updateLog("Request sended");
 			mainBox.fireMailBoxUpdated(event);
+		/*as we want to deal with two request at same time, the second Passenger in the list
+		 * also send his request.*/
 		}else if(action.equals("Start") && this.passengerNumber == 2){
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Request sended");
