@@ -34,7 +34,14 @@ public class ButtonController implements ActionListener{
 				mainBox.passengers.addLast(p);
 				mainBox.addMailBoxListener(p);
 		
-				if( mainBox.passengers.indexOf(p) == mainBox.commandControl.treatedRequest && mainBox.commandControl.nbCarInMission == 0 )
+				if( mainBox.passengers.indexOf(p) == mainBox.commandControl.treatedRequest && mainBox.commandControl.nbCarInMission == 1 )
+				{
+					MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), mainBox.passengers.indexOf(p), "NEW_REQUEST");
+					
+					System.out.println("Requette envoyée");
+					
+					mainBox.fireMailBoxUpdated(event);
+				}else if( mainBox.passengers.indexOf(p) == mainBox.commandControl.treatedRequest && mainBox.commandControl.nbCarInMission == 0 )
 				{
 					MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), mainBox.passengers.indexOf(p), "NEW_REQUEST");
 					
