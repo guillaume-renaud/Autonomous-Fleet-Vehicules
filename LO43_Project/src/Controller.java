@@ -65,7 +65,11 @@ public class Controller implements MailBoxListener {
 		mainBox.fireMailBoxUpdated(event);
 	}
 		
-		
+	public void waitCar (Car c) {
+		Order o = new Order("WAIT");
+		c.setOrder(o);
+		c.setOccuped(false);
+	}	
 	//This method will be called when we want a free car for a client
 	public Car findFreeCar (String p) {
 		
@@ -106,7 +110,6 @@ public class Controller implements MailBoxListener {
 				case "O6" : parking="P6";
 					break;
 				}
-				
 				this.parkCar(car, parking);
 			}
 		}else if (action.equals("WAIT")){
@@ -142,6 +145,8 @@ public class Controller implements MailBoxListener {
 			}
 			car.setPosition(null);
 			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start), passenger.request);
+		}else if(action.equals("PARKED")){
+			waitCar(mainBox.fleet.get(e.indexUpdaterInMailBoxList));
 		}
 	}
 
