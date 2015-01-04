@@ -72,11 +72,11 @@ public class Main {
 			}
 		}
 		
-		//Car declarations and add them to mainBox.fleet
-		for (int k=1; k<13; k++)
-		{
-			mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000, mainBox));
-		}
+		//Car declarations and additions to mainBox.fleet
+		for(i=0; i<5 ;i++) // 5*2 = 10 cars in each parking
+			for (int k=1; k<13; k++)
+				mainBox.fleet.add(new Car( k, "P"+(((k-1)%6)+1), 1000, 1000, mainBox));
+	
 		for (Car c : mainBox.fleet)
 		{
 			mainBox.addMailBoxListener(c);
@@ -129,7 +129,7 @@ public class Main {
 		
 		
 		
-		//System.out.println("Event à afficher : "+window.eventToDisplay.updateAction);
+		//System.out.println("Event ï¿½ afficher : "+window.eventToDisplay.updateAction);
 		
 		//window.moveToStartingPoint(window.mainBox.findSpecificPlace("I1"), mainBox.fleet.get(0));
 		//window.moveCarView(window.mainBox.findSpecificPlace("I1"), window.mainBox.findSpecificPlace("R1"),mainBox.fleet.get(0));
@@ -139,7 +139,7 @@ public class Main {
 		//System.out.println("nombre d'events dans tasks de Window : "+window.tasks.size());
 		//System.out.println();
 		//for (Car c : mainBox.fleet)
-		//	System.out.println("Les coordonées de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());
+		//	System.out.println("Les coordonï¿½es de "+c.getCarName()+" sont : ("+c.getX()+";"+c.getY()+") et il est visible ? : "+c.isVisible());
 		
 		
 		//mainBox.commandControl.test();
