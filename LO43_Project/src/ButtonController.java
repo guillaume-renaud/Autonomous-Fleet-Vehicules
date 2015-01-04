@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+//This class permit the control of the 2 buttons OK and Cancel of the frame displayed for entering new requests. 
 
 public class ButtonController implements ActionListener
 {
@@ -11,6 +12,7 @@ public class ButtonController implements ActionListener
 	RequestFrame jf;
 	MailBox mainBox;
 	
+	//Constructor of the ButtonController
 	public ButtonController (RequestFrame jff, MailBox MB)
 	{
 		jf = jff;
@@ -18,6 +20,7 @@ public class ButtonController implements ActionListener
 	}
 	
 	@Override
+	//This method is called after every action. If we click in OK, we send a new request, otherwise we dispose the frame
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		Object o = arg0.getSource();
