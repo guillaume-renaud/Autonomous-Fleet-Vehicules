@@ -746,49 +746,6 @@ import javax.swing.JLayeredPane;
 		
 		
 		
-		//@Override
-		/*public void onMailReceivedByCar(MailBoxEvent e) {
-			Car car = mainBox.fleet.get(e.indexUpdaterInMailBoxList);
-			
-			if (!(car.getLastPosition()==null))
-			System.out.println(car.getLastPosition().getPlaceName() + " " + car.getPosition().getPlaceName());
-			String action = e.updateAction;
-				
-			if (action.equals("POSITION_CHANGED"))
-			{
-				System.out.println("Window a détecté un changement de position pour "+car.getCarName());
-				if (car.getLastPosition()==null)
-				{
-					moveToStartingPoint(mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
-				}
-				else
-				{
-					this.moveCarView(mainBox.findSpecificPlace(car.getLastPosition().getPlaceName()), mainBox.findSpecificPlace(car.getPosition().getPlaceName()),car);
-				}
-				
-			}
-			else if (action.equals("RELEASED"))
-			{
-				
-			}
-			
-		}
-		@Override
-		public void onMailReceivedByMan(MailBoxEvent e) {
-			
-
-			
-		}
-		@Override
-		public void onMailReceivedByController(MailBoxEvent e) {
-			
-			if (e.updateAction.equals("Start"))
-			{
-				System.out.println("Window à bien reçu Start");
-			}
-		
-		}
-		*/
 		
 		@Override
 		public void run() {

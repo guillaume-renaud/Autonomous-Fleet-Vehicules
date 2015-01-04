@@ -2,14 +2,9 @@
 public class Controller implements MailBoxListener {
 
 	MailBox mainBox;
-	//String requestInTraitment;
-	
 	int nbCarInMission = 0;
 	int treatedRequest = 0;
 	int debug=0;
-	
-	// ---> solution : use the pattern Observable , and the class controller must implement interface that listen to every update
-	
 	public void start ()
 	{
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "Start");
@@ -66,12 +61,6 @@ public class Controller implements MailBoxListener {
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "PARK", mainBox.fleet.indexOf(c));
 		mainBox.fireMailBoxUpdated(event);
 	}
-		
-	/*public void waitCar (Car c) {
-		Order o = new Order("WAIT");
-		c.setOrder(o);
-		c.setOccuped(false);
-	}*/	
 	//This method will be called when we want a free car for a client
 	public Car findFreeCar (String p) {
 		
@@ -147,9 +136,7 @@ public class Controller implements MailBoxListener {
 			}
 			car.setPosition(null);
 			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start), passenger.request);
-		}/*else if(action.equals("PARKED")){
-			waitCar(mainBox.fleet.get(e.indexUpdaterInMailBoxList));
-		}*/
+		}
 	}
 
 	@Override

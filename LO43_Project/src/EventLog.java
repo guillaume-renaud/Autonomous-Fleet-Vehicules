@@ -29,23 +29,14 @@ public class EventLog extends JPanel {
 		text.setEditable(false);
 	
 		scrollPane = new JScrollPane(text);
-		//scrollPane.setViewportView(this);
-		//scrollPane.setLayout(new ScrollPaneLayout());
-		//scrollPane.getViewport().add(jl1);
-		//scrollPane.getViewport().add(jl2);
-		//scrollPane.getViewport().add(jl3);
-		//scrollPane.getViewport().add(jl4);
 		scrollPane.setPreferredSize(new Dimension(800,85));
 		this.add(scrollPane);
 		
 		
-		//scrollPane.setSize(new Dimension(800,95));
-		//scrollPane.setVisible(true);
 		this.setLayout(new GridLayout(1,1));
 		this.setBackground(Color.getHSBColor(60, 50, 50));
 		this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
 		
-		//this.add(scrollPane, BorderLayout.CENTER);
 		this.setSize(new Dimension(800,115));
 		this.setVisible(true);
 		

@@ -8,7 +8,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 public class MailBox implements  Runnable{
 
-	LinkedList<Car> fleet; // I have changed it to LinkedList which is a specific queue.
+	LinkedList<Car> fleet; 
 	
 	LinkedList<Passenger> passengers;
 
@@ -475,7 +475,7 @@ public class MailBox implements  Runnable{
 			Thread.sleep(second*1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
