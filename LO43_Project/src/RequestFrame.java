@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
+//This frame will be opened when we want to enter a new request 
 
 public class RequestFrame extends JFrame {
 
@@ -30,6 +30,7 @@ public class RequestFrame extends JFrame {
 			
 			MailBox mainBox;
 			
+			//Constructor of RequestFrame when we instantiate all the component of the frame, and we set all the characteristics of this frame
 			public RequestFrame (MailBox MB) {
 						
 				super();

@@ -20,7 +20,7 @@ public class MovingManager extends Thread {
 				actualManagedCar = window.mainBox.fleet.get(e.indexUpdaterInMailBoxList);
 				this.name = name;
 			}
-			// this is a flag to help window knowing when to stop execution and start Calcul() again.
+			// this is a flag to help window knowing when to stop execution and start calcul() again.
 			public boolean isRunning()
 			{
 				return isRunning;
