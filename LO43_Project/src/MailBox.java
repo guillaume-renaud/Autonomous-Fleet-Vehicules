@@ -116,6 +116,7 @@ public class MailBox implements  Runnable{
 		MailBoxEvent e;
 		while(true)
 		{
+			window.displayer.updateLabels();
 			if(!eventFire.isEmpty())
 			{
 				
