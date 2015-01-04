@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+/*This is also a leading class in our program. It represent in the same time the entity of car graphically and as an actor if event communication
+ * The car receive, reserve and check all resources related to a specific trip, a implement by itself the associated displacement.*/
 
 public class Car extends JPanel implements MailBoxListener
 {	
@@ -23,10 +25,10 @@ public class Car extends JPanel implements MailBoxListener
 
 	MailBox mainBox;
 
-	/* Cheikh35 : We have to put attributes to private and to add methods getter and setters to modify theses attributes.
-	 * Because this permit us to know when the attributes of car are modified, and we can put a method SendEvent, or
-	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
-	 * updates*/
+	/* We have put attributes to private and added methods getter and setters to modify theses attributes.
+	 * This permit us to know when the attributes of car are modified, and when we can put a method SendEvent, or
+	 * Fire, to create and Event when we modify the car, so when we modify the MailBox, and it'll permit the Controller
+	 *  and other Listeners to know updates from car */
 
 	public Car(int i, String p, int coorX, int coorY, MailBox m)
 	{
