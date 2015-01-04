@@ -1,8 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import javax.swing.JFrame;
@@ -795,8 +793,6 @@ import javax.swing.JLayeredPane;
 		
 		@Override
 		public void run() {
-			int passage = 0;			
-			
 			this.sleep(999999);
 			
 			//Boucle infine du thread affichage
@@ -1135,8 +1131,6 @@ import javax.swing.JLayeredPane;
 					this.sleep(999999);
 				}
 				
-				
-				//passage++;
 			}
 		}
 		
