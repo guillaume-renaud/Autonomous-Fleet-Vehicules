@@ -20,7 +20,7 @@ public class ButtonController implements ActionListener
 	}
 	
 	@Override
-	//This method is called after every action. If we click in OK, we send a new request, otherwise we dispose the frame
+	//This method is called after every action. If we click on OK, we send a new request, otherwise on CANCEL we dispose the frame
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		Object o = arg0.getSource();

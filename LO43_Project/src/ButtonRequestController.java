@@ -2,12 +2,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+//This class permit the control of button presents in the hub, to add a new or a random requests
 
 public class ButtonRequestController implements ActionListener 
 {
 	NewRequest button;
 			
 	@Override
+	//This method is called after every action. If we click on New Request, we open a frame for choosing expected places, otherwise we create automatically a request.
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		Object o = arg0.getSource();
