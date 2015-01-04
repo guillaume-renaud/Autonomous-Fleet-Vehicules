@@ -18,6 +18,7 @@ public class Hub extends JPanel
 			JButton newRequest;
 			JLabel nbCar;
 			JLabel nbPark;
+			JLabel nbRequest;
 			JPanel container;
 			JPanel container2;
 			
@@ -32,11 +33,13 @@ public class Hub extends JPanel
 				
 				nbCar = new JLabel ("Number of cars reserved : 0");
 				nbPark = new JLabel ("Number of cars parked : "+mainBox.fleet.size());
+				nbRequest = new JLabel("Number of request on standby : ");
 				container = new JPanel();
 				container2 = new JPanel();
 				
 				nbCar.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 				nbPark.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
+				nbRequest.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 				container.setBackground(Color.LIGHT_GRAY);
 				container.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
 				container.setLayout(new FlowLayout());
@@ -46,6 +49,7 @@ public class Hub extends JPanel
 				
 				this.add(nbCar);
 				this.add(nbPark);
+				this.add(nbRequest);
 				container.add(newRequest);
 				container2.add(randomRequest);
 				this.add(container);
