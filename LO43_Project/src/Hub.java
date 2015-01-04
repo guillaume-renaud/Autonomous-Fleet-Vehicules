@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+//The hub is a JPanel is the right of the frame, where we put all information related to moving or resources.
+
 public class Hub extends JPanel
 		{
 
@@ -22,6 +24,7 @@ public class Hub extends JPanel
 			JPanel container;
 			JPanel container2;
 			
+			//Constructor of the hub, where we instantiate every component 
 			public Hub (MailBox MB) {
 				super();
 				
@@ -62,6 +65,7 @@ public class Hub extends JPanel
 				this.setVisible(true);
 			}
 			
+			//This method return the number of displayed and moving cars in the screen
 			public int nbCarOccuped () {
 				int nb=0;
 				for (Car c : mainBox.fleet)
@@ -72,6 +76,7 @@ public class Hub extends JPanel
 				return nb;
 			}
 			
+			//This method return the number of undisplayed and parked cars in the screen
 			public int nbCarParked () {
 				int nb=0;
 				for (Car c : mainBox.fleet)
@@ -81,12 +86,15 @@ public class Hub extends JPanel
 				}
 				return nb;
 			}
+			
+			//This method return the number of remaining requests to be treated by the program
 			public int nbRequestLeft (){
 				int nb = 0;
 				nb = mainBox.passengers.size()-mainBox.commandControl.treatedRequest;
 				return nb;
 			}
 			
+			//This method permit to update the informations displayed in the hub
 			public void updateLabels() {
 				nbCar.setText("Number of cars reserved : "+this.nbCarOccuped());
 				nbPark.setText("Number of cars parked : "+this.nbCarParked());
