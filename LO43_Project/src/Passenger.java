@@ -32,9 +32,11 @@ public class Passenger implements MailBoxListener {
 		if (action.equals("PARKED") && this.passengerNumber == mainBox.commandControl.treatedRequest+1 )
 		{
 			System.out.println("");
+			mainBox.window.log.updateLog("");
 			System.out.println(this.passengerNumber);
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
-			System.out.println("Requette envoyée");
+			System.out.println("Request sended");
+			mainBox.window.log.updateLog("Request sended");
 			mainBox.fireMailBoxUpdated(event);
 		}
 	}
@@ -50,11 +52,13 @@ public class Passenger implements MailBoxListener {
 		if (action.equals("Start") && this.passengerNumber == 1 )
 		{
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
-			System.out.println("Requette envoyée");
+			System.out.println("Request sended");
+			mainBox.window.log.updateLog("Request sended");
 			mainBox.fireMailBoxUpdated(event);
 		}else if(action.equals("Start") && this.passengerNumber == 2){
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
-			System.out.println("Requette envoyée");
+			System.out.println("Request sended");
+			mainBox.window.log.updateLog("Request sended");
 			mainBox.fireMailBoxUpdated(event);
 		}
 	}

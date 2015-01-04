@@ -13,7 +13,8 @@ public class Controller implements MailBoxListener {
 	public void start ()
 	{
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "Start");
-		System.out.println("On start ! ");
+		System.out.println("We start !");
+		mainBox.window.log.updateLog("We start !");
 		mainBox.fireMailBoxUpdated(event);
 	}
 	
@@ -40,7 +41,8 @@ public class Controller implements MailBoxListener {
 		Order o = new Order("MISSION", start, end, request);
 		c.setOrder(o);
 		MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), 0, "MISSION", mainBox.fleet.indexOf(c));
-		System.out.println("Le controlleur a bien donné une mission à la voiture "+c.getCarName()+" : la voiture doit aller de "+start.getPlaceName()+" à "+end.getPlaceName());
+		System.out.println("The controller has in fact given a mission to the "+c.getCarName()+" : it must move from "+start.getPlaceName()+" to "+end.getPlaceName());
+		mainBox.window.log.updateLog("The controller has in fact given a mission to the "+c.getCarName()+" : it must move from "+start.getPlaceName()+" to "+end.getPlaceName());
 		mainBox.fireMailBoxUpdated(event);
 	}
 
@@ -125,7 +127,8 @@ public class Controller implements MailBoxListener {
 		{
 			Passenger passenger = mainBox.passengers.get(e.indexUpdaterInMailBoxList);
 			Car car = null;
-			System.out.println("Requette bien reçue par le controller");
+			System.out.println("Request properly received by the controller");
+			mainBox.window.log.updateLog("Request properly received by the controller");
 			
 			String beginning = mainBox.passengers.get(e.indexUpdaterInMailBoxList).request.start;
 			switch (beginning){

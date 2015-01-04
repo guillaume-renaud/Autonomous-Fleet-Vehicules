@@ -17,6 +17,7 @@ public class EventLog extends JPanel {
 	MailBox mainBox;
 	JScrollPane scrollPane;
 	JTextArea text;
+	boolean vide = true;
 	
 	
 	public EventLog (MailBox MB) {
@@ -24,7 +25,7 @@ public class EventLog extends JPanel {
 		
 		mainBox = MB;
 		
-		text = new JTextArea("Hello World!\nSmogogo risposte ... cela n'a aucun effet !\nController lance une nouvelle pokéball : il appelle MailBoxer, la boite aux lettres boxuese !\nLe combat promet d'être acharné !\nOh my god je dirais même plus mon cher Dupond/t, ...\nTrève de bavardes et à l'abordage ...\nNanda ?\nUmmmmffhh ");
+		text = new JTextArea();
 		text.setEditable(false);
 	
 		scrollPane = new JScrollPane(text);
@@ -51,8 +52,18 @@ public class EventLog extends JPanel {
 	}
 
 	public void updateLog (String lastLog) {
-		text.append("\n"+lastLog);
+		if(vide)
+		{
+			text.append(lastLog);
+			vide=false;
+		}
+		else
+		{
+			text.append("\n"+lastLog);
+		}
 		
+		scrollPane.setAutoscrolls(true);
+		text.setCaretPosition(text.getDocument().getLength()); 
 		
 	}
 }
