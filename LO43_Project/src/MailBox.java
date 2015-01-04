@@ -128,14 +128,8 @@ public class MailBox implements  Runnable{
 						System.out.println("--> On rentre dans le case");
 						System.out.println("taille de eventFire() : "+eventFire.size());
 						System.out.println(e.updateAction);
-						//Si c'est un event relatif à un changement de position
-						if(e.updateAction.equals("PARKED"))
-						{
-							window.tasks.addLast(e);
-							affichage.interrupt();
-							this.sleep(999999);
-						}
-						else if(e.updateAction.equals("POSITION_CHANGED"))
+						//Si c'est un event relatif à un changement de position ou park
+						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 						{
 							System.out.println("--> C'est un event position ");
 							//Cas où les deux threads sont totalement libres
@@ -158,16 +152,16 @@ public class MailBox implements  Runnable{
 									{
 										System.out.println("--> Il a au moins un autre event dans eventFire");
 										MailBoxEvent event = eventFire.getFirst();
-										if (!event.updateAction.equals("POSITION_CHANGED"))
+										if (!event.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 										{
-											System.out.println("--> Mais cet event n'est pas position ");
+											System.out.println("--> Mais cet event n'est pas position ou park");
 											System.out.println("-->> On lance affichage");
 											affichage.interrupt();
 											this.sleep(999999);
 										}
 										else
 										{
-											System.out.println("--> Et cet event est un changement de position ");
+											System.out.println("--> Et cet event est un changement de position ou park");
 										}
 										
 									}
@@ -206,16 +200,16 @@ public class MailBox implements  Runnable{
 										{
 											System.out.println("--> Il a au moins un autre event dans eventFire");
 											MailBoxEvent event = eventFire.getFirst();
-											if (!event.updateAction.equals("POSITION_CHANGED") )
+											if (!event.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 											{
-												System.out.println("--> Mais cet event n'est pas position");
+												System.out.println("--> Mais cet event n'est pas position ou park");
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
 											else
 											{
-												System.out.println("--> Et cet event est un changement de position ");
+												System.out.println("--> Et cet event est un changement de position ou park");
 											}
 											
 										}
@@ -247,16 +241,16 @@ public class MailBox implements  Runnable{
 										{
 											System.out.println("--> Il a au moins un autre event dans eventFire");
 											MailBoxEvent event = eventFire.getFirst();
-											if (!event.updateAction.equals("POSITION_CHANGED") )
+											if (!event.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 											{
-												System.out.println("--> Mais cet event n'est pas position");
+												System.out.println("--> Mais cet event n'est pas position ou park");
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
 											else
 											{
-												System.out.println("--> Et cet event est un changement de position ");
+												System.out.println("--> Et cet event est un changement de position ou park");
 											}
 											
 										}
@@ -295,16 +289,16 @@ public class MailBox implements  Runnable{
 										{
 											System.out.println("--> Il a au moins un autre event dans eventFire");
 											MailBoxEvent event = eventFire.getFirst();
-											if (!event.updateAction.equals("POSITION_CHANGED"))
+											if (!event.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 											{
-												System.out.println("--> Mais cet event n'est pas position ");
+												System.out.println("--> Mais cet event n'est pas position  ou park");
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
 											else
 											{
-												System.out.println("--> Et cet event est un changement de position ");
+												System.out.println("--> Et cet event est un changement de position ou park");
 											}
 											
 										}
@@ -335,16 +329,16 @@ public class MailBox implements  Runnable{
 										{
 											System.out.println("--> Il a au moins un autre event dans eventFire");
 											MailBoxEvent event = eventFire.getFirst();
-											if (!event.updateAction.equals("POSITION_CHANGED"))
+											if (!event.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 											{
-												System.out.println("--> Mais cet event n'est pas position ");
+												System.out.println("--> Mais cet event n'est pas position ou park");
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
 											else
 											{
-												System.out.println("--> Et cet event est un changement de position");
+												System.out.println("--> Et cet event est un changement de position ou park");
 											}
 											
 										}
@@ -382,16 +376,16 @@ public class MailBox implements  Runnable{
 										{
 											System.out.println("--> Il a au moins un autre event dans eventFire");
 											MailBoxEvent event = eventFire.getFirst();
-											if (!event.updateAction.equals("POSITION_CHANGED"))
+											if (!event.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 											{
-												System.out.println("--> Mais cet event n'est pas position ");
+												System.out.println("--> Mais cet event n'est pas position ou park");
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
 											else
 											{
-												System.out.println("--> Et cet event est un changement de position");
+												System.out.println("--> Et cet event est un changement de position ou park");
 											}
 											
 										}
@@ -423,16 +417,16 @@ public class MailBox implements  Runnable{
 										{
 											System.out.println("--> Il a au moins un autre event dans eventFire");
 											MailBoxEvent event = eventFire.getFirst();
-											if (!event.updateAction.equals("POSITION_CHANGED") )
+											if (!event.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
 											{
-												System.out.println("--> Mais cet event n'est pas position");
+												System.out.println("--> Mais cet event n'est pas position ou park");
 												System.out.println("-->> On lance affichage");
 												affichage.interrupt();
 												this.sleep(999999);
 											}
 											else
 											{
-												System.out.println("--> Et cet event est un changement de position");
+												System.out.println("--> Et cet event est un changement de position ou park");
 											}
 											
 										}

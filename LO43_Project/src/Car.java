@@ -253,6 +253,9 @@ public class Car extends JPanel implements MailBoxListener {
 			System.out.println("La voiture "+this.getCarName()+" a bien reçu PARK");
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "PARKED");
 			//mainBox.window.tasks.addLast(event);
+			Order o = new Order("WAIT");
+			this.setOrder(o);
+			this.setOccuped(false);
 			System.out.println("La voiture "+this.getCarName()+" s'est bien PARKED");
 			mainBox.fireMailBoxUpdated(event);
 		}
