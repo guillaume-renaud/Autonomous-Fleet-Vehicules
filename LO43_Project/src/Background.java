@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+//Panel of the main frame where we put the background picture to give sense to car moves
+
 public class Background extends JPanel
 {
 	private static final long serialVersionUID = 1L;
