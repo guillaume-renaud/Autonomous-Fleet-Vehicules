@@ -75,7 +75,7 @@ public class MovingManager extends Thread {
 					Thread.sleep(second*1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 			}
 		}
