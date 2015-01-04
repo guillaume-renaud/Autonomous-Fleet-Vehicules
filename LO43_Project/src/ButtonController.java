@@ -5,22 +5,22 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 
-public class ButtonController implements ActionListener{
-
-	
+public class ButtonController implements ActionListener
+{
 	JButton button;
 	RequestFrame jf;
 	MailBox mainBox;
 	
-	public ButtonController (RequestFrame jff, MailBox MB) {
+	public ButtonController (RequestFrame jff, MailBox MB)
+	{
 		jf = jff;
 		mainBox = MB;
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent arg0) 
+	{
 		Object o = arg0.getSource();
-
 		button = (JButton) o;
 		
 		if(button.getText().equals("Ok"))
@@ -38,22 +38,20 @@ public class ButtonController implements ActionListener{
 				{
 					MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), mainBox.passengers.indexOf(p), "NEW_REQUEST");
 					
-					System.out.println("Requette envoyée");
+					System.out.println("Requette envoyï¿½e");
 					
 					mainBox.fireMailBoxUpdated(event);
-				}else if( mainBox.passengers.indexOf(p) == mainBox.commandControl.treatedRequest && mainBox.commandControl.nbCarInMission == 0 )
+				}
+				else if( mainBox.passengers.indexOf(p) == mainBox.commandControl.treatedRequest && mainBox.commandControl.nbCarInMission == 0 )
 				{
 					MailBoxEvent event = new MailBoxEvent (p.getClass().getName(), mainBox.passengers.indexOf(p), "NEW_REQUEST");
 					
-					System.out.println("Requette envoyée");
+					System.out.println("Requette envoyï¿½e");
 					
 					mainBox.fireMailBoxUpdated(event);
 				}
 				jf.dispose();
 			}
-			
-			
-			
 		}
 		else if(button.getText().equals("Cancel"))
 		{

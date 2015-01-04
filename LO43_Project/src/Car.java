@@ -7,8 +7,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
-public class Car extends JPanel implements MailBoxListener {
-	
+public class Car extends JPanel implements MailBoxListener
+{	
 	private static final long serialVersionUID = 1L;
 	
 	private String carName;
@@ -22,14 +22,14 @@ public class Car extends JPanel implements MailBoxListener {
 	private int numCar;
 	 
 	MailBox mainBox;
-	
-	
+		
 	/* Cheikh35 : We have to put attributes to private and to add methods getter and setters to modify theses attributes.
 	 * Because this permit us to know when the attributes of car are modified, and we can put a method SendEvent, or
 	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
 	 * updates*/
 	
-	public Car(int i, String p, int coorX, int coorY, MailBox m){
+	public Car(int i, String p, int coorX, int coorY, MailBox m)
+	{
 		super();
 		numCar = i;
 		setCarName("car"+i);
@@ -43,7 +43,8 @@ public class Car extends JPanel implements MailBoxListener {
 		mainBox = m;
 	}
 	
-	public Car (Car copie) {
+	public Car (Car copie)
+	{
 		this.carName = copie.carName;
 		this.order = copie.order;
 		this.lastPosition = copie.lastPosition;
@@ -57,54 +58,43 @@ public class Car extends JPanel implements MailBoxListener {
 	}
 	
 
-	public void reserveRoad(){
+	public void reserveRoad()
+	{
 		for(int i=0;i<19;i++)
 			if(order.mission.requestMap[i])
 				for(Place p : mainBox.reservations)
-				{
 					if (order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
-					{
 						p.setPlaceIsFree(false);
-					}
-				}
 	}
-	public boolean checkRoad(){
+	
+	
+	public boolean checkRoad()
+	{
 		boolean ready = true;
 		for(int i=0;i<19;i++)
-		{
 			if(order.mission.requestMap[i])
-			{
 				for(Place p : mainBox.reservations)
-				{
 					if (order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
-					{
 						if(!p.getPlaceIsFree())
 							ready = false;
-					}
-				}
-			}
-		}
 		return ready;
 	}
 	
-	public void move() {
-		
+	
+	public void move()
+	{
 		//position.setPlaceIsFree(true);
 		for(Place p : position.getAdjacencyPlaceList())
 			for(int i=0;i<19;i++)
-			{
 				if(order.typeOrder.equals("MISSION"))
-				{
 					if(order.mission.requestMap[i])
-					{
 						if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 						{
 							this.lastPosition = this.position;
+							
 							if(lastPosition!=null)				
-							{
-
 								this.lastPosition.setPlaceIsFree(true);
-							}
+
 							position = p;
 							order.mission.requestMap[i]=false;
 							MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "POSITION_CHANGED", lastPosition, position);
@@ -113,12 +103,7 @@ public class Car extends JPanel implements MailBoxListener {
 							mainBox.window.log.updateLog("The "+this.getCarName()+" has moved from "+this.getLastPosition().getPlaceName()+" to "+this.getPosition().getPlaceName());
 							mainBox.fireMailBoxUpdated(event);
 						}	
-
-						
-					}	
-				}
-				
-			}
+			
 		/*for(Place p : position.getAdjacencyPlaceList())
 		{
 			for(int i=0;i<19;i++)
@@ -202,22 +187,22 @@ public class Car extends JPanel implements MailBoxListener {
 	}
 
 	@Override
-	public void onMailReceivedByCar(MailBoxEvent e) {
+	public void onMailReceivedByCar(MailBoxEvent e)
+	{
 		// TODO Auto-generated method stub
 		if(e.updateAction.equals("POSITION_CHANGED") && e.indexUpdaterInMailBoxList == mainBox.fleet.indexOf(this) && this.order.typeOrder.equals("MISSION") && e.lastPlace!=null)
-		{
 			this.move();
-		}
 	}
 
 	@Override
-	public void onMailReceivedByMan(MailBoxEvent e) {
+	public void onMailReceivedByMan(MailBoxEvent e)
+	{
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public void onMailReceivedByController(MailBoxEvent e) {
+	public void onMailReceivedByController(MailBoxEvent e)
+	{
 		// TODO Auto-generated method stub
 		if (this.order.typeOrder.equals("ENROLL") && e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this) )
 		{
@@ -239,11 +224,13 @@ public class Car extends JPanel implements MailBoxListener {
 			System.out.println("The "+this.getCarName()+" has received its MISSION");
 			mainBox.window.log.updateLog("The "+this.getCarName()+" has received its MISSION");
 			boolean ready = this.checkRoad();
+			
 			if(!ready)
 			{
 				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "WAIT");
 				mainBox.fireMailBoxUpdated(event);
-			}else
+			}
+			else
 			{
 				this.reserveRoad();
 				this.move();
@@ -257,6 +244,7 @@ public class Car extends JPanel implements MailBoxListener {
 			mainBox.window.log.updateLog("The "+this.getCarName()+" has received PARK");
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "PARKED");
 			//mainBox.window.tasks.addLast(event);
+			
 			Order o = new Order("WAIT");
 			this.setOrder(o);
 			this.setOccuped(false);
@@ -266,76 +254,94 @@ public class Car extends JPanel implements MailBoxListener {
 		}
 	}
 
-	protected Order getOrder() {
+	protected Order getOrder()
+	{
 		return this.order;
 	}
 	
-	protected Place getLastPosition() {
+	protected Place getLastPosition()
+	{
 		return this.lastPosition;
 	}
 	
-	protected Place getPosition() {
+	protected Place getPosition()
+	{
 		return this.position;
 	}
 	
-	protected boolean isOccuped() {
+	protected boolean isOccuped()
+	{
 		return this.occuped;
 	}
 	
 	
-	protected void setOrder(Order o) { //It's just an example, it's not finished.
+	protected void setOrder(Order o)	//It's just an example, it's not finished.
+	{ 
 		this.order = o;
 	}
 	
-	protected void setLastPosition(Place p) {
+	protected void setLastPosition(Place p)
+	{
 		this.lastPosition = p;
 	}
 	
-	protected void setPosition(Place p) {
+	protected void setPosition(Place p)
+	{
 		this.position = p;
 	}
 	
-	protected void setOccuped(boolean b) {
+	protected void setOccuped(boolean b)
+	{
 		this.occuped = b;
 	}
 	
-	protected String getParking() {
+	protected String getParking()
+	{
 		return parking;
 	}
 
-	protected void setParking(String p) {
+	protected void setParking(String p)
+	{
 		parking = p;
 	}
 
-	protected String getCarName() {
+	protected String getCarName()
+	{
 		return carName;
 	}
 
-	protected void setCarName(String carName) {
+	protected void setCarName(String carName)
+	{
 		this.carName = carName;
 	}
 
-	protected int getCoordCarX() {
+	protected int getCoordCarX()
+	{
 		return coordCarX;
 	}
 
-	protected void setCoordCarX(int coordCarX) {
+	protected void setCoordCarX(int coordCarX)
+	{
 		this.coordCarX = coordCarX;
 	}
 
-	protected int getCoordCarY() {
+	protected int getCoordCarY()
+	{
 		return coordCarY;
 	}
 
-	protected void setCoordCarY(int coordCarY) {
+	protected void setCoordCarY(int coordCarY)
+	{
 		this.coordCarY = coordCarY;
 	}
 
-	protected boolean isDisplayed() {
+	protected boolean isDisplayed()
+	{
 		return displayed;
 	}
 
-	protected void setDisplayed(boolean displayed) {
+	protected void setDisplayed(boolean displayed)
+	{
 		this.displayed = displayed;
 	}
 

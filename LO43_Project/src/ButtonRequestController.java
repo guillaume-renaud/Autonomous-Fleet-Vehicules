@@ -11,7 +11,6 @@ public class ButtonRequestController implements ActionListener
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		Object o = arg0.getSource();
-
 		button = (NewRequest) o;
 		
 		if (button.getText().equals("New Request"))
