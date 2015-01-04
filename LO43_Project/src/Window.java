@@ -182,7 +182,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-i), (int) ((int) c.getCoordCarY()-(1.13*i)), 32, 37);
 						try {
 							//Thread.sleep(100);
-							tempo.sleep(15);
+							tempo.sleep(10);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -253,7 +253,7 @@ import javax.swing.JLayeredPane;
 						c.setBounds((int) (c.getCoordCarX()-1.73*i), (c.getCoordCarY()+i), 32, 37);
 						try {
 							//Thread.sleep(100);
-							tempo.sleep(15);
+							tempo.sleep(10);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -802,6 +802,7 @@ import javax.swing.JLayeredPane;
 			{
 				displayer.updateLabels();
 				//System.out.println(passage+"-ième passage dans la boucle infinie de run() de Window ! ");
+				
 				eventGiven = false;
 				noEventRemain = false;
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
@@ -828,7 +829,12 @@ import javax.swing.JLayeredPane;
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
 										internalThread.interrupt();
-									
+									try {
+										Thread.sleep(10);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
 									eventGiven = true;
 								}
 								//Si la voiture n'a pas été traitée par thread1 déjà
@@ -846,7 +852,12 @@ import javax.swing.JLayeredPane;
 											internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 											
 											internalThread2.interrupt();
-											
+											try {
+												Thread.sleep(30);
+											} catch (InterruptedException e) {
+												// TODO Auto-generated catch block
+												e.printStackTrace();
+											}
 											eventGiven = true;
 										}
 										//Si les 2 thread sont partiellement libres avec une autre voiture, on prend l'event suivant. 
@@ -874,7 +885,12 @@ import javax.swing.JLayeredPane;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										
 										internalThread2.interrupt();
-									
+										try {
+											Thread.sleep(30);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 										eventGiven = true;
 									}
 										
@@ -890,11 +906,17 @@ import javax.swing.JLayeredPane;
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 									{
 										tasks.remove(eventToDisplay);
+										
 										if (tasks.isEmpty())
 											noEventRemain = true;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										internalThread2.interrupt();
-										
+										try {
+											Thread.sleep(30);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 										eventGiven = true;
 									}
 								}
@@ -902,12 +924,19 @@ import javax.swing.JLayeredPane;
 								else
 								{
 									tasks.remove(eventToDisplay);
+									
 									if (tasks.isEmpty())
 										noEventRemain = true;
+									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
 									internalThread.interrupt();
-								
+									try {
+										Thread.sleep(30);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
 									eventGiven = true;
 								}
 							}
@@ -950,7 +979,12 @@ import javax.swing.JLayeredPane;
 										internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 										
 										internalThread.interrupt();
-										
+										try {
+											Thread.sleep(30);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 										eventGiven = true;
 									}
 									//Sinon on passe à un autre event
@@ -978,7 +1012,13 @@ import javax.swing.JLayeredPane;
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
 										internalThread.interrupt();
-																		eventGiven = true;
+									try {
+										Thread.sleep(30);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									eventGiven = true;
 								}
 							}
 						}
@@ -1019,7 +1059,12 @@ import javax.swing.JLayeredPane;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										
 										internalThread2.interrupt();
-										
+										try {
+											Thread.sleep(30);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 										eventGiven = true;
 									}
 									//Sinon on passe à un autre event
@@ -1047,7 +1092,12 @@ import javax.swing.JLayeredPane;
 									
 									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 									internalThread2.interrupt();
-									
+									try {
+										Thread.sleep(30);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
 									eventGiven = true;
 								}
 							}
