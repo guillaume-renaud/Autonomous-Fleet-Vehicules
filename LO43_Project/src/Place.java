@@ -1,4 +1,4 @@
- import java.util.ArrayList;
+import java.util.ArrayList;
 
 
 public class Place 
@@ -7,7 +7,7 @@ public class Place
 	private boolean placeIsFree;
 	private ArrayList<Place> adjacencyPlaceList;
 	private int coordX, coordY;
-	
+
 	public Place (String name, boolean free, ArrayList<Place> listPlaces, int x, int y) 
 	{ 
 		setPlaceName(name);
@@ -57,7 +57,7 @@ public class Place
 		this.coordY = coordY;
 	}	
 
-	
-	
+
+
 }
 

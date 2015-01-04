@@ -3,12 +3,12 @@ import java.util.regex.Pattern;
 
 
 public class Passenger implements MailBoxListener {
-	
+
 	int passengerNumber;
 	Request request;
 	boolean occuped;
 	MailBox mainBox;
-	
+
 	/* initialize Passenger by reading the input line from the file request.txt
 	 * and creating corresponding request.*/
 	public Passenger(String s,MailBox m){
@@ -24,7 +24,7 @@ public class Passenger implements MailBoxListener {
 		request = new Request(begin, end);
 		scanner.close();
 	}
-	
+
 	/*on update received from Car Passenger react as follow : */
 	@Override
 	public void onMailReceivedByCar(MailBoxEvent e) {
@@ -45,7 +45,7 @@ public class Passenger implements MailBoxListener {
 	@Override
 	public void onMailReceivedByMan(MailBoxEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	//on update coming from Controller Passenger answer as follow : "
 	@Override
@@ -59,8 +59,8 @@ public class Passenger implements MailBoxListener {
 			System.out.println("Request sended");
 			mainBox.window.log.updateLog("Request sended");
 			mainBox.fireMailBoxUpdated(event);
-		/*as we want to deal with two request at same time, the second Passenger in the list
-		 * also send his request.*/
+			/*as we want to deal with two request at same time, the second Passenger in the list
+			 * also send his request.*/
 		}else if(action.equals("Start") && this.passengerNumber == 2){
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.passengers.indexOf(this), "NEW_REQUEST");
 			System.out.println("Request sended");

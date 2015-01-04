@@ -9,7 +9,7 @@ public class MailBoxEvent {
 	int indexReceiverInMailBoxList;
 	Place lastPlace;
 	Place newPlace;
-	
+
 	//First constructor of MailBoxEvent using only the name of the creator, its index in the mailbox, and the action performed
 	public MailBoxEvent (String className, int indexList, String action) {
 		this.classNameOfUpdater = className;
@@ -19,7 +19,7 @@ public class MailBoxEvent {
 		lastPlace = null;
 		newPlace = null;
 	}
-	
+
 	//Second constructor of MailBoxEvent using the first in addition with the 2 places of the car's move in this case
 	public MailBoxEvent (String className, int indexList, String action, Place begin, Place end) {
 		this.classNameOfUpdater = className;
@@ -29,11 +29,11 @@ public class MailBoxEvent {
 		lastPlace = begin;
 		newPlace = end;
 	}
-	
+
 	//Third constructor of MailBovEvent using the first in addition with the index of the class concerned by this event
 	public MailBoxEvent (String className, int indexList, String action, int indexList2) {
 		this(className, indexList, action);
 		this.indexReceiverInMailBoxList = indexList2;
-		
+
 	}
 }

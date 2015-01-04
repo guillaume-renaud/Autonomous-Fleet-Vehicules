@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class Car extends JPanel implements MailBoxListener
 {	
 	private static final long serialVersionUID = 1L;
-	
+
 	private String carName;
 	private Order order;
 	private Place lastPosition; // We put the anterior position. It permit us to move the car in the view, knowing from where to where the car moved
@@ -20,14 +20,14 @@ public class Car extends JPanel implements MailBoxListener
 	private String parking;
 	private int coordCarX, coordCarY;
 	private int numCar;
-	 
+
 	MailBox mainBox;
-		
+
 	/* Cheikh35 : We have to put attributes to private and to add methods getter and setters to modify theses attributes.
 	 * Because this permit us to know when the attributes of car are modified, and we can put a method SendEvent, or
 	 * Fire, to create and Event when we modify the car, so the MailBox, and it'll permit the Controller to know 
 	 * updates*/
-	
+
 	public Car(int i, String p, int coorX, int coorY, MailBox m)
 	{
 		super();
@@ -42,7 +42,7 @@ public class Car extends JPanel implements MailBoxListener
 		coordCarY = coorY;
 		mainBox = m;
 	}
-	
+
 	public Car (Car copie)
 	{
 		this.carName = copie.carName;
@@ -56,7 +56,7 @@ public class Car extends JPanel implements MailBoxListener
 		this.mainBox = copie.mainBox;
 		this.numCar = copie.numCar;
 	}
-	
+
 
 	public void reserveRoad()
 	{
@@ -66,8 +66,8 @@ public class Car extends JPanel implements MailBoxListener
 					if (order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 						p.setPlaceIsFree(false);
 	}
-	
-	
+
+
 	public boolean checkRoad()
 	{
 		boolean ready = true;
@@ -79,8 +79,8 @@ public class Car extends JPanel implements MailBoxListener
 							ready = false;
 		return ready;
 	}
-	
-	
+
+
 	public void move()
 	{
 		for(Place p : position.getAdjacencyPlaceList())
@@ -90,7 +90,7 @@ public class Car extends JPanel implements MailBoxListener
 						if(order.mission.requestMapPlaceName[i].equals(p.getPlaceName()))
 						{
 							this.lastPosition = this.position;
-							
+
 							if(lastPosition!=null)				
 								this.lastPosition.setPlaceIsFree(true);
 
@@ -103,13 +103,13 @@ public class Car extends JPanel implements MailBoxListener
 						}	
 	}	
 
-	
+
 	public void paintComponent(Graphics g)
 	{
 		try
 		{
 			int nb = ((numCar-1)%6)+1;
-		
+
 			Image img = ImageIO.read(new File("image/car"+nb+".png"));
 			g.drawImage(img, 0, 0, this);
 		}
@@ -156,7 +156,7 @@ public class Car extends JPanel implements MailBoxListener
 			System.out.println("The "+this.getCarName()+" has received its MISSION");
 			mainBox.window.log.updateLog("The "+this.getCarName()+" has received its MISSION");
 			boolean ready = this.checkRoad();
-			
+
 			if(!ready)
 			{
 				MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "WAIT");
@@ -167,15 +167,15 @@ public class Car extends JPanel implements MailBoxListener
 				this.reserveRoad();
 				this.move();
 			}
-			
+
 		}
 		else if(this.order.typeOrder.equals("PARK")&& e.indexReceiverInMailBoxList == mainBox.fleet.indexOf(this))
 		{
-			
+
 			System.out.println("The "+this.getCarName()+" has received PARK");
 			mainBox.window.log.updateLog("The "+this.getCarName()+" has received PARK");
 			MailBoxEvent event = new MailBoxEvent (this.getClass().getName(), mainBox.fleet.indexOf(this), "PARKED");
-			
+
 			Order o = new Order("WAIT");
 			this.setOrder(o);
 			this.setOccuped(false);
@@ -189,43 +189,43 @@ public class Car extends JPanel implements MailBoxListener
 	{
 		return this.order;
 	}
-	
+
 	protected Place getLastPosition()
 	{
 		return this.lastPosition;
 	}
-	
+
 	protected Place getPosition()
 	{
 		return this.position;
 	}
-	
+
 	protected boolean isOccuped()
 	{
 		return this.occuped;
 	}
-	
-	
+
+
 	protected void setOrder(Order o)
 	{ 
 		this.order = o;
 	}
-	
+
 	protected void setLastPosition(Place p)
 	{
 		this.lastPosition = p;
 	}
-	
+
 	protected void setPosition(Place p)
 	{
 		this.position = p;
 	}
-	
+
 	protected void setOccuped(boolean b)
 	{
 		this.occuped = b;
 	}
-	
+
 	protected String getParking()
 	{
 		return parking;
