@@ -802,7 +802,6 @@ import javax.swing.JLayeredPane;
 			{
 				displayer.updateLabels();
 				//System.out.println(passage+"-ième passage dans la boucle infinie de run() de Window ! ");
-				
 				eventGiven = false;
 				noEventRemain = false;
 				//On vérifie si la liste des tâches n'est pas vide et également s'il y a au moins un thread libre
@@ -829,12 +828,7 @@ import javax.swing.JLayeredPane;
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
 										internalThread.interrupt();
-									try {
-										Thread.sleep(120);
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
+									
 									eventGiven = true;
 								}
 								//Si la voiture n'a pas été traitée par thread1 déjà
@@ -852,12 +846,7 @@ import javax.swing.JLayeredPane;
 											internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 											
 											internalThread2.interrupt();
-											try {
-												Thread.sleep(120);
-											} catch (InterruptedException e) {
-												// TODO Auto-generated catch block
-												e.printStackTrace();
-											}
+											
 											eventGiven = true;
 										}
 										//Si les 2 thread sont partiellement libres avec une autre voiture, on prend l'event suivant. 
@@ -885,12 +874,7 @@ import javax.swing.JLayeredPane;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										
 										internalThread2.interrupt();
-										try {
-											Thread.sleep(120);
-										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+									
 										eventGiven = true;
 									}
 										
@@ -906,17 +890,11 @@ import javax.swing.JLayeredPane;
 									if (eventToDisplay.indexUpdaterInMailBoxList==mainBox.fleet.indexOf(internalThread2.actualManagedCar))
 									{
 										tasks.remove(eventToDisplay);
-										
 										if (tasks.isEmpty())
 											noEventRemain = true;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										internalThread2.interrupt();
-										try {
-											Thread.sleep(120);
-										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+										
 										eventGiven = true;
 									}
 								}
@@ -924,19 +902,12 @@ import javax.swing.JLayeredPane;
 								else
 								{
 									tasks.remove(eventToDisplay);
-									
 									if (tasks.isEmpty())
 										noEventRemain = true;
-									
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
 									internalThread.interrupt();
-									try {
-										Thread.sleep(120);
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
+								
 									eventGiven = true;
 								}
 							}
@@ -979,12 +950,7 @@ import javax.swing.JLayeredPane;
 										internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 										
 										internalThread.interrupt();
-										try {
-											Thread.sleep(120);
-										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+										
 										eventGiven = true;
 									}
 									//Sinon on passe à un autre event
@@ -1012,13 +978,7 @@ import javax.swing.JLayeredPane;
 									internalThread.setManageredObjects(eventToDisplay, this, "internalThread");
 									
 										internalThread.interrupt();
-									try {
-										Thread.sleep(120);
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-									eventGiven = true;
+																		eventGiven = true;
 								}
 							}
 						}
@@ -1059,12 +1019,7 @@ import javax.swing.JLayeredPane;
 										internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 										
 										internalThread2.interrupt();
-										try {
-											Thread.sleep(120);
-										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
+										
 										eventGiven = true;
 									}
 									//Sinon on passe à un autre event
@@ -1092,12 +1047,7 @@ import javax.swing.JLayeredPane;
 									
 									internalThread2.setManageredObjects(eventToDisplay, this, "internalThread2");
 									internalThread2.interrupt();
-									try {
-										Thread.sleep(120);
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
+									
 									eventGiven = true;
 								}
 							}

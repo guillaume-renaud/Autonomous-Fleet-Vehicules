@@ -127,11 +127,17 @@ public class MailBox implements  Runnable{
 						System.out.println("--> On rentre dans le case");
 						System.out.println("taille de eventFire() : "+eventFire.size());
 						//Si c'est un event relatif à un changement de position
-						if(e.updateAction.equals("POSITION_CHANGED") || e.updateAction.equals("PARKED"))
+						if(e.updateAction.equals("PARKED"))
+						{
+							window.tasks.addLast(e);
+							affichage.interrupt();
+							this.sleep(999999);
+						}
+						else if(e.updateAction.equals("POSITION_CHANGED"))
 						{
 							System.out.println("--> C'est un event position ou parking");
 							//Cas où les deux threads sont totalement libres
-							if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent==null)
+							if (window.internalThread.actualManagedCar==null && window.internalThread2.actualManagedCar==null)
 							{
 								System.out.println("--> Les deux threads sont totalement libres : on ajoute la voiture d'index "+e.indexUpdaterInMailBoxList);
 								window.tasks.addLast(e);
@@ -174,7 +180,7 @@ public class MailBox implements  Runnable{
 								}
 							}
 							//Cas où le thread2 est totalement libre et le thread1 partiellement libre
-							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent==null)
+							else if (window.internalThread.actualManagedCar!=null && window.internalThread2.actualManagedCar==null)
 							{
 								System.out.println("--> Le thread2 est totalement libre et le thread1 partiellement libre");
 								//Si la voiture n'est pas déjà déplacée par le thread1
@@ -263,7 +269,7 @@ public class MailBox implements  Runnable{
 								}
 							}
 							//Cas où le thread1 est totalement libre et le thread2 partiellement libre
-							else if (window.internalThread.actualManagedEvent==null && window.internalThread2.actualManagedEvent!=null)
+							else if (window.internalThread.actualManagedCar==null && window.internalThread2.actualManagedCar!=null)
 							{
 								System.out.println("--> Le thread1 est totalement libre et le thread2 partiellement libre");
 								//Si la voiture n'est pas déjà déplacée par le thread2
@@ -351,7 +357,7 @@ public class MailBox implements  Runnable{
 								}
 							}
 							//Cas où le thread1 est partiellement libre et le thread2 partiellement libre
-							else if (window.internalThread.actualManagedEvent!=null && window.internalThread2.actualManagedEvent!=null)
+							else if (window.internalThread.actualManagedCar!=null && window.internalThread2.actualManagedCar!=null)
 							{
 								System.out.println("--> Le thread1 est partiellement libre et le thread2 partiellement libre");
 								//Si la voiture n'est pas déjà déplacée ni par le thread1 ni le thread2
