@@ -142,13 +142,6 @@ public class Controller implements MailBoxListener {
 			case "I6" : car = this.findFreeCar("P6");
 				break;
 			}
-			if(car == null)
-			{
-				for (Car c : mainBox.fleet)
-				{
-					System.out.println(c.getParking() + " " + c.getCoordCarX());
-				}
-			}
 			car.setPosition(null);
 			this.enrollCar(car, mainBox.findSpecificPlace(passenger.request.start), passenger.request);
 		}/*else if(action.equals("PARKED")){
